@@ -1,0 +1,10 @@
+open INV
+-- arbitrary objects
+  op p : -> Protocol .
+-- assumptions
+  eq b = intruder .
+  eq b1 = intruder .
+-- check 
+  red inv1140(p,a,b,b1,r1,r2,c,i,s) .
+close
+--

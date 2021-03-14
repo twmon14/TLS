@@ -1,0 +1,233 @@
+--
+-- Claim 1000 ** PROVED ** (Used Claims: 1010)
+--   For any reachable p   : Protocol
+--                     pms : Pms
+--  
+--   pms \in cpms(nw(p)) implies (client(pms) = intruder or server(pms) = intruder)
+--
+
+--
+-- Claim 1010 ** PROVED ** (Used Claims: none)
+--   For any reachable p    : Protocol
+--                     epms : EncPms
+--  
+--   epms \in cepms(nw(p)) implies not(owner(k(epms)) = intruder) 
+--
+
+--
+-- Claim 1020 ** PROVED ** (Used Claims: 1000,1030)
+--   For any reachable p      : Protocol
+--                     a b b1 : Prin
+--                     r1 r2  : Rand
+--                     l      : ListOfChoices
+--                     c      : Choice
+--                     i      : Sid
+--                     s      : Secret
+--  
+--   not(a = intruder) and
+--   sf(b1,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p)
+--   implies 
+--   sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p)
+--
+
+--
+-- Claim 1030 ** PROVED ** (Used Claims: 1000)
+--   For any reachable p     : Protocol
+--                     a b   : Prin
+--                     r1 r2 : Rand
+--                     l     : ListOfChoices
+--                     c     : Choice
+--                     i     : Sid
+--                     s     : Secret
+--  
+--   not(a = intruder) and
+--   esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) \in cesfin(nw(p))
+--   implies 
+--   sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p)
+--
+
+--
+-- Claim 1040 ** PROVED ** (Used Claims: 1000,1050)
+--   For any reachable p      : Protocol
+--                     a b b1 : Prin
+--                     r1 r2  : Rand
+--                     c      : Choice
+--                     i      : Sid
+--                     s      : Secret
+--  
+--   not(a = intruder) and
+--   sf2(b1,b,a,esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s)))) \in nw(p)
+--   implies 
+--   sf2(b,b,a,esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s)))) \in nw(p)
+--
+
+--
+-- Claim 1050 ** PROVED ** (Used Claims: 1000)
+--   For any reachable p     : Protocol
+--                     a b   : Prin
+--                     r1 r2 : Rand
+--                     c     : Choice
+--                     i     : Sid
+--                     s     : Secret
+--  
+--   not(a = intruder) and
+--   esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s))) \in cesfin2(nw(p))
+--   implies 
+--   sf2(b,b,a,esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s)))) \in nw(p)
+--
+
+--
+-- Claim 1060 (Used Claims: )
+--   For any reachable p      : Protocol
+--                     a b a1 : Prin
+--                     r1 r2  : Rand
+--                     l      : ListOfChoices
+--                     c      : Choice
+--                     i      : Sid
+--                     pms    : Pms
+--  
+--   not(b = intruder) and
+--   cf2(a1,a,b,ecfin2(k(a,pms,r1,r2),cfin2(a,b,i,c,r1,r2,pms))) \in nw(p) and
+--   implies 
+--   cf2(a,a,b,ecfin2(k(a,pms,r1,r2),cfin2(a,b,i,l,c,r1,r2,pms))) \in nw(p)
+--
+
+--
+-- Claim 1070 (Used Claims: )
+--   For any reachable p     : Protocol
+--                     a b   : Prin
+--                     r1 r2 : Rand
+--                     l     : ListOfChoices
+--                     c     : Choice
+--                     i     : Sid
+--                     pms   : Pms
+--  
+--   not(b = intruder) and
+--   ecfin2(k(a,pms,r1,r2),cfin2(a,b,i,l,c,r1,r2,pms)) \in cecfin2(nw(p))
+--   implies 
+--   cf2(a,a,b,ecfin2(k(a,pms,r1,r2),cfin2(a,b,i,l,c,r1,r2,pms))) \in nw(p)
+--
+
+--
+-- Claim ???? (Used Claims: )
+--   For any reachable p    : Protocol
+--                     a b b1 b2 b3 : Prin
+--                     r1 r2 : Rand
+--                     l : ListOfChoices
+--                     c : Choice
+--                     i : Sid
+--                     k : PubKey
+--                     s : Secret
+--  
+--   not(a = intruder and b = intruder) and
+--   c \in l and
+--   ch(a,a,b,r1,l) \in nw(p) and
+--   sh(b1,b,a,r2,i,c) \in nw(p) and
+--   ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) and
+--   kx(a,a,b,epms(k,pms(a,b,s))) \in nw(p) and
+--   cf(a,a,b,efin(k(a,r1,r2),fin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) and
+--   sf(b3,b,a,efin(k(b,r1,r2),fin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) and
+--   implies 
+--   sh(b,b,a,r2,i,c) \in nw(p) and
+--   ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) and
+--   sf(b,b,a,efin(k(b,r1,r2),fin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p)
+--
+
+mod INV {
+  pr(TLS)
+-- arbitrary objects
+  ops a b a1 b1 : -> Prin
+  ops r1 r2 : -> Rand
+  op l : -> ListOfChoices 
+  op c : -> Choice 
+  op i : -> Sid 
+  op s : -> Secret
+  op pms : -> Pms
+  op epms : -> EncPms 
+-- declare invariants to prove
+  op inv1000 : Protocol Pms -> Bool
+  op inv1010 : Protocol EncPms -> Bool
+  op inv1020 : Protocol Prin Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
+  op inv1030 : Protocol Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
+  op inv1040 : Protocol Prin Prin Prin Rand Rand Choice Sid Secret -> Bool
+  op inv1050 : Protocol Prin Prin Rand Rand Choice Sid Secret -> Bool
+  op inv1060 : Protocol Prin Prin Prin Rand Rand Choice Sid Pms -> Bool
+  op inv1070 : Protocol Prin Prin Rand Rand Choice Sid Pms -> Bool
+-- CafeOBJ variables
+  var P : Protocol
+  vars A A1 B B1 : Prin
+  vars R1 R2 : Rand
+  var L : ListOfChoices
+  var C : Choice
+  var I : Sid
+  var S : Secret 
+  var PMS : Pms
+  var EPMS : EncPms
+-- define invariants to prove
+  eq inv1000(P,PMS) = (PMS \in cpms(nw(P)) implies (client(PMS) = intruder or server(PMS) = intruder)) .
+  eq inv1010(P,EPMS) = (EPMS \in cepms(nw(P)) implies not(owner(k(EPMS)) = intruder)) .
+  eq inv1020(P,A,B,B1,R1,R2,L,C,I,S)
+     = (not(A = intruder) and
+        sf(B1,B,A,esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S)))) \in nw(P)
+        implies
+        sf(B,B,A,esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S)))) \in nw(P)) .
+  eq inv1030(P,A,B,R1,R2,L,C,I,S)
+     = (not(A = intruder) and
+        esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S))) \in cesfin(nw(P))
+        implies
+        sf(B,B,A,esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S)))) \in nw(P)) .
+  eq inv1040(P,A,B,B1,R1,R2,C,I,S)
+     = (not(A = intruder) and
+        sf2(B1,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)
+        implies
+        sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)) .
+  eq inv1050(P,A,B,R1,R2,C,I,S)
+     = (not(A = intruder) and
+        esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S))) \in cesfin2(nw(P))
+        implies
+        sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)) .
+  eq inv1060(P,A,B,A1,R1,R2,C,I,PMS)
+     = (not(B = intruder) and
+        cf2(A1,A,B,ecfin2(k(A,PMS,R1,R2),cfin2(A,B,I,C,R1,R2,PMS))) \in nw(P)
+        implies
+        cf2(A,A,B,ecfin2(k(A,PMS,R1,R2),cfin2(A,B,I,C,R1,R2,PMS))) \in nw(P)) .
+  eq inv1070(P,A,B,R1,R2,C,I,PMS)
+     = (not(B = intruder) and
+        ecfin2(k(A,PMS,R1,R2),cfin2(A,B,I,C,R1,R2,PMS)) \in cecfin2(nw(P))
+        implies
+        cf2(A,A,B,ecfin2(k(A,PMS,R1,R2),cfin2(A,B,I,C,R1,R2,PMS))) \in nw(P)) .
+}
+
+mod ISTEP {
+  pr(INV)
+-- arbitrary objects
+  ops p p' : -> Protocol
+-- declare predicates to prove in inductive step
+  op istep1000 : Pms -> Bool
+  op istep1010 : EncPms -> Bool
+  op istep1020 : Prin Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
+  op istep1030 : Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
+  op istep1040 : Prin Prin Prin Rand Rand Choice Sid Secret -> Bool
+  op istep1050 : Prin Prin Rand Rand Choice Sid Secret -> Bool
+  op istep1060 : Prin Prin Prin Rand Rand Choice Sid Pms -> Bool
+  op istep1070 : Prin Prin Rand Rand Choice Sid Pms -> Bool
+-- CafeOBJ variables
+  vars A A1 B B1 : Prin
+  vars R1 R2 : Rand
+  var L : ListOfChoices
+  var C : Choice
+  var I : Sid
+  var S : Secret 
+  var PMS : Pms
+  var EPMS : EncPms
+-- define predicates to prove in inductive step
+  eq istep1000(PMS) = inv1000(p,PMS) implies inv1000(p',PMS) .
+  eq istep1010(EPMS) = inv1010(p,EPMS) implies inv1010(p',EPMS) .
+  eq istep1020(A,B,B1,R1,R2,L,C,I,S) = inv1020(p,A,B,B1,R1,R2,L,C,I,S) implies inv1020(p',A,B,B1,R1,R2,L,C,I,S) .
+  eq istep1030(A,B,R1,R2,L,C,I,S) = inv1030(p,A,B,R1,R2,L,C,I,S) implies inv1030(p',A,B,R1,R2,L,C,I,S) .
+  eq istep1040(A,B,B1,R1,R2,C,I,S) = inv1040(p,A,B,B1,R1,R2,C,I,S) implies inv1040(p',A,B,B1,R1,R2,C,I,S) .
+  eq istep1050(A,B,R1,R2,C,I,S) = inv1050(p,A,B,R1,R2,C,I,S) implies inv1050(p',A,B,R1,R2,C,I,S) .
+  eq istep1060(A,B,A1,R1,R2,C,I,PMS) = inv1060(p,A,B,A1,R1,R2,C,I,PMS) implies inv1060(p',A,B,A1,R1,R2,C,I,PMS) .
+  eq istep1070(A,B,R1,R2,C,I,PMS) = inv1070(p,A,B,R1,R2,C,I,PMS) implies inv1070(p',A,B,R1,R2,C,I,PMS) .
+}
+

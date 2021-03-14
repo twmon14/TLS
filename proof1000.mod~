@@ -1,0 +1,1063 @@
+-- I) Base case
+
+open INV
+  red inv1000(init,pms) .
+close
+
+
+-- II) Inductive cases
+
+--> 1) chello(p,a10,b10,r10,l10)
+-- 1.1) c-chello(p,a10,b10,r10,l10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op r10 : -> Rand .
+  op l10 : -> ListOfChoices .
+-- assumptions
+  -- eq c-chello(p,a10,b10,r10,l10) = true .
+  eq r10 \in ur(p) = false .
+-- successor state
+  eq p' = chello(p,a10,b10,r10,l10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 1.2) not c-chello(p,a10,b10,r10,l10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op r10 : -> Rand .
+  op l10 : -> ListOfChoices .
+-- assumptions
+  eq c-chello(p,a10,b10,r10,l10) = false .
+-- successor state
+  eq p' = chello(p,a10,b10,r10,l10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 2) shello(p,b10,r10,i10,c10,m10)
+-- 2.1) c-shello(p,b10,r10,i10,c10,m10)
+open ISTEP
+-- arbitrary objects
+  op b10 : -> Prin .
+  op r10 : -> Rand .
+  op i10 : -> Sid .
+  op c10 : -> Choice .
+  op m10 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-shello(p,b10,r10,i10,c10,m10) = true .
+  eq r10 \in ur(p) = false .
+  eq i10 \in ui(p) = false .
+  eq nw(p) = m10 , nw10 .
+  eq ch?(m10) = true .
+  eq dst(m10) = b10 .
+  eq c10 \in list(m10) = true .
+-- successor state
+  eq p' = shello(p,b10,r10,i10,c10,m10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 2.2) not c-shello(p,b10,r10,i10,c10,m10)
+open ISTEP
+-- arbitrary objects
+  op b10 : -> Prin .
+  op r10 : -> Rand .
+  op i10 : -> Sid .
+  op c10 : -> Choice .
+  op m10 : -> Msg .
+-- assumptions
+  eq c-shello(p,b10,r10,i10,c10,m10) = false .
+-- successor state
+  eq p' = shello(p,b10,r10,i10,c10,m10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 3) cert(p,b10,m10,m20)
+-- 3.1) c-cert(p,b10,m10,m20)
+open ISTEP
+-- arbitrary objects
+  op b10 : -> Prin .
+  ops m10 m20 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-cert(p,b10,m10,m20) = true .
+  eq nw(p) = m10 , m20 , nw10 .
+  eq ch?(m10) = true .
+  eq sh?(m20) = true .
+  eq dst(m10) = b10 .
+  eq crt(m20) = b10 .
+  eq src(m20) = b10 .
+  eq src(m10) = dst(m20) .
+  eq choice(m20) \in list(m10) = true .
+-- successor state
+  eq p' = cert(p,b10,m10,m20) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 3.2) not c-cert(p,b10,m10,m20)
+open ISTEP
+-- arbitrary objects
+  op b10 : -> Prin .
+  ops m10 m20 : -> Msg .
+-- assumptions
+  eq c-cert(p,b10,m10,m20) = false .
+-- successor state
+  eq p' = cert(p,b10,m10,m20) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 4) kexch(p,a10,s10,m10,m20,m30)
+-- 4.1) c-kexch(p,a10,s10,m10,m20,m30)
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 m30 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-kexch(p,a10,s10,m10,m20,m30) = true .
+  eq s10 \in us(p) = false .
+  eq nw(p) = m10 , m20 , m30 , nw10 .
+  eq ch?(m10) = true .
+  eq sh?(m20) = true .
+  eq ct?(m30) = true .
+  eq crt(m10) = a10 .
+  eq src(m10) = a10 .
+  eq src(m20) = dst(m10) .
+  eq dst(m20) = a10 .
+  eq src(m30) = dst(m10) .
+  eq dst(m30) = a10 .
+  eq choice(m20) \in list(m10) = true .
+  eq server(cert(m30)) = dst(m10) .
+  eq sig(cert(m30)) = sig(ca,server(cert(m30)),pubkey(cert(m30))) .
+--
+  eq dst(m10) = intruder .
+  eq pms = pms(a10,intruder,s10) .
+-- successor state
+  eq p' = kexch(p,a10,s10,m10,m20,m30) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 m30 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-kexch(p,a10,s10,m10,m20,m30) = true .
+  eq s10 \in us(p) = false .
+  eq nw(p) = m10 , m20 , m30 , nw10 .
+  eq ch?(m10) = true .
+  eq sh?(m20) = true .
+  eq ct?(m30) = true .
+  eq crt(m10) = a10 .
+  eq src(m10) = a10 .
+  eq src(m20) = dst(m10) .
+  eq dst(m20) = a10 .
+  eq src(m30) = dst(m10) .
+  eq dst(m30) = a10 .
+  eq choice(m20) \in list(m10) = true .
+  eq server(cert(m30)) = dst(m10) .
+  eq sig(cert(m30)) = sig(ca,server(cert(m30)),pubkey(cert(m30))) .
+--
+  eq dst(m10) = intruder .
+  eq (pms = pms(a10,intruder,s10)) = false .
+-- successor state
+  eq p' = kexch(p,a10,s10,m10,m20,m30) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 m30 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-kexch(p,a10,s10,m10,m20,m30) = true .
+  eq s10 \in us(p) = false .
+  eq nw(p) = m10 , m20 , m30 , nw10 .
+  eq ch?(m10) = true .
+  eq sh?(m20) = true .
+  eq ct?(m30) = true .
+  eq crt(m10) = a10 .
+  eq src(m10) = a10 .
+  eq src(m20) = dst(m10) .
+  eq dst(m20) = a10 .
+  eq src(m30) = dst(m10) .
+  eq dst(m30) = a10 .
+  eq choice(m20) \in list(m10) = true .
+  eq server(cert(m30)) = dst(m10) .
+  eq sig(cert(m30)) = sig(ca,server(cert(m30)),pubkey(cert(m30))) .
+--
+  eq (dst(m10) = intruder) = false .
+  eq pubkey(cert(m30)) = k(dst(m10)) .
+-- successor state
+  eq p' = kexch(p,a10,s10,m10,m20,m30) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 m30 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-kexch(p,a10,s10,m10,m20,m30) = true .
+  eq s10 \in us(p) = false .
+  eq nw(p) = m10 , m20 , m30 , nw10 .
+  eq ch?(m10) = true .
+  eq sh?(m20) = true .
+  eq ct?(m30) = true .
+  eq crt(m10) = a10 .
+  eq src(m10) = a10 .
+  eq src(m20) = dst(m10) .
+  eq dst(m20) = a10 .
+  eq src(m30) = dst(m10) .
+  eq dst(m30) = a10 .
+  eq choice(m20) \in list(m10) = true .
+  eq server(cert(m30)) = dst(m10) .
+  eq sig(cert(m30)) = sig(ca,server(cert(m30)),pubkey(cert(m30))) .
+--
+  eq (dst(m10) = intruder) = false .
+  eq (pubkey(cert(m30)) = k(dst(m10))) = false .
+-- successor state
+  eq p' = kexch(p,a10,s10,m10,m20,m30) .
+-- check if the predicate is true.
+  red inv0900(p,dst(m10),pubkey(cert(m30))) implies istep1000(pms) .
+close
+--
+-- 4.2) not c-kexch(p,a10,s10,m10,m20,m30)
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 m30 : -> Msg .
+-- assumptions
+  eq c-kexch(p,a10,s10,m10,m20,m30) = false .
+-- successor state
+  eq p' = kexch(p,a10,s10,m10,m20,m30) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 5) cfin(p,a10,s10,m10,m20,m30,m40) 
+-- 5.1) c-cfin(p,a10,s10,m10,m20,m30,m40) 
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 m30 m40 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-cfin(p,a10,s10,m10,m20,m30,m40)  = true .
+  eq nw(p) = m10 , m20 , m30 , m40 , nw10 .
+  eq ch?(m10) = true .
+  eq sh?(m20) = true .
+  eq ct?(m30) = true .
+  eq kx?(m40) = true .
+  eq crt(m10) = a10 .
+  eq src(m10) = a10 .
+  eq crt(m40) = a10 .
+  eq src(m40) = a10 .
+  eq dst(m40) = dst(m10) .
+  eq src(m20) = dst(m10) .
+  eq dst(m20) = a10 .
+  eq src(m30) = dst(m10) .
+  eq dst(m30) = a10 .
+  eq choice(m20) \in list(m10) = true .
+  eq server(cert(m30)) = dst(m10) .
+  eq sig(cert(m30)) = sig(ca,server(cert(m30)),pubkey(cert(m30))) .
+  eq epms(m40) = epms(pubkey(cert(m30)),pms(a10,dst(m10),s10)) .
+-- successor state
+  eq p' = cfin(p,a10,s10,m10,m20,m30,m40) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 5.2) not c-cfin(p,a10,s10,m10,m20,m30,m40) 
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 m30 m40 : -> Msg .
+-- assumptions
+  eq c-cfin(p,a10,s10,m10,m20,m30,m40)  = false .
+-- successor state
+  eq p' = cfin(p,a10,s10,m10,m20,m30,m40) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 6) sfin(p,b10,m10,m20,m30,m40,m50) 
+-- 6.1) c-sfin(p,b10,m10,m20,m30,m40,m50) 
+open ISTEP
+-- arbitrary objects
+  op b10 : -> Prin .
+  ops m10 m20 m30 m40 m50 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-sfin(p,b10,m10,m20,m30,m40,m50) = true .
+  eq nw(p) = m10 , m20 , m30 , m40 , m50 , nw10 .
+  eq ch?(m10) = true .
+  eq sh?(m20) = true .
+  eq ct?(m30) = true .
+  eq kx?(m40) = true .
+  eq cf?(m50) = true .
+  eq crt(m20) = b10 .
+  eq src(m20) = b10 .
+  eq crt(m30) = b10 .
+  eq src(m30) = b10 .
+  eq dst(m30) = dst(m20) .
+  eq src(m10) = dst(m20) .
+  eq dst(m10) = b10 .
+  eq src(m40) = dst(m20) .
+  eq dst(m40) = b10 .
+  eq src(m50) = dst(m20) .
+  eq dst(m50) = b10 .
+  eq choice(m20) \in list(m10) = true .
+  eq cert(m30) = cert(b10,k(b10),sig(ca,b10,k(b10))) .
+  eq k(epms(m40)) = k(b10) .
+  eq ecfin(m50) = ecfin(k(dst(m20),pms(epms(m40)),rand(m10),rand(m20)),
+                      cfin(dst(m20),b10,sid(m20),list(m10),choice(m20),rand(m10),rand(m20),pms(epms(m40)))) .
+-- successor state
+  eq p' = sfin(p,b10,m10,m20,m30,m40,m50) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 6.2) not c-sfin(p,b10,m10,m20,m30,m40,m50) 
+open ISTEP
+-- arbitrary objects
+  op b10 : -> Prin .
+  ops m10 m20 m30 m40 m50 : -> Msg .
+-- assumptions
+  eq c-sfin(p,b10,m10,m20,m30,m40,m50) = false .
+-- successor state
+  eq p' = sfin(p,b10,m10,m20,m30,m40,m50) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 7) compl(p,a10,s10,m10,m20,m30,m40,m50,m60) 
+-- 7.1) c-compl(p,a10,s10,m10,m20,m30,m40,m50,m60) 
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 m30 m40 m50 m60 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-compl(p,a10,s10,m10,m20,m30,m40,m50,m60) = true .
+  eq nw(p) = m10 , m20 , m30 , m40 , m50 , m60 , nw10 .
+  eq ch?(m10) = true .
+  eq sh?(m20) = true .
+  eq ct?(m30) = true .
+  eq kx?(m40) = true .
+  eq cf?(m50) = true .
+  eq sf?(m60) = true .
+  eq crt(m10) = a10 .
+  eq src(m10) = a10 .
+  eq crt(m40) = a10 .
+  eq src(m40) = a10 .
+  eq dst(m40) = dst(m10) .
+  eq crt(m50) = a10 .
+  eq src(m50) = a10 .
+  eq dst(m50) = dst(m10) .
+  eq src(m20) = dst(m10) .
+  eq dst(m20) = a10 .
+  eq src(m30) = dst(m10) .
+  eq dst(m30) = a10 .
+  eq src(m60) = dst(m10) .
+  eq dst(m60) = a10 .
+  eq choice(m20) \in list(m10) = true .
+  eq server(cert(m30)) = dst(m10) .
+  eq sig(cert(m30)) = sig(ca,server(cert(m30)),pubkey(cert(m30))) .
+  eq epms(m40) = epms(pubkey(cert(m30)),pms(a10,dst(m10),s10)) .
+  eq ecfin(m50) = ecfin(k(a10,pms(epms(m40)),rand(m10),rand(m20)),
+                      cfin(a10,dst(m10),sid(m20),list(m10),choice(m20),rand(m10),rand(m20),pms(epms(m40)))) .
+  eq esfin(m60) = esfin(k(dst(m10),pms(epms(m40)),rand(m10),rand(m20)),
+                      sfin(a10,dst(m10),sid(m20),list(m10),choice(m20),rand(m10),rand(m20),pms(epms(m40)))) .
+-- successor state
+  eq p' = compl(p,a10,s10,m10,m20,m30,m40,m50,m60) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 7.2) not c-compl(p,a10,s10,m10,m20,m30,m40,m50,m60) 
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 m30 m40 m50 m60 : -> Msg .
+-- assumptions
+  eq c-compl(p,a10,s10,m10,m20,m30,m40,m50,m60) = false .
+-- successor state
+  eq p' = compl(p,a10,s10,m10,m20,m30,m40,m50,m60) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 8) chello2(p,a10,b10,s10,r10,i10) 
+-- 8.1) c-chello2(p,a10,b10,s10,r10,i10) 
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op s10 : -> Secret .
+  op r10 : -> Rand .
+  op i10 : -> Sid .
+-- assumptions
+  -- eq c-chello2(p,a10,b10,s10,r10,i10) = true .
+  eq r10 \in ur(p) = false .
+  eq (ss(p,a10,b10,i10) = none) = false .
+  eq pms(ss(p,a10,b10,i10)) = pms(a10,b10,s10) .
+-- successor state
+  eq p' = chello2(p,a10,b10,s10,r10,i10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 8.2) not c-chello2(p,a10,b10,s10,r10,i10) 
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op s10 : -> Secret .
+  op r10 : -> Rand .
+  op i10 : -> Sid .
+-- assumptions
+  eq c-chello2(p,a10,b10,s10,r10,i10) = false .
+-- successor state
+  eq p' = chello2(p,a10,b10,s10,r10,i10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 9) shello2(p,b10,r10,m10)
+-- 9.1) c-shello2(p,b10,r10,m10)
+open ISTEP
+-- arbitrary objects
+  op b10 : -> Prin .
+  op r10 : -> Rand .
+  op m10 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-shello2(p,b10,r10,m10) = true .
+  eq r10 \in ur(p) = false .
+  eq nw(p) = m10 , nw10 .
+  eq ch2?(m10) = true .
+  eq dst(m10) = b10 .
+  eq (ss(p,src(m10),b10,sid(m10)) = none) = false .
+-- successor state
+  eq p' = shello2(p,b10,r10,m10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 9.2) not c-shello2(p,b10,r10,m10)
+open ISTEP
+-- arbitrary objects
+  op b10 : -> Prin .
+  op r10 : -> Rand .
+  op m10 : -> Msg .
+-- assumptions
+  eq c-shello2(p,b10,r10,m10) = false .
+-- successor state
+  eq p' = shello2(p,b10,r10,m10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 10) cfin2(p,a10,s10,m10,m20)
+-- 10.1) c-cfin2(p,a10,s10,m10,m20)
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-cfin2(p,a10,s10,m10,m20) = true .
+  eq nw(p) = m10 , m20 , nw10 .
+  eq ch2?(m10) = true .
+  eq sh2?(m20) = true .
+  eq crt(m10) = a10 .
+  eq src(m10) = a10 .
+  eq src(m20) = dst(m10) .
+  eq dst(m20) = a10 .
+  eq sid(m10) = sid(m20) .
+  eq (ss(p,a10,dst(m10),sid(m20)) = none) = false .
+  eq choice(ss(p,a10,dst(m10),sid(m20))) = choice(m20) .
+  eq pms(ss(p,a10,dst(m10),sid(m20))) = pms(a10,dst(m10),s10) .
+-- successor state
+  eq p' = cfin2(p,a10,s10,m10,m20) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 10.2) not c-cfin2(p,a10,s10,m10,m20)
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 : -> Msg .
+-- assumptions
+  eq c-cfin2(p,a10,s10,m10,m20) = false .
+-- successor state
+  eq p' = cfin2(p,a10,s10,m10,m20) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 11) sfin2(p,b10,m10,m20,m30)
+-- 11.1) c-sfin2(p,b10,m10,m20,m30)
+open ISTEP
+-- arbitrary objects
+  op b10 : -> Prin .
+  ops m10 m20 m30 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-sfin2(p,b10,m10,m20,m30) = true .
+  eq nw(p) = m10 , m20 , m30 , nw10 .
+  eq ch2?(m10) = true .
+  eq sh2?(m20) = true .
+  eq cf2?(m30) = true .
+  eq crt(m20) = b10 .
+  eq src(m20) = b10 .
+  eq src(m10) = dst(m20) .
+  eq dst(m10) = b10 .
+  eq src(m30) = dst(m20) .
+  eq dst(m30) = b10 .
+  eq sid(m10) = sid(m20) .
+  eq (ss(p,dst(m20),b10,sid(m20)) = none) = false .
+  eq choice(ss(p,dst(m20),b10,sid(m20))) = choice(m20) .
+  eq ecfin2(m30) = ecfin2(k(dst(m20),pms(ss(p,dst(m20),b10,sid(m20))),rand(m10),rand(m20)),
+                      cfin2(dst(m20),b10,sid(m20),choice(m20),rand(m10),rand(m20),pms(ss(p,dst(m20),b10,sid(m20))))) .
+-- successor state
+  eq p' = sfin2(p,b10,m10,m20,m30) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 11.2) not c-sfin2(p,b10,m10,m20,m30)
+open ISTEP
+-- arbitrary objects
+  op b10 : -> Prin .
+  ops m10 m20 m30 : -> Msg .
+-- assumptions
+  eq c-sfin2(p,b10,m10,m20,m30) = false .
+-- successor state
+  eq p' = sfin2(p,b10,m10,m20,m30) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 12) compl2(p,a10,s10,m10,m20,m30,m40)
+-- 12.1) c-compl2(p,a10,s10,m10,m20,m30,m40)
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 m30 m40 : -> Msg .
+  op nw10 : -> Network .
+-- assumptions
+  -- eq c-compl2(p,a10,s10,m10,m20,m30,m40) = true .
+  eq ch2?(m10) = true .
+  eq sh2?(m20) = true .
+  eq cf2?(m30) = true .
+  eq sf2?(m40) = true .
+  eq crt(m10) = a10 .
+  eq src(m10) = a10 .
+  eq crt(m30) = a10 .
+  eq src(m30) = a10 .
+  eq dst(m30) = dst(m10) .
+  eq src(m20) = dst(m10) .
+  eq dst(m20) = a10 .
+  eq src(m40) = dst(m10) .
+  eq dst(m40) = a10 .
+  eq sid(m10) = sid(m20) .
+  eq (ss(p,a10,dst(m10),sid(m20)) = none) = false .
+  eq choice(ss(p,a10,dst(m10),sid(m20))) = choice(m20) .
+  eq pms(ss(p,a10,dst(m10),sid(m20))) = pms(a10,dst(m10),s10) .
+  eq ecfin2(m30) = ecfin2(k(a10,pms(a10,dst(m10),s10),rand(m10),rand(m20)),
+                      cfin2(a10,dst(m10),sid(m20),choice(m20),rand(m10),rand(m20),pms(a10,dst(m10),s10))) .
+  eq esfin2(m40) = esfin2(k(dst(m10),pms(a10,dst(m10),s10),rand(m10),rand(m20)),
+                        sfin2(a10,dst(m10),sid(m20),choice(m20),rand(m10),rand(m20),pms(a10,dst(m10),s10))) .
+-- successor state
+  eq p' = compl2(p,a10,s10,m10,m20,m30,m40) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 12.2) not c-compl2(p,a10,s10,m10,m20,m30,m40)
+open ISTEP
+-- arbitrary objects
+  op a10 : -> Prin .
+  op s10 : -> Secret .
+  ops m10 m20 m30 m40 : -> Msg .
+-- assumptions
+  eq c-compl2(p,a10,s10,m10,m20,m30,m40) = false .
+-- successor state
+  eq p' = compl2(p,a10,s10,m10,m20,m30,m40) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 13) fakeChello(p,a10,b10,r10,l10) 
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op r10 : -> Rand .
+  op l10 : -> ListOfChoices .
+-- assumptions
+-- successor state
+  eq p' = fakeChello(p,a10,b10,r10,l10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 14) fakeShello(p,b10,a10,r10,i10,c10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op r10 : -> Rand .
+  op i10 : -> Sid .
+  op c10 : -> Choice .
+-- assumptions
+-- successor state
+  eq p' = fakeShello(p,b10,a10,r10,i10,c10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 15) fakeCert(p,b10,a10,pk10,g10)
+-- 15.1) c-fakeCert(p,b10,a10,pk10,g10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op pk10 : -> PubKey .
+  op g10 : -> Sig .
+-- assumptions
+  -- eq c-fakeCert(p,b10,a10,pk10,g10) = false .
+  eq g10 \in csig(nw(p)) = true .
+-- successor state
+  eq p' = fakeCert(p,b10,a10,pk10,g10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 15.2) not c-fakeCert(p,b10,a10,pk10,g10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op pk10 : -> PubKey .
+  op g10 : -> Sig .
+-- assumptions
+  eq c-fakeCert(p,b10,a10,pk10,g10) = false .
+-- successor state
+  eq p' = fakeCert(p,b10,a10,pk10,g10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 16) fakeKexch1(p,a10,b10,epms10) 
+-- 16.1) c-fakeKexch1(p,a10,b10,epms10) 
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op epms10 : -> EncPms .
+-- assumptions
+  -- eq c-fakeKexch1(p,a10,b10,epms10) = true .
+  eq epms10 \in cepms(nw(p)) = true .
+--
+  eq (pms(epms10) = pms) = false . 
+-- successor state
+  eq p' = fakeKexch1(p,a10,b10,epms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op epms10 : -> EncPms .
+-- assumptions
+  -- eq c-fakeKexch1(p,a10,b10,epms10) = true .
+  eq epms10 \in cepms(nw(p)) = true .
+--
+  eq pms(epms10) = pms .
+  eq (owner(k(epms10)) = intruder) = false .
+-- successor state
+  eq p' = fakeKexch1(p,a10,b10,epms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op epms10 : -> EncPms .
+-- assumptions
+  -- eq c-fakeKexch1(p,a10,b10,epms10) = true .
+  eq epms10 \in cepms(nw(p)) = true .
+--
+  eq pms(epms10) = pms .
+  eq owner(k(epms10)) = intruder .
+-- successor state
+  eq p' = fakeKexch1(p,a10,b10,epms10) .
+-- check if the predicate is true.
+  red inv1010(p,epms10) implies istep1000(pms) .
+close
+--
+-- 16.2) not c-fakeKexch1(p,a10,b10,epms10) 
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op epms10 : -> EncPms .
+-- assumptions
+  eq c-fakeKexch1(p,a10,b10,epms10) = false .
+-- successor state
+  eq p' = fakeKexch1(p,a10,b10,epms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 17) fakeKexch2(p,a10,b10,pk10,pms10)
+-- 17.1) c-fakeKexch2(p,a10,b10,pk10,pms10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op pk10 : -> PubKey .
+  op pms10 : -> Pms .
+-- assumptions
+  -- eq c-fakeKexch2(p,a10,b10,pk10,pms10) = true .
+  eq pms10 \in cpms(nw(p)) = true .
+  --
+  eq pms = pms10 .
+-- successor state
+  eq p' = fakeKexch2(p,a10,b10,pk10,pms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op pk10 : -> PubKey .
+  op pms10 : -> Pms .
+-- assumptions
+  -- eq c-fakeKexch2(p,a10,b10,pk10,pms10) = true .
+  eq pms10 \in cpms(nw(p)) = true .
+  --
+  eq (pms = pms10) = false  .
+-- successor state
+  eq p' = fakeKexch2(p,a10,b10,pk10,pms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 17.2) not c-fakeKexch2(p,a10,b10,pk10,pms10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op pk10 : -> PubKey .
+  op pms10 : -> Pms .
+-- assumptions
+  eq c-fakeKexch2(p,a10,b10,pk10,pms10) = false .
+-- successor state
+  eq p' = fakeKexch2(p,a10,b10,pk10,pms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 18) fakeCfin1(p,a10,b10,ecfin10)
+-- 18.1) c-fakeCfin1(p,a10,b10,ecfin10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op ecfin10 : -> EncCFin .
+-- assumptions
+  -- eq c-fakeCfin1(p,a10,b10,ecfin10) = true .
+  eq ecfin10 \in cecfin(nw(p)) = true .
+-- successor state
+  eq p' = fakeCfin1(p,a10,b10,ecfin10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 18.2) not c-fakeCfin1(p,a10,b10,ecfin10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op ecfin10 : -> EncCFin .
+-- assumptions
+  eq c-fakeCfin1(p,a10,b10,ecfin10) = false .
+-- successor state
+  eq p' = fakeCfin1(p,a10,b10,ecfin10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 19) fakeCfin2(p,a10,b10,i10,l10,c10,r10,r20,pms10)
+-- 19.1) c-fakeCfin2(p,a10,b10,i10,l10,c10,r10,r20,pms10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op i10 : -> Sid .
+  op l10 : -> ListOfChoices .
+  op c10 : -> Choice .
+  ops r10 r20 : -> Rand .
+  op pms10 : -> Pms .
+-- assumptions
+  -- eq c-fakeCfin2(p,a10,b10,i10,l10,c10,r10,r20,pms10) = true .
+  eq pms10 \in cpms(nw(p)) = true .
+-- successor state
+  eq p' = fakeCfin2(p,a10,b10,i10,l10,c10,r10,r20,pms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 19.2) c-fakeCfin2(p,a10,b10,i10,l10,c10,r10,r20,pms10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op i10 : -> Sid .
+  op l10 : -> ListOfChoices .
+  op c10 : -> Choice .
+  ops r10 r20 : -> Rand .
+  op pms10 : -> Pms .
+-- assumptions
+  eq c-fakeCfin2(p,a10,b10,i10,l10,c10,r10,r20,pms10) = false .
+-- successor state
+  eq p' = fakeCfin2(p,a10,b10,i10,l10,c10,r10,r20,pms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 20) fakeSfin1(p,b10,a10,esfin10)
+-- 20.1) c-fakeSfin1(p,b10,a10,esfin10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op esfin10 : -> EncSFin .
+-- assumptions
+  -- eq c-fakeSfin1(p,b10,a10,esfin10) = true  .
+  eq esfin10 \in cesfin(nw(p)) = true .
+-- successor state
+  eq p' = fakeSfin1(p,b10,a10,esfin10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 20.2) not c-fakeSfin1(p,b10,a10,esfin10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op esfin10 : -> EncSFin .
+-- assumptions
+  eq c-fakeSfin1(p,b10,a10,esfin10) = false .
+-- successor state
+  eq p' = fakeSfin1(p,b10,a10,esfin10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 21) fakeSfin2(p,b10,a10,i10,l10,c10,r10,r20,pms10)
+-- 21.1) c-fakeSfin2(p,b10,a10,i10,l10,c10,r10,r20,pms10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op i10 : -> Sid .
+  op l10 : -> ListOfChoices .
+  op c10 : -> Choice .
+  ops r10 r20 : -> Rand .
+  op pms10 : -> Pms .
+-- assumptions
+  -- eq c-fakeSfin2(p,b10,a10,i10,l10,c10,r10,r20,pms10) = true .
+  eq pms10 \in cpms(nw(p)) = true .
+-- successor state
+  eq p' = fakeSfin2(p,b10,a10,i10,l10,c10,r10,r20,pms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 21.2) not c-fakeSfin2(p,b10,a10,i10,l10,c10,r10,r20,pms10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op i10 : -> Sid .
+  op l10 : -> ListOfChoices .
+  op c10 : -> Choice .
+  ops r10 r20 : -> Rand .
+  op pms10 : -> Pms .
+-- assumptions
+  eq c-fakeSfin2(p,b10,a10,i10,l10,c10,r10,r20,pms10) = false .
+-- successor state
+  eq p' = fakeSfin2(p,b10,a10,i10,l10,c10,r10,r20,pms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 22) fakeChello2(p,a10,b10,r10,i10) 
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op r10 : -> Rand .
+  op i10 : -> Sid .
+-- assumptions
+-- successor state
+  eq p' = fakeChello2(p,a10,b10,r10,i10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 23) fakeShello2(p,b10,a10,r10,i10,c10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op r10 : -> Rand .
+  op i10 : -> Sid .
+  op c10 : -> Choice .
+-- assumptions
+-- successor state
+  eq p' = fakeShello2(p,b10,a10,r10,i10,c10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 24) fakeCfin21(p,a10,b10,ecfin210)
+-- 24.1) c-fakeCfin21(p,a10,b10,ecfin210)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op ecfin210 : -> EncCFin2 .
+-- assumptions
+  -- eq c-fakeCfin21(p,a10,b10,ecfin210) = true .
+  eq ecfin210 \in cecfin2(nw(p)) = true .
+-- successor state
+  eq p' = fakeCfin21(p,a10,b10,ecfin210) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 24.2) not c-fakeCfin21(p,a10,b10,ecfin210)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op ecfin210 : -> EncCFin2 .
+-- assumptions
+  eq c-fakeCfin21(p,a10,b10,ecfin210) = false .
+-- successor state
+  eq p' = fakeCfin21(p,a10,b10,ecfin210) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 25) fakeCfin22(p,a10,b10,i10,c10,r10,r20,pms10)
+-- 25.1) c-fakeCfin22(p,a10,b10,i10,c10,r10,r20,pms10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op i10 : -> Sid .
+  op c10 : -> Choice .
+  ops r10 r20 : -> Rand .
+  op pms10 : -> Pms .
+-- assumptions
+  -- eq c-fakeCfin22(p,a10,b10,i10,c10,r10,r20,pms10) = true .
+  eq pms10 \in cpms(nw(p)) = true .
+-- successor state
+  eq p' = fakeCfin22(p,a10,b10,i10,c10,r10,r20,pms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 25.2) not c-fakeCfin22(p,a10,b10,i10,c10,r10,r20,pms10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op i10 : -> Sid .
+  op c10 : -> Choice .
+  ops r10 r20 : -> Rand .
+  op pms10 : -> Pms .
+-- assumptions
+  eq c-fakeCfin22(p,a10,b10,i10,c10,r10,r20,pms10) = false .
+-- successor state
+  eq p' = fakeCfin22(p,a10,b10,i10,c10,r10,r20,pms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 26) fakeSfin21(p,b10,a10,esfin210)
+-- 26.1) c-fakeSfin21(p,b10,a10,esfin210)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op esfin210 : -> EncSFin2 .
+-- assumptions
+  -- eq c-fakeSfin21(p,b10,a10,esfin210) = true  .
+  eq esfin210 \in cesfin2(nw(p)) = true .
+-- successor state
+  eq p' = fakeSfin21(p,b10,a10,esfin210) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 26.2) not c-fakeSfin21(p,b10,a10,esfin210)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op esfin210 : -> EncSFin2 .
+-- assumptions
+  eq c-fakeSfin21(p,b10,a10,esfin210) = false .
+-- successor state
+  eq p' = fakeSfin21(p,b10,a10,esfin210) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+--> 27) fakeSfin22(p,b10,a10,i10,c10,r10,r20,pms10)
+-- 27.1) c-fakeSfin22(p,b10,a10,i10,c10,r10,r20,pms10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op i10 : -> Sid .
+  op c10 : -> Choice .
+  ops r10 r20 : -> Rand .
+  op pms10 : -> Pms .
+-- assumptions
+  -- eq c-fakeSfin22(p,b10,a10,i10,c10,r10,r20,pms10) = true .
+  eq pms10 \in cpms(nw(p)) = true .
+-- successor state
+  eq p' = fakeSfin22(p,b10,a10,i10,c10,r10,r20,pms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+--
+-- 27.2) c-fakeSfin22(p,b10,a10,i10,c10,r10,r20,pms10)
+open ISTEP
+-- arbitrary objects
+  ops a10 b10 : -> Prin .
+  op i10 : -> Sid .
+  op c10 : -> Choice .
+  ops r10 r20 : -> Rand .
+  op pms10 : -> Pms .
+-- assumptions
+  eq c-fakeSfin22(p,b10,a10,i10,c10,r10,r20,pms10) = false .
+-- successor state
+  eq p' = fakeSfin22(p,b10,a10,i10,c10,r10,r20,pms10) .
+-- check if the predicate is true.
+  red istep1000(pms) .
+close
+
+-- Q.E.D.

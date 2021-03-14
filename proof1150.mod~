@@ -1,0 +1,11 @@
+open INV
+-- arbitrary objects
+  op p : -> Protocol .
+-- assumptions
+-- check 
+  red inv1020(p,a,b,b3,r1,r2,l.c.i.s) and
+      inv1100(p,a,b,b1,r1,r2,l,c,i,s) and
+      inv1110(p,a,b,b2,r1,r2,l,c,i,s,k)
+      implies
+      inv1150(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
