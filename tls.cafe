@@ -7,7 +7,7 @@
 -- ** Abstract version of TLS **
 --
 -- ClientHello     A --> B  Rand_A, ListOfChoices
--- ServerHellp     B --> A  Rand_B, SID, Choice
+-- ServerHello     B --> A  Rand_B, SID, Choice
 -- Certificate     B --> A  Cert_B
 -- KeyExchange     A --> B  E_{K_B}(PMS)
 -- ClientFinished  A --> B  E_ClientKey(ClientFinish)
@@ -470,7 +470,7 @@ mod! MSG principal-sort Msg {
   eq ch?(kx(A',A,B,EPMS))   = false .
   eq ch?(cf(A',A,B,ECFIN))   = false .
   eq ch?(sf(A',A,B,ESFIN))   = false .
-  eq ch?(ch2(A',A,B,R,I)) = false .
+  eq ch?(ch2(A',A,B,R,I))    = false .
   eq ch?(sh2(A',A,B,R,I,C)) = false .
   eq ch?(cf2(A',A,B,ECFIN2))  = false .
   eq ch?(sf2(A',A,B,ESFIN2))  = false .
@@ -580,7 +580,7 @@ mod! MSG principal-sort Msg {
   eq crt(kx(A',A,B,EPMS))   = A' .
   eq crt(cf(A',A,B,ECFIN))   = A' .
   eq crt(sf(A',A,B,ESFIN))   = A' .
-  eq crt(ch2(A',A,B,R,I)) = A' .
+  eq crt(ch2(A',A,B,R,I))   = A' .
   eq crt(sh2(A',A,B,R,I,C)) = A' .
   eq crt(cf2(A',A,B,ECFIN2))  = A' .
   eq crt(sf2(A',A,B,ESFIN2))  = A' .
@@ -591,7 +591,7 @@ mod! MSG principal-sort Msg {
   eq src(kx(A',A,B,EPMS))   = A .
   eq src(cf(A',A,B,ECFIN))   = A .
   eq src(sf(A',A,B,ESFIN))   = A .
-  eq src(ch2(A',A,B,R,I)) = A .
+  eq src(ch2(A',A,B,R,I))   = A .
   eq src(sh2(A',A,B,R,I,C)) = A .
   eq src(cf2(A',A,B,ECFIN2))  = A .
   eq src(sf2(A',A,B,ESFIN2))  = A .
@@ -602,14 +602,14 @@ mod! MSG principal-sort Msg {
   eq dst(kx(A',A,B,EPMS))   = B .
   eq dst(cf(A',A,B,ECFIN))   = B .
   eq dst(sf(A',A,B,ESFIN))   = B .
-  eq dst(ch2(A',A,B,R,I)) = B .
-  eq dst(sh2(A',A,B,R,I,C)) = B .
+  eq dst(ch2(A',A,B,R,I))    = B .
+  eq dst(sh2(A',A,B,R,I,C))  = B .
   eq dst(cf2(A',A,B,ECFIN2))  = B .
   eq dst(sf2(A',A,B,ESFIN2))  = B .
   --
   eq rand(ch(A',A,B,R,L))    = R .
   eq rand(sh(A',A,B,R,I,C))  = R .
-  eq rand(ch2(A',A,B,R,I)) = R .
+  eq rand(ch2(A',A,B,R,I))   = R .
   eq rand(sh2(A',A,B,R,I,C)) = R .
   
   eq list(ch(A',A,B,R,L))    = L .
@@ -618,7 +618,7 @@ mod! MSG principal-sort Msg {
   eq choice(sh2(A',A,B,R,I,C)) = C .
 
   eq sid(sh(A',A,B,R,I,C))  = I .
-  eq sid(ch2(A',A,B,R,I)) = I .
+  eq sid(ch2(A',A,B,R,I))   = I .
   eq sid(sh2(A',A,B,R,I,C)) = I .
 
   eq cert(ct(A',A,B,CERT))   = CERT .
@@ -1035,7 +1035,7 @@ mod* TLS {
                         sfin2(dst(M2),B,sid(M2),choice(M2),rand(M1),rand(M2),pms(ss(P,dst(M2),B,sid(M2)))))) , nw(P)
       if c-sfin2(P,B,M1,M2,M3) .
   ceq ss(sfin2(P,B,M1,M2,M3),A2,B2,I2)
-      = (if (A2 = dst(M2) and B2 = B2 and I2 = sid(M2)) then st(choice(M2),rand(M1),rand(M2),pms(ss(P,dst(M2),B,sid(M2))))
+      = (if (A2 = dst(M2) and B2 = B and I2 = sid(M2)) then st(choice(M2),rand(M1),rand(M2),pms(ss(P,dst(M2),B,sid(M2))))
                                                         else ss(P,A2,B2,I2) fi)
       if c-sfin2(P,B,M1,M2,M3) .
   eq  ur(sfin2(P,B,M1,M2,M3)) = ur(P) .
