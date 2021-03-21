@@ -27,19 +27,21 @@
 -- ServerFinish2 : A, B, SID, Choice, Rand_A, Rand_B, PMS
 --
 
-mod* PRINCIPAL {
+mod! PRINCIPAL {
   [Prin]
   -- op _=_ : Prin Prin -> Bool {comm}
   -- var A : Prin
   -- eq (A = A) = true .
-}
-
-mod! SPECIALPRINCIPAL {
-  pr(PRINCIPAL)
   op intruder : -> Prin
   op ca : -> Prin
-  -- eq (intruder = ca) = false .
 }
+
+-- mod! SPECIALPRINCIPAL {
+--   pr(PRINCIPAL)
+--   op intruder : -> Prin
+--   op ca : -> Prin
+--   -- eq (intruder = ca) = false .
+-- }
 
 mod! RANDOM {
   [Rand]
@@ -679,8 +681,8 @@ mod! BAG (D :: TRIV) {
   var B : Bag
   vars E1 E2 : Elt.D
   eq E1 \in void = false .
-  ceq E1 \in (E2,B) = true if E1 = E2 .
-  ceq E1 \in (E2,B) = E1 \in B if not(E1 = E2) .
+  eq E1 \in E2 = (E1 = E2) .
+  eq E1 \in (E2,B) = (E1 = E2) or (E1 \in B) .
 }
 
 mod! SET (D :: TRIV) {
@@ -691,8 +693,8 @@ mod! SET (D :: TRIV) {
   var S : Set
   vars E1 E2 : Elt.D
   eq E1 \in empty = false .
-  ceq E1 \in (E2 S) = true if E1 = E2 .
-  ceq E1 \in (E2 S) = E1 \in S if not(E1 = E2) .
+  eq E1 \in E2 = (E1 = E2) .
+  eq E1 \in (E2 S) = (E1 = E2) or (E1 \in S) .
 }
 
 mod! COLLECTION(D :: TRIV) {
@@ -734,7 +736,7 @@ view TRIV2ENCSFIN2 from TRIV to ENCSFIN2 {
 }
 
 mod! NETWORK {
-  pr(SPECIALPRINCIPAL)
+  -- pr(SPECIALPRINCIPAL)
   pr(BAG(D <= TRIV2MSG)*{sort Bag -> Network})
   pr(COLLECTION(D <= TRIV2PMS)*{sort Col -> ColPms})
   pr(COLLECTION(D <= TRIV2SIG)*{sort Col -> ColSig})
@@ -982,7 +984,7 @@ mod* TLS {
                             sfin(dst(M2),B,sid(M2),list(M1),choice(M2),rand(M1),rand(M2),pms(epms(M4))))) , nw(P)
       if c-sfin(P,B,M1,M2,M3,M4,M5) .
   ceq ss(sfin(P,B,M1,M2,M3,M4,M5),A2,B2,I2)
-      = (if (A2 = dst(M2) and B2 = B and I2 = sid(M2)) then st(choice(M2),rand(M1),rand(M2),pms(epms(M4)))
+      = (if (A2 = dst(M2) and B2 = B2 and I2 = sid(M2)) then st(choice(M2),rand(M1),rand(M2),pms(epms(M4)))
                                                        else ss(P,A2,B2,I2) fi)
       if c-sfin(P,B,M1,M2,M3,M4,M5) .
   eq  ur(sfin(P,B,M1,M2,M3,M4,M5)) = ur(P) .
@@ -1239,4 +1241,92 @@ mod* TLS {
   eq  ui(fakeSfin22(P,B,A,I,C,R1,R2,PMS)) = ui(P) .
   eq  us(fakeSfin22(P,B,A,I,C,R1,R2,PMS)) = us(P) .
   ceq fakeSfin22(P,B,A,I,C,R1,R2,PMS)     = P if not c-fakeSfin22(P,B,A,I,C,R1,R2,PMS) .
+}
+
+mod INV {
+  pr(TLS)
+-- arbitrary objects
+  ops a b a1 b1 : -> Prin
+  ops r1 r2 : -> Rand
+  op l : -> ListOfChoices 
+  op c : -> Choice 
+  op i : -> Sid 
+  op s : -> Secret
+  op pms : -> Pms
+  op epms : -> EncPms 
+-- declare invariants to prove
+  op inv1 : Protocol Pms -> Bool
+  op inv2 : Protocol EncPms -> Bool
+  op inv3 : Protocol Prin Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
+  op inv4 : Protocol Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
+  op inv5 : Protocol Prin Prin Prin Rand Rand Choice Sid Secret -> Bool
+  op inv6 : Protocol Prin Prin Rand Rand Choice Sid Secret -> Bool
+  op inv7 : Protocol Prin Prin Prin Rand Rand Choice Sid Pms -> Bool
+  op inv8 : Protocol Prin Prin Rand Rand Choice Sid Pms -> Bool
+-- CafeOBJ variables
+  var P : Protocol
+  vars A A1 B B1 : Prin
+  vars R1 R2 : Rand
+  var L : ListOfChoices
+  var C : Choice
+  var I : Sid
+  var S : Secret 
+  var PMS : Pms
+  var EPMS : EncPms
+-- define invariants to prove
+  eq inv1(P,PMS) = (PMS \in cpms(nw(P)) implies (client(PMS) = intruder or server(PMS) = intruder)) .
+  eq inv2(P,EPMS) = (EPMS \in cepms(nw(P)) implies not(owner(k(EPMS)) = intruder)) .
+  eq inv3(P,A,B,B1,R1,R2,L,C,I,S)
+     = (not(A = intruder) and
+        sf(B1,B,A,esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S)))) \in nw(P)
+        implies
+        sf(B,B,A,esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S)))) \in nw(P)) .
+  eq inv4(P,A,B,R1,R2,L,C,I,S)
+     = (not(A = intruder) and
+        esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S))) \in cesfin(nw(P))
+        implies
+        sf(B,B,A,esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S)))) \in nw(P)) .
+  eq inv5(P,A,B,B1,R1,R2,C,I,S)
+     = (not(A = intruder) and
+        sf2(B1,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)
+        implies
+        sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)) .
+  eq inv6(P,A,B,R1,R2,C,I,S)
+     = (not(A = intruder) and
+        esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S))) \in cesfin2(nw(P))
+        implies
+        sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)) .
+  eq inv7(P,A,B,A1,R1,R2,C,I,PMS)
+     = (not(B = intruder) and
+        cf2(A1,A,B,ecfin2(k(A,PMS,R1,R2),cfin2(A,B,I,C,R1,R2,PMS))) \in nw(P)
+        implies
+        cf2(A,A,B,ecfin2(k(A,PMS,R1,R2),cfin2(A,B,I,C,R1,R2,PMS))) \in nw(P)) .
+  eq inv8(P,A,B,R1,R2,C,I,PMS)
+     = (not(B = intruder) and
+        ecfin2(k(A,PMS,R1,R2),cfin2(A,B,I,C,R1,R2,PMS)) \in cecfin2(nw(P))
+        implies
+        cf2(A,A,B,ecfin2(k(A,PMS,R1,R2),cfin2(A,B,I,C,R1,R2,PMS))) \in nw(P)) .
+
+-- -- arbitrary objects
+--   ops p p' : -> Protocol
+-- -- declare predicates to prove in inductive step
+--   op istep1 : Pms -> Bool
+--   op istep1010 : EncPms -> Bool
+--   op istep1020 : Prin Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
+--   op istep1030 : Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
+--   op istep1040 : Prin Prin Prin Rand Rand Choice Sid Secret -> Bool
+--   op istep1050 : Prin Prin Rand Rand Choice Sid Secret -> Bool
+--   op istep1060 : Prin Prin Prin Rand Rand Choice Sid Pms -> Bool
+--   op istep1070 : Prin Prin Rand Rand Choice Sid Pms -> Bool
+
+-- -- define predicates to prove in inductive step
+--   eq istep1(PMS) = inv1(p,PMS) implies inv1(p',PMS) .
+--   eq istep1010(EPMS) = inv2(p,EPMS) implies inv2(p',EPMS) .
+--   eq istep1020(A,B,B1,R1,R2,L,C,I,S) = inv3(p,A,B,B1,R1,R2,L,C,I,S) implies inv3(p',A,B,B1,R1,R2,L,C,I,S) .
+--   eq istep1030(A,B,R1,R2,L,C,I,S) = inv4(p,A,B,R1,R2,L,C,I,S) implies inv4(p',A,B,R1,R2,L,C,I,S) .
+--   eq istep1040(A,B,B1,R1,R2,C,I,S) = inv5(p,A,B,B1,R1,R2,C,I,S) implies inv5(p',A,B,B1,R1,R2,C,I,S) .
+--   eq istep1050(A,B,R1,R2,C,I,S) = inv6(p,A,B,R1,R2,C,I,S) implies inv6(p',A,B,R1,R2,C,I,S) .
+--   eq istep1060(A,B,A1,R1,R2,C,I,PMS) = inv7(p,A,B,A1,R1,R2,C,I,PMS) implies inv7(p',A,B,A1,R1,R2,C,I,PMS) .
+--   eq istep1070(A,B,R1,R2,C,I,PMS) = inv8(p,A,B,R1,R2,C,I,PMS) implies inv8(p',A,B,R1,R2,C,I,PMS) .
+
 }

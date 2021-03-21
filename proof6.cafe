@@ -1,6 +1,6 @@
 -- I) Base case
 
-open INV
+open INV .
   red inv1050(init,a,b,r1,r2,c,i,s) .
 close
 
@@ -9,7 +9,7 @@ close
 
 --> 1) chello(p,a10,b10,r10,l10)
 -- 1.1) c-chello(p,a10,b10,r10,l10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op r10 : -> Rand .
@@ -24,7 +24,7 @@ open ISTEP
 close
 --
 -- 1.2) not c-chello(p,a10,b10,r10,l10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op r10 : -> Rand .
@@ -39,7 +39,7 @@ close
 
 --> 2) shello(p,b10,r10,i10,c10,m10)
 -- 2.1) c-shello(p,b10,r10,i10,c10,m10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op b10 : -> Prin .
   op r10 : -> Rand .
@@ -62,7 +62,7 @@ open ISTEP
 close
 --
 -- 2.2) not c-shello(p,b10,r10,i10,c10,m10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op b10 : -> Prin .
   op r10 : -> Rand .
@@ -79,7 +79,7 @@ close
 
 --> 3) cert(p,b10,m10,m20)
 -- 3.1) c-cert(p,b10,m10,m20)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op b10 : -> Prin .
   ops m10 m20 : -> Msg .
@@ -101,7 +101,7 @@ open ISTEP
 close
 --
 -- 3.2) not c-cert(p,b10,m10,m20)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op b10 : -> Prin .
   ops m10 m20 : -> Msg .
@@ -115,7 +115,7 @@ close
 
 --> 4) kexch(p,a10,s10,m10,m20,m30)
 -- 4.1) c-kexch(p,a10,s10,m10,m20,m30)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op a10 : -> Prin .
   op s10 : -> Secret .
@@ -144,7 +144,7 @@ open ISTEP
 close
 --
 -- 4.2) not c-kexch(p,a10,s10,m10,m20,m30)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op a10 : -> Prin .
   op s10 : -> Secret .
@@ -159,7 +159,7 @@ close
 
 --> 5) cfin(p,a10,s10,m10,m20,m30,m40) 
 -- 5.1) c-cfin(p,a10,s10,m10,m20,m30,m40) 
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op a10 : -> Prin .
   op s10 : -> Secret .
@@ -192,7 +192,7 @@ open ISTEP
 close
 --
 -- 5.2) not c-cfin(p,a10,s10,m10,m20,m30,m40) 
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op a10 : -> Prin .
   op s10 : -> Secret .
@@ -207,7 +207,7 @@ close
 
 --> 6) sfin(p,b10,m10,m20,m30,m40,m50) 
 -- 6.1) c-sfin(p,b10,m10,m20,m30,m40,m50) 
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op b10 : -> Prin .
   ops m10 m20 m30 m40 m50 : -> Msg .
@@ -243,7 +243,7 @@ open ISTEP
 close
 --
 -- 6.2) not c-sfin(p,b10,m10,m20,m30,m40,m50) 
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op b10 : -> Prin .
   ops m10 m20 m30 m40 m50 : -> Msg .
@@ -257,7 +257,7 @@ close
 
 --> 7) compl(p,a10,s10,m10,m20,m30,m40,m50,m60) 
 -- 7.1) c-compl(p,a10,s10,m10,m20,m30,m40,m50,m60) 
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op a10 : -> Prin .
   op s10 : -> Secret .
@@ -301,7 +301,7 @@ open ISTEP
 close
 --
 -- 7.2) not c-compl(p,a10,s10,m10,m20,m30,m40,m50,m60) 
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op a10 : -> Prin .
   op s10 : -> Secret .
@@ -316,7 +316,7 @@ close
 
 --> 8) chello2(p,a10,b10,s10,r10,i10) 
 -- 8.1) c-chello2(p,a10,b10,s10,r10,i10) 
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op s10 : -> Secret .
@@ -334,7 +334,7 @@ open ISTEP
 close
 --
 -- 8.2) not c-chello2(p,a10,b10,s10,r10,i10) 
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op s10 : -> Secret .
@@ -350,7 +350,7 @@ close
 
 --> 9) shello2(p,b10,r10,m10)
 -- 9.1) c-shello2(p,b10,r10,m10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op b10 : -> Prin .
   op r10 : -> Rand .
@@ -370,7 +370,7 @@ open ISTEP
 close
 --
 -- 9.2) not c-shello2(p,b10,r10,m10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op b10 : -> Prin .
   op r10 : -> Rand .
@@ -385,7 +385,7 @@ close
 
 --> 10) cfin2(p,a10,s10,m10,m20)
 -- 10.1) c-cfin2(p,a10,s10,m10,m20)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op a10 : -> Prin .
   op s10 : -> Secret .
@@ -411,7 +411,7 @@ open ISTEP
 close
 --
 -- 10.2) not c-cfin2(p,a10,s10,m10,m20)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op a10 : -> Prin .
   op s10 : -> Secret .
@@ -426,7 +426,7 @@ close
 
 --> 11) sfin2(p,b10,m10,m20,m30)
 -- 11.1) c-sfin2(p,b10,m10,m20,m30)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op b10 : -> Prin .
   ops m10 m20 m30 : -> Msg .
@@ -458,7 +458,7 @@ open ISTEP
   red istep1050(a,b,r1,r2,c,i,s) .
 close
 --
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op b10 : -> Prin .
   ops m10 m20 m30 : -> Msg .
@@ -498,7 +498,7 @@ open ISTEP
 close
 --
 -- 11.2) not c-sfin2(p,b10,m10,m20,m30)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op b10 : -> Prin .
   ops m10 m20 m30 : -> Msg .
@@ -512,7 +512,7 @@ close
 
 --> 12) compl2(p,a10,s10,m10,m20,m30,m40)
 -- 12.1) c-compl2(p,a10,s10,m10,m20,m30,m40)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op a10 : -> Prin .
   op s10 : -> Secret .
@@ -548,7 +548,7 @@ open ISTEP
 close
 --
 -- 12.2) not c-compl2(p,a10,s10,m10,m20,m30,m40)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   op a10 : -> Prin .
   op s10 : -> Secret .
@@ -562,7 +562,7 @@ open ISTEP
 close
 
 --> 13) fakeChello(p,a10,b10,r10,l10) 
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op r10 : -> Rand .
@@ -575,7 +575,7 @@ open ISTEP
 close
 
 --> 14) fakeShello(p,b10,a10,r10,i10,c10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op r10 : -> Rand .
@@ -590,7 +590,7 @@ close
 
 --> 15) fakeCert(p,b10,a10,pk10,g10)
 -- 15.1) c-fakeCert(p,b10,a10,pk10,g10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op pk10 : -> PubKey .
@@ -605,7 +605,7 @@ open ISTEP
 close
 --
 -- 15.2) not c-fakeCert(p,b10,a10,pk10,g10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op pk10 : -> PubKey .
@@ -620,7 +620,7 @@ close
 
 --> 16) fakeKexch1(p,a10,b10,epms10) 
 -- 16.1) c-fakeKexch1(p,a10,b10,epms10) 
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op epms10 : -> EncPms .
@@ -634,7 +634,7 @@ open ISTEP
 close
 --
 -- 16.2) not c-fakeKexch1(p,a10,b10,epms10) 
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op epms10 : -> EncPms .
@@ -648,7 +648,7 @@ close
 
 --> 17) fakeKexch2(p,a10,b10,pk10,pms10)
 -- 17.1) c-fakeKexch2(p,a10,b10,pk10,pms10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op pk10 : -> PubKey .
@@ -663,7 +663,7 @@ open ISTEP
 close
 --
 -- 17.2) not c-fakeKexch2(p,a10,b10,pk10,pms10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op pk10 : -> PubKey .
@@ -678,7 +678,7 @@ close
 
 --> 18) fakeCfin1(p,a10,b10,ecfin10)
 -- 18.1) c-fakeCfin1(p,a10,b10,ecfin10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op ecfin10 : -> EncCFin .
@@ -692,7 +692,7 @@ open ISTEP
 close
 --
 -- 18.2) not c-fakeCfin1(p,a10,b10,ecfin10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op ecfin10 : -> EncCFin .
@@ -706,7 +706,7 @@ close
 
 --> 19) fakeCfin2(p,a10,b10,i10,l10,c10,r10,r20,pms10)
 -- 19.1) c-fakeCfin2(p,a10,b10,i10,l10,c10,r10,r20,pms10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op i10 : -> Sid .
@@ -724,7 +724,7 @@ open ISTEP
 close
 --
 -- 19.2) c-fakeCfin2(p,a10,b10,i10,l10,c10,r10,r20,pms10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op i10 : -> Sid .
@@ -742,7 +742,7 @@ close
 
 --> 20) fakeSfin1(p,b10,a10,esfin10)
 -- 20.1) c-fakeSfin1(p,b10,a10,esfin10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op esfin10 : -> EncSFin .
@@ -756,7 +756,7 @@ open ISTEP
 close
 --
 -- 20.2) not c-fakeSfin1(p,b10,a10,esfin10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op esfin10 : -> EncSFin .
@@ -770,7 +770,7 @@ close
 
 --> 21) fakeSfin2(p,b10,a10,i10,l10,c10,r10,r20,pms10)
 -- 21.1) c-fakeSfin2(p,b10,a10,i10,l10,c10,r10,r20,pms10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op i10 : -> Sid .
@@ -788,7 +788,7 @@ open ISTEP
 close
 --
 -- 21.2) not c-fakeSfin2(p,b10,a10,i10,l10,c10,r10,r20,pms10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op i10 : -> Sid .
@@ -805,7 +805,7 @@ open ISTEP
 close
 
 --> 22) fakeChello2(p,a10,b10,r10,i10) 
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op r10 : -> Rand .
@@ -818,7 +818,7 @@ open ISTEP
 close
 
 --> 23) fakeShello2(p,b10,a10,r10,i10,c10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op r10 : -> Rand .
@@ -833,7 +833,7 @@ close
 
 --> 24) fakeCfin21(p,a10,b10,ecfin210)
 -- 24.1) c-fakeCfin21(p,a10,b10,ecfin210)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op ecfin210 : -> EncCFin2 .
@@ -847,7 +847,7 @@ open ISTEP
 close
 --
 -- 24.2) not c-fakeCfin21(p,a10,b10,ecfin210)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op ecfin210 : -> EncCFin2 .
@@ -861,7 +861,7 @@ close
 
 --> 25) fakeCfin22(p,a10,b10,i10,c10,r10,r20,pms10)
 -- 25.1) c-fakeCfin22(p,a10,b10,i10,c10,r10,r20,pms10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op i10 : -> Sid .
@@ -878,7 +878,7 @@ open ISTEP
 close
 --
 -- 25.2) not c-fakeCfin22(p,a10,b10,i10,c10,r10,r20,pms10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op i10 : -> Sid .
@@ -895,7 +895,7 @@ close
 
 --> 26) fakeSfin21(p,b10,a10,esfin210)
 -- 26.1) c-fakeSfin21(p,b10,a10,esfin210)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op esfin210 : -> EncSFin2 .
@@ -910,7 +910,7 @@ open ISTEP
   red istep1050(a,b,r1,r2,c,i,s) .
 close
 --
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op esfin210 : -> EncSFin2 .
@@ -928,7 +928,7 @@ open ISTEP
   red istep1050(a,b,r1,r2,c,i,s) .
 close
 --
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op esfin210 : -> EncSFin2 .
@@ -947,7 +947,7 @@ open ISTEP
 close
 --
 -- 26.2) not c-fakeSfin21(p,b10,a10,esfin210)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op esfin210 : -> EncSFin2 .
@@ -961,7 +961,7 @@ close
 
 --> 27) fakeSfin22(p,b10,a10,i10,c10,r10,r20,pms10)
 -- 27.1) c-fakeSfin22(p,b10,a10,i10,c10,r10,r20,pms10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op i10 : -> Sid .
@@ -980,7 +980,7 @@ open ISTEP
   red istep1050(a,b,r1,r2,c,i,s) .
 close
 --
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op i10 : -> Sid .
@@ -1009,7 +1009,7 @@ open ISTEP
   red istep1050(a,b,r1,r2,c,i,s) .
 close
 --
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op i10 : -> Sid .
@@ -1039,7 +1039,7 @@ open ISTEP
   red istep1050(a,b,r1,r2,c,i,s) .
 close
 --
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op i10 : -> Sid .
@@ -1070,7 +1070,7 @@ open ISTEP
 close
 --
 -- 27.2) c-fakeSfin22(p,b10,a10,i10,c10,r10,r20,pms10)
-open ISTEP
+open ISTEP .
 -- arbitrary objects
   ops a10 b10 : -> Prin .
   op i10 : -> Sid .
