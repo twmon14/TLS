@@ -140,13 +140,6 @@ open INV .
   red inv1(p,pms) implies inv1(cert(p,p2,m1,m2),pms) .
 close
 
--- ['cert', 'cfin', 'cfin2', 'chello', 'chello2', 
--- 'compl', 'compl2', 'fakeCert', 'fakeCfin1', 'fakeCfin2', 
--- 'fakeCfin21', 'fakeCfin22', 'fakeChello', 'fakeChello2', 
--- 'fakeKexch1', 'fakeKexch2', 'fakeSfin1', 'fakeSfin2', 
--- 'fakeSfin21', 'fakeSfin22', 'fakeShello', 'fakeShello2', 
--- 'kexch', 'sfin', 'sfin2', 'shello', 'shello2']
-
 --> 2) cfin(p,p1,s1,m1,m2,m3,m4) 
 open INV .
 -- arbitrary objects
@@ -178,449 +171,556 @@ open INV .
   eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
   red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
 close
---
-eof
--- 5.2) not c-cfin(p,p1,s1,m1,m2,m3,m4) 
+
 open INV .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = false .
--- successor state
-  eq p' = cfin(p,p1,s1,m1,m2,m3,m4) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
-
-
-
-
-
-
-
-
-
-
-
-
-
---> 1) chello(p,p1,p2,r10,l10)
--- 1.1) c-chello(p,p1,p2,r10,l10)
-open INV .
-  ops p1 p2 : -> Prin .
-  op r10 : -> Rand .
-  op l10 : -> ListOfChoices .
-  eq (r10 \in ur(p)) = true .
-
-  eq p' = chello(p,p1,p2,r10,l10) .
--- check if the predicate is true.
-  red inv1(pms) implies inv1().
-close
-
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op r10 : -> Rand .
-  op l10 : -> ListOfChoices .
--- assumptions
-  -- eq c-chello(p,p1,p2,r10,l10) = true .
-  eq (r10 \in ur(p)) = false .
--- successor state
-  eq p' = chello(p,p1,p2,r10,l10) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
--- 1.2) not c-chello(p,p1,p2,r10,l10)
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op r10 : -> Rand .
-  op l10 : -> ListOfChoices .
--- assumptions
-  eq c-chello(p,p1,p2,r10,l10) = false .
--- successor state
-  eq p' = chello(p,p1,p2,r10,l10) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
-
---> 2) shello(p,p2,r10,i10,c10,m1)
--- 2.1) c-shello(p,p2,r10,i10,c10,m1)
-open INV .
--- arbitrary objects
-  op p2 : -> Prin .
-  op r10 : -> Rand .
-  op i10 : -> Sid .
-  op c10 : -> Choice .
-  op m1 : -> Msg .
-  op nw10 : -> Network .
--- assumptions
-  -- eq c-shello(p,p2,r10,i10,c10,m1) = true .
-  eq r10 \in ur(p) = false .
-  eq i10 \in ui(p) = false .
-  eq nw(p) = m1 , nw10 .
-  eq ch?(m1) = true .
-  eq dst(m1) = p2 .
-  eq c10 \in list(m1) = true .
--- successor state
-  eq p' = shello(p,p2,r10,i10,c10,m1) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
--- 2.2) not c-shello(p,p2,r10,i10,c10,m1)
-open INV .
--- arbitrary objects
-  op p2 : -> Prin .
-  op r10 : -> Rand .
-  op i10 : -> Sid .
-  op c10 : -> Choice .
-  op m1 : -> Msg .
--- assumptions
-  eq c-shello(p,p2,r10,i10,c10,m1) = false .
--- successor state
-  eq p' = shello(p,p2,r10,i10,c10,m1) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
-
-
---> 4) kexch(p,p1,s1,m1,m2,m3)
--- 4.1) c-kexch(p,p1,s1,m1,m2,m3)
-open INV .
--- arbitrary objects
-  op p1 : -> Prin .
-  op s1 : -> Secret .
-  ops m1 m2 m3 : -> Msg .
-  op nw10 : -> Network .
--- assumptions
-  -- eq c-kexch(p,p1,s1,m1,m2,m3) = true .
-  eq s1 \in us(p) = false .
-  eq nw(p) = m1 , m2 , m3 , nw10 .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq crt(m1) = p1 .
-  eq src(m1) = p1 .
-  eq src(m2) = dst(m1) .
-  eq dst(m2) = p1 .
-  eq src(m3) = dst(m1) .
-  eq dst(m3) = p1 .
-  eq choice(m2) \in list(m1) = true .
-  eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
---
-  eq dst(m1) = intruder .
-  eq pms = pms(p1,intruder,s1) .
--- successor state
-  eq p' = kexch(p,p1,s1,m1,m2,m3) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
-open INV .
--- arbitrary objects
-  op p1 : -> Prin .
-  op s1 : -> Secret .
-  ops m1 m2 m3 : -> Msg .
-  op nw10 : -> Network .
--- assumptions
-  -- eq c-kexch(p,p1,s1,m1,m2,m3) = true .
-  eq s1 \in us(p) = false .
-  eq nw(p) = m1 , m2 , m3 , nw10 .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq crt(m1) = p1 .
-  eq src(m1) = p1 .
-  eq src(m2) = dst(m1) .
-  eq dst(m2) = p1 .
-  eq src(m3) = dst(m1) .
-  eq dst(m3) = p1 .
-  eq choice(m2) \in list(m1) = true .
-  eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
---
-  eq dst(m1) = intruder .
-  eq (pms = pms(p1,intruder,s1)) = false .
--- successor state
-  eq p' = kexch(p,p1,s1,m1,m2,m3) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
-open INV .
--- arbitrary objects
-  op p1 : -> Prin .
-  op s1 : -> Secret .
-  ops m1 m2 m3 : -> Msg .
-  op nw10 : -> Network .
--- assumptions
-  -- eq c-kexch(p,p1,s1,m1,m2,m3) = true .
-  eq s1 \in us(p) = false .
-  eq nw(p) = m1 , m2 , m3 , nw10 .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq crt(m1) = p1 .
-  eq src(m1) = p1 .
-  eq src(m2) = dst(m1) .
-  eq dst(m2) = p1 .
-  eq src(m3) = dst(m1) .
-  eq dst(m3) = p1 .
-  eq choice(m2) \in list(m1) = true .
-  eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
---
-  eq (dst(m1) = intruder) = false .
-  eq pubkey(cert(m3)) = k(dst(m1)) .
--- successor state
-  eq p' = kexch(p,p1,s1,m1,m2,m3) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
-
-open INV .
--- arbitrary objects
-  op p1 : -> Prin .
-  op s1 : -> Secret .
-  ops m1 m2 m3 : -> Msg .
-  op nw10 : -> Network .
--- assumptions
-  -- eq c-kexch(p,p1,s1,m1,m2,m3) = true .
-  eq s1 \in us(p) = false .
-  eq nw(p) = m1 , m2 , m3 , nw10 .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq crt(m1) = p1 .
-  eq src(m1) = p1 .
-  eq src(m2) = dst(m1) .
-  eq dst(m2) = p1 .
-  eq src(m3) = dst(m1) .
-  eq dst(m3) = p1 .
-  eq choice(m2) \in list(m1) = true .
-  eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
---
-  eq (dst(m1) = intruder) = false .
-  eq (pubkey(cert(m3)) = k(dst(m1))) = false .
--- successor state
-  eq p' = kexch(p,p1,s1,m1,m2,m3) .
--- check if the predicate is true.
-  red inv0900(p,dst(m1),pubkey(cert(m3))) implies inv1(pms) .
-close
---
-eof
--- 4.2) not c-kexch(p,p1,s1,m1,m2,m3)
-open INV .
--- arbitrary objects
-  op p1 : -> Prin .
-  op s1 : -> Secret .
-  ops m1 m2 m3 : -> Msg .
--- assumptions
-  eq c-kexch(p,p1,s1,m1,m2,m3) = false .
--- successor state
-  eq p' = kexch(p,p1,s1,m1,m2,m3) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
-
-
-
---> 6) sfin(p,p2,m1,m2,m3,m4,m50) 
--- 6.1) c-sfin(p,p2,m1,m2,m3,m4,m50) 
-open INV .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 m4 m50 : -> Msg .
-  op nw10 : -> Network .
--- assumptions
-  -- eq c-sfin(p,p2,m1,m2,m3,m4,m50) = true .
-  eq nw(p) = m1 , m2 , m3 , m4 , m50 , nw10 .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq ct?(m3) = true .
   eq kx?(m4) = true .
-  eq cf?(m50) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq crt(m3) = p2 .
-  eq src(m3) = p2 .
-  eq dst(m3) = dst(m2) .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m4) = dst(m2) .
-  eq dst(m4) = p2 .
-  eq src(m50) = dst(m2) .
-  eq dst(m50) = p2 .
-  eq choice(m2) \in list(m1) = true .
-  eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
-  eq k(epms(m4)) = k(p2) .
-  eq ecfin(m50) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
-                      cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
--- successor state
-  eq p' = sfin(p,p2,m1,m2,m3,m4,m50) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
--- 6.2) not c-sfin(p,p2,m1,m2,m3,m4,m50) 
-open INV .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 m4 m50 : -> Msg .
--- assumptions
-  eq c-sfin(p,p2,m1,m2,m3,m4,m50) = false .
--- successor state
-  eq p' = sfin(p,p2,m1,m2,m3,m4,m50) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
-
---> 7) compl(p,p1,s1,m1,m2,m3,m4,m50,m60) 
--- 7.1) c-compl(p,p1,s1,m1,m2,m3,m4,m50,m60) 
-open INV .
--- arbitrary objects
-  op p1 : -> Prin .
-  op s1 : -> Secret .
-  ops m1 m2 m3 m4 m50 m60 : -> Msg .
-  op nw10 : -> Network .
--- assumptions
-  -- eq c-compl(p,p1,s1,m1,m2,m3,m4,m50,m60) = true .
-  eq nw(p) = m1 , m2 , m3 , m4 , m50 , m60 , nw10 .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq kx?(m4) = true .
-  eq cf?(m50) = true .
-  eq sf?(m60) = true .
   eq crt(m1) = p1 .
   eq src(m1) = p1 .
   eq crt(m4) = p1 .
   eq src(m4) = p1 .
   eq dst(m4) = dst(m1) .
-  eq crt(m50) = p1 .
-  eq src(m50) = p1 .
-  eq dst(m50) = dst(m1) .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq src(m3) = dst(m1) .
   eq dst(m3) = p1 .
-  eq src(m60) = dst(m1) .
-  eq dst(m60) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
-  eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
-  eq ecfin(m50) = ecfin(k(p1,pms(epms(m4)),rand(m1),rand(m2)),
-                      cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-  eq esfin(m60) = esfin(k(dst(m1),pms(epms(m4)),rand(m1),rand(m2)),
-                      sfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
--- successor state
-  eq p' = compl(p,p1,s1,m1,m2,m3,m4,m50,m60) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq (epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1))) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
 close
---
--- 7.2) not c-compl(p,p1,s1,m1,m2,m3,m4,m50,m60) 
+
 open INV .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
-  ops m1 m2 m3 m4 m50 m60 : -> Msg .
+  ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  eq c-compl(p,p1,s1,m1,m2,m3,m4,m50,m60) = false .
--- successor state
-  eq p' = compl(p,p1,s1,m1,m2,m3,m4,m50,m60) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
+
+  eq intruder = server(pms) .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
 close
 
---> 8) chello2(p,p1,p2,s1,r10,i10) 
--- 8.1) c-chello2(p,p1,p2,s1,r10,i10) 
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
+  op p1 : -> Prin .
   op s1 : -> Secret .
-  op r10 : -> Rand .
-  op i10 : -> Sid .
+  ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  -- eq c-chello2(p,p1,p2,s1,r10,i10) = true .
-  eq r10 \in ur(p) = false .
-  eq (ss(p,p1,p2,i10) = none) = false .
-  eq pms(ss(p,p1,p2,i10)) = pms(p1,p2,s1) .
--- successor state
-  eq p' = chello2(p,p1,p2,s1,r10,i10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
+
+  eq (intruder = server(pms)) = false .
+  eq intruder = client(pms) .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
 close
---
--- 8.2) not c-chello2(p,p1,p2,s1,r10,i10) 
+
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
+  op p1 : -> Prin .
   op s1 : -> Secret .
-  op r10 : -> Rand .
-  op i10 : -> Sid .
+  ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  eq c-chello2(p,p1,p2,s1,r10,i10) = false .
--- successor state
-  eq p' = chello2(p,p1,p2,s1,r10,i10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
+
+  eq (intruder = server(pms)) = false .
+  eq (intruder = client(pms)) = false .
+  eq pms \in cpms(nw(p)) = true .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
 close
 
---> 9) shello2(p,p2,r10,m1)
--- 9.1) c-shello2(p,p2,r10,m1)
+-- ntnf
 open INV .
 -- arbitrary objects
-  op p2 : -> Prin .
-  op r10 : -> Rand .
-  op m1 : -> Msg .
-  op nw10 : -> Network .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  -- eq c-shello2(p,p2,r10,m1) = true .
-  eq r10 \in ur(p) = false .
-  eq nw(p) = m1 , nw10 .
-  eq ch2?(m1) = true .
-  eq dst(m1) = p2 .
-  eq (ss(p,src(m1),p2,sid(m1)) = none) = false .
--- successor state
-  eq p' = shello2(p,p2,r10,m1) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
--- 9.2) not c-shello2(p,p2,r10,m1)
-open INV .
--- arbitrary objects
-  op p2 : -> Prin .
-  op r10 : -> Rand .
-  op m1 : -> Msg .
--- assumptions
-  eq c-shello2(p,p2,r10,m1) = false .
--- successor state
-  eq p' = shello2(p,p2,r10,m1) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
+  
+  eq (intruder = server(pms)) = false .
+  eq (intruder = client(pms)) = false .
+  eq pms \in cpms(nw(p)) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
 close
 
---> 10) cfin2(p,p1,s1,m1,m2)
--- 10.1) c-cfin2(p,p1,s1,m1,m2)
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq (server(cert(m3)) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq (dst(m3) = p1) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq (src(m3) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq (dst(m2) = p1) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq (src(m2) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq (dst(m4) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq (src(m4) = p1) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq (crt(m4) = p1) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq crt(m1) = p1 .
+  eq (src(m1) = p1) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq (crt(m1) = p1) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch?(m1) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+--> 3) cfin2(p,p1,s1,m1,m2)
 open INV .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
-  op nw10 : -> Network .
 -- assumptions
-  -- eq c-cfin2(p,p1,s1,m1,m2) = true .
-  eq nw(p) = m1 , m2 , nw10 .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,p1,dst(m1),sid(m2)) = none) = true .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq sh2?(m2) = true .
   eq crt(m1) = p1 .
@@ -631,79 +731,1145 @@ open INV .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
   eq pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1) .
--- successor state
-  eq p' = cfin2(p,p1,s1,m1,m2) .
--- check if the predicate is true.
-  red inv1(pms) .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
 close
---
--- 10.2) not c-cfin2(p,p1,s1,m1,m2)
+
 open INV .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
 -- assumptions
-  eq c-cfin2(p,p1,s1,m1,m2) = false .
--- successor state
-  eq p' = cfin2(p,p1,s1,m1,m2) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
-
---> 11) sfin2(p,p2,m1,m2,m3)
--- 11.1) c-sfin2(p,p2,m1,m2,m3)
-open INV .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 : -> Msg .
-  op nw10 : -> Network .
--- assumptions
-  -- eq c-sfin2(p,p2,m1,m2,m3) = true .
-  eq nw(p) = m1 , m2 , m3 , nw10 .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq sh2?(m2) = true .
-  eq cf2?(m3) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m3) = dst(m2) .
-  eq dst(m3) = p2 .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
-  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
-  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
-                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
--- successor state
-  eq p' = sfin2(p,p2,m1,m2,m3) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
--- 11.2) not c-sfin2(p,p2,m1,m2,m3)
-open INV .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 : -> Msg .
--- assumptions
-  eq c-sfin2(p,p2,m1,m2,m3) = false .
--- successor state
-  eq p' = sfin2(p,p2,m1,m2,m3) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
+  eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
+  eq (pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1)) = false .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
 close
 
---> 12) compl2(p,p1,s1,m1,m2,m3,m4)
--- 12.1) c-compl2(p,p1,s1,m1,m2,m3,m4)
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
+  eq (choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2)) = false .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq (sid(m1) = sid(m2)) = false .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq (dst(m2) = p1) = false .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq (src(m2) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq crt(m1) = p1 .
+  eq (src(m1) = p1) = false .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq (crt(m1) = p1) = false .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = false .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch2?(m1) = false .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+close
+
+--> 4) chello(p,p1,p2,r3,l1)
+open INV .
+  ops p1 p2 : -> Prin .
+  op r3 : -> Rand .
+  op l1 : -> ListOfChoices .
+  eq (r3 \in ur(p)) = true .
+  red inv1(p,pms) implies inv1(chello(p,p1,p2,r3,l1),pms) .
+close
+
+open INV .
+  ops p1 p2 : -> Prin .
+  op r3 : -> Rand .
+  op l1 : -> ListOfChoices .
+  eq (r3 \in ur(p)) = false .
+  red inv1(p,pms) implies inv1(chello(p,p1,p2,r3,l1),pms) .
+close
+
+--> 5) chello2(p,p1,p2,s1,r3,i1) 
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op s1 : -> Secret .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+-- assumptions
+  eq r3 \in ur(p) = true .
+  red inv1(p,pms) implies inv1(chello2(p,p1,p2,s1,r3,i1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op s1 : -> Secret .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq (ss(p,p1,p2,i1) = none) = true .
+  red inv1(p,pms) implies inv1(chello2(p,p1,p2,s1,r3,i1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op s1 : -> Secret .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq (ss(p,p1,p2,i1) = none) = false .
+  eq pms(ss(p,p1,p2,i1)) = pms(p1,p2,s1) .
+  red inv1(p,pms) implies inv1(chello2(p,p1,p2,s1,r3,i1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op s1 : -> Secret .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq (ss(p,p1,p2,i1) = none) = false .
+  eq (pms(ss(p,p1,p2,i1)) = pms(p1,p2,s1)) = false .
+  red inv1(p,pms) implies inv1(chello2(p,p1,p2,s1,r3,i1),pms) .
+close
+
+--> 6) compl(p,p1,s1,m1,m2,m3,m4,m5,m6) 
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq src(m6) = dst(m1) .
+  eq dst(m6) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
+  eq ecfin(m5) = ecfin(k(p1,pms(epms(m4)),rand(m1),rand(m2)),
+                      cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
+  eq esfin(m6) = esfin(k(dst(m1),pms(epms(m4)),rand(m1),rand(m2)),
+                      sfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq src(m6) = dst(m1) .
+  eq dst(m6) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
+  eq ecfin(m5) = ecfin(k(p1,pms(epms(m4)),rand(m1),rand(m2)),
+                      cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
+  eq (esfin(m6) = esfin(k(dst(m1),pms(epms(m4)),rand(m1),rand(m2)),
+                      sfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq src(m6) = dst(m1) .
+  eq dst(m6) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
+  eq (ecfin(m5) = ecfin(k(p1,pms(epms(m4)),rand(m1),rand(m2)),
+                      cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq src(m6) = dst(m1) .
+  eq dst(m6) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq (epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1))) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq src(m6) = dst(m1) .
+  eq dst(m6) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq src(m6) = dst(m1) .
+  eq dst(m6) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq (server(cert(m3)) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq src(m6) = dst(m1) .
+  eq dst(m6) = p1 .
+  eq choice(m2) \in list(m1) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq src(m6) = dst(m1) .
+  eq (dst(m6) = p1) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq (src(m6) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq (dst(m3) = p1) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq (src(m3) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq (dst(m2) = p1) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq dst(m5) = dst(m1) .
+  eq (src(m2) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq src(m5) = p1 .
+  eq (dst(m5) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq crt(m5) = p1 .
+  eq (src(m5) = p1) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq dst(m4) = dst(m1) .
+  eq (crt(m5) = p1) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq src(m4) = p1 .
+  eq (dst(m4) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m4) = p1 .
+  eq (src(m4) = p1) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq (crt(m4) = p1) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq crt(m1) = p1 .
+  eq (src(m1) = p1) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = true .
+  eq (crt(m1) = p1) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq sf?(m6) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = true .
+  eq ch?(m1) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq m6 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 m5 m6 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+close
+
+--> 7) compl2(p,p1,s1,m1,m2,m3,m4)
 open INV .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
-  op nw10 : -> Network .
 -- assumptions
-  -- eq c-compl2(p,p1,s1,m1,m2,m3,m4) = true .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m3) = p1 .
+  eq src(m3) = p1 .
+  eq dst(m3) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m4) = dst(m1) .
+  eq dst(m4) = p1 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,p1,dst(m1),sid(m2)) = none) = true .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq sh2?(m2) = true .
   eq cf2?(m3) = true .
@@ -725,470 +1891,2229 @@ open INV .
                       cfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1))) .
   eq esfin2(m4) = esfin2(k(dst(m1),pms(p1,dst(m1),s1),rand(m1),rand(m2)),
                         sfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1))) .
--- successor state
-  eq p' = compl2(p,p1,s1,m1,m2,m3,m4) .
--- check if the predicate is true.
-  red inv1(pms) .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
 close
---
--- 12.2) not c-compl2(p,p1,s1,m1,m2,m3,m4)
+
 open INV .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  eq c-compl2(p,p1,s1,m1,m2,m3,m4) = false .
--- successor state
-  eq p' = compl2(p,p1,s1,m1,m2,m3,m4) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m3) = p1 .
+  eq src(m3) = p1 .
+  eq dst(m3) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m4) = dst(m1) .
+  eq dst(m4) = p1 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
+  eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
+  eq pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1) .
+  eq ecfin2(m3) = ecfin2(k(p1,pms(p1,dst(m1),s1),rand(m1),rand(m2)),
+                      cfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1))) .
+  eq (esfin2(m4) = esfin2(k(dst(m1),pms(p1,dst(m1),s1),rand(m1),rand(m2)),
+                        sfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1)))) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
 close
 
---> 13) fakeChello(p,p1,p2,r10,l10) 
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op r10 : -> Rand .
-  op l10 : -> ListOfChoices .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
--- successor state
-  eq p' = fakeChello(p,p1,p2,r10,l10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m3) = p1 .
+  eq src(m3) = p1 .
+  eq dst(m3) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m4) = dst(m1) .
+  eq dst(m4) = p1 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
+  eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
+  eq pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1) .
+  eq (ecfin2(m3) = ecfin2(k(p1,pms(p1,dst(m1),s1),rand(m1),rand(m2)),
+                      cfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1)))) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
 close
 
---> 14) fakeShello(p,p2,p1,r10,i10,c10)
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op r10 : -> Rand .
-  op i10 : -> Sid .
-  op c10 : -> Choice .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
--- successor state
-  eq p' = fakeShello(p,p2,p1,r10,i10,c10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m3) = p1 .
+  eq src(m3) = p1 .
+  eq dst(m3) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m4) = dst(m1) .
+  eq dst(m4) = p1 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
+  eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
+  eq (pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1)) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
 close
 
---> 15) fakeCert(p,p2,p1,pk10,g10)
--- 15.1) c-fakeCert(p,p2,p1,pk10,g10)
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op pk10 : -> PubKey .
-  op g10 : -> Sig .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  -- eq c-fakeCert(p,p2,p1,pk10,g10) = false .
-  eq g10 \in csig(nw(p)) = true .
--- successor state
-  eq p' = fakeCert(p,p2,p1,pk10,g10) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
--- 15.2) not c-fakeCert(p,p2,p1,pk10,g10)
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op pk10 : -> PubKey .
-  op g10 : -> Sig .
--- assumptions
-  eq c-fakeCert(p,p2,p1,pk10,g10) = false .
--- successor state
-  eq p' = fakeCert(p,p2,p1,pk10,g10) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
-
---> 16) fakeKexch1(p,p1,p2,epms10) 
--- 16.1) c-fakeKexch1(p,p1,p2,epms10) 
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op epms10 : -> EncPms .
--- assumptions
-  -- eq c-fakeKexch1(p,p1,p2,epms10) = true .
-  eq epms10 \in cepms(nw(p)) = true .
---
-  eq (pms(epms10) = pms) = false . 
--- successor state
-  eq p' = fakeKexch1(p,p1,p2,epms10) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op epms10 : -> EncPms .
--- assumptions
-  -- eq c-fakeKexch1(p,p1,p2,epms10) = true .
-  eq epms10 \in cepms(nw(p)) = true .
---
-  eq pms(epms10) = pms .
-  eq (owner(k(epms10)) = intruder) = false .
--- successor state
-  eq p' = fakeKexch1(p,p1,p2,epms10) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op epms10 : -> EncPms .
--- assumptions
-  -- eq c-fakeKexch1(p,p1,p2,epms10) = true .
-  eq epms10 \in cepms(nw(p)) = true .
---
-  eq pms(epms10) = pms .
-  eq owner(k(epms10)) = intruder .
--- successor state
-  eq p' = fakeKexch1(p,p1,p2,epms10) .
--- check if the predicate is true.
-  red inv1010(p,epms10) implies inv1(pms) .
-close
---
--- 16.2) not c-fakeKexch1(p,p1,p2,epms10) 
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op epms10 : -> EncPms .
--- assumptions
-  eq c-fakeKexch1(p,p1,p2,epms10) = false .
--- successor state
-  eq p' = fakeKexch1(p,p1,p2,epms10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m3) = p1 .
+  eq src(m3) = p1 .
+  eq dst(m3) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m4) = dst(m1) .
+  eq dst(m4) = p1 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
+  eq (choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2)) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
 close
 
---> 17) fakeKexch2(p,p1,p2,pk10,pms10)
--- 17.1) c-fakeKexch2(p,p1,p2,pk10,pms10)
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op pk10 : -> PubKey .
-  op pms10 : -> Pms .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  -- eq c-fakeKexch2(p,p1,p2,pk10,pms10) = true .
-  eq pms10 \in cpms(nw(p)) = true .
-  --
-  eq pms = pms10 .
--- successor state
-  eq p' = fakeKexch2(p,p1,p2,pk10,pms10) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op pk10 : -> PubKey .
-  op pms10 : -> Pms .
--- assumptions
-  -- eq c-fakeKexch2(p,p1,p2,pk10,pms10) = true .
-  eq pms10 \in cpms(nw(p)) = true .
-  --
-  eq (pms = pms10) = false  .
--- successor state
-  eq p' = fakeKexch2(p,p1,p2,pk10,pms10) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
--- 17.2) not c-fakeKexch2(p,p1,p2,pk10,pms10)
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op pk10 : -> PubKey .
-  op pms10 : -> Pms .
--- assumptions
-  eq c-fakeKexch2(p,p1,p2,pk10,pms10) = false .
--- successor state
-  eq p' = fakeKexch2(p,p1,p2,pk10,pms10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m3) = p1 .
+  eq src(m3) = p1 .
+  eq dst(m3) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m4) = dst(m1) .
+  eq dst(m4) = p1 .
+  eq (sid(m1) = sid(m2)) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
 close
 
---> 18) fakeCfin1(p,p1,p2,ecfin10)
--- 18.1) c-fakeCfin1(p,p1,p2,ecfin10)
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m3) = p1 .
+  eq src(m3) = p1 .
+  eq dst(m3) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m4) = dst(m1) .
+  eq (dst(m4) = p1) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m3) = p1 .
+  eq src(m3) = p1 .
+  eq dst(m3) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq (src(m4) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m3) = p1 .
+  eq src(m3) = p1 .
+  eq dst(m3) = dst(m1) .
+  eq src(m2) = dst(m1) .
+  eq (dst(m2) = p1) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m3) = p1 .
+  eq src(m3) = p1 .
+  eq dst(m3) = dst(m1) .
+  eq (src(m2) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m3) = p1 .
+  eq src(m3) = p1 .
+  eq (dst(m3) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq crt(m3) = p1 .
+  eq (src(m3) = p1) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq (crt(m3) = p1) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq crt(m1) = p1 .
+  eq (src(m1) = p1) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = true .
+  eq (crt(m1) = p1) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq sf2?(m4) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq ch2?(m1) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 m4 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+close
+
+--> 8) fakeCert(p,p2,p1,pk,g)
 open INV .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
-  op ecfin10 : -> EncCFin .
+  op pk : -> PubKey .
+  op g : -> Sig .
 -- assumptions
-  -- eq c-fakeCfin1(p,p1,p2,ecfin10) = true .
-  eq ecfin10 \in cecfin(nw(p)) = true .
--- successor state
-  eq p' = fakeCfin1(p,p1,p2,ecfin10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq g \in csig(nw(p)) = true .
+  red inv1(p,pms) implies inv1(fakeCert(p,p2,p1,pk,g),pms) .
 close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq g \in csig(nw(p)) = false .
+  red inv1(p,pms) implies inv1(fakeCert(p,p2,p1,pk,g),pms) .
+close
+
+--> 9) fakeCfin1(p,p1,p2,ecfin1)
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op ecfin1 : -> EncCFin .
+-- assumptions
+  eq ecfin1 \in cecfin(nw(p)) = true .
+  red inv1(p,pms) implies inv1(fakeCfin1(p,p1,p2,ecfin1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op ecfin1 : -> EncCFin .
+-- assumptions
+  eq ecfin1 \in cecfin(nw(p)) = false .
+  red inv1(p,pms) implies inv1(fakeCfin1(p,p1,p2,ecfin1),pms) .
+close
+
+--> 10) fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1)
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 \in cpms(nw(p)) = true .
+  red inv1(p,pms) implies inv1(fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 \in cpms(nw(p)) = false .
+  red inv1(p,pms) implies inv1(fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1),pms) .
+close
+
+--> 11) fakeCfin21(p,p1,p2,ecfin21)
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op ecfin21 : -> EncCFin2 .
+-- assumptions
+  eq ecfin21 \in cecfin2(nw(p)) = true .
+  red inv1(p,pms) implies inv1(fakeCfin21(p,p1,p2,ecfin21),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op ecfin21 : -> EncCFin2 .
+-- assumptions
+  eq ecfin21 \in cecfin2(nw(p)) = false .
+  red inv1(p,pms) implies inv1(fakeCfin21(p,p1,p2,ecfin21),pms) .
+close
+
+--> 12) fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1)
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 \in cpms(nw(p)) = true .
+  red inv1(p,pms) implies inv1(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 \in cpms(nw(p)) = false .
+  red inv1(p,pms) implies inv1(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),pms) .
+close
+
+--> 13) fakeChello(p,p1,p2,r3,l1) 
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op r3 : -> Rand .
+  op l1 : -> ListOfChoices .
+  red inv1(p,pms) implies inv1(fakeChello(p,p1,p2,r3,l1),pms) .
+close
+
+--> 14) fakeChello2(p,p1,p2,r3,i1) 
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  red inv1(p,pms) implies inv1(fakeChello2(p,p1,p2,r3,i1),pms) .
+close
+
+--> 15) fakeKexch1(p,p1,p2,epms1) 
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op epms1 : -> EncPms .
+-- assumptions
+  eq epms1 \in cepms(nw(p)) = true .
+
+  eq pms(epms1) = pms . 
+  eq owner(k(epms1)) = intruder .
+  red inv2(p,epms1) implies inv1(p,pms) implies inv1(fakeKexch1(p,p1,p2,epms1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op epms1 : -> EncPms .
+-- assumptions
+  eq epms1 \in cepms(nw(p)) = true .
+
+  eq pms(epms1) = pms . 
+  eq (owner(k(epms1)) = intruder) = false .
+  red inv1(p,pms) implies inv1(fakeKexch1(p,p1,p2,epms1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op epms1 : -> EncPms .
+-- assumptions
+  eq epms1 \in cepms(nw(p)) = true .
+
+  eq (pms(epms1) = pms) = false . 
+  red inv1(p,pms) implies inv1(fakeKexch1(p,p1,p2,epms1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op epms1 : -> EncPms .
+-- assumptions
+  eq epms1 \in cepms(nw(p)) = false .
+  red inv1(p,pms) implies inv1(fakeKexch1(p,p1,p2,epms1),pms) .
+close
+
+--> 16) fakeKexch2(p,p1,p2,pk,pms1)
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 \in cpms(nw(p)) = true .
+
+  eq pms = pms1 .
+  red inv1(p,pms) implies inv1(fakeKexch2(p,p1,p2,pk,pms1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 \in cpms(nw(p)) = true .
+
+  eq (pms = pms1) = false .
+  red inv1(p,pms) implies inv1(fakeKexch2(p,p1,p2,pk,pms1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 \in cpms(nw(p)) = false .
+  red inv1(p,pms) implies inv1(fakeKexch2(p,p1,p2,pk,pms1),pms) .
+close
+
+--> 17) fakeSfin1(p,p2,p1,esfin1)
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin1 : -> EncSFin .
+-- assumptions
+  eq esfin1 \in cesfin(nw(p)) = true .
+  red inv1(p,pms) implies inv1(fakeSfin1(p,p2,p1,esfin1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin1 : -> EncSFin .
+-- assumptions
+  eq esfin1 \in cesfin(nw(p)) = false .
+  red inv1(p,pms) implies inv1(fakeSfin1(p,p2,p1,esfin1),pms) .
+close
+
+--> 18) fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1)
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 \in cpms(nw(p)) = true .
+  red inv1(p,pms) implies inv1(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 \in cpms(nw(p)) = false .
+  red inv1(p,pms) implies inv1(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),pms) .
+close
+
+--> 19) fakeSfin21(p,p2,p1,esfin21)
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin21 : -> EncSFin2 .
+-- assumptions
+  eq esfin21 \in cesfin2(nw(p)) = true .
+  red inv1(p,pms) implies inv1(fakeSfin21(p,p2,p1,esfin21),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin21 : -> EncSFin2 .
+-- assumptions
+  eq esfin21 \in cesfin2(nw(p)) = false .
+  red inv1(p,pms) implies inv1(fakeSfin21(p,p2,p1,esfin21),pms) .
+close
+
+--> 20) fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1)
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 \in cpms(nw(p)) = true .
+  red inv1(p,pms) implies inv1(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 \in cpms(nw(p)) = false .
+  red inv1(p,pms) implies inv1(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),pms) .
+close
+
+--> 21) fakeShello(p,p2,p1,r3,i1,c1)
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  red inv1(p,pms) implies inv1(fakeShello(p,p2,p1,r3,i1,c1),pms) .
+close
+
+--> 22) fakeShello2(p,p2,p1,r3,i1,c1)
+open INV .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  red inv1(p,pms) implies inv1(fakeShello2(p,p2,p1,r3,i1,c1),pms) .
+close
+
+--> 23) kexch(p,p1,s1,m1,m2,m3)
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = true .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
 --
--- 18.2) not c-fakeCfin1(p,p1,p2,ecfin10)
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op ecfin10 : -> EncCFin .
--- assumptions
-  eq c-fakeCfin1(p,p1,p2,ecfin10) = false .
--- successor state
-  eq p' = fakeCfin1(p,p1,p2,ecfin10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq dst(m1) = intruder .
+  eq pms = pms(p1,intruder,s1) .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
 close
 
---> 19) fakeCfin2(p,p1,p2,i10,l10,c10,r10,r20,pms10)
--- 19.1) c-fakeCfin2(p,p1,p2,i10,l10,c10,r10,r20,pms10)
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op i10 : -> Sid .
-  op l10 : -> ListOfChoices .
-  op c10 : -> Choice .
-  ops r10 r20 : -> Rand .
-  op pms10 : -> Pms .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
 -- assumptions
-  -- eq c-fakeCfin2(p,p1,p2,i10,l10,c10,r10,r20,pms10) = true .
-  eq pms10 \in cpms(nw(p)) = true .
--- successor state
-  eq p' = fakeCfin2(p,p1,p2,i10,l10,c10,r10,r20,pms10) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
 --
--- 19.2) c-fakeCfin2(p,p1,p2,i10,l10,c10,r10,r20,pms10)
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op i10 : -> Sid .
-  op l10 : -> ListOfChoices .
-  op c10 : -> Choice .
-  ops r10 r20 : -> Rand .
-  op pms10 : -> Pms .
--- assumptions
-  eq c-fakeCfin2(p,p1,p2,i10,l10,c10,r10,r20,pms10) = false .
--- successor state
-  eq p' = fakeCfin2(p,p1,p2,i10,l10,c10,r10,r20,pms10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq dst(m1) = intruder .
+  eq (pms = pms(p1,intruder,s1)) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
 close
 
---> 20) fakeSfin1(p,p2,p1,esfin10)
--- 20.1) c-fakeSfin1(p,p2,p1,esfin10)
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin10 : -> EncSFin .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
 -- assumptions
-  -- eq c-fakeSfin1(p,p2,p1,esfin10) = true  .
-  eq esfin10 \in cesfin(nw(p)) = true .
--- successor state
-  eq p' = fakeSfin1(p,p2,p1,esfin10) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
 --
--- 20.2) not c-fakeSfin1(p,p2,p1,esfin10)
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin10 : -> EncSFin .
--- assumptions
-  eq c-fakeSfin1(p,p2,p1,esfin10) = false .
--- successor state
-  eq p' = fakeSfin1(p,p2,p1,esfin10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq (dst(m1) = intruder) = false .
+  eq pubkey(cert(m3)) = k(dst(m1)) .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
 close
 
---> 21) fakeSfin2(p,p2,p1,i10,l10,c10,r10,r20,pms10)
--- 21.1) c-fakeSfin2(p,p2,p1,i10,l10,c10,r10,r20,pms10)
+-- ntnf
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op i10 : -> Sid .
-  op l10 : -> ListOfChoices .
-  op c10 : -> Choice .
-  ops r10 r20 : -> Rand .
-  op pms10 : -> Pms .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
 -- assumptions
-  -- eq c-fakeSfin2(p,p2,p1,i10,l10,c10,r10,r20,pms10) = true .
-  eq pms10 \in cpms(nw(p)) = true .
--- successor state
-  eq p' = fakeSfin2(p,p2,p1,i10,l10,c10,r10,r20,pms10) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
 --
--- 21.2) not c-fakeSfin2(p,p2,p1,i10,l10,c10,r10,r20,pms10)
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op i10 : -> Sid .
-  op l10 : -> ListOfChoices .
-  op c10 : -> Choice .
-  ops r10 r20 : -> Rand .
-  op pms10 : -> Pms .
--- assumptions
-  eq c-fakeSfin2(p,p2,p1,i10,l10,c10,r10,r20,pms10) = false .
--- successor state
-  eq p' = fakeSfin2(p,p2,p1,i10,l10,c10,r10,r20,pms10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq (dst(m1) = intruder) = false .
+  eq (pubkey(cert(m3)) = k(dst(m1))) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  -- red inv0900(p,dst(m1),pubkey(cert(m3))) implies inv1(pms) .
 close
 
---> 22) fakeChello2(p,p1,p2,r10,i10) 
+-- ntnf
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op r10 : -> Rand .
-  op i10 : -> Sid .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
 -- assumptions
--- successor state
-  eq p' = fakeChello2(p,p1,p2,r10,i10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq server(cert(m3)) = dst(m1) .
+  eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
 close
 
---> 23) fakeShello2(p,p2,p1,r10,i10,c10)
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op r10 : -> Rand .
-  op i10 : -> Sid .
-  op c10 : -> Choice .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
 -- assumptions
--- successor state
-  eq p' = fakeShello2(p,p2,p1,r10,i10,c10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = true .
+  eq (server(cert(m3)) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
 close
 
---> 24) fakeCfin21(p,p1,p2,ecfin210)
--- 24.1) c-fakeCfin21(p,p1,p2,ecfin210)
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op ecfin210 : -> EncCFin2 .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
 -- assumptions
-  -- eq c-fakeCfin21(p,p1,p2,ecfin210) = true .
-  eq ecfin210 \in cecfin2(nw(p)) = true .
--- successor state
-  eq p' = fakeCfin21(p,p1,p2,ecfin210) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
--- 24.2) not c-fakeCfin21(p,p1,p2,ecfin210)
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op ecfin210 : -> EncCFin2 .
--- assumptions
-  eq c-fakeCfin21(p,p1,p2,ecfin210) = false .
--- successor state
-  eq p' = fakeCfin21(p,p1,p2,ecfin210) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq dst(m3) = p1 .
+  eq choice(m2) \in list(m1) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
 close
 
---> 25) fakeCfin22(p,p1,p2,i10,c10,r10,r20,pms10)
--- 25.1) c-fakeCfin22(p,p1,p2,i10,c10,r10,r20,pms10)
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op i10 : -> Sid .
-  op c10 : -> Choice .
-  ops r10 r20 : -> Rand .
-  op pms10 : -> Pms .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
 -- assumptions
-  -- eq c-fakeCfin22(p,p1,p2,i10,c10,r10,r20,pms10) = true .
-  eq pms10 \in cpms(nw(p)) = true .
--- successor state
-  eq p' = fakeCfin22(p,p1,p2,i10,c10,r10,r20,pms10) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
--- 25.2) not c-fakeCfin22(p,p1,p2,i10,c10,r10,r20,pms10)
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op i10 : -> Sid .
-  op c10 : -> Choice .
-  ops r10 r20 : -> Rand .
-  op pms10 : -> Pms .
--- assumptions
-  eq c-fakeCfin22(p,p1,p2,i10,c10,r10,r20,pms10) = false .
--- successor state
-  eq p' = fakeCfin22(p,p1,p2,i10,c10,r10,r20,pms10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq src(m3) = dst(m1) .
+  eq (dst(m3) = p1) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
 close
 
---> 26) fakeSfin21(p,p2,p1,esfin210)
--- 26.1) c-fakeSfin21(p,p2,p1,esfin210)
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin210 : -> EncSFin2 .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
 -- assumptions
-  -- eq c-fakeSfin21(p,p2,p1,esfin210) = true  .
-  eq esfin210 \in cesfin2(nw(p)) = true .
--- successor state
-  eq p' = fakeSfin21(p,p2,p1,esfin210) .
--- check if the predicate is true.
-  red inv1(pms) .
-close
---
--- 26.2) not c-fakeSfin21(p,p2,p1,esfin210)
-open INV .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin210 : -> EncSFin2 .
--- assumptions
-  eq c-fakeSfin21(p,p2,p1,esfin210) = false .
--- successor state
-  eq p' = fakeSfin21(p,p2,p1,esfin210) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq dst(m2) = p1 .
+  eq (src(m3) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
 close
 
---> 27) fakeSfin22(p,p2,p1,i10,c10,r10,r20,pms10)
--- 27.1) c-fakeSfin22(p,p2,p1,i10,c10,r10,r20,pms10)
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op i10 : -> Sid .
-  op c10 : -> Choice .
-  ops r10 r20 : -> Rand .
-  op pms10 : -> Pms .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
 -- assumptions
-  -- eq c-fakeSfin22(p,p2,p1,i10,c10,r10,r20,pms10) = true .
-  eq pms10 \in cpms(nw(p)) = true .
--- successor state
-  eq p' = fakeSfin22(p,p2,p1,i10,c10,r10,r20,pms10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq src(m2) = dst(m1) .
+  eq (dst(m2) = p1) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
 close
---
--- 27.2) c-fakeSfin22(p,p2,p1,i10,c10,r10,r20,pms10)
+
 open INV .
 -- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op i10 : -> Sid .
-  op c10 : -> Choice .
-  ops r10 r20 : -> Rand .
-  op pms10 : -> Pms .
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
 -- assumptions
-  eq c-fakeSfin22(p,p2,p1,i10,c10,r10,r20,pms10) = false .
--- successor state
-  eq p' = fakeSfin22(p,p2,p1,i10,c10,r10,r20,pms10) .
--- check if the predicate is true.
-  red inv1(pms) .
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq crt(m1) = p1 .
+  eq src(m1) = p1 .
+  eq (src(m2) = dst(m1)) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq crt(m1) = p1 .
+  eq (src(m1) = p1) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq (crt(m1) = p1) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = true .
+  eq sh?(m2) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq s1 \in us(p) = false .
+  eq ch?(m1) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p1 : -> Prin .
+  op s1 : -> Secret .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+close
+
+--> 24) sfin(p,p2,m1,m2,m3,m4,m5) 
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq dst(m3) = dst(m2) .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m4) = dst(m2) .
+  eq dst(m4) = p2 .
+  eq src(m5) = dst(m2) .
+  eq dst(m5) = p2 .
+  eq choice(m2) \in list(m1) = true .
+  eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
+  eq k(epms(m4)) = k(p2) .
+  eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
+                      cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq dst(m3) = dst(m2) .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m4) = dst(m2) .
+  eq dst(m4) = p2 .
+  eq src(m5) = dst(m2) .
+  eq dst(m5) = p2 .
+  eq choice(m2) \in list(m1) = true .
+  eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
+  eq k(epms(m4)) = k(p2) .
+  eq (ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
+                      cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq dst(m3) = dst(m2) .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m4) = dst(m2) .
+  eq dst(m4) = p2 .
+  eq src(m5) = dst(m2) .
+  eq dst(m5) = p2 .
+  eq choice(m2) \in list(m1) = true .
+  eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
+  eq (k(epms(m4)) = k(p2)) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq dst(m3) = dst(m2) .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m4) = dst(m2) .
+  eq dst(m4) = p2 .
+  eq src(m5) = dst(m2) .
+  eq dst(m5) = p2 .
+  eq choice(m2) \in list(m1) = true .
+  eq (cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2)))) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq dst(m3) = dst(m2) .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m4) = dst(m2) .
+  eq dst(m4) = p2 .
+  eq src(m5) = dst(m2) .
+  eq dst(m5) = p2 .
+  eq choice(m2) \in list(m1) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq dst(m3) = dst(m2) .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m4) = dst(m2) .
+  eq dst(m4) = p2 .
+  eq src(m5) = dst(m2) .
+  eq (dst(m5) = p2) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq dst(m3) = dst(m2) .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m4) = dst(m2) .
+  eq dst(m4) = p2 .
+  eq (src(m5) = dst(m2)) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq dst(m3) = dst(m2) .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m4) = dst(m2) .
+  eq (dst(m4) = p2) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq dst(m3) = dst(m2) .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq (src(m4) = dst(m2)) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq dst(m3) = dst(m2) .
+  eq src(m1) = dst(m2) .
+  eq (dst(m1) = p2) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq dst(m3) = dst(m2) .
+  eq (src(m1) = dst(m2)) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq (dst(m3) = dst(m2)) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq (src(m3) = p2) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq (crt(m3) = p2) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq (src(m2) = p2) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq (crt(m2) = p2) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = true .
+  eq ch?(m1) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = true .
+  eq m5 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq m4 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+close
+
+--> 25) sfin2(p,p2,m1,m2,m3)
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m3) = dst(m2) .
+  eq dst(m3) = p2 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,dst(m2),p2,sid(m2)) = none) = true .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m3) = dst(m2) .
+  eq dst(m3) = p2 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
+  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
+  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
+                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m3) = dst(m2) .
+  eq dst(m3) = p2 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
+  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
+  eq (ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
+                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2)))))) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m3) = dst(m2) .
+  eq dst(m3) = p2 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
+  eq (choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2)) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m3) = dst(m2) .
+  eq dst(m3) = p2 .
+  eq (sid(m1) = sid(m2)) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m3) = dst(m2) .
+  eq (dst(m3) = p2) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq (src(m3) = dst(m2)) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq (dst(m1) = p2) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq (src(m1) = dst(m2)) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq (src(m2) = p2) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq (crt(m2) = p2) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+close
+
+--> 26) shello(p,p2,r3,i1,c1,m1)
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = true .
+  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = true .
+  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = true .
+  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = false .
+  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq (dst(m1) = p2) = false .
+  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = false .
+  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+close
+
+--> 27) shello2(p,p2,r3,m1)
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = true .
+  red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq dst(m1) = p2 .
+  eq (ss(p,src(m1),p2,sid(m1)) = none) = true .
+  red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
+close
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq dst(m1) = p2 .
+  eq (ss(p,src(m1),p2,sid(m1)) = none) = false .
+  red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq (dst(m1) = p2) = false .
+  red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch2?(m1) = false .
+  red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
+close
+
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq m1 \in nw(p) = false .
+  red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
 close
 
 -- Q.E.D.
