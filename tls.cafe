@@ -1246,6 +1246,7 @@ mod* TLS {
 mod INV {
   pr(TLS)
 -- arbitrary objects
+  op p : -> Protocol
   ops a b a1 b1 : -> Prin
   ops r1 r2 : -> Rand
   op l : -> ListOfChoices 
@@ -1310,7 +1311,7 @@ mod INV {
 -- -- arbitrary objects
 --   ops p p' : -> Protocol
 -- -- declare predicates to prove in inductive step
---   op istep1 : Pms -> Bool
+--   op istep1000 : Pms -> Bool
 --   op istep1010 : EncPms -> Bool
 --   op istep1020 : Prin Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
 --   op istep1030 : Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
@@ -1320,7 +1321,7 @@ mod INV {
 --   op istep1070 : Prin Prin Rand Rand Choice Sid Pms -> Bool
 
 -- -- define predicates to prove in inductive step
---   eq istep1(PMS) = inv1(p,PMS) implies inv1(p',PMS) .
+--   eq istep1000(PMS) = inv1(p,PMS) implies inv1(p',PMS) .
 --   eq istep1010(EPMS) = inv2(p,EPMS) implies inv2(p',EPMS) .
 --   eq istep1020(A,B,B1,R1,R2,L,C,I,S) = inv3(p,A,B,B1,R1,R2,L,C,I,S) implies inv3(p',A,B,B1,R1,R2,L,C,I,S) .
 --   eq istep1030(A,B,R1,R2,L,C,I,S) = inv4(p,A,B,R1,R2,L,C,I,S) implies inv4(p',A,B,R1,R2,L,C,I,S) .
