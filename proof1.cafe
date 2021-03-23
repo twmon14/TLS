@@ -4066,6 +4066,7 @@ open INV .
   eq (ss(p,src(m1),p2,sid(m1)) = none) = true .
   red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
 close
+
 open INV .
 -- arbitrary objects
   op p2 : -> Prin .
