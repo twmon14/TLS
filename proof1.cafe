@@ -3524,24 +3524,6 @@ open INV .
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq ct?(m3) = true .
-  eq kx?(m4) = true .
-  eq cf?(m5) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
-close
-
-open INV .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq m4 \in nw(p) = true .
-  eq m5 \in nw(p) = true .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
   eq kx?(m4) = false .
   red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
 close
