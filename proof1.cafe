@@ -2605,18 +2605,14 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  -- eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
 --
-  -- eq dst(m1) = intruder .
-  -- eq pms = pms(p1,intruder,s1) .
-    -- red c-kexch(p,p1,s1,m1,m2,m3) .
-    -- red inv1(p,pms) .
-    -- red inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
-
-  red kexch(p,p1,s1,m1,m2,m3) .
+  eq dst(m1) = intruder .
+  eq pms = pms(p1,intruder,s1) .
   red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
 close
-eof
+
 open INV .
 -- arbitrary objects
   op p1 : -> Prin .
@@ -2638,7 +2634,8 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  -- eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
 --
   eq dst(m1) = intruder .
   eq (pms = pms(p1,intruder,s1)) = false .
@@ -2666,7 +2663,8 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  -- eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
 --
   eq (dst(m1) = intruder) = false .
   eq pubkey(cert(m3)) = k(dst(m1)) .
@@ -2695,17 +2693,15 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  -- eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
 --
   eq (dst(m1) = intruder) = false .
   eq (pubkey(cert(m3)) = k(dst(m1))) = false .
-
-  eq kx(p1,p1,dst(m1),epms(pubkey(cert(m3)),pms(p1,dst(m1),s1))) \in nw(p) = true .
   red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
   -- red inv0900(p,dst(m1),pubkey(cert(m3))) implies inv1(pms) .
 close
-eof
--- ntnf
+
 open INV .
 -- arbitrary objects
   op p1 : -> Prin .
