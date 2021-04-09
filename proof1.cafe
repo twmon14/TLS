@@ -167,7 +167,7 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
   red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
 close
@@ -197,7 +197,7 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq (epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1))) = false .
   red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
 close
@@ -227,108 +227,7 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
-
-  eq intruder = server(pms) .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
-close
-
-open INV .
--- arbitrary objects
-  op p1 : -> Prin .
-  op s1 : -> Secret .
-  ops m1 m2 m3 m4 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq m4 \in nw(p) = true .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq kx?(m4) = true .
-  eq crt(m1) = p1 .
-  eq src(m1) = p1 .
-  eq crt(m4) = p1 .
-  eq src(m4) = p1 .
-  eq dst(m4) = dst(m1) .
-  eq src(m2) = dst(m1) .
-  eq dst(m2) = p1 .
-  eq src(m3) = dst(m1) .
-  eq dst(m3) = p1 .
-  eq choice(m2) \in list(m1) = true .
-  eq server(cert(m3)) = dst(m1) .
-  eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
-
-  eq (intruder = server(pms)) = false .
-  eq intruder = client(pms) .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
-close
-
-open INV .
--- arbitrary objects
-  op p1 : -> Prin .
-  op s1 : -> Secret .
-  ops m1 m2 m3 m4 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq m4 \in nw(p) = true .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq kx?(m4) = true .
-  eq crt(m1) = p1 .
-  eq src(m1) = p1 .
-  eq crt(m4) = p1 .
-  eq src(m4) = p1 .
-  eq dst(m4) = dst(m1) .
-  eq src(m2) = dst(m1) .
-  eq dst(m2) = p1 .
-  eq src(m3) = dst(m1) .
-  eq dst(m3) = p1 .
-  eq choice(m2) \in list(m1) = true .
-  eq server(cert(m3)) = dst(m1) .
-  eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
-
-  eq (intruder = server(pms)) = false .
-  eq (intruder = client(pms)) = false .
-  eq pms \in cpms(nw(p)) = true .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
-close
-
--- ntnf
-open INV .
--- arbitrary objects
-  op p1 : -> Prin .
-  op s1 : -> Secret .
-  ops m1 m2 m3 m4 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq m4 \in nw(p) = true .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq kx?(m4) = true .
-  eq crt(m1) = p1 .
-  eq src(m1) = p1 .
-  eq crt(m4) = p1 .
-  eq src(m4) = p1 .
-  eq dst(m4) = dst(m1) .
-  eq src(m2) = dst(m1) .
-  eq dst(m2) = p1 .
-  eq src(m3) = dst(m1) .
-  eq dst(m3) = p1 .
-  eq choice(m2) \in list(m1) = true .
-  eq server(cert(m3)) = dst(m1) .
-  eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
-  
-  eq (intruder = server(pms)) = false .
-  eq (intruder = client(pms)) = false .
-  eq pms \in cpms(nw(p)) = false .
+  eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
   red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
 close
 
@@ -1003,7 +902,7 @@ open INV .
   eq dst(m6) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
   eq ecfin(m5) = ecfin(k(p1,pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
@@ -1046,7 +945,7 @@ open INV .
   eq dst(m6) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
   eq ecfin(m5) = ecfin(k(p1,pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
@@ -1089,7 +988,7 @@ open INV .
   eq dst(m6) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
   eq (ecfin(m5) = ecfin(k(p1,pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
@@ -1130,7 +1029,7 @@ open INV .
   eq dst(m6) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
+  eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq (epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1))) = false .
   red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
 close
@@ -1169,7 +1068,7 @@ open INV .
   eq dst(m6) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
+  eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
   red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
 close
 
@@ -2708,11 +2607,16 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3))) .
 --
-  eq dst(m1) = intruder .
-  eq pms = pms(p1,intruder,s1) .
+  -- eq dst(m1) = intruder .
+  -- eq pms = pms(p1,intruder,s1) .
+    -- red c-kexch(p,p1,s1,m1,m2,m3) .
+    -- red inv1(p,pms) .
+    -- red inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+
+  red kexch(p,p1,s1,m1,m2,m3) .
   red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
 close
-
+eof
 open INV .
 -- arbitrary objects
   op p1 : -> Prin .
@@ -2795,10 +2699,12 @@ open INV .
 --
   eq (dst(m1) = intruder) = false .
   eq (pubkey(cert(m3)) = k(dst(m1))) = false .
+
+  eq kx(p1,p1,dst(m1),epms(pubkey(cert(m3)),pms(p1,dst(m1),s1))) \in nw(p) = true .
   red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
   -- red inv0900(p,dst(m1),pubkey(cert(m3))) implies inv1(pms) .
 close
-
+eof
 -- ntnf
 open INV .
 -- arbitrary objects
@@ -2821,7 +2727,7 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
+  eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
   red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
 close
 
