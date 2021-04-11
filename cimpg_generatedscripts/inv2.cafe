@@ -1,0 +1,1881 @@
+open INV .
+	:goal{
+		eq [tls :nonexec] : inv2(P:Protocol,E:EncPms) = true .
+	}
+
+	:ind on (P:Protocol)
+
+	:apply(si)
+
+	:apply(tc)
+
+	:def csb1 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb1)
+
+	:def csb2 = :ctf [M0#Msg \in nw(P#Protocol) .]
+
+	:apply(csb2)
+
+	:def csb3 = :ctf [ch?(M#Msg) .]
+
+	:apply(csb3)
+
+	:def csb4 = :ctf [sh?(M0#Msg) .]
+
+	:apply(csb4)
+
+	:def csb5 = :ctf {eq dst(M#Msg) = P#Prin .}
+
+	:apply(csb5)
+
+	:def csb6 = :ctf {eq crt(M0#Msg) = P#Prin .}
+
+	:apply(csb6)
+
+	:def csb7 = :ctf {eq src(M0#Msg) = P#Prin .}
+
+	:apply(csb7)
+
+	:def csb8 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
+
+	:apply(csb8)
+
+	:def csb9 = :ctf [choice(M0#Msg)\in list(M#Msg) .]
+
+	:apply(csb9)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb10 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb10)
+
+	:def csb11 = :ctf [M0#Msg \in nw(P#Protocol) .]
+
+	:apply(csb11)
+
+	:def csb12 = :ctf [M1#Msg \in nw(P#Protocol) .]
+
+	:apply(csb12)
+
+	:def csb13 = :ctf [M2#Msg \in nw(P#Protocol) .]
+
+	:apply(csb13)
+
+	:def csb14 = :ctf [ch?(M#Msg) .]
+
+	:apply(csb14)
+
+	:def csb15 = :ctf [sh?(M0#Msg) .]
+
+	:apply(csb15)
+
+	:def csb16 = :ctf [ct?(M1#Msg) .]
+
+	:apply(csb16)
+
+	:def csb17 = :ctf [kx?(M2#Msg) .]
+
+	:apply(csb17)
+
+	:def csb18 = :ctf {eq crt(M#Msg) = P#Prin .}
+
+	:apply(csb18)
+
+	:def csb19 = :ctf {eq src(M#Msg) = P#Prin .}
+
+	:apply(csb19)
+
+	:def csb20 = :ctf {eq crt(M2#Msg) = P#Prin .}
+
+	:apply(csb20)
+
+	:def csb21 = :ctf {eq src(M2#Msg) = P#Prin .}
+
+	:apply(csb21)
+
+	:def csb22 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
+
+	:apply(csb22)
+
+	:def csb23 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
+
+	:apply(csb23)
+
+	:def csb24 = :ctf {eq dst(M0#Msg) = P#Prin .}
+
+	:apply(csb24)
+
+	:def csb25 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
+
+	:apply(csb25)
+
+	:def csb26 = :ctf {eq dst(M1#Msg) = P#Prin .}
+
+	:apply(csb26)
+
+	:def csb27 = :ctf [choice(M0#Msg)\in list(M#Msg) .]
+
+	:apply(csb27)
+
+	:def csb28 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
+
+	:apply(csb28)
+
+	:def csb29 = :ctf [epms \in cepms(nw(p)) .]
+
+	:apply(csb29)
+
+	:def csb30 = :ctf {eq intruder  = owner(k(epms)) .}
+
+	:apply(csb30)
+
+	:def csb31 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
+
+	:apply(csb31)
+
+	:def csb32 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
+
+	:apply(csb32)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb33 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,server(cert(M1#Msg)),pubkey(cert(M1#Msg))) .}
+
+	:apply(csb33)
+
+	:postpone .
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:postpone .
+
+	:def csb34 = :ctf {eq intruder  = owner(k(epms)) .}
+
+	:apply(csb34)
+
+	:def csb35 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
+
+	:apply(csb35)
+
+	:postpone .
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb36 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,server(cert(M1#Msg)),pubkey(cert(M1#Msg))) .}
+
+	:apply(csb36)
+
+	:postpone .
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:postpone .
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb37 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb37)
+
+	:def csb38 = :ctf [M0#Msg \in nw(P#Protocol) .]
+
+	:apply(csb38)
+
+	:def csb39 = :ctf [ch2?(M#Msg) .]
+
+	:apply(csb39)
+
+	:def csb40 = :ctf [sh2?(M0#Msg) .]
+
+	:apply(csb40)
+
+	:def csb41 = :ctf {eq crt(M#Msg) = P#Prin .}
+
+	:apply(csb41)
+
+	:def csb42 = :ctf {eq src(M#Msg) = P#Prin .}
+
+	:apply(csb42)
+
+	:def csb43 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
+
+	:apply(csb43)
+
+	:def csb44 = :ctf {eq dst(M0#Msg) = P#Prin .}
+
+	:apply(csb44)
+
+	:def csb45 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
+
+	:apply(csb45)
+
+	:def csb46 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
+
+	:apply(csb46)
+
+	:def csb47 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
+
+	:apply(csb47)
+
+	:def csb48 = :ctf {eq ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg)) = none .}
+
+	:apply(csb48)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb49 = :ctf {eq ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg)) = none .}
+
+	:apply(csb49)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb50 = :ctf {eq ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg)) = none .}
+
+	:apply(csb50)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb51 = :ctf [R#Rand \in ur(P#Protocol) .]
+
+	:apply(csb51)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb52 = :ctf [R#Rand \in ur(P#Protocol) .]
+
+	:apply(csb52)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb53 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret) .}
+
+	:apply(csb53)
+
+	:def csb54 = :ctf {eq ss(P#Protocol,P#Prin,P0#Prin,S#Sid) = none .}
+
+	:apply(csb54)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb55 = :ctf {eq ss(P#Protocol,P#Prin,P0#Prin,S#Sid) = none .}
+
+	:apply(csb55)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb56 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb56)
+
+	:def csb57 = :ctf [M0#Msg \in nw(P#Protocol) .]
+
+	:apply(csb57)
+
+	:def csb58 = :ctf [M1#Msg \in nw(P#Protocol) .]
+
+	:apply(csb58)
+
+	:def csb59 = :ctf [M2#Msg \in nw(P#Protocol) .]
+
+	:apply(csb59)
+
+	:def csb60 = :ctf [M3#Msg \in nw(P#Protocol) .]
+
+	:apply(csb60)
+
+	:def csb61 = :ctf [M4#Msg \in nw(P#Protocol) .]
+
+	:apply(csb61)
+
+	:def csb62 = :ctf [ch?(M#Msg) .]
+
+	:apply(csb62)
+
+	:def csb63 = :ctf [sh?(M0#Msg) .]
+
+	:apply(csb63)
+
+	:def csb64 = :ctf [ct?(M1#Msg) .]
+
+	:apply(csb64)
+
+	:def csb65 = :ctf [kx?(M2#Msg) .]
+
+	:apply(csb65)
+
+	:def csb66 = :ctf [cf?(M3#Msg) .]
+
+	:apply(csb66)
+
+	:def csb67 = :ctf [sf?(M4#Msg) .]
+
+	:apply(csb67)
+
+	:def csb68 = :ctf {eq crt(M#Msg) = P#Prin .}
+
+	:apply(csb68)
+
+	:def csb69 = :ctf {eq src(M#Msg) = P#Prin .}
+
+	:apply(csb69)
+
+	:def csb70 = :ctf {eq crt(M2#Msg) = P#Prin .}
+
+	:apply(csb70)
+
+	:def csb71 = :ctf {eq src(M2#Msg) = P#Prin .}
+
+	:apply(csb71)
+
+	:def csb72 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
+
+	:apply(csb72)
+
+	:def csb73 = :ctf {eq crt(M3#Msg) = P#Prin .}
+
+	:apply(csb73)
+
+	:def csb74 = :ctf {eq src(M3#Msg) = P#Prin .}
+
+	:apply(csb74)
+
+	:def csb75 = :ctf {eq dst(M3#Msg) = dst(M#Msg) .}
+
+	:apply(csb75)
+
+	:def csb76 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
+
+	:apply(csb76)
+
+	:def csb77 = :ctf {eq dst(M0#Msg) = P#Prin .}
+
+	:apply(csb77)
+
+	:def csb78 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
+
+	:apply(csb78)
+
+	:def csb79 = :ctf {eq dst(M1#Msg) = P#Prin .}
+
+	:apply(csb79)
+
+	:def csb80 = :ctf {eq src(M4#Msg) = dst(M#Msg) .}
+
+	:apply(csb80)
+
+	:def csb81 = :ctf {eq dst(M4#Msg) = P#Prin .}
+
+	:apply(csb81)
+
+	:def csb82 = :ctf [choice(M0#Msg)\in list(M#Msg) .]
+
+	:apply(csb82)
+
+	:def csb83 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
+
+	:apply(csb83)
+
+	:def csb84 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,server(cert(M1#Msg)),pubkey(cert(M1#Msg))) .}
+
+	:apply(csb84)
+
+	:def csb85 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
+
+	:apply(csb85)
+
+	:def csb86 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),
+    choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
+
+	:apply(csb86)
+
+	:def csb87 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),
+    choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
+
+	:apply(csb87)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb88 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb88)
+
+	:def csb89 = :ctf [M0#Msg \in nw(P#Protocol) .]
+
+	:apply(csb89)
+
+	:def csb90 = :ctf [M1#Msg \in nw(P#Protocol) .]
+
+	:apply(csb90)
+
+	:def csb91 = :ctf [M2#Msg \in nw(P#Protocol) .]
+
+	:apply(csb91)
+
+	:def csb92 = :ctf [ch2?(M#Msg) .]
+
+	:apply(csb92)
+
+	:def csb93 = :ctf [sh2?(M0#Msg) .]
+
+	:apply(csb93)
+
+	:def csb94 = :ctf [cf2?(M1#Msg) .]
+
+	:apply(csb94)
+
+	:def csb95 = :ctf [sf2?(M2#Msg) .]
+
+	:apply(csb95)
+
+	:def csb96 = :ctf {eq crt(M#Msg) = P#Prin .}
+
+	:apply(csb96)
+
+	:def csb97 = :ctf {eq src(M#Msg) = P#Prin .}
+
+	:apply(csb97)
+
+	:def csb98 = :ctf {eq crt(M1#Msg) = P#Prin .}
+
+	:apply(csb98)
+
+	:def csb99 = :ctf {eq src(M1#Msg) = P#Prin .}
+
+	:apply(csb99)
+
+	:def csb100 = :ctf {eq dst(M1#Msg) = dst(M#Msg) .}
+
+	:apply(csb100)
+
+	:def csb101 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
+
+	:apply(csb101)
+
+	:def csb102 = :ctf {eq dst(M0#Msg) = P#Prin .}
+
+	:apply(csb102)
+
+	:def csb103 = :ctf {eq src(M2#Msg) = dst(M#Msg) .}
+
+	:apply(csb103)
+
+	:def csb104 = :ctf {eq dst(M2#Msg) = P#Prin .}
+
+	:apply(csb104)
+
+	:def csb105 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
+
+	:apply(csb105)
+
+	:def csb106 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
+
+	:apply(csb106)
+
+	:def csb107 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
+
+	:apply(csb107)
+
+	:def csb108 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(
+    M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
+
+	:apply(csb108)
+
+	:def csb109 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(
+    M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
+
+	:apply(csb109)
+
+	:def csb110 = :ctf {eq ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg)) = none .}
+
+	:apply(csb110)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb111 = :ctf {eq ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg)) = none .}
+
+	:apply(csb111)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb112 = :ctf {eq ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg)) = none .}
+
+	:apply(csb112)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb113 = :ctf {eq ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg)) = none .}
+
+	:apply(csb113)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb114 = :ctf {eq ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg)) = none .}
+
+	:apply(csb114)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb115 = :ctf [S#Sig \in csig(nw(P#Protocol)) .]
+
+	:apply(csb115)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb116 = :ctf [E#EncCFin \in cecfin(nw(P#Protocol)) .]
+
+	:apply(csb116)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb117 = :ctf [P#Pms \in cpms(nw(P#Protocol)) .]
+
+	:apply(csb117)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb118 = :ctf [E#EncCFin2 \in cecfin2(nw(P#Protocol)) .]
+
+	:apply(csb118)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb119 = :ctf [P#Pms \in cpms(nw(P#Protocol)) .]
+
+	:apply(csb119)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb120 = :ctf [E#EncPms \in cepms(nw(P#Protocol)) .]
+
+	:apply(csb120)
+
+	:def csb121 = :ctf {eq epms  = E#EncPms .}
+
+	:apply(csb121)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:postpone .
+
+	:def csb122 = :ctf {eq E@EncPms  = E#EncPms .}
+
+	:apply(csb122)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb123 = :ctf [P#Pms \in cpms(nw(P#Protocol)) .]
+
+	:apply(csb123)
+
+	:def csb124 = :ctf {eq epms  = epms(P#PubKey,P#Pms) .}
+
+	:apply(csb124)
+
+	:def csb125 = :ctf {eq owner(P#PubKey) = intruder .}
+
+	:apply(csb125)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:postpone .
+
+	:def csb126 = :ctf {eq E@EncPms  = epms(P#PubKey,P#Pms) .}
+
+	:apply(csb126)
+
+	*** Goal`16-1-1-2-1  -  inv2(fakeKexch2(P#Protocol,P#Prin,P0#Prin,P#PubKey,P#Pms),E@EncPms) - Success
+	:def csb127 = :ctf {eq owner(P#PubKey) = intruder .}
+
+	:apply(csb127)
+
+		*** Goal`16-1-1-2-1-1 Success by implication and reduction.
+		:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+		:apply (rd)
+
+		*** Goal`16-1-1-2-1-2 Success by reduction
+		:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb128 = :ctf [E#EncSFin \in cesfin(nw(P#Protocol)) .]
+
+	:apply(csb128)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb129 = :ctf [P#Pms \in cpms(nw(P#Protocol)) .]
+
+	:apply(csb129)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb130 = :ctf [E#EncSFin2 \in cesfin2(nw(P#Protocol)) .]
+
+	:apply(csb130)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb131 = :ctf [P#Pms \in cpms(nw(P#Protocol)) .]
+
+	:apply(csb131)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb132 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb132)
+
+	:def csb133 = :ctf [M0#Msg \in nw(P#Protocol) .]
+
+	:apply(csb133)
+
+	:def csb134 = :ctf [M1#Msg \in nw(P#Protocol) .]
+
+	:apply(csb134)
+
+	:def csb135 = :ctf [S#Secret \in us(P#Protocol) .]
+
+	:apply(csb135)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb136 = :ctf [ch?(M#Msg) .]
+
+	:apply(csb136)
+
+	:def csb137 = :ctf [sh?(M0#Msg) .]
+
+	:apply(csb137)
+
+	:def csb138 = :ctf [ct?(M1#Msg) .]
+
+	:apply(csb138)
+
+	:def csb139 = :ctf {eq crt(M#Msg) = P#Prin .}
+
+	:apply(csb139)
+
+	:def csb140 = :ctf {eq src(M#Msg) = P#Prin .}
+
+	:apply(csb140)
+
+	:def csb141 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
+
+	:apply(csb141)
+
+	:def csb142 = :ctf {eq dst(M0#Msg) = P#Prin .}
+
+	:apply(csb142)
+
+	:def csb143 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
+
+	:apply(csb143)
+
+	:def csb144 = :ctf {eq dst(M1#Msg) = P#Prin .}
+
+	:apply(csb144)
+
+	:def csb145 = :ctf [choice(M0#Msg)\in list(M#Msg) .]
+
+	:apply(csb145)
+
+	:def csb146 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
+
+	:apply(csb146)
+
+	:def csb147 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
+
+	:apply(csb147)
+
+	:def csb148 = :ctf {eq pubkey(cert(M1#Msg)) = k(dst(M#Msg)) .}
+
+	:apply(csb148)
+
+	:def csb149 = :ctf {eq epms  = epms(k(dst(M#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
+
+	:apply(csb149)
+
+	:def csb150 = :ctf {eq dst(M#Msg) = intruder .}
+
+	:apply(csb150)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:postpone .
+
+	:def csb151 = :ctf {eq E@EncPms  = epms(k(dst(M#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
+
+	:apply(csb151)
+
+	*** Goal`24-1-1-1-1-2-1-1-1-1-1-1-1-1-1-1-1-1-1-2-1  -  inv2(kexch(P#Protocol,P#Prin,S#Secret,M#Msg,M0#Msg,M1#Msg),E@EncPms) - Success
+	:def csb152 = :ctf {eq dst(M#Msg) = intruder .}
+
+	:apply(csb152)
+
+		*** Goal`24-1-1-1-1-2-1-1-1-1-1-1-1-1-1-1-1-1-1-2-1-1 Success by implication and reduction.
+		:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+		:apply (rd)
+
+		*** Goal`24-1-1-1-1-2-1-1-1-1-1-1-1-1-1-1-1-1-1-2-1-2 Success by reduction
+		:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb153 = :ctf {eq epms  = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
+
+	:apply(csb153)
+
+	:def csb154 = :ctf {eq intruder  = owner(pubkey(cert(M1#Msg))) .}
+
+	:apply(csb154)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:postpone .
+
+	:def csb155 = :ctf {eq E@EncPms  = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
+
+	:apply(csb155)
+
+	:postpone .
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb156 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb156)
+
+	:def csb157 = :ctf [M0#Msg \in nw(P#Protocol) .]
+
+	:apply(csb157)
+
+	:def csb158 = :ctf [M1#Msg \in nw(P#Protocol) .]
+
+	:apply(csb158)
+
+	:def csb159 = :ctf [M2#Msg \in nw(P#Protocol) .]
+
+	:apply(csb159)
+
+	:def csb160 = :ctf [M3#Msg \in nw(P#Protocol) .]
+
+	:apply(csb160)
+
+	:def csb161 = :ctf [ch?(M#Msg) .]
+
+	:apply(csb161)
+
+	:def csb162 = :ctf [sh?(M0#Msg) .]
+
+	:apply(csb162)
+
+	:def csb163 = :ctf [ct?(M1#Msg) .]
+
+	:apply(csb163)
+
+	:def csb164 = :ctf [kx?(M2#Msg) .]
+
+	:apply(csb164)
+
+	:def csb165 = :ctf [cf?(M3#Msg) .]
+
+	:apply(csb165)
+
+	:def csb166 = :ctf {eq crt(M0#Msg) = P#Prin .}
+
+	:apply(csb166)
+
+	:def csb167 = :ctf {eq src(M0#Msg) = P#Prin .}
+
+	:apply(csb167)
+
+	:def csb168 = :ctf {eq crt(M1#Msg) = P#Prin .}
+
+	:apply(csb168)
+
+	:def csb169 = :ctf {eq src(M1#Msg) = P#Prin .}
+
+	:apply(csb169)
+
+	:def csb170 = :ctf {eq dst(M1#Msg) = dst(M0#Msg) .}
+
+	:apply(csb170)
+
+	:def csb171 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
+
+	:apply(csb171)
+
+	:def csb172 = :ctf {eq dst(M#Msg) = P#Prin .}
+
+	:apply(csb172)
+
+	:def csb173 = :ctf {eq src(M2#Msg) = dst(M0#Msg) .}
+
+	:apply(csb173)
+
+	:def csb174 = :ctf {eq dst(M2#Msg) = P#Prin .}
+
+	:apply(csb174)
+
+	:def csb175 = :ctf {eq src(M3#Msg) = dst(M0#Msg) .}
+
+	:apply(csb175)
+
+	:def csb176 = :ctf {eq dst(M3#Msg) = P#Prin .}
+
+	:apply(csb176)
+
+	:def csb177 = :ctf [choice(M0#Msg)\in list(M#Msg) .]
+
+	:apply(csb177)
+
+	:def csb178 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))) .}
+
+	:apply(csb178)
+
+	:def csb179 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin) .}
+
+	:apply(csb179)
+
+	:def csb180 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(
+    M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
+
+	:apply(csb180)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb181 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb181)
+
+	:def csb182 = :ctf [M0#Msg \in nw(P#Protocol) .]
+
+	:apply(csb182)
+
+	:def csb183 = :ctf [M1#Msg \in nw(P#Protocol) .]
+
+	:apply(csb183)
+
+	:def csb184 = :ctf [ch2?(M#Msg) .]
+
+	:apply(csb184)
+
+	:def csb185 = :ctf [sh2?(M0#Msg) .]
+
+	:apply(csb185)
+
+	:def csb186 = :ctf [cf2?(M1#Msg) .]
+
+	:apply(csb186)
+
+	:def csb187 = :ctf {eq crt(M0#Msg) = P#Prin .}
+
+	:apply(csb187)
+
+	:def csb188 = :ctf {eq src(M0#Msg) = P#Prin .}
+
+	:apply(csb188)
+
+	:def csb189 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
+
+	:apply(csb189)
+
+	:def csb190 = :ctf {eq dst(M#Msg) = P#Prin .}
+
+	:apply(csb190)
+
+	:def csb191 = :ctf {eq src(M1#Msg) = dst(M0#Msg) .}
+
+	:apply(csb191)
+
+	:def csb192 = :ctf {eq dst(M1#Msg) = P#Prin .}
+
+	:apply(csb192)
+
+	:def csb193 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
+
+	:apply(csb193)
+
+	:def csb194 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg) .}
+
+	:apply(csb194)
+
+	:def csb195 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(dst(M0#Msg),pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))),rand(M#Msg),rand(M0#Msg)),cfin2(dst(
+    M0#Msg),P#Prin,sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))))) .}
+
+	:apply(csb195)
+
+	:def csb196 = :ctf {eq ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg)) = none .}
+
+	:apply(csb196)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb197 = :ctf {eq ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg)) = none .}
+
+	:apply(csb197)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb198 = :ctf {eq ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg)) = none .}
+
+	:apply(csb198)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb199 = :ctf [R#Rand \in ur(P#Protocol) .]
+
+	:apply(csb199)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb200 = :ctf [S#Sid \in ui(P#Protocol) .]
+
+	:apply(csb200)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb201 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb201)
+
+	:def csb202 = :ctf [ch?(M#Msg) .]
+
+	:apply(csb202)
+
+	:def csb203 = :ctf {eq dst(M#Msg) = P#Prin .}
+
+	:apply(csb203)
+
+	:def csb204 = :ctf [C#Choice \in list(M#Msg) .]
+
+	:apply(csb204)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb205 = :ctf [R#Rand \in ur(P#Protocol) .]
+
+	:apply(csb205)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:def csb206 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb206)
+
+	:def csb207 = :ctf [ch2?(M#Msg) .]
+
+	:apply(csb207)
+
+	:def csb208 = :ctf {eq dst(M#Msg) = P#Prin .}
+
+	:apply(csb208)
+
+	*** Goal`28-1-2-1-1-1  -  inv2(shello2(P#Protocol,P#Prin,R#Rand,M#Msg),E@EncPms) - Success
+	:def csb209 = :ctf {eq none  = ss(P#Protocol,src(M#Msg),P#Prin,sid(M#Msg)) .}
+
+	:apply(csb209)
+
+		*** Goal`28-1-2-1-1-1-1 Success by implication and reduction.
+		:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+		:apply (rd)
+
+		*** Goal`28-1-2-1-1-1-2 Success by implication and reduction.
+		:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+		:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+	:imp [tls] by {E:EncPms <- E@EncPms ;}
+
+	:apply (rd)
+
+
+close
+
