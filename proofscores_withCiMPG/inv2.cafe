@@ -241,75 +241,7 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
-  eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
-
-  eq intruder = owner(k(epms)) .
-  eq epms \in cepms(nw(p)) = true .
-  red inv2(p,epms) implies inv2(cfin(p,p1,s1,m1,m2,m3,m4),epms) .
-close
-
-open INV .
- :id(tls)
--- arbitrary objects
-  op p1 : -> Prin .
-  op s1 : -> Secret .
-  ops m1 m2 m3 m4 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq m4 \in nw(p) = true .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq kx?(m4) = true .
-  eq crt(m1) = p1 .
-  eq src(m1) = p1 .
-  eq crt(m4) = p1 .
-  eq src(m4) = p1 .
-  eq dst(m4) = dst(m1) .
-  eq src(m2) = dst(m1) .
-  eq dst(m2) = p1 .
-  eq src(m3) = dst(m1) .
-  eq dst(m3) = p1 .
-  eq choice(m2) \in list(m1) = true .
-  eq server(cert(m3)) = dst(m1) .
-  eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
-
-  eq intruder = owner(k(epms)) .
-  eq epms \in cepms(nw(p)) = false .
-  red inv2(p,epms) implies inv2(cfin(p,p1,s1,m1,m2,m3,m4),epms) .
-close
-
-open INV .
- :id(tls)
--- arbitrary objects
-  op p1 : -> Prin .
-  op s1 : -> Secret .
-  ops m1 m2 m3 m4 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq m4 \in nw(p) = true .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq kx?(m4) = true .
-  eq crt(m1) = p1 .
-  eq src(m1) = p1 .
-  eq crt(m4) = p1 .
-  eq src(m4) = p1 .
-  eq dst(m4) = dst(m1) .
-  eq src(m2) = dst(m1) .
-  eq dst(m2) = p1 .
-  eq src(m3) = dst(m1) .
-  eq dst(m3) = p1 .
-  eq choice(m2) \in list(m1) = true .
-  eq server(cert(m3)) = dst(m1) .
   eq (sig(cert(m3)) = sig(ca,server(cert(m3)),pubkey(cert(m3)))) = false .
-
-  eq (intruder = owner(k(epms))) = false .
   red inv2(p,epms) implies inv2(cfin(p,p1,s1,m1,m2,m3,m4),epms) .
 close
 
@@ -3842,7 +3774,7 @@ close
 --> 25) sfin2(p,p2,m1,m2,m3)
 open INV .
  :id(tls)
--- arbitrary objects
+-- arbitrary objects123456
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
