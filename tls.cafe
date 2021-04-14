@@ -773,6 +773,7 @@ mod! NETWORK {
   -- csig
   eq G \in csig(void) = false .
   ceq G \in csig(M,NW) = true if (ct?(M) and G = sig(cert(M))) .
+  ceq sig(cert(M)) \in csig(NW) = true if (M \in NW and ct?(M)) . -- added 21/04/14
   ceq G \in csig(M,NW) = G \in csig(NW) 
       if not(ct?(M) and G = sig(cert(M))) .
   --
