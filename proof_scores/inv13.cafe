@@ -1,0 +1,64 @@
+open INV .
+-- arbitrary objects
+-- assumptions
+  eq b = intruder .
+  eq b1 = intruder .
+-- check 
+  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+-- arbitrary objects
+-- assumptions
+  eq b = intruder .
+  eq (b1 = intruder) = false .
+-- check 
+  red inv11(p,a,b1,k) implies inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+-- arbitrary objects
+-- assumptions
+  eq (b = intruder) = false .
+  eq a = intruder .
+-- check 
+  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+-- arbitrary objects
+-- assumptions
+  eq (b = intruder) = false .
+  eq (a = intruder) = false .
+  eq k = k(b) .
+-- check 
+  red inv8(p,a,b,r1,r2,l,c,i,s) implies inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+-- arbitrary objects    
+  op nw10 : -> Network .
+
+-- assumptions
+  eq (b = intruder) = false .
+  eq (a = intruder) = false .
+  eq (k = k(b)) = false .
+--   eq ct(b1,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq nw(p) = ct(b1,b,a,cert(b,k,sig(ca,b,k))) , nw10 .
+-- check 
+  red inv9(p,b,k) implies inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+-- arbitrary objects    
+-- assumptions
+  eq (b = intruder) = false .
+  eq (a = intruder) = false .
+  eq (k = k(b)) = false .
+  eq ct(b1,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+-- check 
+  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+-- Q.E.D.
+
