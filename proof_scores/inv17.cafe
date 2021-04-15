@@ -1,0 +1,9 @@
+open INV .
+-- arbitrary objects
+  op p : -> Protocol .
+-- check 
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s) and inv12(p,a,b,b1,r1,r2,l,c,i,s) and inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
+    implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+-- Q.E.D.
