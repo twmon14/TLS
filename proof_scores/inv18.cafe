@@ -1,0 +1,9 @@
+open INV .
+-- assumptions
+-- check 
+  red inv5(p,a,b,b2,r1,r2,c,i,s) and inv16(p,a,b,b1,r1,r2,c,i,s) 
+    implies inv18(p,a,b,b1,b2,r1,r2,c,i,s) .
+close
+--
+
+-- Q.E.D.
