@@ -806,6 +806,8 @@ mod! NETWORK {
   ceq ESFIN2 \in cesfin2(M,NW) = true if (sf2?(M) and ESFIN2 = esfin2(M)) .
   ceq ESFIN2 \in cesfin2(M,NW) = ESFIN2 \in cesfin2(NW)
       if not(sf2?(M) and ESFIN2 = esfin2(M)) .
+
+  -- ceq ct(B1,B,A,cert(B,K,sig(ca,B,K))) \in nw(p) = true if 
 }
 
 mod! SESSIONSTATE {
@@ -1264,11 +1266,14 @@ mod INV {
   op inv4 : Protocol Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
   op inv5 : Protocol Prin Prin Prin Rand Rand Choice Sid Secret -> Bool
   op inv6 : Protocol Prin Prin Rand Rand Choice Sid Secret -> Bool
-  op inv7 : Protocol Prin Prin Prin Rand Rand Choice Sid Pms -> Bool
-  op inv8 : Protocol Prin Prin Rand Rand Choice Sid Pms -> Bool
+  op inv7 : Protocol Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
+  op inv8 : Protocol Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
   op inv9 : Protocol Prin PubKey -> Bool
   op inv10 : Protocol Prin Prin Rand Choice Sid -> Bool
   op inv11 : Protocol Prin Prin PubKey -> Bool
+  op inv12 : Protocol Prin Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
+  op inv13 : Protocol Prin Prin Prin Rand Rand ListOfChoices Choice Sid Secret PubKey -> Bool
+  op inv14 : Protocol Prin Prin Rand Rand Choice Sid Secret -> Bool
 
 -- CafeOBJ variables
   var P : Protocol
@@ -1304,20 +1309,36 @@ mod INV {
         esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S))) \in cesfin2(nw(P))
         implies
         sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)) .
-  eq inv7(P,A,B,A1,R1,R2,C,I,PMS)
-     = (not(B = intruder) and
-        cf2(A1,A,B,ecfin2(k(A,PMS,R1,R2),cfin2(A,B,I,C,R1,R2,PMS))) \in nw(P)
+  eq inv7(P,A,B,R1,R2,L,C,I,S)
+     = (not(A = intruder) and not(B = intruder) and
+        sf(B,B,A,esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S)))) \in nw(P)
         implies
-        cf2(A,A,B,ecfin2(k(A,PMS,R1,R2),cfin2(A,B,I,C,R1,R2,PMS))) \in nw(P)) .
-  eq inv8(P,A,B,R1,R2,C,I,PMS)
-     = (not(B = intruder) and
-        ecfin2(k(A,PMS,R1,R2),cfin2(A,B,I,C,R1,R2,PMS)) \in cecfin2(nw(P))
+        sh(B,B,A,R2,I,C) \in nw(P)) .
+  eq inv8(P,A,B,R1,R2,L,C,I,S)
+     = (not(A = intruder) and not(B = intruder) and
+        sf(B,B,A,esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S)))) \in nw(P)
         implies
-        cf2(A,A,B,ecfin2(k(A,PMS,R1,R2),cfin2(A,B,I,C,R1,R2,PMS))) \in nw(P)) .
+        ct(B,B,A,cert(B,k(B),sig(ca,B,k(B)))) \in nw(P)) .
   eq inv9(P,A,K) = (sig(ca,A,K) \in csig(nw(P)) implies K = k(A)) .
   eq inv10(P,A,B,R1,C,I) = (sh(B,intruder,A,R1,I,C) \in nw(P) implies B = intruder) .
   eq inv11(P,A,B,K) = (ct(B,intruder,A,cert(intruder,K,sig(ca,intruder,K))) \in nw(P) implies B = intruder) .
-
+  eq inv12(P,A,B,B1,R1,R2,L,C,I,S)
+     = (not(A = intruder) and 
+        sh(B1,B,A,R2,I,C) \in nw(P) and
+        sf(B,B,A,esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S)))) \in nw(P)
+        implies
+        sh(B,B,A,R2,I,C) \in nw(P)) .
+  eq inv13(P,A,B,B1,R1,R2,L,C,I,S,K)
+     = (not(A = intruder) and 
+        ct(B1,B,A,cert(B,K,sig(ca,B,K))) \in nw(P) and
+        sf(B,B,A,esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S)))) \in nw(P)
+        implies
+        ct(B,B,A,cert(B,K,sig(ca,B,K))) \in nw(P)) .
+  eq inv14(P,A,B,R1,R2,C,I,S)
+     = (not(A = intruder) and not(B = intruder) and
+        sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)
+        implies
+        sh2(B,B,A,R2,I,C) \in nw(P)) .
 -- -- arbitrary objects
 --   ops p p' : -> Protocol
 -- -- declare predicates to prove in inductive step
