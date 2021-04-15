@@ -1,0 +1,177 @@
+
+open INV .
+-- arbitrary objects
+    ops p1 p2 : -> Prin .
+    op i1 : -> Sid .
+    op c1 : -> Choice .
+    ops r3 r4 : -> Rand .
+    op pms1 : -> Pms .
+-- assumptions
+    eq pms1 \in cpms(nw(p)) = true .
+--
+    eq c = c1 .
+    eq pms = pms1 .
+    eq a = p1 .
+    eq a1 = intruder .
+    eq b = p2 .
+    eq r1 = r3 .
+    eq r2 = r4 .
+    eq i = i1 .
+    eq (b = intruder) = false .
+    eq (a = intruder) = false .
+    eq (intruder = p1) = false .
+    -- eq intruder = p2 .
+    eq (intruder = p2) = false .
+    eq cf2(intruder,p1,p2,ecfin2(k(p1,pms1,r3,r4),cfin2(p1,p2,i1,c1,r3,r4,pms1))) \in nw(p) = false .
+    eq ecfin2(k(p1,pms1,r3,r4),cfin2(p1,p2,i1,c1,r3,r4,pms1)) \in cecfin2(nw(p)) = false . -- true ok
+    -- red c-fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1) .
+    red inv8(p,a,b,r1,r2,c,i,pms) .
+    red inv7(p,a,b,a1,r1,r2,c,i,pms) .
+    red inv7(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),a,b,a1,r1,r2,c,i,pms) .
+    red inv7(p,a,b,a1,r1,r2,c,i,pms) implies inv7(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),a,b,a1,r1,r2,c,i,pms) .
+close 
+eof
+-- 
+b = p2 and intruder =
+    p1 and r1 = r3 and r2 = r4 and i = i1
+-- 
+eq c = c1 .
+    eq pms = pms1 .
+    eq a = p1 .
+    eq a1 = intruder .
+    eq b = intruder .
+    eq b = p2 .
+    eq r1 = r3 .
+    eq r2 = r4 .
+    eq i = i1 .
+    eq (a = intruder) = false .
+
+open INV .
+-- arbitrary objects
+    ops p1 p2 : -> Prin .
+    op i1 : -> Sid .
+    op c1 : -> Choice .
+    ops r3 r4 : -> Rand .
+    op pms1 : -> Pms .
+-- assumptions
+    eq pms1 \in cpms(nw(p)) = true .
+--
+    eq (b = intruder) = false .
+    eq a = intruder .
+    red inv7(p,a,b,a1,r1,r2,c,i,pms) implies inv7(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),a,b,a1,r1,r2,c,i,pms) .
+close 
+
+open INV .
+-- arbitrary objects
+    ops p1 p2 : -> Prin .
+    op i1 : -> Sid .
+    op c1 : -> Choice .
+    ops r3 r4 : -> Rand .
+    op pms1 : -> Pms .
+-- assumptions
+    eq pms1 \in cpms(nw(p)) = true .
+--
+    eq (b = intruder) = false .
+    eq (a = intruder) = false .
+    
+    eq c = c1 .
+    eq pms = pms1 .
+    eq a = p1 .
+    eq a1 = intruder .
+    eq b = p2 .
+    eq r1 = r3 .
+    eq r2 = r4 .
+    eq i = i1 .
+    eq intruder = p1 .
+    eq intruder = p2 .
+    red inv7(p,a,b,a1,r1,r2,c,i,pms) implies inv7(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),a,b,a1,r1,r2,c,i,pms) .
+close 
+
+open INV .
+-- arbitrary objects
+    ops p1 p2 : -> Prin .
+    op i1 : -> Sid .
+    op c1 : -> Choice .
+    ops r3 r4 : -> Rand .
+    op pms1 : -> Pms .
+-- assumptions
+    eq pms1 \in cpms(nw(p)) = true .
+--
+    eq (b = intruder) = false .
+    eq (a = intruder) = false .
+    
+    eq c = c1 .
+    eq pms = pms1 .
+    eq a = p1 .
+    eq a1 = intruder .
+    eq b = p2 .
+    eq r1 = r3 .
+    eq r2 = r4 .
+    eq i = i1 .
+    eq intruder = p1 .
+    eq (intruder = p2) = false .
+    red inv7(p,a,b,a1,r1,r2,c,i,pms) implies inv7(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),a,b,a1,r1,r2,c,i,pms) .
+close 
+
+open INV .
+-- arbitrary objects
+    ops p1 p2 : -> Prin .
+    op i1 : -> Sid .
+    op c1 : -> Choice .
+    ops r3 r4 : -> Rand .
+    op pms1 : -> Pms .
+-- assumptions
+    eq pms1 \in cpms(nw(p)) = true .
+--
+    eq (b = intruder) = false .
+    eq (a = intruder) = false .
+    
+    eq c = c1 .
+    eq pms = pms1 .
+    eq a = p1 .
+    eq a1 = intruder .
+    eq b = p2 .
+    eq r1 = r3 .
+    eq r2 = r4 .
+    eq i = i1 .
+    eq (intruder = p1) = false .
+    eq ecfin2(k(p1,pms1,r3,r4),cfin2(p1,p2,i1,c1,r3,r4,pms1)) \in cecfin2(nw(p)) = true .
+    red inv8(p,a,b,r1,r2,c,i,pms) implies inv7(p,a,b,a1,r1,r2,c,i,pms) implies inv7(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),a,b,a1,r1,r2,c,i,pms) .
+close 
+
+open INV .
+-- arbitrary objects
+    ops p1 p2 : -> Prin .
+    op i1 : -> Sid .
+    op c1 : -> Choice .
+    ops r3 r4 : -> Rand .
+    op pms1 : -> Pms .
+-- assumptions
+    eq pms1 \in cpms(nw(p)) = true .
+--
+    eq (b = intruder) = false .
+    eq (a = intruder) = false .
+    
+    eq c = c1 .
+    eq pms = pms1 .
+    eq a = p1 .
+    eq a1 = intruder .
+    eq b = p2 .
+    eq r1 = r3 .
+    eq r2 = r4 .
+    eq i = i1 .
+    eq (intruder = p1) = false .
+    eq (intruder = p2) = false .
+    eq ecfin2(k(p1,pms1,r3,r4),cfin2(p1,p2,i1,c1,r3,r4,pms1)) \in cecfin2(nw(p)) = false .
+    eq (a1 = p2) = false .
+    eq (a1 = p1) = false .
+    eq cf2(a1,p1,p2,ecfin2(k(p1,pms1,r3,r4),cfin2(p1,p2,i1,c1,r3,r4,pms1))) \in nw(p) = false .
+    -- eq cf2(p1,p1,p2,ecfin2(k(p1,pms1,r3,r4),cfin2(p1,p2,i1,c1,r3,r4,pms1))) \in nw(p) = false .
+    -- red inv8(p,a,b,r1,r2,c,i,pms) .
+    -- red c-fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1) .
+    -- red inv7(p,a,b,a1,r1,r2,c,i,pms) .
+    -- red inv8(p,a,b,r1,r2,c,i,pms) implies inv7(p,a,b,a1,r1,r2,c,i,pms) implies inv7(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),a,b,a1,r1,r2,c,i,pms) .
+    -- red inv7(p,a,b,a1,r1,r2,c,i,pms) implies inv7(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),a,b,a1,r1,r2,c,i,pms) .
+    red inv7(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),a,b,a1,r1,r2,c,i,pms) .
+close 
+eof
