@@ -2569,7 +2569,7 @@ open INV .
   eq (p1 = intruder) = false .
   eq (p1 = p2) = false .
   eq pms(p1,intruder,s) \in cpms(nw(p)) = true .
-  red inv1(p,pms(p1,p2,s)) implies inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
+  red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
 close
 
 open INV .
@@ -2596,7 +2596,7 @@ open INV .
   eq (p1 = intruder) = false .
   eq (p1 = p2) = false .
   eq pms(p1,intruder,s) \in cpms(nw(p)) = false .
-  red inv1(p,pms(p1,p2,s)) implies inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
+  red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
 close
 
 open INV .
@@ -2673,7 +2673,7 @@ open INV .
   eq (p2 = intruder) = false .
   eq (p1 = intruder) = false .
   eq pms(p1,p2,s) \in cpms(nw(p)) = false .
-  red inv1(p,pms(p1,p2,s)) implies inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
+  red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
 close
 
 open INV .
@@ -2722,7 +2722,7 @@ open INV .
   --
   eq (p1 = intruder) = false .
   eq pms(p1,p2,s) \in cpms(nw(p)) = true .
-  red inv1(p,pms(p1,p2,s)) implies inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
+  red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
 close
 
 open INV .
