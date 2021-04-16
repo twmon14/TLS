@@ -1250,7 +1250,7 @@ mod INV {
   pr(TLS)
 -- arbitrary objects
   op p : -> Protocol
-  ops a b a1 b1 : -> Prin
+  ops a b a1 b1 b2 b3 : -> Prin
   ops r1 r2 : -> Rand
   op l : -> ListOfChoices 
   op c : -> Choice 
@@ -1274,10 +1274,14 @@ mod INV {
   op inv12 : Protocol Prin Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
   op inv13 : Protocol Prin Prin Prin Rand Rand ListOfChoices Choice Sid Secret PubKey -> Bool
   op inv14 : Protocol Prin Prin Rand Rand Choice Sid Secret -> Bool
+  op inv15 : Protocol Prin Prin Rand Choice Sid -> Bool
+  op inv16 : Protocol Prin Prin Prin Rand Rand Choice Sid Secret -> Bool
+  op inv17 : Protocol Prin Prin Prin Prin Prin Rand Rand ListOfChoices Choice Sid Secret PubKey -> Bool
+  op inv18 : Protocol Prin Prin Prin Prin Rand Rand Choice Sid Secret -> Bool
 
 -- CafeOBJ variables
   var P : Protocol
-  vars A A1 B B1 : Prin
+  vars A A1 B B1 B2 B3 : Prin
   vars R1 R2 : Rand
   var L : ListOfChoices
   var C : Choice
@@ -1339,26 +1343,27 @@ mod INV {
         sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)
         implies
         sh2(B,B,A,R2,I,C) \in nw(P)) .
--- -- arbitrary objects
---   ops p p' : -> Protocol
--- -- declare predicates to prove in inductive step
---   op istep1000 : Pms -> Bool
---   op istep1010 : EncPms -> Bool
---   op istep1020 : Prin Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
---   op istep1030 : Prin Prin Rand Rand ListOfChoices Choice Sid Secret -> Bool
---   op istep1040 : Prin Prin Prin Rand Rand Choice Sid Secret -> Bool
---   op istep1050 : Prin Prin Rand Rand Choice Sid Secret -> Bool
---   op istep1060 : Prin Prin Prin Rand Rand Choice Sid Pms -> Bool
---   op istep1070 : Prin Prin Rand Rand Choice Sid Pms -> Bool
-
--- -- define predicates to prove in inductive step
---   eq istep1000(PMS) = inv1(p,PMS) implies inv1(p',PMS) .
---   eq istep1010(EPMS) = inv2(p,EPMS) implies inv2(p',EPMS) .
---   eq istep1020(A,B,B1,R1,R2,L,C,I,S) = inv3(p,A,B,B1,R1,R2,L,C,I,S) implies inv3(p',A,B,B1,R1,R2,L,C,I,S) .
---   eq istep1030(A,B,R1,R2,L,C,I,S) = inv4(p,A,B,R1,R2,L,C,I,S) implies inv4(p',A,B,R1,R2,L,C,I,S) .
---   eq istep1040(A,B,B1,R1,R2,C,I,S) = inv5(p,A,B,B1,R1,R2,C,I,S) implies inv5(p',A,B,B1,R1,R2,C,I,S) .
---   eq istep1050(A,B,R1,R2,C,I,S) = inv6(p,A,B,R1,R2,C,I,S) implies inv6(p',A,B,R1,R2,C,I,S) .
---   eq istep1060(A,B,A1,R1,R2,C,I,PMS) = inv7(p,A,B,A1,R1,R2,C,I,PMS) implies inv7(p',A,B,A1,R1,R2,C,I,PMS) .
---   eq istep1070(A,B,R1,R2,C,I,PMS) = inv8(p,A,B,R1,R2,C,I,PMS) implies inv8(p',A,B,R1,R2,C,I,PMS) .
+  eq inv15(P,A,B,R1,C,I) = (sh2(B,intruder,A,R1,I,C) \in nw(P) implies B = intruder) .
+  eq inv16(P,A,B,B1,R1,R2,C,I,S)
+     = (not(A = intruder) and 
+        sh2(B1,B,A,R2,I,C) \in nw(P) and
+        sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)
+        implies
+        sh2(B,B,A,R2,I,C) \in nw(P)) .
+  eq inv17(P,A,B,B1,B2,B3,R1,R2,L,C,I,S,K)
+     = (not(A = intruder) and
+        sh(B1,B,A,R2,I,C) \in nw(P) and
+        ct(B2,B,A,cert(B,K,sig(ca,B,K))) \in nw(P) and
+        sf(B3,B,A,esfin(k(B,pms(A,B,S),R1,R2),sfin(A,B,I,L,C,R1,R2,pms(A,B,S)))) \in nw(P)
+        implies
+        sh(B,B,A,R2,I,C) \in nw(P) and
+        ct(B,B,A,cert(B,K,sig(ca,B,K))) \in nw(P)) .
+  eq inv18(P,A,B,B1,B2,R1,R2,C,I,S)
+     = (not(A = intruder) and
+        sh2(B1,B,A,R2,I,C) \in nw(P) and
+        sf2(B2,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)
+        implies
+        sh2(B,B,A,R2,I,C) \in nw(P)) .
 
 }
+
