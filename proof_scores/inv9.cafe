@@ -1,9 +1,8 @@
 -- I) Base case
 open INV .
   red inv9(init,a,k) .
-  red inv9(p,a,k) .
 close
-eof
+
 -- II) Inductive cases
 --> 1) cert(p,p2,m1,m2)
 open INV .
