@@ -2671,7 +2671,6 @@ open INV .
   eq (a = intruder) = false .
 
   eq pms(a,b,s) \in cpms(nw(p)) = true .
-
   red inv1(p,pms1) implies inv5(p,a,b,b1,r1,r2,c,i,s) implies inv5(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,r1,r2,c,i,s) .
 close
 
@@ -2768,8 +2767,7 @@ open INV .
   eq (a = intruder) = false .
   eq (b = intruder) = false .
   eq pms(a,b,s) \in cpms(nw(p)) = true .
-
-  red inv1(p,pms1) implies inv5(p,a,b,b1,r1,r2,c,i,s) implies inv5(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,r1,r2,c,i,s) .
+  red inv5(p,a,b,b1,r1,r2,c,i,s) implies inv5(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,r1,r2,c,i,s) .
 close
 
 open INV .
