@@ -1,4 +1,11 @@
 open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -9,6 +16,13 @@ open INV .
 close
 
 open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -19,6 +33,13 @@ open INV .
 close
 
 open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -29,6 +50,13 @@ open INV .
 close
 
 open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .

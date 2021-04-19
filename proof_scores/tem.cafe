@@ -1,4 +1,71 @@
+open INV .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 m4 m5 : -> Msg .
+  op nw10 : -> Network .
+  -- eq m1 \in nw(p) = true .
+  -- eq m2 \in nw(p) = true .
+  -- eq m3 \in nw(p) = true .
+  -- eq m4 \in nw(p) = true .
+  -- eq m5 \in nw(p) = true .
+  eq nw(p) = m1, m2, m3, m4, m5, nw10 .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq ct?(m3) = true .
+  eq kx?(m4) = true .
+  eq cf?(m5) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq crt(m3) = p2 .
+  eq src(m3) = p2 .
+  eq dst(m3) = dst(m2) .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m4) = dst(m2) .
+  eq dst(m4) = p2 .
+  eq (src(m5) = dst(m2)) = false .
+  -- eq (dst(m5) = p2) = false .
+  -- eq choice(m2) \in list(m1) = false .
+  -- eq (cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2)))) = false .
+  -- eq (k(epms(m4)) = k(p2)) = false .
+  -- eq (ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
+  --                     cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
+  -- red c-sfin(p,p2,m1,m2,m3,m4,m5) .
+  red inv8(p,a,b,r1,r2,l,c,i,s) .
+  red inv8(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
+  red inv8(p,a,b,r1,r2,l,c,i,s) implies inv8(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
+close
+eof
+-- assumptions
+  -- eq m1 \in nw(p) = true .
+  -- eq m2 \in nw(p) = true .
+  -- eq m3 \in nw(p) = true .
+  -- eq m4 \in nw(p) = true .
+  -- eq m5 \in nw(p) = true .
+  -- eq ch?(m1) = true .
+  -- eq sh?(m2) = true .
+  -- eq ct?(m3) = true .
+  -- eq kx?(m4) = true .
+  -- eq cf?(m5) = true .
+  -- eq crt(m2) = p2 .
+  -- eq src(m2) = p2 .
+  -- eq crt(m3) = p2 .
+  -- eq src(m3) = p2 .
+  -- eq dst(m3) = dst(m2) .
+  -- eq src(m1) = dst(m2) .
+  -- eq dst(m1) = p2 .
+  -- eq src(m4) = dst(m2) .
+  -- eq dst(m4) = p2 .
+  -- eq src(m5) = dst(m2) .
+  -- eq dst(m5) = p2 .
+  -- eq choice(m2) \in list(m1) = true .
+  -- eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
+  -- eq k(epms(m4)) = k(p2) .
+  -- eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
+  --                     cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
+  -- red inv8(p,a,b,r1,r2,l,c,i,s) implies inv8(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
 
+-- up 
 -- inv8
 --> 24) sfin(p,p2,m1,m2,m3,m4,m5) 
 open INV .

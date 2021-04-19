@@ -1,5 +1,6 @@
 -- I) Base case
 open INV .
+  op epms : -> EncPms .
   red inv2(init,epms) .
 close
 
@@ -7,6 +8,8 @@ close
 --> 1) cert(p,p2,m1,m2)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -25,6 +28,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -42,6 +47,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -58,6 +65,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -73,6 +82,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -87,6 +98,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -100,6 +113,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -112,6 +127,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -123,6 +140,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -133,6 +152,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -143,6 +164,8 @@ close
 --> 2) cfin(p,p1,s1,m1,m2,m3,m4) 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -174,6 +197,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -204,6 +229,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -233,6 +260,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -261,6 +290,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -288,6 +319,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -314,6 +347,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -339,6 +374,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -363,6 +400,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -386,6 +425,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -408,6 +449,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -429,6 +472,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -449,6 +494,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -468,6 +515,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -486,6 +535,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -503,6 +554,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -519,6 +572,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -534,6 +589,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -548,6 +605,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -561,6 +620,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -573,6 +634,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -584,6 +647,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -595,6 +660,8 @@ close
 --> 3) cfin2(p,p1,s1,m1,m2)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -614,6 +681,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -635,6 +704,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -656,6 +727,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -676,6 +749,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -694,6 +769,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -711,6 +788,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -727,6 +806,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -742,6 +823,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -756,6 +839,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -769,6 +854,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -781,6 +868,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -792,6 +881,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -802,6 +893,8 @@ close
 
 --> 4) chello(p,p1,p2,r3,l1)
 open INV .
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op l1 : -> ListOfChoices .
@@ -810,6 +903,8 @@ open INV .
 close
 
 open INV .
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op l1 : -> ListOfChoices .
@@ -820,6 +915,8 @@ close
 --> 5) chello2(p,p1,p2,s1,r3,i1) 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
   op r3 : -> Rand .
@@ -831,6 +928,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
   op r3 : -> Rand .
@@ -843,6 +942,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
   op r3 : -> Rand .
@@ -856,6 +957,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
   op r3 : -> Rand .
@@ -870,6 +973,8 @@ close
 --> 6) compl(p,p1,s1,m1,m2,m3,m4,m5,m6) 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -913,6 +1018,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -956,6 +1063,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -997,6 +1106,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1036,6 +1147,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1074,6 +1187,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1111,6 +1226,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1147,6 +1264,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1182,6 +1301,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1216,6 +1337,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1249,6 +1372,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1281,6 +1406,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1312,6 +1439,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1342,6 +1471,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1371,6 +1502,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1399,6 +1532,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1426,6 +1561,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1452,6 +1589,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1477,6 +1616,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1501,6 +1642,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1524,6 +1667,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1546,6 +1691,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1567,6 +1714,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1587,6 +1736,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1606,6 +1757,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1624,6 +1777,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1641,6 +1796,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1657,6 +1814,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1672,6 +1831,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1686,6 +1847,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1699,6 +1862,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1711,6 +1876,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1722,6 +1889,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1733,6 +1902,8 @@ close
 --> 7) compl2(p,p1,s1,m1,m2,m3,m4)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -1761,6 +1932,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -1795,6 +1968,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -1829,6 +2004,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -1861,6 +2038,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -1891,6 +2070,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -1920,6 +2101,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -1947,6 +2130,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -1973,6 +2158,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -1998,6 +2185,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2022,6 +2211,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2045,6 +2236,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2067,6 +2260,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2088,6 +2283,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2108,6 +2305,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2127,6 +2326,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2145,6 +2346,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2162,6 +2365,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2178,6 +2383,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2193,6 +2400,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2207,6 +2416,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2220,6 +2431,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2232,6 +2445,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2243,6 +2458,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2254,6 +2471,8 @@ close
 --> 8) fakeCert(p,p2,p1,pk,g)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op g : -> Sig .
@@ -2264,6 +2483,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op g : -> Sig .
@@ -2275,6 +2496,8 @@ close
 --> 9) fakeCfin1(p,p1,p2,ecfin1)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op ecfin1 : -> EncCFin .
 -- assumptions
@@ -2284,6 +2507,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op ecfin1 : -> EncCFin .
 -- assumptions
@@ -2294,6 +2519,8 @@ close
 --> 10) fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op l1 : -> ListOfChoices .
@@ -2307,6 +2534,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op l1 : -> ListOfChoices .
@@ -2321,6 +2550,8 @@ close
 --> 11) fakeCfin21(p,p1,p2,ecfin21)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op ecfin21 : -> EncCFin2 .
 -- assumptions
@@ -2330,6 +2561,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op ecfin21 : -> EncCFin2 .
 -- assumptions
@@ -2340,6 +2573,8 @@ close
 --> 12) fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op c1 : -> Choice .
@@ -2352,6 +2587,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op c1 : -> Choice .
@@ -2365,6 +2602,8 @@ close
 --> 13) fakeChello(p,p1,p2,r3,l1) 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op l1 : -> ListOfChoices .
@@ -2374,6 +2613,8 @@ close
 --> 14) fakeChello2(p,p1,p2,r3,i1) 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -2383,28 +2624,32 @@ close
 --> 15) fakeKexch1(p,p1,p2,epms1) 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op epms1 : -> EncPms .
 -- assumptions
   eq epms1 \in cepms(nw(p)) = true .
-
   eq epms = epms1 .
   red inv2(p,epms) implies inv2(fakeKexch1(p,p1,p2,epms1),epms) .
 close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op epms1 : -> EncPms .
 -- assumptions
   eq epms1 \in cepms(nw(p)) = true .
-
   eq (epms = epms1) = false .
   red inv2(p,epms) implies inv2(fakeKexch1(p,p1,p2,epms1),epms) .
 close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op epms1 : -> EncPms .
 -- assumptions
@@ -2415,6 +2660,8 @@ close
 --> 16) fakeKexch2(p,p1,p2,pk,pms1)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op pms1 : -> Pms .
@@ -2428,6 +2675,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op pms1 : -> Pms .
@@ -2441,6 +2690,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op pms1 : -> Pms .
@@ -2453,6 +2704,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op pms1 : -> Pms .
@@ -2464,6 +2717,8 @@ close
 --> 17) fakeSfin1(p,p2,p1,esfin1)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op esfin1 : -> EncSFin .
 -- assumptions
@@ -2473,6 +2728,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op esfin1 : -> EncSFin .
 -- assumptions
@@ -2483,6 +2740,8 @@ close
 --> 18) fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op l1 : -> ListOfChoices .
@@ -2496,6 +2755,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op l1 : -> ListOfChoices .
@@ -2510,6 +2771,8 @@ close
 --> 19) fakeSfin21(p,p2,p1,esfin21)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op esfin21 : -> EncSFin2 .
 -- assumptions
@@ -2519,6 +2782,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op esfin21 : -> EncSFin2 .
 -- assumptions
@@ -2529,6 +2794,8 @@ close
 --> 20) fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op c1 : -> Choice .
@@ -2541,6 +2808,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op c1 : -> Choice .
@@ -2554,6 +2823,8 @@ close
 --> 21) fakeShello(p,p2,p1,r3,i1,c1)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -2564,6 +2835,8 @@ close
 --> 22) fakeShello2(p,p2,p1,r3,i1,c1)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -2574,6 +2847,8 @@ close
 --> 23) kexch(p,p1,s1,m1,m2,m3)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2587,6 +2862,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2616,6 +2893,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2645,6 +2924,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2673,6 +2954,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2702,6 +2985,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2731,6 +3016,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2759,6 +3046,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2784,6 +3073,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2808,6 +3099,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2831,6 +3124,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2853,6 +3148,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2874,6 +3171,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2894,6 +3193,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2913,6 +3214,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2931,6 +3234,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2948,6 +3253,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2964,6 +3271,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2979,6 +3288,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2993,6 +3304,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3005,6 +3318,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3016,6 +3331,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3027,6 +3344,8 @@ close
 --> 24) sfin(p,p2,m1,m2,m3,m4,m5) 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3061,6 +3380,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3095,6 +3416,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3127,6 +3450,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3158,6 +3483,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3188,6 +3515,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3217,6 +3546,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3245,6 +3576,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3272,6 +3605,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3298,6 +3633,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3323,6 +3660,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3347,6 +3686,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3370,6 +3711,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3392,6 +3735,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3413,6 +3758,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3433,6 +3780,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3452,6 +3801,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3470,6 +3821,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3487,6 +3840,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3503,6 +3858,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3518,6 +3875,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3532,6 +3891,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3545,6 +3906,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3557,6 +3920,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3568,6 +3933,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3578,6 +3945,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3588,6 +3957,8 @@ close
 --> 25) sfin2(p,p2,m1,m2,m3)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3610,6 +3981,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3635,6 +4008,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3660,6 +4035,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3683,6 +4060,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3704,6 +4083,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3724,6 +4105,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3743,6 +4126,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3761,6 +4146,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3778,6 +4165,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3794,6 +4183,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3809,6 +4200,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3823,6 +4216,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3836,6 +4231,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3848,6 +4245,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3859,6 +4258,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3869,6 +4270,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3879,6 +4282,8 @@ close
 --> 26) shello(p,p2,r3,i1,c1,m1)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -3891,6 +4296,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -3904,6 +4311,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -3921,6 +4330,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -3938,6 +4349,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -3954,6 +4367,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -3969,6 +4384,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -3984,6 +4401,8 @@ close
 --> 27) shello2(p,p2,r3,m1)
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .
@@ -3994,6 +4413,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .
@@ -4008,6 +4429,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .
@@ -4022,6 +4445,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .
@@ -4035,6 +4460,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .
@@ -4047,6 +4474,8 @@ close
 
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  op epms : -> EncPms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .

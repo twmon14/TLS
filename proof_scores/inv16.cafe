@@ -1,4 +1,10 @@
 open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret . 
 -- assumptions
   eq b = intruder .
   eq b1 = intruder .
@@ -7,6 +13,12 @@ open INV .
 close
 
 open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret . 
 -- assumptions
   eq b = intruder .
   eq (b1 = intruder) = false .
@@ -15,6 +27,12 @@ open INV .
 close
 
 open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret . 
 -- assumptions
   eq (b = intruder) = false .
   eq a = intruder .
@@ -23,6 +41,12 @@ open INV .
 close
 
 open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret . 
 -- assumptions
   eq (b = intruder) = false .
   eq (a = intruder) = false .
