@@ -1364,6 +1364,4 @@ mod INV {
         sf2(B2,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)
         implies
         sh2(B,B,A,R2,I,C) \in nw(P)) .
-
 }
-
