@@ -675,7 +675,7 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,p1,dst(m1),sid(m2)) = none) = true .
+  eq ss(p,p1,dst(m1),sid(m2)) = none .
   red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
 close
 
