@@ -814,7 +814,7 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,p1,dst(m1),sid(m2)) = none) = true .
+  eq ss(p,p1,dst(m1),sid(m2)) = none .
   red inv11(p,a,b,k) implies inv11(cfin2(p,p1,s1,m1,m2),a,b,k) .
 close
 
@@ -1092,7 +1092,7 @@ open INV .
   op i1 : -> Sid .
 -- assumptions
   eq r3 \in ur(p) = false .
-  eq (ss(p,p1,p2,i1) = none) = true .
+  eq ss(p,p1,p2,i1) = none .
   red inv11(p,a,b,k) implies inv11(chello2(p,p1,p2,s1,r3,i1),a,b,k) .
 close
 
@@ -2119,7 +2119,7 @@ open INV .
   eq src(m4) = dst(m1) .
   eq dst(m4) = p1 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,p1,dst(m1),sid(m2)) = none) = true .
+  eq ss(p,p1,dst(m1),sid(m2)) = none .
   red inv11(p,a,b,k) implies inv11(compl2(p,p1,s1,m1,m2,m3,m4),a,b,k) .
 close
 
@@ -4068,7 +4068,7 @@ open INV .
   eq src(m3) = dst(m2) .
   eq dst(m3) = p2 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,dst(m2),p2,sid(m2)) = none) = true .
+  eq ss(p,dst(m2),p2,sid(m2)) = none .
   red inv11(p,a,b,k) implies inv11(sfin2(p,p2,m1,m2,m3),a,b,k) .
 close
 
@@ -4542,7 +4542,7 @@ open INV .
   eq m1 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq dst(m1) = p2 .
-  eq (ss(p,src(m1),p2,sid(m1)) = none) = true .
+  eq ss(p,src(m1),p2,sid(m1)) = none .
   red inv11(p,a,b,k) implies inv11(shello2(p,p2,r3,m1),a,b,k) .
 close
 

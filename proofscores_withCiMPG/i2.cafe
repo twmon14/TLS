@@ -1,0 +1,66 @@
+--> 15) fakeKexch1(p,p1,p2,epms1) 
+open INV .
+  :id(tls)
+-- arbitrary objects
+  op p : -> Protocol .
+  op eps : -> EncPms .
+  ops p1 p2 : -> Prin .
+  op epms1 : -> EncPms .
+-- assumptions
+  eq epms1 \in cepms(nw(p)) = true .
+  eq eps = epms1 .
+  red inv2(p,eps) implies inv2(fakeKexch1(p,p1,p2,epms1),eps) .
+close
+
+open INV .
+  :id(tls)
+-- arbitrary objects
+  op p : -> Protocol .
+  op eps : -> EncPms .
+  ops p1 p2 : -> Prin .
+  op epms1 : -> EncPms .
+-- assumptions
+  eq epms1 \in cepms(nw(p)) = true .
+  eq (eps = epms1) = false .
+  red inv2(p,eps) implies inv2(fakeKexch1(p,p1,p2,epms1),eps) .
+close
+
+open INV .
+  :id(tls)
+-- arbitrary objects
+  op p : -> Protocol .
+  op eps : -> EncPms .
+  ops p1 p2 : -> Prin .
+  op epms1 : -> EncPms .
+-- assumptions
+  eq epms1 \in cepms(nw(p)) = false .
+  red inv2(p,eps) implies inv2(fakeKexch1(p,p1,p2,epms1),eps) .
+close
+
+open INV .
+  :proof(tls)
+close
+
+open INV .
+	:goal{
+		eq [tls :nonexec] : inv2(P:Protocol,E:EncPms)implies inv2(fakeKexch1(P0:Protocol,P:Prin,P0:Prin,E1:EncPms),E0:EncPms) = true .
+	}
+
+	:apply(tc)
+
+	:def csb1 = :ctf [E1@EncPms \in cepms(nw(P0@Protocol)) .]
+
+	:apply(csb1)
+
+	:def csb2 = :ctf {eq E0@EncPms  = E1@EncPms .}
+
+	:apply(csb2)
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+
+close

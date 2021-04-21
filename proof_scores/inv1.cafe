@@ -1,7 +1,7 @@
 -- I) Base case
 open INV .
-  op pms : -> Pms .
-  red inv1(init,pms) .
+  op x -> Pms .
+  red inv1(init,x) .
 close
 
 -- II) Inductive cases
@@ -9,7 +9,7 @@ close
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -23,13 +23,13 @@ open INV .
   eq src(m2) = p2 .
   eq src(m1) = dst(m2) .
   eq choice(m2) \in list(m1) = true .
-  red inv1(p,pms) implies inv1(cert(p,p2,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cert(p,p2,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -42,13 +42,13 @@ open INV .
   eq src(m2) = p2 .
   eq src(m1) = dst(m2) .
   eq choice(m2) \in list(m1) = false .
-  red inv1(p,pms) implies inv1(cert(p,p2,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cert(p,p2,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -60,13 +60,13 @@ open INV .
   eq crt(m2) = p2 .
   eq src(m2) = p2 .
   eq (src(m1) = dst(m2)) = false .
-  red inv1(p,pms) implies inv1(cert(p,p2,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cert(p,p2,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -77,13 +77,13 @@ open INV .
   eq dst(m1) = p2 .
   eq crt(m2) = p2 .
   eq (src(m2) = p2) = false .
-  red inv1(p,pms) implies inv1(cert(p,p2,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cert(p,p2,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -93,13 +93,13 @@ open INV .
   eq sh?(m2) = true .
   eq dst(m1) = p2 .
   eq (crt(m2) = p2) = false .
-  red inv1(p,pms) implies inv1(cert(p,p2,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cert(p,p2,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -108,13 +108,13 @@ open INV .
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq (dst(m1) = p2) = false .
-  red inv1(p,pms) implies inv1(cert(p,p2,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cert(p,p2,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
@@ -122,50 +122,50 @@ open INV .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
   eq sh?(m2) = false .
-  red inv1(p,pms) implies inv1(cert(p,p2,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cert(p,p2,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = false .
-  red inv1(p,pms) implies inv1(cert(p,p2,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cert(p,p2,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(cert(p,p2,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cert(p,p2,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(cert(p,p2,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cert(p,p2,m1,m2),x) .
 close
 
 --> 2) cfin(p,p1,s1,m1,m2,m3,m4) 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -192,13 +192,13 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -224,13 +224,13 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq (epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1))) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -255,13 +255,13 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -285,13 +285,13 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq (server(cert(m3)) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -314,13 +314,13 @@ open INV .
   eq src(m3) = dst(m1) .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -342,13 +342,13 @@ open INV .
   eq dst(m2) = p1 .
   eq src(m3) = dst(m1) .
   eq (dst(m3) = p1) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -369,13 +369,13 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq (src(m3) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -395,13 +395,13 @@ open INV .
   eq dst(m4) = dst(m1) .
   eq src(m2) = dst(m1) .
   eq (dst(m2) = p1) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -420,13 +420,13 @@ open INV .
   eq src(m4) = p1 .
   eq dst(m4) = dst(m1) .
   eq (src(m2) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -444,13 +444,13 @@ open INV .
   eq crt(m4) = p1 .
   eq src(m4) = p1 .
   eq (dst(m4) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -467,13 +467,13 @@ open INV .
   eq src(m1) = p1 .
   eq crt(m4) = p1 .
   eq (src(m4) = p1) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -489,13 +489,13 @@ open INV .
   eq crt(m1) = p1 .
   eq src(m1) = p1 .
   eq (crt(m4) = p1) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -510,13 +510,13 @@ open INV .
   eq kx?(m4) = true .
   eq crt(m1) = p1 .
   eq (src(m1) = p1) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -530,13 +530,13 @@ open INV .
   eq ct?(m3) = true .
   eq kx?(m4) = true .
   eq (crt(m1) = p1) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -549,13 +549,13 @@ open INV .
   eq sh?(m2) = true .
   eq ct?(m3) = true .
   eq kx?(m4) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -567,13 +567,13 @@ open INV .
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq ct?(m3) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -584,13 +584,13 @@ open INV .
   eq m4 \in nw(p) = true .
   eq ch?(m1) = true .
   eq sh?(m2) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -600,13 +600,13 @@ open INV .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = true .
   eq ch?(m1) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -615,13 +615,13 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -629,39 +629,39 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(cfin(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 --> 3) cfin2(p,p1,s1,m1,m2)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -676,13 +676,13 @@ open INV .
   eq dst(m2) = p1 .
   eq sid(m1) = sid(m2) .
   eq ss(p,p1,dst(m1),sid(m2)) = none .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -699,13 +699,13 @@ open INV .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
   eq pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1) .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -722,13 +722,13 @@ open INV .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
   eq (pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1)) = false .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -744,13 +744,13 @@ open INV .
   eq sid(m1) = sid(m2) .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq (choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2)) = false .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -764,13 +764,13 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq (sid(m1) = sid(m2)) = false .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -783,13 +783,13 @@ open INV .
   eq src(m1) = p1 .
   eq src(m2) = dst(m1) .
   eq (dst(m2) = p1) = false .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -801,13 +801,13 @@ open INV .
   eq crt(m1) = p1 .
   eq src(m1) = p1 .
   eq (src(m2) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -818,13 +818,13 @@ open INV .
   eq sh2?(m2) = true .
   eq crt(m1) = p1 .
   eq (src(m1) = p1) = false .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -834,13 +834,13 @@ open INV .
   eq ch2?(m1) = true .
   eq sh2?(m2) = true .
   eq (crt(m1) = p1) = false .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -849,13 +849,13 @@ open INV .
   eq m2 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq sh2?(m2) = false .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
@@ -863,87 +863,87 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch2?(m1) = false .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(cfin2(p,p1,s1,m1,m2),pms) .
+  red inv1(p,x) implies inv1(cfin2(p,p1,s1,m1,m2),x) .
 close
 
 --> 4) chello(p,p1,p2,r3,l1)
 open INV .
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op l1 : -> ListOfChoices .
   eq (r3 \in ur(p)) = true .
-  red inv1(p,pms) implies inv1(chello(p,p1,p2,r3,l1),pms) .
+  red inv1(p,x) implies inv1(chello(p,p1,p2,r3,l1),x) .
 close
 
 open INV .
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op l1 : -> ListOfChoices .
   eq (r3 \in ur(p)) = false .
-  red inv1(p,pms) implies inv1(chello(p,p1,p2,r3,l1),pms) .
+  red inv1(p,x) implies inv1(chello(p,p1,p2,r3,l1),x) .
 close
 
 --> 5) chello2(p,p1,p2,s1,r3,i1) 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
   op r3 : -> Rand .
   op i1 : -> Sid .
 -- assumptions
   eq r3 \in ur(p) = true .
-  red inv1(p,pms) implies inv1(chello2(p,p1,p2,s1,r3,i1),pms) .
+  red inv1(p,x) implies inv1(chello2(p,p1,p2,s1,r3,i1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
   op r3 : -> Rand .
   op i1 : -> Sid .
 -- assumptions
   eq r3 \in ur(p) = false .
-  eq (ss(p,p1,p2,i1) = none) = true .
-  red inv1(p,pms) implies inv1(chello2(p,p1,p2,s1,r3,i1),pms) .
+  eq ss(p,p1,p2,i1) = none .
+  red inv1(p,x) implies inv1(chello2(p,p1,p2,s1,r3,i1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
   op r3 : -> Rand .
@@ -952,13 +952,13 @@ open INV .
   eq r3 \in ur(p) = false .
   eq (ss(p,p1,p2,i1) = none) = false .
   eq pms(ss(p,p1,p2,i1)) = pms(p1,p2,s1) .
-  red inv1(p,pms) implies inv1(chello2(p,p1,p2,s1,r3,i1),pms) .
+  red inv1(p,x) implies inv1(chello2(p,p1,p2,s1,r3,i1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
   op r3 : -> Rand .
@@ -967,14 +967,14 @@ open INV .
   eq r3 \in ur(p) = false .
   eq (ss(p,p1,p2,i1) = none) = false .
   eq (pms(ss(p,p1,p2,i1)) = pms(p1,p2,s1)) = false .
-  red inv1(p,pms) implies inv1(chello2(p,p1,p2,s1,r3,i1),pms) .
+  red inv1(p,x) implies inv1(chello2(p,p1,p2,s1,r3,i1),x) .
 close
 
 --> 6) compl(p,p1,s1,m1,m2,m3,m4,m5,m6) 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1013,13 +1013,13 @@ open INV .
                       cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
   eq esfin(m6) = esfin(k(dst(m1),pms(epms(m4)),rand(m1),rand(m2)),
                       sfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1058,13 +1058,13 @@ open INV .
                       cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
   eq (esfin(m6) = esfin(k(dst(m1),pms(epms(m4)),rand(m1),rand(m2)),
                       sfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1101,13 +1101,13 @@ open INV .
   eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
   eq (ecfin(m5) = ecfin(k(p1,pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1142,13 +1142,13 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq (epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1))) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1182,13 +1182,13 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1221,13 +1221,13 @@ open INV .
   eq dst(m6) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq (server(cert(m3)) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1259,13 +1259,13 @@ open INV .
   eq src(m6) = dst(m1) .
   eq dst(m6) = p1 .
   eq choice(m2) \in list(m1) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1296,13 +1296,13 @@ open INV .
   eq dst(m3) = p1 .
   eq src(m6) = dst(m1) .
   eq (dst(m6) = p1) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1332,13 +1332,13 @@ open INV .
   eq src(m3) = dst(m1) .
   eq dst(m3) = p1 .
   eq (src(m6) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1367,13 +1367,13 @@ open INV .
   eq dst(m2) = p1 .
   eq src(m3) = dst(m1) .
   eq (dst(m3) = p1) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1401,13 +1401,13 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq (src(m3) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1434,13 +1434,13 @@ open INV .
   eq dst(m5) = dst(m1) .
   eq src(m2) = dst(m1) .
   eq (dst(m2) = p1) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1466,13 +1466,13 @@ open INV .
   eq src(m5) = p1 .
   eq dst(m5) = dst(m1) .
   eq (src(m2) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1497,13 +1497,13 @@ open INV .
   eq crt(m5) = p1 .
   eq src(m5) = p1 .
   eq (dst(m5) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1527,13 +1527,13 @@ open INV .
   eq dst(m4) = dst(m1) .
   eq crt(m5) = p1 .
   eq (src(m5) = p1) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1556,13 +1556,13 @@ open INV .
   eq src(m4) = p1 .
   eq dst(m4) = dst(m1) .
   eq (crt(m5) = p1) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1584,13 +1584,13 @@ open INV .
   eq crt(m4) = p1 .
   eq src(m4) = p1 .
   eq (dst(m4) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1611,13 +1611,13 @@ open INV .
   eq src(m1) = p1 .
   eq crt(m4) = p1 .
   eq (src(m4) = p1) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1637,13 +1637,13 @@ open INV .
   eq crt(m1) = p1 .
   eq src(m1) = p1 .
   eq (crt(m4) = p1) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1662,13 +1662,13 @@ open INV .
   eq sf?(m6) = true .
   eq crt(m1) = p1 .
   eq (src(m1) = p1) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1686,13 +1686,13 @@ open INV .
   eq cf?(m5) = true .
   eq sf?(m6) = true .
   eq (crt(m1) = p1) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1709,13 +1709,13 @@ open INV .
   eq kx?(m4) = true .
   eq cf?(m5) = true .
   eq sf?(m6) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1731,13 +1731,13 @@ open INV .
   eq ct?(m3) = true .
   eq kx?(m4) = true .
   eq cf?(m5) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1752,13 +1752,13 @@ open INV .
   eq sh?(m2) = true .
   eq ct?(m3) = true .
   eq kx?(m4) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1772,13 +1772,13 @@ open INV .
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq ct?(m3) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1791,13 +1791,13 @@ open INV .
   eq m6 \in nw(p) = true .
   eq ch?(m1) = true .
   eq sh?(m2) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1809,13 +1809,13 @@ open INV .
   eq m5 \in nw(p) = true .
   eq m6 \in nw(p) = true .
   eq ch?(m1) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1826,13 +1826,13 @@ open INV .
   eq m4 \in nw(p) = true .
   eq m5 \in nw(p) = true .
   eq m6 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1842,13 +1842,13 @@ open INV .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = true .
   eq m5 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1857,13 +1857,13 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
@@ -1871,39 +1871,39 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),pms) .
+  red inv1(p,x) implies inv1(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),x) .
 close
 
 --> 7) compl2(p,p1,s1,m1,m2,m3,m4)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -1926,14 +1926,14 @@ open INV .
   eq src(m4) = dst(m1) .
   eq dst(m4) = p1 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,p1,dst(m1),sid(m2)) = none) = true .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  eq ss(p,p1,dst(m1),sid(m2)) = none .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -1963,13 +1963,13 @@ open INV .
                       cfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1))) .
   eq esfin2(m4) = esfin2(k(dst(m1),pms(p1,dst(m1),s1),rand(m1),rand(m2)),
                         sfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1))) .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -1999,13 +1999,13 @@ open INV .
                       cfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1))) .
   eq (esfin2(m4) = esfin2(k(dst(m1),pms(p1,dst(m1),s1),rand(m1),rand(m2)),
                         sfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1)))) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2033,13 +2033,13 @@ open INV .
   eq pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1) .
   eq (ecfin2(m3) = ecfin2(k(p1,pms(p1,dst(m1),s1),rand(m1),rand(m2)),
                       cfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1)))) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2065,13 +2065,13 @@ open INV .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
   eq (pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1)) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2096,13 +2096,13 @@ open INV .
   eq sid(m1) = sid(m2) .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq (choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2)) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2125,13 +2125,13 @@ open INV .
   eq src(m4) = dst(m1) .
   eq dst(m4) = p1 .
   eq (sid(m1) = sid(m2)) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2153,13 +2153,13 @@ open INV .
   eq dst(m2) = p1 .
   eq src(m4) = dst(m1) .
   eq (dst(m4) = p1) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2180,13 +2180,13 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq (src(m4) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2206,13 +2206,13 @@ open INV .
   eq dst(m3) = dst(m1) .
   eq src(m2) = dst(m1) .
   eq (dst(m2) = p1) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2231,13 +2231,13 @@ open INV .
   eq src(m3) = p1 .
   eq dst(m3) = dst(m1) .
   eq (src(m2) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2255,13 +2255,13 @@ open INV .
   eq crt(m3) = p1 .
   eq src(m3) = p1 .
   eq (dst(m3) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2278,13 +2278,13 @@ open INV .
   eq src(m1) = p1 .
   eq crt(m3) = p1 .
   eq (src(m3) = p1) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2300,13 +2300,13 @@ open INV .
   eq crt(m1) = p1 .
   eq src(m1) = p1 .
   eq (crt(m3) = p1) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2321,13 +2321,13 @@ open INV .
   eq sf2?(m4) = true .
   eq crt(m1) = p1 .
   eq (src(m1) = p1) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2341,13 +2341,13 @@ open INV .
   eq cf2?(m3) = true .
   eq sf2?(m4) = true .
   eq (crt(m1) = p1) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2360,13 +2360,13 @@ open INV .
   eq sh2?(m2) = true .
   eq cf2?(m3) = true .
   eq sf2?(m4) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2378,13 +2378,13 @@ open INV .
   eq ch2?(m1) = true .
   eq sh2?(m2) = true .
   eq cf2?(m3) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2395,13 +2395,13 @@ open INV .
   eq m4 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq sh2?(m2) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2411,13 +2411,13 @@ open INV .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = true .
   eq ch2?(m1) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2426,13 +2426,13 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
@@ -2440,87 +2440,87 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),pms) .
+  red inv1(p,x) implies inv1(compl2(p,p1,s1,m1,m2,m3,m4),x) .
 close
 
 --> 8) fakeCert(p,p2,p1,pk,g)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op g : -> Sig .
 -- assumptions
   eq g \in csig(nw(p)) = true .
-  red inv1(p,pms) implies inv1(fakeCert(p,p2,p1,pk,g),pms) .
+  red inv1(p,x) implies inv1(fakeCert(p,p2,p1,pk,g),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op g : -> Sig .
 -- assumptions
   eq g \in csig(nw(p)) = false .
-  red inv1(p,pms) implies inv1(fakeCert(p,p2,p1,pk,g),pms) .
+  red inv1(p,x) implies inv1(fakeCert(p,p2,p1,pk,g),x) .
 close
 
 --> 9) fakeCfin1(p,p1,p2,ecfin1)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op ecfin1 : -> EncCFin .
 -- assumptions
   eq ecfin1 \in cecfin(nw(p)) = true .
-  red inv1(p,pms) implies inv1(fakeCfin1(p,p1,p2,ecfin1),pms) .
+  red inv1(p,x) implies inv1(fakeCfin1(p,p1,p2,ecfin1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op ecfin1 : -> EncCFin .
 -- assumptions
   eq ecfin1 \in cecfin(nw(p)) = false .
-  red inv1(p,pms) implies inv1(fakeCfin1(p,p1,p2,ecfin1),pms) .
+  red inv1(p,x) implies inv1(fakeCfin1(p,p1,p2,ecfin1),x) .
 close
 
 --> 10) fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op l1 : -> ListOfChoices .
@@ -2529,13 +2529,13 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = true .
-  red inv1(p,pms) implies inv1(fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1),pms) .
+  red inv1(p,x) implies inv1(fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op l1 : -> ListOfChoices .
@@ -2544,37 +2544,37 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = false .
-  red inv1(p,pms) implies inv1(fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1),pms) .
+  red inv1(p,x) implies inv1(fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1),x) .
 close
 
 --> 11) fakeCfin21(p,p1,p2,ecfin21)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op ecfin21 : -> EncCFin2 .
 -- assumptions
   eq ecfin21 \in cecfin2(nw(p)) = true .
-  red inv1(p,pms) implies inv1(fakeCfin21(p,p1,p2,ecfin21),pms) .
+  red inv1(p,x) implies inv1(fakeCfin21(p,p1,p2,ecfin21),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op ecfin21 : -> EncCFin2 .
 -- assumptions
   eq ecfin21 \in cecfin2(nw(p)) = false .
-  red inv1(p,pms) implies inv1(fakeCfin21(p,p1,p2,ecfin21),pms) .
+  red inv1(p,x) implies inv1(fakeCfin21(p,p1,p2,ecfin21),x) .
 close
 
 --> 12) fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op c1 : -> Choice .
@@ -2582,13 +2582,13 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = true .
-  red inv1(p,pms) implies inv1(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),pms) .
+  red inv1(p,x) implies inv1(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op c1 : -> Choice .
@@ -2596,153 +2596,153 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = false .
-  red inv1(p,pms) implies inv1(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),pms) .
+  red inv1(p,x) implies inv1(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),x) .
 close
 
 --> 13) fakeChello(p,p1,p2,r3,l1) 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op l1 : -> ListOfChoices .
-  red inv1(p,pms) implies inv1(fakeChello(p,p1,p2,r3,l1),pms) .
+  red inv1(p,x) implies inv1(fakeChello(p,p1,p2,r3,l1),x) .
 close
 
 --> 14) fakeChello2(p,p1,p2,r3,i1) 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
-  red inv1(p,pms) implies inv1(fakeChello2(p,p1,p2,r3,i1),pms) .
+  red inv1(p,x) implies inv1(fakeChello2(p,p1,p2,r3,i1),x) .
 close
 
 --> 15) fakeKexch1(p,p1,p2,epms1) 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op epms1 : -> EncPms .
 -- assumptions
   eq epms1 \in cepms(nw(p)) = true .
 
-  eq pms(epms1) = pms . 
+  eq pms(epms1) = x . 
   eq owner(k(epms1)) = intruder .
-  red inv2(p,epms1) implies inv1(p,pms) implies inv1(fakeKexch1(p,p1,p2,epms1),pms) .
+  red inv2(p,epms1) implies inv1(p,x) implies inv1(fakeKexch1(p,p1,p2,epms1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op epms1 : -> EncPms .
 -- assumptions
   eq epms1 \in cepms(nw(p)) = true .
 
-  eq pms(epms1) = pms . 
+  eq pms(epms1) = x . 
   eq (owner(k(epms1)) = intruder) = false .
-  red inv1(p,pms) implies inv1(fakeKexch1(p,p1,p2,epms1),pms) .
+  red inv1(p,x) implies inv1(fakeKexch1(p,p1,p2,epms1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op epms1 : -> EncPms .
 -- assumptions
   eq epms1 \in cepms(nw(p)) = true .
 
-  eq (pms(epms1) = pms) = false . 
-  red inv1(p,pms) implies inv1(fakeKexch1(p,p1,p2,epms1),pms) .
+  eq (pms(epms1) = x) = false . 
+  red inv1(p,x) implies inv1(fakeKexch1(p,p1,p2,epms1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op epms1 : -> EncPms .
 -- assumptions
   eq epms1 \in cepms(nw(p)) = false .
-  red inv1(p,pms) implies inv1(fakeKexch1(p,p1,p2,epms1),pms) .
+  red inv1(p,x) implies inv1(fakeKexch1(p,p1,p2,epms1),x) .
 close
 
 --> 16) fakeKexch2(p,p1,p2,pk,pms1)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = true .
 
-  eq pms = pms1 .
-  red inv1(p,pms) implies inv1(fakeKexch2(p,p1,p2,pk,pms1),pms) .
+  eq x = pms1 .
+  red inv1(p,x) implies inv1(fakeKexch2(p,p1,p2,pk,pms1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = true .
 
-  eq (pms = pms1) = false .
-  red inv1(p,pms) implies inv1(fakeKexch2(p,p1,p2,pk,pms1),pms) .
+  eq (x = pms1) = false .
+  red inv1(p,x) implies inv1(fakeKexch2(p,p1,p2,pk,pms1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = false .
-  red inv1(p,pms) implies inv1(fakeKexch2(p,p1,p2,pk,pms1),pms) .
+  red inv1(p,x) implies inv1(fakeKexch2(p,p1,p2,pk,pms1),x) .
 close
 
 --> 17) fakeSfin1(p,p2,p1,esfin1)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op esfin1 : -> EncSFin .
 -- assumptions
   eq esfin1 \in cesfin(nw(p)) = true .
-  red inv1(p,pms) implies inv1(fakeSfin1(p,p2,p1,esfin1),pms) .
+  red inv1(p,x) implies inv1(fakeSfin1(p,p2,p1,esfin1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op esfin1 : -> EncSFin .
 -- assumptions
   eq esfin1 \in cesfin(nw(p)) = false .
-  red inv1(p,pms) implies inv1(fakeSfin1(p,p2,p1,esfin1),pms) .
+  red inv1(p,x) implies inv1(fakeSfin1(p,p2,p1,esfin1),x) .
 close
 
 --> 18) fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op l1 : -> ListOfChoices .
@@ -2751,13 +2751,13 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = true .
-  red inv1(p,pms) implies inv1(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),pms) .
+  red inv1(p,x) implies inv1(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op l1 : -> ListOfChoices .
@@ -2766,37 +2766,37 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = false .
-  red inv1(p,pms) implies inv1(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),pms) .
+  red inv1(p,x) implies inv1(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),x) .
 close
 
 --> 19) fakeSfin21(p,p2,p1,esfin21)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op esfin21 : -> EncSFin2 .
 -- assumptions
   eq esfin21 \in cesfin2(nw(p)) = true .
-  red inv1(p,pms) implies inv1(fakeSfin21(p,p2,p1,esfin21),pms) .
+  red inv1(p,x) implies inv1(fakeSfin21(p,p2,p1,esfin21),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op esfin21 : -> EncSFin2 .
 -- assumptions
   eq esfin21 \in cesfin2(nw(p)) = false .
-  red inv1(p,pms) implies inv1(fakeSfin21(p,p2,p1,esfin21),pms) .
+  red inv1(p,x) implies inv1(fakeSfin21(p,p2,p1,esfin21),x) .
 close
 
 --> 20) fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op c1 : -> Choice .
@@ -2804,13 +2804,13 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = true .
-  red inv1(p,pms) implies inv1(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),pms) .
+  red inv1(p,x) implies inv1(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
   op c1 : -> Choice .
@@ -2818,38 +2818,38 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = false .
-  red inv1(p,pms) implies inv1(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),pms) .
+  red inv1(p,x) implies inv1(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),x) .
 close
 
 --> 21) fakeShello(p,p2,p1,r3,i1,c1)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
   op c1 : -> Choice .
-  red inv1(p,pms) implies inv1(fakeShello(p,p2,p1,r3,i1,c1),pms) .
+  red inv1(p,x) implies inv1(fakeShello(p,p2,p1,r3,i1,c1),x) .
 close
 
 --> 22) fakeShello2(p,p2,p1,r3,i1,c1)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
   op c1 : -> Choice .
-  red inv1(p,pms) implies inv1(fakeShello2(p,p2,p1,r3,i1,c1),pms) .
+  red inv1(p,x) implies inv1(fakeShello2(p,p2,p1,r3,i1,c1),x) .
 close
 
 --> 23) kexch(p,p1,s1,m1,m2,m3)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2858,13 +2858,13 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq s1 \in us(p) = true .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2887,14 +2887,14 @@ open INV .
   eq dst(m1) = intruder .
   eq sig(ca,intruder,pubkey(cert(m3))) = sig(cert(m3)) .
 --
-  eq pms = pms(p1,intruder,s1) .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  eq x = pms(p1,intruder,s1) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2917,14 +2917,14 @@ open INV .
   eq dst(m1) = intruder .
   eq sig(ca,intruder,pubkey(cert(m3))) = sig(cert(m3)) .
 --
-  eq (pms = pms(p1,intruder,s1)) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  eq (x = pms(p1,intruder,s1)) = false .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2947,13 +2947,13 @@ open INV .
   eq dst(m1) = intruder .
   eq (sig(ca,intruder,pubkey(cert(m3))) = sig(cert(m3))) = false .
 --
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -2977,13 +2977,13 @@ open INV .
   eq pubkey(cert(m3)) = k(dst(m1)) .
   eq sig(ca,dst(m1),k(dst(m1))) = sig(cert(m3)) .
 --
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3007,13 +3007,13 @@ open INV .
   eq pubkey(cert(m3)) = k(dst(m1)) .
   eq (sig(ca,dst(m1),k(dst(m1))) = sig(cert(m3))) = false .
 --
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3038,13 +3038,13 @@ open INV .
   eq sig(ca,dst(m1),pubkey(cert(m3))) = sig(cert(m3)) .
 --
   red inv9(p,dst(m1),pubkey(cert(m3))) 
-    implies inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+    implies inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3067,13 +3067,13 @@ open INV .
   eq (dst(m1) = intruder) = false .
   eq (pubkey(cert(m3)) = k(dst(m1))) = false .
   eq (sig(ca,dst(m1),pubkey(cert(m3))) = sig(cert(m3))) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3093,13 +3093,13 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq (server(cert(m3)) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3118,13 +3118,13 @@ open INV .
   eq src(m3) = dst(m1) .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3142,13 +3142,13 @@ open INV .
   eq dst(m2) = p1 .
   eq src(m3) = dst(m1) .
   eq (dst(m3) = p1) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3165,13 +3165,13 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq (src(m3) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3187,13 +3187,13 @@ open INV .
   eq src(m1) = p1 .
   eq src(m2) = dst(m1) .
   eq (dst(m2) = p1) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3208,13 +3208,13 @@ open INV .
   eq crt(m1) = p1 .
   eq src(m1) = p1 .
   eq (src(m2) = dst(m1)) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3228,13 +3228,13 @@ open INV .
   eq ct?(m3) = true .
   eq crt(m1) = p1 .
   eq (src(m1) = p1) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3247,13 +3247,13 @@ open INV .
   eq sh?(m2) = true .
   eq ct?(m3) = true .
   eq (crt(m1) = p1) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3265,13 +3265,13 @@ open INV .
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq ct?(m3) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3282,13 +3282,13 @@ open INV .
   eq s1 \in us(p) = false .
   eq ch?(m1) = true .
   eq sh?(m2) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3298,13 +3298,13 @@ open INV .
   eq m3 \in nw(p) = true .
   eq s1 \in us(p) = false .
   eq ch?(m1) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
@@ -3312,39 +3312,39 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(kexch(p,p1,s1,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
 --> 24) sfin(p,p2,m1,m2,m3,m4,m5) 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3374,13 +3374,13 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3410,13 +3410,13 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq (ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3444,13 +3444,13 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
   eq (k(epms(m4)) = k(p2)) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3477,13 +3477,13 @@ open INV .
   eq dst(m5) = p2 .
   eq choice(m2) \in list(m1) = true .
   eq (cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2)))) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3509,13 +3509,13 @@ open INV .
   eq src(m5) = dst(m2) .
   eq dst(m5) = p2 .
   eq choice(m2) \in list(m1) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3540,13 +3540,13 @@ open INV .
   eq dst(m4) = p2 .
   eq src(m5) = dst(m2) .
   eq (dst(m5) = p2) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3570,13 +3570,13 @@ open INV .
   eq src(m4) = dst(m2) .
   eq dst(m4) = p2 .
   eq (src(m5) = dst(m2)) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3599,13 +3599,13 @@ open INV .
   eq dst(m1) = p2 .
   eq src(m4) = dst(m2) .
   eq (dst(m4) = p2) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3627,13 +3627,13 @@ open INV .
   eq src(m1) = dst(m2) .
   eq dst(m1) = p2 .
   eq (src(m4) = dst(m2)) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3654,13 +3654,13 @@ open INV .
   eq dst(m3) = dst(m2) .
   eq src(m1) = dst(m2) .
   eq (dst(m1) = p2) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3680,13 +3680,13 @@ open INV .
   eq src(m3) = p2 .
   eq dst(m3) = dst(m2) .
   eq (src(m1) = dst(m2)) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3705,13 +3705,13 @@ open INV .
   eq crt(m3) = p2 .
   eq src(m3) = p2 .
   eq (dst(m3) = dst(m2)) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3729,13 +3729,13 @@ open INV .
   eq src(m2) = p2 .
   eq crt(m3) = p2 .
   eq (src(m3) = p2) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3752,13 +3752,13 @@ open INV .
   eq crt(m2) = p2 .
   eq src(m2) = p2 .
   eq (crt(m3) = p2) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3774,13 +3774,13 @@ open INV .
   eq cf?(m5) = true .
   eq crt(m2) = p2 .
   eq (src(m2) = p2) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3795,13 +3795,13 @@ open INV .
   eq kx?(m4) = true .
   eq cf?(m5) = true .
   eq (crt(m2) = p2) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3815,13 +3815,13 @@ open INV .
   eq ct?(m3) = true .
   eq kx?(m4) = true .
   eq cf?(m5) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3834,13 +3834,13 @@ open INV .
   eq sh?(m2) = true .
   eq ct?(m3) = true .
   eq kx?(m4) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3852,13 +3852,13 @@ open INV .
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq ct?(m3) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3869,13 +3869,13 @@ open INV .
   eq m5 \in nw(p) = true .
   eq ch?(m1) = true .
   eq sh?(m2) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3885,13 +3885,13 @@ open INV .
   eq m4 \in nw(p) = true .
   eq m5 \in nw(p) = true .
   eq ch?(m1) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3900,13 +3900,13 @@ open INV .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = true .
   eq m5 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
@@ -3914,50 +3914,50 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),pms) .
+  red inv1(p,x) implies inv1(sfin(p,p2,m1,m2,m3,m4,m5),x) .
 close
 
 --> 25) sfin2(p,p2,m1,m2,m3)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -3974,14 +3974,14 @@ open INV .
   eq src(m3) = dst(m2) .
   eq dst(m3) = p2 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,dst(m2),p2,sid(m2)) = none) = true .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  eq ss(p,dst(m2),p2,sid(m2)) = none .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4002,13 +4002,13 @@ open INV .
   eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
   eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4029,13 +4029,13 @@ open INV .
   eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
   eq (ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2)))))) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4054,13 +4054,13 @@ open INV .
   eq sid(m1) = sid(m2) .
   eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
   eq (choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2)) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4077,13 +4077,13 @@ open INV .
   eq src(m3) = dst(m2) .
   eq dst(m3) = p2 .
   eq (sid(m1) = sid(m2)) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4099,13 +4099,13 @@ open INV .
   eq dst(m1) = p2 .
   eq src(m3) = dst(m2) .
   eq (dst(m3) = p2) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4120,13 +4120,13 @@ open INV .
   eq src(m1) = dst(m2) .
   eq dst(m1) = p2 .
   eq (src(m3) = dst(m2)) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4140,13 +4140,13 @@ open INV .
   eq src(m2) = p2 .
   eq src(m1) = dst(m2) .
   eq (dst(m1) = p2) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4159,13 +4159,13 @@ open INV .
   eq crt(m2) = p2 .
   eq src(m2) = p2 .
   eq (src(m1) = dst(m2)) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4177,13 +4177,13 @@ open INV .
   eq cf2?(m3) = true .
   eq crt(m2) = p2 .
   eq (src(m2) = p2) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4194,13 +4194,13 @@ open INV .
   eq sh2?(m2) = true .
   eq cf2?(m3) = true .
   eq (crt(m2) = p2) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4210,13 +4210,13 @@ open INV .
   eq ch2?(m1) = true .
   eq sh2?(m2) = true .
   eq cf2?(m3) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4225,13 +4225,13 @@ open INV .
   eq m3 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq sh2?(m2) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
@@ -4239,50 +4239,50 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq ch2?(m1) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(sfin2(p,p2,m1,m2,m3),pms) .
+  red inv1(p,x) implies inv1(sfin2(p,p2,m1,m2,m3),x) .
 close
 
 --> 26) shello(p,p2,r3,i1,c1,m1)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -4290,13 +4290,13 @@ open INV .
   op m1 : -> Msg .
 -- assumptions
   eq r3 \in ur(p) = true .
-  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+  red inv1(p,x) implies inv1(shello(p,p2,r3,i1,c1,m1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -4305,13 +4305,13 @@ open INV .
 -- assumptions
   eq r3 \in ur(p) = false .
   eq i1 \in ui(p) = true .
-  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+  red inv1(p,x) implies inv1(shello(p,p2,r3,i1,c1,m1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -4324,13 +4324,13 @@ open INV .
   eq ch?(m1) = true .
   eq dst(m1) = p2 .
   eq c1 \in list(m1) = true .
-  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+  red inv1(p,x) implies inv1(shello(p,p2,r3,i1,c1,m1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -4343,13 +4343,13 @@ open INV .
   eq ch?(m1) = true .
   eq dst(m1) = p2 .
   eq c1 \in list(m1) = false .
-  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+  red inv1(p,x) implies inv1(shello(p,p2,r3,i1,c1,m1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -4361,13 +4361,13 @@ open INV .
   eq m1 \in nw(p) = true .
   eq ch?(m1) = true .
   eq (dst(m1) = p2) = false .
-  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+  red inv1(p,x) implies inv1(shello(p,p2,r3,i1,c1,m1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -4378,13 +4378,13 @@ open INV .
   eq i1 \in ui(p) = false .
   eq m1 \in nw(p) = true .
   eq ch?(m1) = false .
-  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+  red inv1(p,x) implies inv1(shello(p,p2,r3,i1,c1,m1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
@@ -4394,26 +4394,26 @@ open INV .
   eq r3 \in ur(p) = false .
   eq i1 \in ui(p) = false .
   eq m1 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(shello(p,p2,r3,i1,c1,m1),pms) .
+  red inv1(p,x) implies inv1(shello(p,p2,r3,i1,c1,m1),x) .
 close
 
 --> 27) shello2(p,p2,r3,m1)
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .
 -- assumptions
   eq r3 \in ur(p) = true .
-  red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
+  red inv1(p,x) implies inv1(shello2(p,p2,r3,m1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .
@@ -4422,14 +4422,14 @@ open INV .
   eq m1 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq dst(m1) = p2 .
-  eq (ss(p,src(m1),p2,sid(m1)) = none) = true .
-  red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
+  eq ss(p,src(m1),p2,sid(m1)) = none .
+  red inv1(p,x) implies inv1(shello2(p,p2,r3,m1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .
@@ -4439,13 +4439,13 @@ open INV .
   eq ch2?(m1) = true .
   eq dst(m1) = p2 .
   eq (ss(p,src(m1),p2,sid(m1)) = none) = false .
-  red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
+  red inv1(p,x) implies inv1(shello2(p,p2,r3,m1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .
@@ -4454,13 +4454,13 @@ open INV .
   eq m1 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq (dst(m1) = p2) = false .
-  red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
+  red inv1(p,x) implies inv1(shello2(p,p2,r3,m1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .
@@ -4468,20 +4468,20 @@ open INV .
   eq r3 \in ur(p) = false .
   eq m1 \in nw(p) = true .
   eq ch2?(m1) = false .
-  red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
+  red inv1(p,x) implies inv1(shello2(p,p2,r3,m1),x) .
 close
 
 open INV .
 -- arbitrary objects
   op p : -> Protocol .
-  op pms : -> Pms .
+  op x -> Pms .
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .
 -- assumptions
   eq r3 \in ur(p) = false .
   eq m1 \in nw(p) = false .
-  red inv1(p,pms) implies inv1(shello2(p,p2,r3,m1),pms) .
+  red inv1(p,x) implies inv1(shello2(p,p2,r3,m1),x) .
 close
 
 -- Q.E.D.

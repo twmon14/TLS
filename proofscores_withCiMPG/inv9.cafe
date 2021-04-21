@@ -1,13 +1,11 @@
--- I) Base case
-open INV .
- :id(tls)
-  red inv9(init,a,k) .
-close
 
 -- II) Inductive cases
 --> 1) cert(p,p2,m1,m2)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -23,13 +21,16 @@ open INV .
   eq src(m1) = dst(m2) .
   eq choice(m2) \in list(m1) = true .
 
-  eq a = p2 .
-  eq k = k(p2) .  
-  red inv9(p,a,k) implies inv9(cert(p,p2,m1,m2),a,k) .
+  eq t = p2 .
+  eq pk = k(p2) .  
+  red inv9(p,t,pk) implies inv9(cert(p,p2,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -45,13 +46,16 @@ open INV .
   eq src(m1) = dst(m2) .
   eq choice(m2) \in list(m1) = true .
 
-  eq a = p2 .
-  eq (k = k(p2)) = false .
-  red inv9(p,a,k) implies inv9(cert(p,p2,m1,m2),a,k) .
+  eq t = p2 .
+  eq (pk = k(p2)) = false .
+  red inv9(p,t,pk) implies inv9(cert(p,p2,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -67,12 +71,15 @@ open INV .
   eq src(m1) = dst(m2) .
   eq choice(m2) \in list(m1) = true .
 
-  eq (a = p2) = false .
-  red inv9(p,a,k) implies inv9(cert(p,p2,m1,m2),a,k) .
+  eq (t = p2) = false .
+  red inv9(p,t,pk) implies inv9(cert(p,p2,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -86,11 +93,14 @@ open INV .
   eq src(m2) = p2 .
   eq src(m1) = dst(m2) .
   eq choice(m2) \in list(m1) = false .
-  red inv9(p,a,k) implies inv9(cert(p,p2,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cert(p,p2,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -103,11 +113,14 @@ open INV .
   eq crt(m2) = p2 .
   eq src(m2) = p2 .
   eq (src(m1) = dst(m2)) = false .
-  red inv9(p,a,k) implies inv9(cert(p,p2,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cert(p,p2,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -119,11 +132,14 @@ open INV .
   eq dst(m1) = p2 .
   eq crt(m2) = p2 .
   eq (src(m2) = p2) = false .
-  red inv9(p,a,k) implies inv9(cert(p,p2,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cert(p,p2,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -134,11 +150,14 @@ open INV .
   eq sh?(m2) = true .
   eq dst(m1) = p2 .
   eq (crt(m2) = p2) = false .
-  red inv9(p,a,k) implies inv9(cert(p,p2,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cert(p,p2,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -148,11 +167,14 @@ open INV .
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq (dst(m1) = p2) = false .
-  red inv9(p,a,k) implies inv9(cert(p,p2,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cert(p,p2,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -161,11 +183,14 @@ open INV .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
   eq sh?(m2) = false .
-  red inv9(p,a,k) implies inv9(cert(p,p2,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cert(p,p2,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -173,33 +198,46 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = false .
-  red inv9(p,a,k) implies inv9(cert(p,p2,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cert(p,p2,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(cert(p,p2,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cert(p,p2,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(cert(p,p2,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cert(p,p2,m1,m2),t,pk) .
 close
 
+open INV .
+  :proof(tls)
+close
+eof
 --> 2) cfin(p,p1,s1,m1,m2,m3,m4) 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -227,11 +265,14 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -258,11 +299,14 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq (epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1))) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -288,11 +332,14 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -317,11 +364,14 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq (server(cert(m3)) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -345,11 +395,14 @@ open INV .
   eq src(m3) = dst(m1) .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -372,11 +425,14 @@ open INV .
   eq dst(m2) = p1 .
   eq src(m3) = dst(m1) .
   eq (dst(m3) = p1) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -398,11 +454,14 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq (src(m3) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -423,11 +482,14 @@ open INV .
   eq dst(m4) = dst(m1) .
   eq src(m2) = dst(m1) .
   eq (dst(m2) = p1) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -447,11 +509,14 @@ open INV .
   eq src(m4) = p1 .
   eq dst(m4) = dst(m1) .
   eq (src(m2) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -470,11 +535,14 @@ open INV .
   eq crt(m4) = p1 .
   eq src(m4) = p1 .
   eq (dst(m4) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -492,11 +560,14 @@ open INV .
   eq src(m1) = p1 .
   eq crt(m4) = p1 .
   eq (src(m4) = p1) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -513,11 +584,14 @@ open INV .
   eq crt(m1) = p1 .
   eq src(m1) = p1 .
   eq (crt(m4) = p1) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -533,11 +607,14 @@ open INV .
   eq kx?(m4) = true .
   eq crt(m1) = p1 .
   eq (src(m1) = p1) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -552,11 +629,14 @@ open INV .
   eq ct?(m3) = true .
   eq kx?(m4) = true .
   eq (crt(m1) = p1) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -570,11 +650,14 @@ open INV .
   eq sh?(m2) = true .
   eq ct?(m3) = true .
   eq kx?(m4) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -587,11 +670,14 @@ open INV .
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq ct?(m3) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -603,11 +689,14 @@ open INV .
   eq m4 \in nw(p) = true .
   eq ch?(m1) = true .
   eq sh?(m2) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -618,11 +707,14 @@ open INV .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = true .
   eq ch?(m1) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -632,11 +724,14 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -645,11 +740,14 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -657,23 +755,29 @@ open INV .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 --> 3) cfin2(p,p1,s1,m1,m2)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -688,12 +792,15 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,p1,dst(m1),sid(m2)) = none) = true .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  eq ss(p,p1,dst(m1),sid(m2)) = none .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -711,11 +818,14 @@ open INV .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
   eq pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1) .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -733,11 +843,14 @@ open INV .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
   eq (pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1)) = false .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -754,11 +867,14 @@ open INV .
   eq sid(m1) = sid(m2) .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq (choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2)) = false .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -773,11 +889,14 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq (sid(m1) = sid(m2)) = false .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -791,11 +910,14 @@ open INV .
   eq src(m1) = p1 .
   eq src(m2) = dst(m1) .
   eq (dst(m2) = p1) = false .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -808,11 +930,14 @@ open INV .
   eq crt(m1) = p1 .
   eq src(m1) = p1 .
   eq (src(m2) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -824,11 +949,14 @@ open INV .
   eq sh2?(m2) = true .
   eq crt(m1) = p1 .
   eq (src(m1) = p1) = false .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -839,11 +967,14 @@ open INV .
   eq ch2?(m1) = true .
   eq sh2?(m2) = true .
   eq (crt(m1) = p1) = false .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -853,11 +984,14 @@ open INV .
   eq m2 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq sh2?(m2) = false .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -866,11 +1000,14 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch2?(m1) = false .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -878,42 +1015,54 @@ open INV .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(cfin2(p,p1,s1,m1,m2),a,k) .
+  red inv9(p,t,pk) implies inv9(cfin2(p,p1,s1,m1,m2),t,pk) .
 close
 
 --> 4) chello(p,p1,p2,r3,l1)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op l1 : -> ListOfChoices .
   eq (r3 \in ur(p)) = true .
-  red inv9(p,a,k) implies inv9(chello(p,p1,p2,r3,l1),a,k) .
+  red inv9(p,t,pk) implies inv9(chello(p,p1,p2,r3,l1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op l1 : -> ListOfChoices .
   eq (r3 \in ur(p)) = false .
-  red inv9(p,a,k) implies inv9(chello(p,p1,p2,r3,l1),a,k) .
+  red inv9(p,t,pk) implies inv9(chello(p,p1,p2,r3,l1),t,pk) .
 close
 
 --> 5) chello2(p,p1,p2,s1,r3,i1) 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
@@ -921,11 +1070,14 @@ open INV .
   op i1 : -> Sid .
 -- assumptions
   eq r3 \in ur(p) = true .
-  red inv9(p,a,k) implies inv9(chello2(p,p1,p2,s1,r3,i1),a,k) .
+  red inv9(p,t,pk) implies inv9(chello2(p,p1,p2,s1,r3,i1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
@@ -933,12 +1085,15 @@ open INV .
   op i1 : -> Sid .
 -- assumptions
   eq r3 \in ur(p) = false .
-  eq (ss(p,p1,p2,i1) = none) = true .
-  red inv9(p,a,k) implies inv9(chello2(p,p1,p2,s1,r3,i1),a,k) .
+  eq ss(p,p1,p2,i1) = none .
+  red inv9(p,t,pk) implies inv9(chello2(p,p1,p2,s1,r3,i1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
@@ -948,11 +1103,14 @@ open INV .
   eq r3 \in ur(p) = false .
   eq (ss(p,p1,p2,i1) = none) = false .
   eq pms(ss(p,p1,p2,i1)) = pms(p1,p2,s1) .
-  red inv9(p,a,k) implies inv9(chello2(p,p1,p2,s1,r3,i1),a,k) .
+  red inv9(p,t,pk) implies inv9(chello2(p,p1,p2,s1,r3,i1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
@@ -962,12 +1120,15 @@ open INV .
   eq r3 \in ur(p) = false .
   eq (ss(p,p1,p2,i1) = none) = false .
   eq (pms(ss(p,p1,p2,i1)) = pms(p1,p2,s1)) = false .
-  red inv9(p,a,k) implies inv9(chello2(p,p1,p2,s1,r3,i1),a,k) .
+  red inv9(p,t,pk) implies inv9(chello2(p,p1,p2,s1,r3,i1),t,pk) .
 close
 
 --> 6) compl(p,p1,s1,m1,m2,m3,m4,m5,m6) 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1003,15 +1164,18 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
-  eq ecfin(m5) = ecfin(k(p1,pms(epms(m4)),rand(m1),rand(m2)),
+  eq ecfin(m5) = ecfin(pk(p1,pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-  eq esfin(m6) = esfin(k(dst(m1),pms(epms(m4)),rand(m1),rand(m2)),
+  eq esfin(m6) = esfin(pk(dst(m1),pms(epms(m4)),rand(m1),rand(m2)),
                       sfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1047,15 +1211,18 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
-  eq ecfin(m5) = ecfin(k(p1,pms(epms(m4)),rand(m1),rand(m2)),
+  eq ecfin(m5) = ecfin(pk(p1,pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-  eq (esfin(m6) = esfin(k(dst(m1),pms(epms(m4)),rand(m1),rand(m2)),
+  eq (esfin(m6) = esfin(pk(dst(m1),pms(epms(m4)),rand(m1),rand(m2)),
                       sfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1091,13 +1258,16 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
-  eq (ecfin(m5) = ecfin(k(p1,pms(epms(m4)),rand(m1),rand(m2)),
+  eq (ecfin(m5) = ecfin(pk(p1,pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(p1,dst(m1),sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1133,11 +1303,14 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
   eq (epms(m4) = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1))) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1172,11 +1345,14 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1210,11 +1386,14 @@ open INV .
   eq dst(m6) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq (server(cert(m3)) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1247,11 +1426,14 @@ open INV .
   eq src(m6) = dst(m1) .
   eq dst(m6) = p1 .
   eq choice(m2) \in list(m1) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1283,11 +1465,14 @@ open INV .
   eq dst(m3) = p1 .
   eq src(m6) = dst(m1) .
   eq (dst(m6) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1318,11 +1503,14 @@ open INV .
   eq src(m3) = dst(m1) .
   eq dst(m3) = p1 .
   eq (src(m6) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1352,11 +1540,14 @@ open INV .
   eq dst(m2) = p1 .
   eq src(m3) = dst(m1) .
   eq (dst(m3) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1385,11 +1576,14 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq (src(m3) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1417,11 +1611,14 @@ open INV .
   eq dst(m5) = dst(m1) .
   eq src(m2) = dst(m1) .
   eq (dst(m2) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1448,11 +1645,14 @@ open INV .
   eq src(m5) = p1 .
   eq dst(m5) = dst(m1) .
   eq (src(m2) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1478,11 +1678,14 @@ open INV .
   eq crt(m5) = p1 .
   eq src(m5) = p1 .
   eq (dst(m5) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1507,11 +1710,14 @@ open INV .
   eq dst(m4) = dst(m1) .
   eq crt(m5) = p1 .
   eq (src(m5) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1535,11 +1741,14 @@ open INV .
   eq src(m4) = p1 .
   eq dst(m4) = dst(m1) .
   eq (crt(m5) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1562,11 +1771,14 @@ open INV .
   eq crt(m4) = p1 .
   eq src(m4) = p1 .
   eq (dst(m4) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1588,11 +1800,14 @@ open INV .
   eq src(m1) = p1 .
   eq crt(m4) = p1 .
   eq (src(m4) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1613,11 +1828,14 @@ open INV .
   eq crt(m1) = p1 .
   eq src(m1) = p1 .
   eq (crt(m4) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1637,11 +1855,14 @@ open INV .
   eq sf?(m6) = true .
   eq crt(m1) = p1 .
   eq (src(m1) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1660,11 +1881,14 @@ open INV .
   eq cf?(m5) = true .
   eq sf?(m6) = true .
   eq (crt(m1) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1682,11 +1906,14 @@ open INV .
   eq kx?(m4) = true .
   eq cf?(m5) = true .
   eq sf?(m6) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1703,11 +1930,14 @@ open INV .
   eq ct?(m3) = true .
   eq kx?(m4) = true .
   eq cf?(m5) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1723,11 +1953,14 @@ open INV .
   eq sh?(m2) = true .
   eq ct?(m3) = true .
   eq kx?(m4) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1742,11 +1975,14 @@ open INV .
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq ct?(m3) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1760,11 +1996,14 @@ open INV .
   eq m6 \in nw(p) = true .
   eq ch?(m1) = true .
   eq sh?(m2) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1777,11 +2016,14 @@ open INV .
   eq m5 \in nw(p) = true .
   eq m6 \in nw(p) = true .
   eq ch?(m1) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1793,11 +2035,14 @@ open INV .
   eq m4 \in nw(p) = true .
   eq m5 \in nw(p) = true .
   eq m6 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1808,11 +2053,14 @@ open INV .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = true .
   eq m5 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1822,11 +2070,14 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1835,11 +2086,14 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1847,23 +2101,29 @@ open INV .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 m5 m6 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),a,k) .
+  red inv9(p,t,pk) implies inv9(compl(p,p1,s1,m1,m2,m3,m4,m5,m6),t,pk) .
 close
 
 --> 7) compl2(p,p1,s1,m1,m2,m3,m4)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1887,12 +2147,15 @@ open INV .
   eq src(m4) = dst(m1) .
   eq dst(m4) = p1 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,p1,dst(m1),sid(m2)) = none) = true .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  eq ss(p,p1,dst(m1),sid(m2)) = none .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1919,15 +2182,18 @@ open INV .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
   eq pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1) .
-  eq ecfin2(m3) = ecfin2(k(p1,pms(p1,dst(m1),s1),rand(m1),rand(m2)),
+  eq ecfin2(m3) = ecfin2(pk(p1,pms(p1,dst(m1),s1),rand(m1),rand(m2)),
                       cfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1))) .
-  eq esfin2(m4) = esfin2(k(dst(m1),pms(p1,dst(m1),s1),rand(m1),rand(m2)),
+  eq esfin2(m4) = esfin2(pk(dst(m1),pms(p1,dst(m1),s1),rand(m1),rand(m2)),
                         sfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1))) .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1954,15 +2220,18 @@ open INV .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
   eq pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1) .
-  eq ecfin2(m3) = ecfin2(k(p1,pms(p1,dst(m1),s1),rand(m1),rand(m2)),
+  eq ecfin2(m3) = ecfin2(pk(p1,pms(p1,dst(m1),s1),rand(m1),rand(m2)),
                       cfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1))) .
-  eq (esfin2(m4) = esfin2(k(dst(m1),pms(p1,dst(m1),s1),rand(m1),rand(m2)),
+  eq (esfin2(m4) = esfin2(pk(dst(m1),pms(p1,dst(m1),s1),rand(m1),rand(m2)),
                         sfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1)))) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1989,13 +2258,16 @@ open INV .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
   eq pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1) .
-  eq (ecfin2(m3) = ecfin2(k(p1,pms(p1,dst(m1),s1),rand(m1),rand(m2)),
+  eq (ecfin2(m3) = ecfin2(pk(p1,pms(p1,dst(m1),s1),rand(m1),rand(m2)),
                       cfin2(p1,dst(m1),sid(m2),choice(m2),rand(m1),rand(m2),pms(p1,dst(m1),s1)))) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2022,11 +2294,14 @@ open INV .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2) .
   eq (pms(ss(p,p1,dst(m1),sid(m2))) = pms(p1,dst(m1),s1)) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2052,11 +2327,14 @@ open INV .
   eq sid(m1) = sid(m2) .
   eq (ss(p,p1,dst(m1),sid(m2)) = none) = false .
   eq (choice(ss(p,p1,dst(m1),sid(m2))) = choice(m2)) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2080,11 +2358,14 @@ open INV .
   eq src(m4) = dst(m1) .
   eq dst(m4) = p1 .
   eq (sid(m1) = sid(m2)) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2107,11 +2388,14 @@ open INV .
   eq dst(m2) = p1 .
   eq src(m4) = dst(m1) .
   eq (dst(m4) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2133,11 +2417,14 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq (src(m4) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2158,11 +2445,14 @@ open INV .
   eq dst(m3) = dst(m1) .
   eq src(m2) = dst(m1) .
   eq (dst(m2) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2182,11 +2472,14 @@ open INV .
   eq src(m3) = p1 .
   eq dst(m3) = dst(m1) .
   eq (src(m2) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2205,11 +2498,14 @@ open INV .
   eq crt(m3) = p1 .
   eq src(m3) = p1 .
   eq (dst(m3) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2227,11 +2523,14 @@ open INV .
   eq src(m1) = p1 .
   eq crt(m3) = p1 .
   eq (src(m3) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2248,11 +2547,14 @@ open INV .
   eq crt(m1) = p1 .
   eq src(m1) = p1 .
   eq (crt(m3) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2268,11 +2570,14 @@ open INV .
   eq sf2?(m4) = true .
   eq crt(m1) = p1 .
   eq (src(m1) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2287,11 +2592,14 @@ open INV .
   eq cf2?(m3) = true .
   eq sf2?(m4) = true .
   eq (crt(m1) = p1) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2305,11 +2613,14 @@ open INV .
   eq sh2?(m2) = true .
   eq cf2?(m3) = true .
   eq sf2?(m4) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2322,11 +2633,14 @@ open INV .
   eq ch2?(m1) = true .
   eq sh2?(m2) = true .
   eq cf2?(m3) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2338,11 +2652,14 @@ open INV .
   eq m4 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq sh2?(m2) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2353,11 +2670,14 @@ open INV .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = true .
   eq ch2?(m1) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2367,11 +2687,14 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2380,11 +2703,14 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2392,80 +2718,101 @@ open INV .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),a,k) .
+  red inv9(p,t,pk) implies inv9(compl2(p,p1,s1,m1,m2,m3,m4),t,pk) .
 close
 
 --> 8) fakeCert(p,p2,p1,pk,g)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op g : -> Sig .
 -- assumptions
   eq g \in csig(nw(p)) = true .
-  eq sig(ca,a,k) = g .
-  red inv9(p,a,k) implies inv9(fakeCert(p,p2,p1,pk,g),a,k) .
+  eq sig(ca,t,pk) = g .
+  red inv9(p,t,pk) implies inv9(fakeCert(p,p2,p1,pk,g),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op g : -> Sig .
 -- assumptions
   eq g \in csig(nw(p)) = true .
-  eq (sig(ca,a,k) = g) = false .
-  red inv9(p,a,k) implies inv9(fakeCert(p,p2,p1,pk,g),a,k) .
+  eq (sig(ca,t,pk) = g) = false .
+  red inv9(p,t,pk) implies inv9(fakeCert(p,p2,p1,pk,g),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op g : -> Sig .
 -- assumptions
   eq g \in csig(nw(p)) = false .
-  red inv9(p,a,k) implies inv9(fakeCert(p,p2,p1,pk,g),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeCert(p,p2,p1,pk,g),t,pk) .
 close
 
 --> 9) fakeCfin1(p,p1,p2,ecfin1)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op ecfin1 : -> EncCFin .
 -- assumptions
   eq ecfin1 \in cecfin(nw(p)) = true .
-  red inv9(p,a,k) implies inv9(fakeCfin1(p,p1,p2,ecfin1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeCfin1(p,p1,p2,ecfin1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op ecfin1 : -> EncCFin .
 -- assumptions
   eq ecfin1 \in cecfin(nw(p)) = false .
-  red inv9(p,a,k) implies inv9(fakeCfin1(p,p1,p2,ecfin1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeCfin1(p,p1,p2,ecfin1),t,pk) .
 close
 
 --> 10) fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2475,11 +2822,14 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = true .
-  red inv9(p,a,k) implies inv9(fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2489,33 +2839,42 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = false .
-  red inv9(p,a,k) implies inv9(fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1),t,pk) .
 close
 
 --> 11) fakeCfin21(p,p1,p2,ecfin21)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op ecfin21 : -> EncCFin2 .
 -- assumptions
   eq ecfin21 \in cecfin2(nw(p)) = true .
-  red inv9(p,a,k) implies inv9(fakeCfin21(p,p1,p2,ecfin21),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeCfin21(p,p1,p2,ecfin21),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op ecfin21 : -> EncCFin2 .
 -- assumptions
   eq ecfin21 \in cecfin2(nw(p)) = false .
-  red inv9(p,a,k) implies inv9(fakeCfin21(p,p1,p2,ecfin21),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeCfin21(p,p1,p2,ecfin21),t,pk) .
 close
 
 --> 12) fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2524,11 +2883,14 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = true .
-  red inv9(p,a,k) implies inv9(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2537,97 +2899,124 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = false .
-  red inv9(p,a,k) implies inv9(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1),t,pk) .
 close
 
 --> 13) fakeChello(p,p1,p2,r3,l1) 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op l1 : -> ListOfChoices .
-  red inv9(p,a,k) implies inv9(fakeChello(p,p1,p2,r3,l1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeChello(p,p1,p2,r3,l1),t,pk) .
 close
 
 --> 14) fakeChello2(p,p1,p2,r3,i1) 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
-  red inv9(p,a,k) implies inv9(fakeChello2(p,p1,p2,r3,i1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeChello2(p,p1,p2,r3,i1),t,pk) .
 close
 
 --> 15) fakeKexch1(p,p1,p2,epms1) 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op epms1 : -> EncPms .
 -- assumptions
   eq epms1 \in cepms(nw(p)) = true .
-  red inv9(p,a,k) implies inv9(fakeKexch1(p,p1,p2,epms1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeKexch1(p,p1,p2,epms1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op epms1 : -> EncPms .
 -- assumptions
   eq epms1 \in cepms(nw(p)) = false .
-  red inv9(p,a,k) implies inv9(fakeKexch1(p,p1,p2,epms1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeKexch1(p,p1,p2,epms1),t,pk) .
 close
 
 --> 16) fakeKexch2(p,p1,p2,pk,pms1)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = true .
-  red inv9(p,a,k) implies inv9(fakeKexch2(p,p1,p2,pk,pms1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeKexch2(p,p1,p2,pk,pms1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = false .
-  red inv9(p,a,k) implies inv9(fakeKexch2(p,p1,p2,pk,pms1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeKexch2(p,p1,p2,pk,pms1),t,pk) .
 close
 
 --> 17) fakeSfin1(p,p2,p1,esfin1)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op esfin1 : -> EncSFin .
 -- assumptions
   eq esfin1 \in cesfin(nw(p)) = true .
-  red inv9(p,a,k) implies inv9(fakeSfin1(p,p2,p1,esfin1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeSfin1(p,p2,p1,esfin1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op esfin1 : -> EncSFin .
 -- assumptions
   eq esfin1 \in cesfin(nw(p)) = false .
-  red inv9(p,a,k) implies inv9(fakeSfin1(p,p2,p1,esfin1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeSfin1(p,p2,p1,esfin1),t,pk) .
 close
 
 --> 18) fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2637,11 +3026,14 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = true .
-  red inv9(p,a,k) implies inv9(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2651,33 +3043,42 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = false .
-  red inv9(p,a,k) implies inv9(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),t,pk) .
 close
 
 --> 19) fakeSfin21(p,p2,p1,esfin21)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op esfin21 : -> EncSFin2 .
 -- assumptions
   eq esfin21 \in cesfin2(nw(p)) = true .
-  red inv9(p,a,k) implies inv9(fakeSfin21(p,p2,p1,esfin21),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeSfin21(p,p2,p1,esfin21),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op esfin21 : -> EncSFin2 .
 -- assumptions
   eq esfin21 \in cesfin2(nw(p)) = false .
-  red inv9(p,a,k) implies inv9(fakeSfin21(p,p2,p1,esfin21),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeSfin21(p,p2,p1,esfin21),t,pk) .
 close
 
 --> 20) fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2686,11 +3087,14 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = true .
-  red inv9(p,a,k) implies inv9(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2699,34 +3103,43 @@ open INV .
   op pms1 : -> Pms .
 -- assumptions
   eq pms1 \in cpms(nw(p)) = false .
-  red inv9(p,a,k) implies inv9(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),t,pk) .
 close
 
 --> 21) fakeShello(p,p2,p1,r3,i1,c1)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
   op c1 : -> Choice .
-  red inv9(p,a,k) implies inv9(fakeShello(p,p2,p1,r3,i1,c1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeShello(p,p2,p1,r3,i1,c1),t,pk) .
 close
 
 --> 22) fakeShello2(p,p2,p1,r3,i1,c1)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op i1 : -> Sid .
   op c1 : -> Choice .
-  red inv9(p,a,k) implies inv9(fakeShello2(p,p2,p1,r3,i1,c1),a,k) .
+  red inv9(p,t,pk) implies inv9(fakeShello2(p,p2,p1,r3,i1,c1),t,pk) .
 close
 
 --> 23) kexch(p,p1,s1,m1,m2,m3)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2736,11 +3149,14 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq s1 \in us(p) = true .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2763,11 +3179,14 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
 --
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2790,11 +3209,14 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
 --
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2816,14 +3238,17 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq (dst(m1) = intruder) = false .
-  eq pubkey(cert(m3)) = k(dst(m1)) .
-  eq sig(ca,dst(m1),k(dst(m1))) = sig(cert(m3)) .
+  eq pubkey(cert(m3)) = pk(dst(m1)) .
+  eq sig(ca,dst(m1),pk(dst(m1))) = sig(cert(m3)) .
 --
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2845,14 +3270,17 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq (dst(m1) = intruder) = false .
-  eq pubkey(cert(m3)) = k(dst(m1)) .
-  eq (sig(ca,dst(m1),k(dst(m1))) = sig(cert(m3))) = false .
+  eq pubkey(cert(m3)) = pk(dst(m1)) .
+  eq (sig(ca,dst(m1),pk(dst(m1))) = sig(cert(m3))) = false .
 --
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2873,11 +3301,14 @@ open INV .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = true .
   eq (server(cert(m3)) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2897,11 +3328,14 @@ open INV .
   eq src(m3) = dst(m1) .
   eq dst(m3) = p1 .
   eq choice(m2) \in list(m1) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2920,11 +3354,14 @@ open INV .
   eq dst(m2) = p1 .
   eq src(m3) = dst(m1) .
   eq (dst(m3) = p1) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2942,11 +3379,14 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq (src(m3) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2963,11 +3403,14 @@ open INV .
   eq src(m1) = p1 .
   eq src(m2) = dst(m1) .
   eq (dst(m2) = p1) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2983,11 +3426,14 @@ open INV .
   eq crt(m1) = p1 .
   eq src(m1) = p1 .
   eq (src(m2) = dst(m1)) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3002,11 +3448,14 @@ open INV .
   eq ct?(m3) = true .
   eq crt(m1) = p1 .
   eq (src(m1) = p1) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3020,11 +3469,14 @@ open INV .
   eq sh?(m2) = true .
   eq ct?(m3) = true .
   eq (crt(m1) = p1) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3037,11 +3489,14 @@ open INV .
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq ct?(m3) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3053,11 +3508,14 @@ open INV .
   eq s1 \in us(p) = false .
   eq ch?(m1) = true .
   eq sh?(m2) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3068,11 +3526,14 @@ open INV .
   eq m3 \in nw(p) = true .
   eq s1 \in us(p) = false .
   eq ch?(m1) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3081,11 +3542,14 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3093,23 +3557,29 @@ open INV .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(kexch(p,p1,s1,m1,m2,m3),t,pk) .
 close
 
 --> 24) sfin(p,p2,m1,m2,m3,m4,m5) 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3136,15 +3606,18 @@ open INV .
   eq src(m5) = dst(m2) .
   eq dst(m5) = p2 .
   eq choice(m2) \in list(m1) = true .
-  eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
-  eq k(epms(m4)) = k(p2) .
-  eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
+  eq cert(m3) = cert(p2,pk(p2),sig(ca,p2,pk(p2))) .
+  eq pk(epms(m4)) = pk(p2) .
+  eq ecfin(m5) = ecfin(pk(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3171,15 +3644,18 @@ open INV .
   eq src(m5) = dst(m2) .
   eq dst(m5) = p2 .
   eq choice(m2) \in list(m1) = true .
-  eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
-  eq k(epms(m4)) = k(p2) .
-  eq (ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
+  eq cert(m3) = cert(p2,pk(p2),sig(ca,p2,pk(p2))) .
+  eq pk(epms(m4)) = pk(p2) .
+  eq (ecfin(m5) = ecfin(pk(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3206,13 +3682,16 @@ open INV .
   eq src(m5) = dst(m2) .
   eq dst(m5) = p2 .
   eq choice(m2) \in list(m1) = true .
-  eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
-  eq (k(epms(m4)) = k(p2)) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  eq cert(m3) = cert(p2,pk(p2),sig(ca,p2,pk(p2))) .
+  eq (pk(epms(m4)) = pk(p2)) = false .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3239,12 +3718,15 @@ open INV .
   eq src(m5) = dst(m2) .
   eq dst(m5) = p2 .
   eq choice(m2) \in list(m1) = true .
-  eq (cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2)))) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  eq (cert(m3) = cert(p2,pk(p2),sig(ca,p2,pk(p2)))) = false .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3271,11 +3753,14 @@ open INV .
   eq src(m5) = dst(m2) .
   eq dst(m5) = p2 .
   eq choice(m2) \in list(m1) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3301,11 +3786,14 @@ open INV .
   eq dst(m4) = p2 .
   eq src(m5) = dst(m2) .
   eq (dst(m5) = p2) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3330,11 +3818,14 @@ open INV .
   eq src(m4) = dst(m2) .
   eq dst(m4) = p2 .
   eq (src(m5) = dst(m2)) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3358,11 +3849,14 @@ open INV .
   eq dst(m1) = p2 .
   eq src(m4) = dst(m2) .
   eq (dst(m4) = p2) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3385,11 +3879,14 @@ open INV .
   eq src(m1) = dst(m2) .
   eq dst(m1) = p2 .
   eq (src(m4) = dst(m2)) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3411,11 +3908,14 @@ open INV .
   eq dst(m3) = dst(m2) .
   eq src(m1) = dst(m2) .
   eq (dst(m1) = p2) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3436,11 +3936,14 @@ open INV .
   eq src(m3) = p2 .
   eq dst(m3) = dst(m2) .
   eq (src(m1) = dst(m2)) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3460,11 +3963,14 @@ open INV .
   eq crt(m3) = p2 .
   eq src(m3) = p2 .
   eq (dst(m3) = dst(m2)) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3483,11 +3989,14 @@ open INV .
   eq src(m2) = p2 .
   eq crt(m3) = p2 .
   eq (src(m3) = p2) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3505,11 +4014,14 @@ open INV .
   eq crt(m2) = p2 .
   eq src(m2) = p2 .
   eq (crt(m3) = p2) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3526,11 +4038,14 @@ open INV .
   eq cf?(m5) = true .
   eq crt(m2) = p2 .
   eq (src(m2) = p2) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3546,11 +4061,14 @@ open INV .
   eq kx?(m4) = true .
   eq cf?(m5) = true .
   eq (crt(m2) = p2) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3565,11 +4083,14 @@ open INV .
   eq ct?(m3) = true .
   eq kx?(m4) = true .
   eq cf?(m5) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3583,11 +4104,14 @@ open INV .
   eq sh?(m2) = true .
   eq ct?(m3) = true .
   eq kx?(m4) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3600,11 +4124,14 @@ open INV .
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq ct?(m3) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3616,11 +4143,14 @@ open INV .
   eq m5 \in nw(p) = true .
   eq ch?(m1) = true .
   eq sh?(m2) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3631,11 +4161,14 @@ open INV .
   eq m4 \in nw(p) = true .
   eq m5 \in nw(p) = true .
   eq ch?(m1) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3645,11 +4178,14 @@ open INV .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = true .
   eq m5 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3658,11 +4194,14 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3670,33 +4209,42 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin(p,p2,m1,m2,m3,m4,m5),t,pk) .
 close
 
 --> 25) sfin2(p,p2,m1,m2,m3)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3714,12 +4262,15 @@ open INV .
   eq src(m3) = dst(m2) .
   eq dst(m3) = p2 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,dst(m2),p2,sid(m2)) = none) = true .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  eq ss(p,dst(m2),p2,sid(m2)) = none .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3739,13 +4290,16 @@ open INV .
   eq sid(m1) = sid(m2) .
   eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
   eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
-  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
+  eq ecfin2(m3) = ecfin2(pk(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3765,13 +4319,16 @@ open INV .
   eq sid(m1) = sid(m2) .
   eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
   eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
-  eq (ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
+  eq (ecfin2(m3) = ecfin2(pk(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2)))))) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3791,11 +4348,14 @@ open INV .
   eq sid(m1) = sid(m2) .
   eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
   eq (choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2)) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3813,11 +4373,14 @@ open INV .
   eq src(m3) = dst(m2) .
   eq dst(m3) = p2 .
   eq (sid(m1) = sid(m2)) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3834,11 +4397,14 @@ open INV .
   eq dst(m1) = p2 .
   eq src(m3) = dst(m2) .
   eq (dst(m3) = p2) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3854,11 +4420,14 @@ open INV .
   eq src(m1) = dst(m2) .
   eq dst(m1) = p2 .
   eq (src(m3) = dst(m2)) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3873,11 +4442,14 @@ open INV .
   eq src(m2) = p2 .
   eq src(m1) = dst(m2) .
   eq (dst(m1) = p2) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3891,11 +4463,14 @@ open INV .
   eq crt(m2) = p2 .
   eq src(m2) = p2 .
   eq (src(m1) = dst(m2)) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3908,11 +4483,14 @@ open INV .
   eq cf2?(m3) = true .
   eq crt(m2) = p2 .
   eq (src(m2) = p2) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3924,11 +4502,14 @@ open INV .
   eq sh2?(m2) = true .
   eq cf2?(m3) = true .
   eq (crt(m2) = p2) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3939,11 +4520,14 @@ open INV .
   eq ch2?(m1) = true .
   eq sh2?(m2) = true .
   eq cf2?(m3) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3953,11 +4537,14 @@ open INV .
   eq m3 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq sh2?(m2) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3966,11 +4553,14 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq ch2?(m1) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3978,33 +4568,42 @@ open INV .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
 -- assumptions
   eq m1 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(sfin2(p,p2,m1,m2,m3),a,k) .
+  red inv9(p,t,pk) implies inv9(sfin2(p,p2,m1,m2,m3),t,pk) .
 close
 
 --> 26) shello(p,p2,r3,i1,c1,m1)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4013,11 +4612,14 @@ open INV .
   op m1 : -> Msg .
 -- assumptions
   eq r3 \in ur(p) = true .
-  red inv9(p,a,k) implies inv9(shello(p,p2,r3,i1,c1,m1),a,k) .
+  red inv9(p,t,pk) implies inv9(shello(p,p2,r3,i1,c1,m1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4027,11 +4629,14 @@ open INV .
 -- assumptions
   eq r3 \in ur(p) = false .
   eq i1 \in ui(p) = true .
-  red inv9(p,a,k) implies inv9(shello(p,p2,r3,i1,c1,m1),a,k) .
+  red inv9(p,t,pk) implies inv9(shello(p,p2,r3,i1,c1,m1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4045,11 +4650,14 @@ open INV .
   eq ch?(m1) = true .
   eq dst(m1) = p2 .
   eq c1 \in list(m1) = true .
-  red inv9(p,a,k) implies inv9(shello(p,p2,r3,i1,c1,m1),a,k) .
+  red inv9(p,t,pk) implies inv9(shello(p,p2,r3,i1,c1,m1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4063,11 +4671,14 @@ open INV .
   eq ch?(m1) = true .
   eq dst(m1) = p2 .
   eq c1 \in list(m1) = false .
-  red inv9(p,a,k) implies inv9(shello(p,p2,r3,i1,c1,m1),a,k) .
+  red inv9(p,t,pk) implies inv9(shello(p,p2,r3,i1,c1,m1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4080,11 +4691,14 @@ open INV .
   eq m1 \in nw(p) = true .
   eq ch?(m1) = true .
   eq (dst(m1) = p2) = false .
-  red inv9(p,a,k) implies inv9(shello(p,p2,r3,i1,c1,m1),a,k) .
+  red inv9(p,t,pk) implies inv9(shello(p,p2,r3,i1,c1,m1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4096,11 +4710,14 @@ open INV .
   eq i1 \in ui(p) = false .
   eq m1 \in nw(p) = true .
   eq ch?(m1) = false .
-  red inv9(p,a,k) implies inv9(shello(p,p2,r3,i1,c1,m1),a,k) .
+  red inv9(p,t,pk) implies inv9(shello(p,p2,r3,i1,c1,m1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4111,23 +4728,29 @@ open INV .
   eq r3 \in ur(p) = false .
   eq i1 \in ui(p) = false .
   eq m1 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(shello(p,p2,r3,i1,c1,m1),a,k) .
+  red inv9(p,t,pk) implies inv9(shello(p,p2,r3,i1,c1,m1),t,pk) .
 close
 
 --> 27) shello2(p,p2,r3,m1)
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
   op m1 : -> Msg .
 -- assumptions
   eq r3 \in ur(p) = true .
-  red inv9(p,a,k) implies inv9(shello2(p,p2,r3,m1),a,k) .
+  red inv9(p,t,pk) implies inv9(shello2(p,p2,r3,m1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4137,12 +4760,15 @@ open INV .
   eq m1 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq dst(m1) = p2 .
-  eq (ss(p,src(m1),p2,sid(m1)) = none) = true .
-  red inv9(p,a,k) implies inv9(shello2(p,p2,r3,m1),a,k) .
+  eq ss(p,src(m1),p2,sid(m1)) = none .
+  red inv9(p,t,pk) implies inv9(shello2(p,p2,r3,m1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4153,11 +4779,14 @@ open INV .
   eq ch2?(m1) = true .
   eq dst(m1) = p2 .
   eq (ss(p,src(m1),p2,sid(m1)) = none) = false .
-  red inv9(p,a,k) implies inv9(shello2(p,p2,r3,m1),a,k) .
+  red inv9(p,t,pk) implies inv9(shello2(p,p2,r3,m1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4167,11 +4796,14 @@ open INV .
   eq m1 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq (dst(m1) = p2) = false .
-  red inv9(p,a,k) implies inv9(shello2(p,p2,r3,m1),a,k) .
+  red inv9(p,t,pk) implies inv9(shello2(p,p2,r3,m1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4180,11 +4812,14 @@ open INV .
   eq r3 \in ur(p) = false .
   eq m1 \in nw(p) = true .
   eq ch2?(m1) = false .
-  red inv9(p,a,k) implies inv9(shello2(p,p2,r3,m1),a,k) .
+  red inv9(p,t,pk) implies inv9(shello2(p,p2,r3,m1),t,pk) .
 close
 
 open INV .
- :id(tls)
+  :id(tls)
+  op p : -> Protocol .
+  op t : -> Prin .
+  op pk : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4192,7 +4827,7 @@ open INV .
 -- assumptions
   eq r3 \in ur(p) = false .
   eq m1 \in nw(p) = false .
-  red inv9(p,a,k) implies inv9(shello2(p,p2,r3,m1),a,k) .
+  red inv9(p,t,pk) implies inv9(shello2(p,p2,r3,m1),t,pk) .
 close
 
 open INV .
