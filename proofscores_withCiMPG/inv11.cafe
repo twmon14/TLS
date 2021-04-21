@@ -1,6 +1,8 @@
 -- I) Base case
 open INV .
   :id(tls)
+  ops a b : -> Prin .
+  op k : -> PubKey .
   red inv11(init,a,b,k) .
 close
 
@@ -8,6 +10,9 @@ close
 --> 1) cert(p,p2,m1,m2)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -32,6 +37,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -56,6 +64,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -79,6 +90,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -101,6 +115,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -122,6 +139,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -140,6 +160,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -157,6 +180,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -173,6 +199,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -188,6 +217,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -202,6 +234,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -215,6 +250,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -227,6 +265,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -238,6 +279,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
@@ -250,6 +294,9 @@ close
 --> 2) cfin(p,p1,s1,m1,m2,m3,m4) 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -282,6 +329,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -313,6 +363,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -343,6 +396,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -372,6 +428,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -400,6 +459,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -427,6 +489,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -453,6 +518,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -478,6 +546,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -502,6 +573,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -525,6 +599,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -547,6 +624,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -568,6 +648,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -588,6 +671,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -607,6 +693,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -625,6 +714,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -642,6 +734,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -658,6 +753,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -673,6 +771,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -687,6 +788,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -700,6 +804,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -712,6 +819,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -725,6 +835,9 @@ close
 --> 3) cfin2(p,p1,s1,m1,m2)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -739,12 +852,15 @@ open INV .
   eq src(m2) = dst(m1) .
   eq dst(m2) = p1 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,p1,dst(m1),sid(m2)) = none) = true .
+  eq ss(p,p1,dst(m1),sid(m2)) = none .
   red inv11(p,a,b,k) implies inv11(cfin2(p,p1,s1,m1,m2),a,b,k) .
 close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -767,6 +883,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -789,6 +908,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -810,6 +932,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -829,6 +954,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -847,6 +975,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -864,6 +995,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -880,6 +1014,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -895,6 +1032,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -909,6 +1049,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -922,6 +1065,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -934,6 +1080,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -947,6 +1096,9 @@ close
 --> 4) chello(p,p1,p2,r3,l1)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op l1 : -> ListOfChoices .
@@ -956,6 +1108,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
   op l1 : -> ListOfChoices .
@@ -966,6 +1121,9 @@ close
 --> 5) chello2(p,p1,p2,s1,r3,i1) 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
@@ -978,6 +1136,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
@@ -985,12 +1146,15 @@ open INV .
   op i1 : -> Sid .
 -- assumptions
   eq r3 \in ur(p) = false .
-  eq (ss(p,p1,p2,i1) = none) = true .
+  eq ss(p,p1,p2,i1) = none .
   red inv11(p,a,b,k) implies inv11(chello2(p,p1,p2,s1,r3,i1),a,b,k) .
 close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
@@ -1005,6 +1169,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op s1 : -> Secret .
@@ -1021,6 +1188,9 @@ close
 --> 6) compl(p,p1,s1,m1,m2,m3,m4,m5,m6) 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1065,6 +1235,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1109,6 +1282,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1151,6 +1327,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1191,6 +1370,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1230,6 +1412,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1268,6 +1453,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1305,6 +1493,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1341,6 +1532,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1376,6 +1570,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1410,6 +1607,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1443,6 +1643,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1475,6 +1678,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1506,6 +1712,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1536,6 +1745,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1565,6 +1777,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1593,6 +1808,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1620,6 +1838,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1646,6 +1867,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1671,6 +1895,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1695,6 +1922,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1718,6 +1948,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1740,6 +1973,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1761,6 +1997,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1781,6 +2020,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1800,6 +2042,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1818,6 +2063,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1835,6 +2083,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1851,6 +2102,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1866,6 +2120,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1880,6 +2137,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1893,6 +2153,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1905,6 +2168,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1917,6 +2183,9 @@ close
 --> 7) compl2(p,p1,s1,m1,m2,m3,m4)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1940,12 +2209,15 @@ open INV .
   eq src(m4) = dst(m1) .
   eq dst(m4) = p1 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,p1,dst(m1),sid(m2)) = none) = true .
+  eq ss(p,p1,dst(m1),sid(m2)) = none .
   red inv11(p,a,b,k) implies inv11(compl2(p,p1,s1,m1,m2,m3,m4),a,b,k) .
 close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -1981,6 +2253,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2016,6 +2291,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2049,6 +2327,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2080,6 +2361,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2110,6 +2394,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2138,6 +2425,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2165,6 +2455,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2191,6 +2484,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2216,6 +2512,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2240,6 +2539,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2263,6 +2565,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2285,6 +2590,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2306,6 +2614,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2326,6 +2637,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2345,6 +2659,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2363,6 +2680,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2380,6 +2700,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2396,6 +2719,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2411,6 +2737,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2425,6 +2754,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2438,6 +2770,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2450,6 +2785,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2463,6 +2801,9 @@ close
 --> 8) fakeCert(p,p2,p1,pk,g)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
@@ -2474,6 +2815,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
@@ -2486,6 +2830,9 @@ close
 --> 9) fakeCfin1(p,p1,p2,ecfin1)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op ecfin1 : -> EncCFin .
@@ -2496,6 +2843,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op ecfin1 : -> EncCFin .
@@ -2507,6 +2857,9 @@ close
 --> 10) fakeCfin2(p,p1,p2,i1,l1,c1,r3,r4,pms1)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2521,6 +2874,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2536,6 +2892,9 @@ close
 --> 11) fakeCfin21(p,p1,p2,ecfin21)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op ecfin21 : -> EncCFin2 .
@@ -2546,6 +2905,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op ecfin21 : -> EncCFin2 .
@@ -2557,6 +2919,9 @@ close
 --> 12) fakeCfin22(p,p1,p2,i1,c1,r3,r4,pms1)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2570,6 +2935,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2584,6 +2952,9 @@ close
 --> 13) fakeChello(p,p1,p2,r3,l1) 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
@@ -2594,6 +2965,9 @@ close
 --> 14) fakeChello2(p,p1,p2,r3,i1) 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
@@ -2605,6 +2979,9 @@ close
 --> 15) fakeKexch1(p,p1,p2,epms1) 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op epms1 : -> EncPms .
@@ -2615,6 +2992,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op epms1 : -> EncPms .
@@ -2627,6 +3007,9 @@ close
 --> 16) fakeKexch2(p,p1,p2,pk,pms1)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
@@ -2638,6 +3021,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op pk : -> PubKey .
@@ -2651,6 +3037,9 @@ close
 --> 17) fakeSfin1(p,p2,p1,esfin1)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op esfin1 : -> EncSFin .
@@ -2661,6 +3050,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op esfin1 : -> EncSFin .
@@ -2672,6 +3064,9 @@ close
 --> 18) fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2686,6 +3081,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2701,6 +3099,9 @@ close
 --> 19) fakeSfin21(p,p2,p1,esfin21)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op esfin21 : -> EncSFin2 .
@@ -2711,6 +3112,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op esfin21 : -> EncSFin2 .
@@ -2722,6 +3126,9 @@ close
 --> 20) fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2735,6 +3142,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op i1 : -> Sid .
@@ -2749,6 +3159,9 @@ close
 --> 21) fakeShello(p,p2,p1,r3,i1,c1)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
@@ -2760,6 +3173,9 @@ close
 --> 22) fakeShello2(p,p2,p1,r3,i1,c1)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
   op r3 : -> Rand .
@@ -2772,6 +3188,9 @@ close
 --> 23) kexch(p,p1,s1,m1,m2,m3)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2786,6 +3205,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2813,6 +3235,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2840,6 +3265,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2865,6 +3293,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2889,6 +3320,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2912,6 +3346,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2934,6 +3371,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2955,6 +3395,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2975,6 +3418,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -2994,6 +3440,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3012,6 +3461,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3029,6 +3481,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3045,6 +3500,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3060,6 +3518,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3073,6 +3534,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3085,6 +3549,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p1 : -> Prin .
   op s1 : -> Secret .
@@ -3098,6 +3565,9 @@ close
 --> 24) sfin(p,p2,m1,m2,m3,m4,m5) 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3133,6 +3603,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3168,6 +3641,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3201,6 +3677,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3233,6 +3712,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3264,6 +3746,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3294,6 +3779,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3323,6 +3811,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3351,6 +3842,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3378,6 +3872,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3404,6 +3901,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3429,6 +3929,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3453,6 +3956,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3476,6 +3982,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3498,6 +4007,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3519,6 +4031,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3539,6 +4054,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3558,6 +4076,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3576,6 +4097,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3593,6 +4117,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3609,6 +4136,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3624,6 +4154,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3638,6 +4171,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3651,6 +4187,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3663,6 +4202,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3674,6 +4216,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
@@ -3686,6 +4231,9 @@ close
 --> 25) sfin2(p,p2,m1,m2,m3)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3703,12 +4251,15 @@ open INV .
   eq src(m3) = dst(m2) .
   eq dst(m3) = p2 .
   eq sid(m1) = sid(m2) .
-  eq (ss(p,dst(m2),p2,sid(m2)) = none) = true .
+  eq ss(p,dst(m2),p2,sid(m2)) = none .
   red inv11(p,a,b,k) implies inv11(sfin2(p,p2,m1,m2,m3),a,b,k) .
 close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3735,6 +4286,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3761,6 +4315,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3785,6 +4342,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3807,6 +4367,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3828,6 +4391,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3848,6 +4414,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3867,6 +4436,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3885,6 +4457,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3902,6 +4477,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3918,6 +4496,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3933,6 +4514,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3947,6 +4531,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3960,6 +4547,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3972,6 +4562,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3983,6 +4576,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 : -> Msg .
@@ -3995,6 +4591,9 @@ close
 --> 26) shello(p,p2,r3,i1,c1,m1)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4008,6 +4607,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4022,6 +4624,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4040,6 +4645,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4058,6 +4666,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4075,6 +4686,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4091,6 +4705,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4107,6 +4724,9 @@ close
 --> 27) shello2(p,p2,r3,m1)
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4118,6 +4738,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4127,12 +4750,15 @@ open INV .
   eq m1 \in nw(p) = true .
   eq ch2?(m1) = true .
   eq dst(m1) = p2 .
-  eq (ss(p,src(m1),p2,sid(m1)) = none) = true .
+  eq ss(p,src(m1),p2,sid(m1)) = none .
   red inv11(p,a,b,k) implies inv11(shello2(p,p2,r3,m1),a,b,k) .
 close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4148,6 +4774,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4162,6 +4791,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .
@@ -4175,6 +4807,9 @@ close
 
 open INV .
   :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  op k : -> PubKey .
 -- arbitrary objects
   op p2 : -> Prin .
   op r3 : -> Rand .

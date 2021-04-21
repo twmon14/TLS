@@ -1249,16 +1249,16 @@ mod* TLS {
 mod INV {
   pr(TLS)
 -- arbitrary objects
-  op p : -> Protocol
-  ops a b a1 b1 b2 b3 : -> Prin
-  ops r1 r2 : -> Rand
-  op l : -> ListOfChoices 
-  op c : -> Choice 
-  op i : -> Sid 
-  op s : -> Secret
-  op pms : -> Pms
-  op epms : -> EncPms 
-  op k : -> PubKey
+  -- op p : -> Protocol
+  -- ops a b a1 b1 b2 b3 : -> Prin
+  -- ops r1 r2 : -> Rand
+  -- op l : -> ListOfChoices 
+  -- op c : -> Choice 
+  -- op i : -> Sid 
+  -- op s : -> Secret
+  -- op pms : -> Pms
+  -- op epms : -> EncPms 
+  -- op k : -> PubKey
 -- declare invariants to prove
   op inv1 : Protocol Pms -> Bool
   op inv2 : Protocol EncPms -> Bool
