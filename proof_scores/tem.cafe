@@ -3,10 +3,8 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
   op nw10 : -> Network .
-  
   eq nw(p) = m1, m2, m3, m4, m5, nw10 .
   eq ch?(m1) = false .
-  
   red inv8(p,a,b,r1,r2,l,c,i,s) .
   red inv8(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
   red inv8(p,a,b,r1,r2,l,c,i,s) implies inv8(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
