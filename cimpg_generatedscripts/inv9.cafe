@@ -1,9 +1,3 @@
-
-
-
-
-
--- hhhh----
 open INV .
 	:goal{
 		eq [tls :nonexec] : inv9(P:Protocol,P:Prin,P:PubKey) = true .

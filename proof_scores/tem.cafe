@@ -1,12 +1,18 @@
 open INV .
 -- arbitrary objects
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
   op nw10 : -> Network .
-  eq nw(p) = m1, m2, m3, m4, m5, nw10 .
-  eq ch?(m1) = false .
-  red inv8(p,a,b,r1,r2,l,c,i,s) .
-  red inv8(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
+  eq (nw(p) = m1, m2, m3, m4, m5, nw10) = false .
+  eq (a = intruder) = false .
+  eq (b = intruder) = false .
   red inv8(p,a,b,r1,r2,l,c,i,s) implies inv8(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
 close
 eof

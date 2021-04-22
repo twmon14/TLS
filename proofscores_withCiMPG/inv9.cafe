@@ -1,3 +1,10 @@
+-- I) Base case
+open INV .
+  :id(tls)
+  op t : -> Prin .
+  op pk : -> PubKey .
+  red inv9(init,t,pk) .
+close
 
 -- II) Inductive cases
 --> 1) cert(p,p2,m1,m2)
