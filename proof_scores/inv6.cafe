@@ -3753,6 +3753,27 @@ open INV .
   eq (a = intruder) = false .
   eq (a = p1) = false . 
   eq sf2(b,b,a,esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s)))) \in nw(p) = false .
+  eq esfin21 = esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s))) .
+  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(fakeSfin21(p,p2,p1,esfin21),a,b,r1,r2,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin21 : -> EncSFin2 .
+-- assumptions
+  eq esfin21 \in cesfin2(nw(p)) = true .
+  
+  eq esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s))) \in cesfin2(nw(p)) = false .
+  eq (a = intruder) = false .
+  eq (a = p1) = false . 
+  eq sf2(b,b,a,esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s)))) \in nw(p) = false .
   eq (esfin21 = esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s)))) = false .
   red inv6(p,a,b,r1,r2,c,i,s) implies inv6(fakeSfin21(p,p2,p1,esfin21),a,b,r1,r2,c,i,s) .
 close

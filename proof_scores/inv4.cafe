@@ -3352,25 +3352,6 @@ open INV .
   eq esfin1 \in cesfin(nw(p)) = true .
 
   eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
-  eq esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) \in cesfin(nw(p)) = true .
-  red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin1(p,p2,p1,esfin1),a,b,r1,r2,l,c,i,s) .
-close
-
-open INV .
-  op p : -> Protocol .
-  ops a b : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin1 : -> EncSFin .
--- assumptions
-  eq esfin1 \in cesfin(nw(p)) = true .
-
-  eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
   eq esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) \in cesfin(nw(p)) = false .
   red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin1(p,p2,p1,esfin1),a,b,r1,r2,l,c,i,s) .
 close
