@@ -54,4 +54,4 @@ open INV .
   red inv14(p,a,b,r1,r2,c,i,s) implies inv16(p,a,b,b1,r1,r2,c,i,s) .
 close
 
--- Q.E.D.
+Q.E.D.
