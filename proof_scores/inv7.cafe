@@ -3946,11 +3946,19 @@ open INV .
   eq i = sid(m2) .
   eq l = list(m1) .
   eq c = choice(m2) .
-  eq pms(dst(m2),p2,s) = pms(epms(m4)) .
+  -- eq (dst(m2) = intruder) = false .
+  -- eq (p2 = intruder) = false .
+  -- eq (pms(epms(m4)) = pms(dst(m2),p2,s)) = false .
+  
+  -- eq (pms(epms(m4)) = pms(dst(m2),p2,s)) = false .
+  eq pms(epms(m4)) = pms(dst(m2),p2,s) .
+  eq (dst(m2) = intruder) = false .
+  eq (p2 = intruder) = false .
   eq r2 = rand(m2) .
-  -- eq a = dst(m2) .
-  -- eq b = p2 .
-  -- eq intruder = dst(m2) .
+  eq a = dst(m2) .
+  eq b = p2 .
+  eq (a = intruder) = false .
+  -- eq (b = intruder) = false .
   red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
 close
 eof
