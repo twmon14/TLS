@@ -1,4 +1,5 @@
 open INV .
+-- arbitrary objects
   op p : -> Protocol .
   ops a b b1 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -7,7 +8,6 @@ open INV .
   op i : -> Sid .
   op s : -> Secret .
   op k : -> PubKey .
--- arbitrary objects
 -- assumptions
   eq b = intruder .
   eq b1 = intruder .
@@ -16,6 +16,7 @@ open INV .
 close
 
 open INV .
+-- arbitrary objects
   op p : -> Protocol .
   ops a b b1 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -24,7 +25,6 @@ open INV .
   op i : -> Sid .
   op s : -> Secret .
   op k : -> PubKey .
--- arbitrary objects
 -- assumptions
   eq b = intruder .
   eq (b1 = intruder) = false .
@@ -33,6 +33,7 @@ open INV .
 close
 
 open INV .
+-- arbitrary objects
   op p : -> Protocol .
   ops a b b1 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -41,7 +42,6 @@ open INV .
   op i : -> Sid .
   op s : -> Secret .
   op k : -> PubKey .
--- arbitrary objects
 -- assumptions
   eq (b = intruder) = false .
   eq a = intruder .
@@ -50,6 +50,7 @@ open INV .
 close
 
 open INV .
+-- arbitrary objects
   op p : -> Protocol .
   ops a b b1 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -58,7 +59,6 @@ open INV .
   op i : -> Sid .
   op s : -> Secret .
   op k : -> PubKey .
--- arbitrary objects
 -- assumptions
   eq (b = intruder) = false .
   eq (a = intruder) = false .
@@ -68,6 +68,7 @@ open INV .
 close
 
 open INV .
+-- arbitrary objects
   op p : -> Protocol .
   ops a b b1 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -76,8 +77,6 @@ open INV .
   op i : -> Sid .
   op s : -> Secret .
   op k : -> PubKey .
--- arbitrary objects    
-  op nw10 : -> Network .
 -- assumptions
   eq (b = intruder) = false .
   eq (a = intruder) = false .
@@ -88,6 +87,7 @@ open INV .
 close
 
 open INV .
+-- arbitrary objects
   op p : -> Protocol .
   ops a b b1 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -96,13 +96,11 @@ open INV .
   op i : -> Sid .
   op s : -> Secret .
   op k : -> PubKey .
--- arbitrary objects    
 -- assumptions
   eq (b = intruder) = false .
   eq (a = intruder) = false .
   eq (k = k(b)) = false .
   eq sig(ca,b,k) \in csig(nw(p)) = false .
-
 -- check 
   red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
 close

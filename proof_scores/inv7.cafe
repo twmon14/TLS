@@ -3492,7 +3492,7 @@ open INV .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
   eq s1 \in us(p) = true .
-  red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(kexch(p,p1,s1,m1,m2,m3),a,b,a1,r1,r2,l,c,i,pms) .
+  red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(kexch(p,p1,s1,m1,m2,m3),a,b,r1,r2,l,c,i,s) .
 close
 
 open INV .
@@ -3919,6 +3919,7 @@ open INV .
   eq m3 \in nw(p) = true .
   eq m4 \in nw(p) = true .
   eq m5 \in nw(p) = true .
+
   eq ch?(m1) = true .
   eq sh?(m2) = true .
   eq ct?(m3) = true .
@@ -3940,82 +3941,19 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-
 --
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq l = list(m1) .
   eq c = choice(m2) .
-  -- eq (dst(m2) = intruder) = false .
-  -- eq (p2 = intruder) = false .
-  -- eq (pms(epms(m4)) = pms(dst(m2),p2,s)) = false .
-  
-  -- eq (pms(epms(m4)) = pms(dst(m2),p2,s)) = false .
-  eq pms(epms(m4)) = pms(dst(m2),p2,s) .
-  eq (dst(m2) = intruder) = false .
-  eq (p2 = intruder) = false .
   eq r2 = rand(m2) .
   eq a = dst(m2) .
   eq b = p2 .
-  eq (a = intruder) = false .
-  -- eq (b = intruder) = false .
-  red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
-close
-eof
-open INV .
-  op p : -> Protocol .
-  ops a b : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq m4 \in nw(p) = true .
-  eq m5 \in nw(p) = true .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq kx?(m4) = true .
-  eq cf?(m5) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq crt(m3) = p2 .
-  eq src(m3) = p2 .
-  eq dst(m3) = dst(m2) .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m4) = dst(m2) .
-  eq dst(m4) = p2 .
-  eq src(m5) = dst(m2) .
-  eq dst(m5) = p2 .
-  eq choice(m2) \in list(m1) = true .
-  eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
-  eq k(epms(m4)) = k(p2) .
-  eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
-                      cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-
---
-  eq r1 = rand(m1) .
-  eq i = sid(m2) .
-  eq l = list(m1) .
-  eq c = choice(m2) .
   eq pms(dst(m2),p2,s) = pms(epms(m4)) .
-  eq r2 = rand(m2) .
-  -- eq a = dst(m2) .
-  -- eq b = p2 .
-  eq (intruder = dst(m2)) = false .
-  eq intruder = p2 .
-  red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
+  red lm1(m2, sh(p2,p2,dst(m2),rand(m2),sid(m2),choice(m2)), nw(p))
+  implies inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
 close
 
--- ntnf
 open INV .
   op p : -> Protocol .
   ops a b : -> Prin .
@@ -4059,16 +3997,13 @@ open INV .
   eq i = sid(m2) .
   eq l = list(m1) .
   eq c = choice(m2) .
-  eq pms(dst(m2),p2,s) = pms(epms(m4)) .
   eq r2 = rand(m2) .
-  -- eq a = dst(m2) .
-  -- eq b = p2 .
-  eq (intruder = dst(m2)) = false .
-  eq (intruder = p2) = false .
-  -- eq pms(epms(m4)) = pms(dst(m2),p2,s) .
+  eq a = dst(m2) .
+  eq b = p2 .
+  eq (pms(dst(m2),p2,s) = pms(epms(m4))) = false .
   red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
 close
-eof
+
 open INV .
   op p : -> Protocol .
   ops a b : -> Prin .
@@ -4107,13 +4042,11 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-
 --
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq l = list(m1) .
   eq c = choice(m2) .
-  eq pms(a,b,s) = pms(epms(m4)) .
   eq r2 = rand(m2) .
   eq a = dst(m2) .
   eq (b = p2) = false .
@@ -4158,13 +4091,11 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-
 --
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq l = list(m1) .
   eq c = choice(m2) .
-  eq pms(a,b,s) = pms(epms(m4)) .
   eq r2 = rand(m2) .
   eq (a = dst(m2)) = false .
   red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
@@ -4181,7 +4112,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4209,12 +4139,10 @@ open INV .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
 
---
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq l = list(m1) .
   eq c = choice(m2) .
-  eq pms(a,b,s) = pms(epms(m4)) .
   eq (r2 = rand(m2)) = false .
   red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
 close
@@ -4230,7 +4158,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4258,55 +4185,6 @@ open INV .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
 
---
-  eq r1 = rand(m1) .
-  eq i = sid(m2) .
-  eq l = list(m1) .
-  eq c = choice(m2) .
-  eq (pms(a,b,s) = pms(epms(m4))) = false .
-  red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
-close
-
-open INV .
-  op p : -> Protocol .
-  ops a b : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq m4 \in nw(p) = true .
-  eq m5 \in nw(p) = true .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq kx?(m4) = true .
-  eq cf?(m5) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq crt(m3) = p2 .
-  eq src(m3) = p2 .
-  eq dst(m3) = dst(m2) .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m4) = dst(m2) .
-  eq dst(m4) = p2 .
-  eq src(m5) = dst(m2) .
-  eq dst(m5) = p2 .
-  eq choice(m2) \in list(m1) = true .
-  eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
-  eq k(epms(m4)) = k(p2) .
-  eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
-                      cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-
---
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq l = list(m1) .
@@ -4325,7 +4203,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4353,7 +4230,6 @@ open INV .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
 
---
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq (l = list(m1)) = false .
@@ -4371,7 +4247,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4399,7 +4274,6 @@ open INV .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
 
---
   eq r1 = rand(m1) .
   eq (i = sid(m2)) = false .
   red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
@@ -4416,7 +4290,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4443,7 +4316,7 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
---
+
   eq (r1 = rand(m1)) = false .
   red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
 close
@@ -4459,7 +4332,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4485,7 +4357,7 @@ open INV .
   eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
   eq k(epms(m4)) = k(p2) .
   eq (ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
-                      cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
+    cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4))))) = false .
   red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
 close
 
@@ -4500,7 +4372,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4539,7 +4410,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4577,7 +4447,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4614,7 +4483,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4650,7 +4518,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4685,7 +4552,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4719,7 +4585,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4752,7 +4617,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4784,7 +4648,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4815,7 +4678,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4845,7 +4707,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4874,7 +4735,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4902,7 +4762,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4929,7 +4788,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4955,7 +4813,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4980,7 +4837,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -5004,7 +4860,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -5027,7 +4882,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -5049,7 +4903,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -5070,7 +4923,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -5090,7 +4942,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -5109,7 +4960,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = false .
@@ -5127,7 +4977,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = false .
   red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
@@ -5144,7 +4993,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
--- assumptions
   eq m1 \in nw(p) = false .
   red inv7(p,a,b,r1,r2,l,c,i,s) implies inv7(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
 close
