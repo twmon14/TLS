@@ -82,8 +82,7 @@ open INV .
   eq (b = intruder) = false .
   eq (a = intruder) = false .
   eq (k = k(b)) = false .
---   eq ct(b1,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
-  eq nw(p) = ct(b1,b,a,cert(b,k,sig(ca,b,k))) , nw10 .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
 -- check 
   red inv9(p,b,k) implies inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
 close
@@ -102,7 +101,8 @@ open INV .
   eq (b = intruder) = false .
   eq (a = intruder) = false .
   eq (k = k(b)) = false .
-  eq ct(b1,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = false .
+
 -- check 
   red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
 close
