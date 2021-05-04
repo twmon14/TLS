@@ -755,7 +755,7 @@ mod! NETWORK {
   op cesfin2 : Network -> ColEncSFin2
   --
   vars NW NW10 : Network
-  var M : Msg
+  var M M2 : Msg
   var PMS : Pms
   var G : Sig
   var EPMS : EncPms
@@ -812,6 +812,10 @@ mod! NETWORK {
       if not(sf2?(M) and ESFIN2 = esfin2(M)) .
 
   -- ceq ct(B1,B,A,cert(B,K,sig(ca,B,K))) \in nw(p) = true if nw(p) = ct(b1,b,a,cert(b,k,sig(ca,b,k))) , NW10 .
+
+-- added 21/05/04
+  op lm1 : Msg Msg Network -> Bool
+  eq lm1(M, M2, NW) = (M = M2 and M \in NW) implies (M2 \in NW) .
 }
 
 mod! SESSIONSTATE {
@@ -1368,6 +1372,8 @@ mod INV {
         sf2(B2,B,A,esfin2(k(B,pms(A,B,S),R1,R2),sfin2(A,B,I,C,R1,R2,pms(A,B,S)))) \in nw(P)
         implies
         sh2(B,B,A,R2,I,C) \in nw(P)) .
+
+  
 
 }
 
