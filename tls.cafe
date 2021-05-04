@@ -776,6 +776,10 @@ mod! NETWORK {
   ceq sig(cert(M)) \in csig(NW) = true if (M \in NW and ct?(M)) . -- added 21/04/14
   ceq G \in csig(M,NW) = G \in csig(NW) 
       if not(ct?(M) and G = sig(cert(M))) .
+  
+  ceq ct(P1:Prin, P2:Prin, P3:Prin, cert(P4:Prin, K:PubKey, G)) \in NW = false
+    if G \in csig(NW) = false .
+    
   --
   -- cepms
   eq EPMS \in cepms(void) = false .
