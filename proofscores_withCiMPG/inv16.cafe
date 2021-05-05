@@ -1,0 +1,63 @@
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret . 
+-- assumptions
+  eq b = intruder .
+  eq b1 = intruder .
+-- check 
+  red inv16(p,a,b,b1,r1,r2,c,i,s) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret . 
+-- assumptions
+  eq b = intruder .
+  eq (b1 = intruder) = false .
+-- check 
+  red inv15(p,a,b1,r2,c,i) implies inv16(p,a,b,b1,r1,r2,c,i,s) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret . 
+-- assumptions
+  eq (b = intruder) = false .
+  eq a = intruder .
+-- check 
+  red inv16(p,a,b,b1,r1,r2,c,i,s) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret . 
+-- assumptions
+  eq (b = intruder) = false .
+  eq (a = intruder) = false .
+-- check 
+  red inv14(p,a,b,r1,r2,c,i,s) implies inv16(p,a,b,b1,r1,r2,c,i,s) .
+close
+
+open INV .
+  :proof(tls)
+close
