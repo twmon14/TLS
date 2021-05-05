@@ -1,0 +1,29 @@
+open INV .
+	:goal{
+		eq [tls :nonexec] : inv12(P:Protocol,P:Prin,P1:Prin,P0:Prin,R:Rand,R0:Rand,L:ListOfChoices,C:Choice,S:Sid,S:Secret) = true .
+	}
+
+	:apply(tc)
+
+	:def csb1 = :ctf {eq P1@Prin  = intruder .}
+
+	:apply(csb1)
+
+	:def csb2 = :ctf {eq P0@Prin  = intruder .}
+
+	:apply(csb2)
+
+	:apply (rd)
+
+	:postpone .
+
+	:def csb3 = :ctf {eq P@Prin  = intruder .}
+
+	:apply(csb3)
+
+	:apply (rd)
+
+	:postpone .
+
+
+close
