@@ -3,7 +3,7 @@ open INV .
 		eq [tls :nonexec] : inv14(P:Protocol,P:Prin,P0:Prin,R:Rand,R0:Rand,C:Choice,S:Sid,S:Secret) = true .
 	}
 
-    eq lm1(M:Msg, M2:Msg, NW:Network) = (M = M2 and M \in NW) implies (M2 \in NW) .
+    eq [lm1 :nonexec] : lm1(M:Msg, M2:Msg, NW:Network) = true .
 
 	:ind on (P:Protocol)
 
@@ -1663,16 +1663,16 @@ open INV .
 
 	:apply(csb176)
 
-    
+    :imp [lm1] by {M:Msg <- M0#Msg ; M2:Msg <- sh2(P#Prin,P#Prin,dst(M0#Msg),rand(M0#Msg),sid(M0#Msg),choice(M0#Msg)) ; NW:Network <- nw(P#Protocol) ;}
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
-    :imp [tls] by {M:Msg <- M0#Msg ; M2:Msg <- P0@Prin ; S@Sid ;}
-	:postpone . -- lm1
+	:apply (rd)
 
+    :imp [lm1] by {M:Msg <- M0#Msg ; M2:Msg <- sh2(P#Prin,P#Prin,dst(M0#Msg),rand(M0#Msg),sid(M0#Msg),choice(M0#Msg)) ; NW:Network <- nw(P#Protocol) ;}
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
 
-	:postpone .
+	:apply (rd)
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
