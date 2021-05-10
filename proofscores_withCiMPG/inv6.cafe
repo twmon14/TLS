@@ -15024,91 +15024,92 @@ open INV .
   eq i = sid(m2) .
   eq c = choice(m2) .
   eq b = p2 .
+  eq r2 = rand(m2) .
   eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
+  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(sfin2(p,p2,m1,m2,m3),a,b,r1,r2,c,i,s) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m3) = dst(m2) .
+  eq dst(m3) = p2 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
+  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
+  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
+                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
+
+  eq r1 = rand(m1) .
+  eq a = dst(m2) .
+  eq i = sid(m2) .
+  eq c = choice(m2) .
+  eq b = p2 .
   eq r2 = rand(m2) .
-  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(sfin2(p,p2,m1,m2,m3),a,b,r1,r2,c,i,s) .
-close
-
-open INV .
-  :id(tls)
-  op p : -> Protocol .
-  ops a b : -> Prin .
-  ops r1 r2 : -> Rand .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq ch2?(m1) = true .
-  eq sh2?(m2) = true .
-  eq cf2?(m3) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m3) = dst(m2) .
-  eq dst(m3) = p2 .
-  eq sid(m1) = sid(m2) .
-  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
-  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
-  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
-                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
-
-  eq r1 = rand(m1) .
-  eq a = dst(m2) .
-  eq i = sid(m2) .
-  eq c = choice(m2) .
-  eq b = p2 .
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
-  eq (r2 = rand(m2)) = false .
-  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(sfin2(p,p2,m1,m2,m3),a,b,r1,r2,c,i,s) .
-close
-
-open INV .
-  :id(tls)
-  op p : -> Protocol .
-  ops a b : -> Prin .
-  ops r1 r2 : -> Rand .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq ch2?(m1) = true .
-  eq sh2?(m2) = true .
-  eq cf2?(m3) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m3) = dst(m2) .
-  eq dst(m3) = p2 .
-  eq sid(m1) = sid(m2) .
-  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
-  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
-  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
-                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
-
-  eq r1 = rand(m1) .
-  eq a = dst(m2) .
-  eq i = sid(m2) .
-  eq c = choice(m2) .
-  eq b = p2 .
   eq (pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s)) = false .
-
   eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(dst(m2),p2,s) .
-  eq intruder = dst(m2) .
+  eq dst(m2) = intruder .
+  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(sfin2(p,p2,m1,m2,m3),a,b,r1,r2,c,i,s) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m3) = dst(m2) .
+  eq dst(m3) = p2 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
+  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
+  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
+                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
+
+  eq r1 = rand(m1) .
+  eq a = dst(m2) .
+  eq i = sid(m2) .
+  eq c = choice(m2) .
+  eq b = p2 .
   eq r2 = rand(m2) .
+  eq (pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s)) = false .
+  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(dst(m2),p2,s) .
+  eq (dst(m2) = intruder) = false .
   red inv6(p,a,b,r1,r2,c,i,s) implies inv6(sfin2(p,p2,m1,m2,m3),a,b,r1,r2,c,i,s) .
 close
 
@@ -15147,140 +15148,48 @@ open INV .
   eq i = sid(m2) .
   eq c = choice(m2) .
   eq b = p2 .
-  eq (pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s)) = false .
-
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(dst(m2),p2,s) .
-  eq intruder = dst(m2) .
-  eq (r2 = rand(m2)) = false .
-  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(sfin2(p,p2,m1,m2,m3),a,b,r1,r2,c,i,s) .
-close
-
-open INV .
-  :id(tls)
-  op p : -> Protocol .
-  ops a b : -> Prin .
-  ops r1 r2 : -> Rand .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq ch2?(m1) = true .
-  eq sh2?(m2) = true .
-  eq cf2?(m3) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m3) = dst(m2) .
-  eq dst(m3) = p2 .
-  eq sid(m1) = sid(m2) .
-  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
-  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
-  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
-                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
-
-  eq r1 = rand(m1) .
-  eq a = dst(m2) .
-  eq i = sid(m2) .
-  eq c = choice(m2) .
-  eq b = p2 .
-  eq (pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s)) = false .
-
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(dst(m2),p2,s) .
-  eq (intruder = dst(m2)) = false .
-
   eq r2 = rand(m2) .
-  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(sfin2(p,p2,m1,m2,m3),a,b,r1,r2,c,i,s) .
-close
-
-open INV .
-  :id(tls)
-  op p : -> Protocol .
-  ops a b : -> Prin .
-  ops r1 r2 : -> Rand .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq ch2?(m1) = true .
-  eq sh2?(m2) = true .
-  eq cf2?(m3) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m3) = dst(m2) .
-  eq dst(m3) = p2 .
-  eq sid(m1) = sid(m2) .
-  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
-  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
-  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
-                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
-
-  eq r1 = rand(m1) .
-  eq a = dst(m2) .
-  eq i = sid(m2) .
-  eq c = choice(m2) .
-  eq b = p2 .
   eq (pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s)) = false .
-
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(dst(m2),p2,s) .
-  eq (intruder = dst(m2)) = false .
-
-  eq (r2 = rand(m2)) = false .
-  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(sfin2(p,p2,m1,m2,m3),a,b,r1,r2,c,i,s) .
-close
-
-open INV .
-  :id(tls)
-  op p : -> Protocol .
-  ops a b : -> Prin .
-  ops r1 r2 : -> Rand .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq ch2?(m1) = true .
-  eq sh2?(m2) = true .
-  eq cf2?(m3) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m3) = dst(m2) .
-  eq dst(m3) = p2 .
-  eq sid(m1) = sid(m2) .
-  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
-  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
-  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
-                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
-
-  eq r1 = rand(m1) .
-  eq a = dst(m2) .
-  eq i = sid(m2) .
-  eq c = choice(m2) .
-  eq b = p2 .
-  eq (pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s)) = false .
-
   eq (pms(ss(p,dst(m2),p2,sid(m2))) = pms(dst(m2),p2,s)) = false .
+  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(sfin2(p,p2,m1,m2,m3),a,b,r1,r2,c,i,s) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 m3 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq m3 \in nw(p) = true .
+  eq ch2?(m1) = true .
+  eq sh2?(m2) = true .
+  eq cf2?(m3) = true .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq dst(m1) = p2 .
+  eq src(m3) = dst(m2) .
+  eq dst(m3) = p2 .
+  eq sid(m1) = sid(m2) .
+  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
+  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
+  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
+                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
+
+  eq r1 = rand(m1) .
+  eq a = dst(m2) .
+  eq i = sid(m2) .
+  eq c = choice(m2) .
+  eq b = p2 .
+  eq (r2 = rand(m2)) = false .
   red inv6(p,a,b,r1,r2,c,i,s) implies inv6(sfin2(p,p2,m1,m2,m3),a,b,r1,r2,c,i,s) .
 close
 
@@ -15632,6 +15541,8 @@ open INV .
   eq (dst(m1) = p2) = false .
   red inv6(p,a,b,r1,r2,c,i,s) implies inv6(sfin2(p,p2,m1,m2,m3),a,b,r1,r2,c,i,s) .
 close
+
+
 
 open INV .
   :id(tls)
