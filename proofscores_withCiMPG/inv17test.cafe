@@ -1,0 +1,311 @@
+-- I) Base case
+open INV .
+  :id(tls)
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  red inv17(init,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+-- II) Inductive cases
+--> 1) cert(p,p2,m1,m2)
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  -- eq c-cert(p,p2,m1,m2) = true .  
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq dst(m1) = p2 .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq choice(m2) \in list(m1) = true .
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s) implies inv12(p,a,b,b1,r1,r2,l,c,i,s) implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(cert(p,p2,m1,m2),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq dst(m1) = p2 .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq src(m1) = dst(m2) .
+  eq choice(m2) \in list(m1) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(cert(p,p2,m1,m2),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq dst(m1) = p2 .
+  eq crt(m2) = p2 .
+  eq src(m2) = p2 .
+  eq (src(m1) = dst(m2)) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(cert(p,p2,m1,m2),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq dst(m1) = p2 .
+  eq crt(m2) = p2 .
+  eq (src(m2) = p2) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(cert(p,p2,m1,m2),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq dst(m1) = p2 .
+  eq (crt(m2) = p2) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(cert(p,p2,m1,m2),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = true .
+  eq (dst(m1) = p2) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(cert(p,p2,m1,m2),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq sh?(m2) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(cert(p,p2,m1,m2),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = true .
+  eq ch?(m1) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(cert(p,p2,m1,m2),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = true .
+  eq m2 \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(cert(p,p2,m1,m2),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq m1 \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(cert(p,p2,m1,m2),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  :proof(tls)
+close
+
+-- proof script
+-- open INV .
+-- 	:goal{
+-- 		eq [tls :nonexec] : inv17(cert(P:Protocol,P:Prin,M:Msg,M0:Msg),P4:Prin,P3:Prin,P2:Prin,P1:Prin,P0:Prin,R:Rand,R0:Rand,L:ListOfChoices,
+--     C:Choice,S:Sid,S:Secret,P:PubKey) = true .
+-- 	}
+
+-- 	:apply(tc)
+
+-- 	:def csb1 = :ctf [M@Msg \in nw(P@Protocol) .]
+
+-- 	:apply(csb1)
+
+-- 	:def csb2 = :ctf [M0@Msg \in nw(P@Protocol) .]
+
+-- 	:apply(csb2)
+
+-- 	:def csb3 = :ctf [ch?(M@Msg) .]
+
+-- 	:apply(csb3)
+
+-- 	:def csb4 = :ctf [sh?(M0@Msg) .]
+
+-- 	:apply(csb4)
+
+-- 	:def csb5 = :ctf {eq dst(M@Msg) = P@Prin .}
+
+-- 	:apply(csb5)
+
+-- 	:def csb6 = :ctf {eq crt(M0@Msg) = P@Prin .}
+
+-- 	:apply(csb6)
+
+-- 	:def csb7 = :ctf {eq src(M0@Msg) = P@Prin .}
+
+-- 	:apply(csb7)
+
+-- 	:def csb8 = :ctf {eq src(M@Msg) = dst(M0@Msg).}
+
+-- 	:apply(csb8)
+
+-- 	:def csb9 = :ctf [choice(M0@Msg)\in list(M@Msg) .]
+
+-- 	:apply(csb9)
+
+-- 	:postpone .
+
+-- 	:postpone .
+
+-- 	:postpone .
+
+-- 	:postpone .
+
+-- 	:postpone .
+
+-- 	:postpone .
+
+-- 	:postpone .
+
+-- 	:postpone .
+
+-- 	:postpone .
+
+-- 	:postpone .
+
+
+-- close
