@@ -1173,260 +1173,1102 @@ open INV .
 
 	:apply (rd)
 
-	:def csb116 = :ctf {eq P@Prin  = P0#Prin .} -- a = p1
+	:def csb116 = :ctf {eq P@Prin  = P0#Prin .}
 
 	:apply(csb116)
 
-	:def csb117 = :ctf {eq P0#Prin  = intruder .} -- p1 = intruder
+	:def csb117 = :ctf {eq P0#Prin  = intruder .}
 
 	:apply(csb117)
 
-	:def csb129 = :ctf {eq P0@Prin  = intruder .} -- b = intruder
+	*** The corresponding proof score was not present.
+	-- :apply (rd)
+
+	:def csb118 = :ctf {eq P0@Prin  = intruder .}
+
+	:apply(csb118)
+
+	:def csb119 = :ctf {eq intruder  = P#Prin .}
+
+	:apply(csb119)
+
+	:def csb120 = :ctf {eq P0#Prin  = P#Prin .}
+
+	:apply(csb120)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb121 = :ctf {eq E#EncSFin2  = esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,
+    pms(P0#Prin,P#Prin,S@Secret))) .}
+
+	:apply(csb121)
+
+	:def csb122 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb122)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	*** Goal`19-1-1-2-2-1-2-1-1-2-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,S@Secret) -
+    -- Success
+	:def csb123 = :ctf [esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+	:apply(csb123)
+
+		*** Goal`19-1-1-2-2-1-2-1-1-2-1-2-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-1-2-1-1-2-1-2-2 Success by reduction
+		:apply (rd)
+
+	:def csb124 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb124)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:def csb125 = :ctf [esfin2(k(intruder,pms(P0#Prin,intruder,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,intruder,S@Sid,C@Choice,R@Rand,R0@Rand,pms(
+    P0#Prin,intruder,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+	:apply(csb125)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb126 = :ctf [sf2(intruder,intruder,P0#Prin,esfin2(k(intruder,pms(P0#Prin,intruder,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,intruder,S@Sid,
+    C@Choice,R@Rand,R0@Rand,pms(P0#Prin,intruder,S@Secret))))\in nw(P#Protocol) .]
+
+	:apply(csb126)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb127 = :ctf {eq E#EncSFin2  = esfin2(k(intruder,pms(P0#Prin,intruder,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,intruder,S@Sid,C@Choice,R@Rand,
+    R0@Rand,pms(P0#Prin,intruder,S@Secret))) .}
+
+	:apply(csb127)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb128 = :ctf [sf2(P0@Prin,P0@Prin,P0#Prin,esfin2(k(P0@Prin,pms(P0#Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P0@Prin,S@Sid,C@Choice,
+    R@Rand,R0@Rand,pms(P0#Prin,P0@Prin,S@Secret))))\in nw(P#Protocol) .]
+
+	:apply(csb128)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb129 = :ctf [esfin2(k(P0@Prin,pms(P0#Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P0@Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P0@Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
 
 	:apply(csb129)
 
-	
-	:def csb132 = :ctf {eq P0@Prin  = P#Prin .} -- b = p2
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb130 = :ctf {eq E#EncSFin2  = esfin2(k(P0@Prin,pms(P0#Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P0@Prin,S@Sid,C@Choice,R@Rand,
+    R0@Rand,pms(P0#Prin,P0@Prin,S@Secret))) .}
+
+	:apply(csb130)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb131 = :ctf [sf2(P0@Prin,P0@Prin,P@Prin,esfin2(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P0@Prin,S@Sid,C@Choice,
+    R@Rand,R0@Rand,pms(P@Prin,P0@Prin,S@Secret))))\in nw(P#Protocol) .]
+
+	:apply(csb131)
+
+	:def csb132 = :ctf {eq P0#Prin  = intruder .}
 
 	:apply(csb132)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
+	:def csb133 = :ctf {eq P0@Prin  = intruder .}
 
-	:apply (rd)
+	:apply(csb133)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd) -- b = intruder = false
-
-	
-	:def csb134 = :ctf {eq P0@Prin  = intruder .}
+	:def csb134 = :ctf {eq E#EncSFin2  = esfin2(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P0@Prin,S@Sid,C@Choice,R@Rand,
+    R0@Rand,pms(P@Prin,P0@Prin,S@Secret))) .}
 
 	:apply(csb134)
 
+	:def csb135 = :ctf {eq P0@Prin  = P#Prin .}
 
-	:def csb137 = :ctf {eq intruder  = P#Prin .}
+	:apply(csb135)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:postpone .
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:postpone .
+
+	:def csb136 = :ctf {eq P0@Prin  = P#Prin .}
+
+	:apply(csb136)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:postpone .
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:postpone .
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb137 = :ctf {eq P0@Prin  = intruder .}
 
 	:apply(csb137)
 
-	:def csb138 = :ctf {eq P0@Prin  = P#Prin .}
+	:def csb138 = :ctf {eq E#EncSFin2  = esfin2(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P0@Prin,S@Sid,C@Choice,R@Rand,
+    R0@Rand,pms(P@Prin,P0@Prin,S@Secret))) .}
 
-	:apply(csb138) -- p1 = p2
+	:apply(csb138)
 
-	
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
-    S@Secret ; S:Sid <- S@Sid ;}
+	:def csb139 = :ctf {eq E#EncSFin2  = esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,
+    pms(P0#Prin,P#Prin,S@Secret))) .}
 
-	:apply (rd)
+	:apply(csb139)
 
-	:def csb142 = :ctf [esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
-    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+	:def csb140 = :ctf {eq intruder  = P#Prin .}
+
+	:apply(csb140)
+
+	:def csb141 = :ctf {eq P0@Prin  = P#Prin .}
+
+	:apply(csb141)
+
+	:def csb142 = :ctf {eq P0#Prin  = P#Prin .}
 
 	:apply(csb142)
 
+	*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-1-1  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb143 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb143)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-1-1-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-1-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb144 = :ctf [esfin2(k(P#Prin,pms(P#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb144)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-1-1-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-1-1-2-2 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+	:def csb145 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb145)
+
+	*** The corresponding proof score was not present.
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
 
-    :apply(rd)
+	*** The corresponding proof score was not present.
+	:apply (rd)
 
-	:def csb171 = :ctf {eq E#EncSFin2  = esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,
-    pms(P0#Prin,P#Prin,S@Secret))) .}
+	*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-1-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb146 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb146)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-1-2-2-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-1-2-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb147 = :ctf [esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(
+    P0#Prin,P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb147)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-1-2-2-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-1-2-2-2-2 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+	:def csb148 = :ctf {eq P0#Prin  = P#Prin .}
+
+	:apply(csb148)
+
+	*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-2-1  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb149 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb149)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-2-1-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-2-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb150 = :ctf [esfin2(k(P#Prin,pms(P#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb150)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-2-1-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-2-1-2-2 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+	:def csb151 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb151)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-2-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb152 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb152)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-2-2-2-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-2-2-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb153 = :ctf [esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(
+    P0#Prin,P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb153)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-2-2-2-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-1-1-2-2-2-2-2 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+	*** Goal`19-1-1-2-2-2-1-2-1-1-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,S@Secret) -
+    -- Success
+	:def csb154 = :ctf [esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+	:apply(csb154)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-1-2-1 Success by implication and reduction.
+		:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ;
+    S:Sid <- S@Sid ;}
+
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-1-2-2 Success by implication and reduction.
+		:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ;
+    S:Sid <- S@Sid ;}
+
+		:apply (rd)
+
+	:def csb155 = :ctf {eq intruder  = P#Prin .}
+
+	:apply(csb155)
+
+	:def csb156 = :ctf {eq P0@Prin  = P#Prin .}
+
+	:apply(csb156)
+
+	:def csb157 = :ctf {eq P0#Prin  = P#Prin .}
+
+	:apply(csb157)
+
+	*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-1  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb158 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb158)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-1-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb159 = :ctf [esfin2(k(P#Prin,pms(P@Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P@Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb159)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-1-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-1-2-2 Success by reduction
+			:apply (rd)
+
+	:def csb160 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb160)
+
+	*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-2-1  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb161 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb161)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-2-1-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-2-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb162 = :ctf [esfin2(k(P#Prin,pms(P@Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P@Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb162)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-2-1-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-2-1-2-2 Success by reduction
+			:apply (rd)
+
+	*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb163 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb163)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-2-2-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-2-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+			:def csb164 = :ctf [esfin2(k(P#Prin,pms(P@Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P@Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb164)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-2-2-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-1-2-2-2-2 Success by reduction
+			:apply (rd)
+
+	:def csb165 = :ctf {eq P0#Prin  = P#Prin .}
+
+	:apply(csb165)
+
+	*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-1  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb166 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb166)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-1-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb167 = :ctf [esfin2(k(P#Prin,pms(P@Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P@Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb167)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-1-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-1-2-2 Success by reduction
+			:apply (rd)
+
+	:def csb168 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb168)
+
+	*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-2-1  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb169 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb169)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-2-1-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-2-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb170 = :ctf [esfin2(k(P#Prin,pms(P@Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P@Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb170)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-2-1-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-2-1-2-2 Success by reduction
+			:apply (rd)
+
+	*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb171 = :ctf {eq P#Prin  = P@Prin .}
 
 	:apply(csb171)
-	
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-2-2-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-2-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb172 = :ctf [esfin2(k(P#Prin,pms(P@Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P@Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb172)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-2-2-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
     S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply (rd)
+			:apply (rd)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
-    S@Secret ; S:Sid <- S@Sid ;}
+			*** Goal`19-1-1-2-2-2-1-2-1-1-2-1-2-2-2-2-2 Success by reduction
+			:apply (rd)
 
-	:apply (rd)
+	*** Goal`19-1-1-2-2-2-1-2-1-1-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,S@Secret) -
+    -- Success
+	:def csb173 = :ctf [esfin2(k(intruder,pms(P@Prin,intruder,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,intruder,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P@Prin,
+    intruder,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
 
-    :def csb172 = :ctf [esfin2(k(intruder,pms(P0#Prin,intruder,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,intruder,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
-    intruder,S@Secret))) \in cesfin2(nw(P#Protocol)) .]	
-	
-    :apply(csb172)
+	:apply(csb173)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-2-1 Success by implication and reduction.
+		:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ;
+    S:Sid <- S@Sid ;}
 
-	:apply (rd)
+		:apply (rd)
 
-    :def csb173 = :ctf [sf2(intruder,intruder,P0#Prin,esfin2(k(intruder,pms(P0#Prin,intruder,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,intruder,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
-    intruder,S@Secret)))) \in cesfin2(nw(P#Protocol)) .]	
-	
-    :apply(csb173)    
+		*** Goal`19-1-1-2-2-2-1-2-1-1-2-2-2 Success by reduction
+		:apply (rd)
 
-    :imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-    :def csb174 = :ctf {eq E#EncSFin2  = esfin2(k(intruder,pms(P0#Prin,intruder,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,intruder,S@Sid,C@Choice,R@Rand,R0@Rand,
-    pms(P0#Prin,intruder,S@Secret))) .}
+	:def csb174 = :ctf {eq E#EncSFin2  = esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,
+    pms(P0#Prin,P#Prin,S@Secret))) .}
 
 	:apply(csb174)
 
-    :imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+	:def csb175 = :ctf {eq intruder  = P#Prin .}
+
+	:apply(csb175)
+
+	:def csb176 = :ctf {eq P0@Prin  = P#Prin .}
+
+	:apply(csb176)
+
+	:def csb177 = :ctf {eq P0#Prin  = P#Prin .}
+
+	:apply(csb177)
+
+	*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-1-1  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb178 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb178)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-1-1-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-1-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb179 = :ctf [esfin2(k(P#Prin,pms(P#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb179)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-1-1-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-1-1-2-2 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+	:def csb180 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb180)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
 
+	*** The corresponding proof score was not present.
 	:apply (rd)
 
-    :imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+	*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-1-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb181 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb181)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-1-2-2-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-1-2-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb182 = :ctf [esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(
+    P0#Prin,P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb182)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-1-2-2-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-1-2-2-2-2 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+	:def csb183 = :ctf {eq P0#Prin  = P#Prin .}
+
+	:apply(csb183)
+
+	*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-2-1  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb184 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb184)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-2-1-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-2-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb185 = :ctf [esfin2(k(P#Prin,pms(P#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb185)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-2-1-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-2-1-2-2 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+	:def csb186 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb186)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
 
+	*** The corresponding proof score was not present.
 	:apply (rd)
 
-    :def csb175 = :ctf [sf2(P0@Prin,P0@Prin,P0#Prin,esfin2(k(P0@Prin,pms(P0#Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P0@Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
-    P0@Prin,S@Secret)))) \in cesfin2(nw(P#Protocol)) .]	
-	
-    :apply(csb175)    
+	*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-2-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb187 = :ctf {eq P#Prin  = P@Prin .}
 
-    :imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
+	:apply(csb187)
 
+		*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-2-2-2-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-2-2-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb188 = :ctf [esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(
+    P0#Prin,P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb188)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-2-2-2-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-1-2-1-2-1-1-2-2-2-2-2 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+	*** Goal`19-1-1-2-2-2-1-2-1-2-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,S@Secret) -
+    Success
+	:def csb189 = :ctf [esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+	:apply(csb189)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-2-1-2-1 Success by implication and reduction.
+		:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ;
+    S:Sid <- S@Sid ;}
+
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-1-2-1-2-1-2-2 Success by implication and reduction.
+		:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ;
+    S:Sid <- S@Sid ;}
+
+		:apply (rd)
+
+	:def csb190 = :ctf {eq intruder  = P#Prin .}
+
+	:apply(csb190)
+
+	:def csb191 = :ctf {eq P0@Prin  = P#Prin .}
+
+	:apply(csb191)
+
+	:def csb192 = :ctf {eq P0#Prin  = P#Prin .}
+
+	:apply(csb192)
+
+	:postpone .
+
+	:def csb193 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb193)
+
+	:postpone .
+
+	:postpone .
+
+	:def csb194 = :ctf {eq P0#Prin  = P#Prin .}
+
+	:apply(csb194)
+
+	:postpone .
+
+	:def csb195 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb195)
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	*** The corresponding proof score was not present.
 	:apply (rd)
 
-    :def csb176 = :ctf [esfin2(k(P0@Prin,pms(P0#Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P0@Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
-    P0@Prin,S@Secret))) \in cesfin2(nw(P#Protocol)) .]	
-	
-    :apply(csb176)
+	:def csb196 = :ctf {eq E#EncSFin2  = esfin2(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P0@Prin,S@Sid,C@Choice,R@Rand,
+    R0@Rand,pms(P@Prin,P0@Prin,S@Secret))) .}
+
+	:apply(csb196)
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
 
 	:apply (rd)
 
-    :def csb177 = :ctf {eq E#EncSFin2  = esfin2(k(P0@Prin,pms(P0#Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P0@Prin,S@Sid,C@Choice,R@Rand,R0@Rand,
-    pms(P0#Prin,P0@Prin,S@Secret))) .}
+	:def csb197 = :ctf {eq P0@Prin  = intruder .}
 
-	:apply(csb177)
+	:apply(csb197)
 
-    :imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+	:def csb198 = :ctf {eq P0@Prin  = P#Prin .}
+
+	:apply(csb198)
+
+	:def csb199 = :ctf {eq P0#Prin  = intruder .}
+
+	:apply(csb199)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:postpone .
+
+	:def csb200 = :ctf {eq E#EncSFin2  = esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,
+    pms(P0#Prin,P#Prin,S@Secret))) .}
+
+	:apply(csb200)
+
+	:def csb201 = :ctf {eq intruder  = P#Prin .}
+
+	:apply(csb201)
+
+	:def csb202 = :ctf {eq P0#Prin  = P#Prin .}
+
+	:apply(csb202)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:postpone .
+
+	:def csb203 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb203)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
 
 	:apply (rd)
 
-    :imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+	*** Goal`19-1-1-2-2-2-2-2-1-1-2-1-1-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb204 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb204)
+
+		*** Goal`19-1-1-2-2-2-2-2-1-1-2-1-1-2-2-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-2-2-1-1-2-1-1-2-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb205 = :ctf [esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(
+    P0#Prin,P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb205)
+
+			*** Goal`19-1-1-2-2-2-2-2-1-1-2-1-1-2-2-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-2-2-1-1-2-1-1-2-2-2-2 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+	*** Goal`19-1-1-2-2-2-2-2-1-1-2-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,S@Secret)
+    -- - Success
+	:def csb206 = :ctf [esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+	:apply(csb206)
+
+		*** Goal`19-1-1-2-2-2-2-2-1-1-2-1-2-1 Success by implication and reduction.
+		:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ;
+    S:Sid <- S@Sid ;}
+
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-2-2-1-1-2-1-2-2 Success by implication and reduction.
+		:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ;
+    S:Sid <- S@Sid ;}
+
+		:apply (rd)
+
+	:def csb207 = :ctf {eq intruder  = P#Prin .}
+
+	:apply(csb207)
+
+	:def csb208 = :ctf {eq P0#Prin  = P#Prin .}
+
+	:apply(csb208)
+
+	:postpone .
+
+	:def csb209 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb209)
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:def csb210 = :ctf {eq P0#Prin  = intruder .}
+
+	:apply(csb210)
+
+	:postpone .
+
+	:def csb211 = :ctf {eq E#EncSFin2  = esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,
+    pms(P0#Prin,P#Prin,S@Secret))) .}
+
+	:apply(csb211)
+
+	:def csb212 = :ctf {eq intruder  = P#Prin .}
+
+	:apply(csb212)
+
+	:def csb213 = :ctf {eq P0#Prin  = P#Prin .}
+
+	:apply(csb213)
+
+	*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-1-1  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb214 = :ctf {eq P#Prin  = P@Prin .}
+
+	:apply(csb214)
+
+		*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-1-1-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-1-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb215 = :ctf [esfin2(k(P#Prin,pms(P#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb215)
+
+			*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-1-1-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-1-1-2-2 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+	:def csb216 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb216)
+
+	*** The corresponding proof score was not present.
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
 
+	*** The corresponding proof score was not present.
 	:apply (rd)
 
-    :def csb178 = :ctf [sf2(P0@Prin,P0@Prin,P@Prin,esfin2(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P0@Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P@Prin,
-    P0@Prin,S@Secret)))) \in cesfin2(nw(P#Protocol)) .]	
-	
-    :apply(csb178)    
+	*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-1-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,
+    -- S@Secret) - Success
+	:def csb217 = :ctf {eq P#Prin  = P@Prin .}
 
-    :imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
+	:apply(csb217)
 
+		*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-1-2-2-1 Success by reduction
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-1-2-2-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,
+    -- S@Sid,S@Secret) - Success
+		:def csb218 = :ctf [esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(
+    P0#Prin,P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+		:apply(csb218)
+
+			*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-1-2-2-2-1 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+			*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-1-2-2-2-2 Success by implication and reduction.
+			:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <-
+    S@Secret ; S:Sid <- S@Sid ;}
+
+			:apply (rd)
+
+	*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-2  -  inv6(fakeSfin21(P#Protocol,P#Prin,P0#Prin,E#EncSFin2),P@Prin,P0@Prin,R@Rand,R0@Rand,C@Choice,S@Sid,S@Secret)
+    -- - Success
+	:def csb219 = :ctf [esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+	:apply(csb219)
+
+		*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-2-1 Success by implication and reduction.
+		:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ;
+    S:Sid <- S@Sid ;}
+
+		:apply (rd)
+
+		*** Goal`19-1-1-2-2-2-2-2-1-2-2-1-2-2 Success by implication and reduction.
+		:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ;
+    S:Sid <- S@Sid ;}
+
+		:apply (rd)
+
+	:def csb220 = :ctf {eq intruder  = P#Prin .}
+
+	:apply(csb220)
+
+	:def csb221 = :ctf {eq P0#Prin  = P#Prin .}
+
+	:apply(csb221)
+
+	:postpone .
+
+	:def csb222 = :ctf {eq esfin2(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R0@Rand),sfin2(P0#Prin,P#Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P0#Prin,
+    P#Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) = true .}
+
+	:apply(csb222)
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:def csb223 = :ctf {eq P0#Prin  = intruder .}
+
+	:apply(csb223)
+
+	*** The corresponding proof score was not present.
 	:apply (rd)
 
-    :def csb179 = :ctf {eq E#EncSFin2  = esfin2(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P0@Prin,S@Sid,C@Choice,R@Rand,R0@Rand,
-    pms(P@Prin,P0@Prin,S@Secret))) .}
-
-	:apply(csb179)
-
-    :imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
+	*** The corresponding proof score was not present.
 	:apply (rd)
 
-    :imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-    :imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
 
 	:apply (rd)
 
 	:apply(tc)
 
-	:def csb221 = :ctf [P#Pms \in cpms(nw(P#Protocol)) .]
-
-	:apply(csb221)
-
-	:def csb222 = :ctf {eq R#Rand  = R@Rand .}
-
-	:apply(csb222)
-
-	:def csb223 = :ctf {eq P0#Prin  = P@Prin .}
-
-	:apply(csb223)
-
-	:def csb224 = :ctf {eq S#Sid  = S@Sid .}
+	:def csb224 = :ctf [P#Pms \in cpms(nw(P#Protocol)) .]
 
 	:apply(csb224)
 
-	:def csb225 = :ctf {eq C#Choice  = C@Choice .}
+	:def csb225 = :ctf {eq R#Rand  = R@Rand .}
 
 	:apply(csb225)
 
-	:def csb226 = :ctf {eq P#Prin  = P0@Prin .}
+	:def csb226 = :ctf {eq P0#Prin  = P@Prin .}
 
 	:apply(csb226)
 
-	:def csb227 = :ctf {eq P#Pms  = pms(P@Prin,P0@Prin,S@Secret) .}
+	:def csb227 = :ctf {eq S#Sid  = S@Sid .}
 
 	:apply(csb227)
 
-	:def csb228 = :ctf {eq R0#Rand  = R0@Rand .}
+	:def csb228 = :ctf {eq C#Choice  = C@Choice .}
 
 	:apply(csb228)
 
-	:def csb229 = :ctf {eq intruder  = P0@Prin .}
+	:def csb229 = :ctf {eq P#Prin  = P0@Prin .}
 
 	:apply(csb229)
 
-	:def csb230 = :ctf [pms(P@Prin,P0@Prin,S@Secret) \in cpms(nw(P#Protocol)) .]
+	:def csb230 = :ctf {eq P#Pms  = pms(P@Prin,P0@Prin,S@Secret) .}
 
 	:apply(csb230)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:def csb231 = :ctf {eq P@Prin  = intruder .}
+	:def csb231 = :ctf {eq R0#Rand  = R0@Rand .}
 
 	:apply(csb231)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:def csb232 = :ctf [pms(P@Prin,P0@Prin,S@Secret) \in cpms(nw(P#Protocol)) .]
+	:def csb232 = :ctf {eq intruder  = P0@Prin .}
 
 	:apply(csb232)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:postpone . -- inv1
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:def csb233 = :ctf {eq P@Prin  = intruder .}
+	:def csb233 = :ctf [pms(P@Prin,P0@Prin,S@Secret)\in cpms(nw(P#Protocol)) .]
 
 	:apply(csb233)
 
@@ -1435,7 +2277,12 @@ open INV .
 
 	:apply (rd)
 
-	:def csb234 = :ctf [pms(P@Prin,P0@Prin,S@Secret) \in cpms(nw(P#Protocol)) .]
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb234 = :ctf {eq P@Prin  = intruder .}
 
 	:apply(csb234)
 
@@ -1444,318 +2291,167 @@ open INV .
 
 	:apply (rd)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:apply(tc)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:apply(tc)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:apply(tc)
-
-	:apply (rd)
-
-	:apply(tc) -- 23 in prsc
-
-	:def csb235 = :ctf [M#Msg \in nw(P#Protocol) .]
+	:def csb235 = :ctf [pms(P@Prin,P0@Prin,S@Secret)\in cpms(nw(P#Protocol)) .]
 
 	:apply(csb235)
 
-	:def csb236 = :ctf [M0#Msg \in nw(P#Protocol) .]
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:postpone .
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb236 = :ctf {eq P@Prin  = intruder .}
 
 	:apply(csb236)
 
-	:def csb237 = :ctf [M1#Msg \in nw(P#Protocol) .]
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb237 = :ctf [pms(P@Prin,P0@Prin,S@Secret)\in cpms(nw(P#Protocol)) .]
 
 	:apply(csb237)
 
-	:def csb238 = :ctf [S#Secret \in us(P#Protocol) .]
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb238 = :ctf [M#Msg \in nw(P#Protocol) .]
 
 	:apply(csb238)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:def csb239 = :ctf [ch?(M#Msg) .]
+	:def csb239 = :ctf [M0#Msg \in nw(P#Protocol) .]
 
 	:apply(csb239)
 
-	:def csb240 = :ctf [sh?(M0#Msg) .]
+	:def csb240 = :ctf [M1#Msg \in nw(P#Protocol) .]
 
 	:apply(csb240)
 
-	:def csb241 = :ctf [ct?(M1#Msg) .]
+	:def csb241 = :ctf [S#Secret \in us(P#Protocol) .]
 
 	:apply(csb241)
 
-	:def csb242 = :ctf {eq crt(M#Msg) = P#Prin .}
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb242 = :ctf [ch?(M#Msg) .]
 
 	:apply(csb242)
 
-	:def csb243 = :ctf {eq src(M#Msg) = P#Prin .}
+	:def csb243 = :ctf [sh?(M0#Msg) .]
 
 	:apply(csb243)
 
-	:def csb244 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
+	:def csb244 = :ctf [ct?(M1#Msg) .]
 
 	:apply(csb244)
 
-	:def csb245 = :ctf {eq dst(M0#Msg) = P#Prin .}
+	:def csb245 = :ctf {eq crt(M#Msg) = P#Prin .}
 
 	:apply(csb245)
 
-	:def csb246 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
+	:def csb246 = :ctf {eq src(M#Msg) = P#Prin .}
 
 	:apply(csb246)
 
-	:def csb247 = :ctf {eq dst(M1#Msg) = P#Prin .}
+	:def csb247 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb247)
 
-	:def csb248 = :ctf [choice(M0#Msg) \in list(M#Msg) .]
+	:def csb248 = :ctf {eq dst(M0#Msg) = P#Prin .}
 
 	:apply(csb248)
 
-	:def csb249 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
+	:def csb249 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb249)
 
-	:def csb250 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
+	:def csb250 = :ctf {eq dst(M1#Msg) = P#Prin .}
 
 	:apply(csb250)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:apply(tc)
-
-	:def csb251 = :ctf [M#Msg \in nw(P#Protocol) .]
+	:def csb251 = :ctf [choice(M0#Msg)\in list(M#Msg) .]
 
 	:apply(csb251)
 
-	:def csb252 = :ctf [M0#Msg \in nw(P#Protocol) .]
+	:def csb252 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb252)
 
-	:def csb253 = :ctf [M1#Msg \in nw(P#Protocol) .]
+	:def csb253 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb253)
 
-	:def csb254 = :ctf [M2#Msg \in nw(P#Protocol) .]
-
-	:apply(csb254)
-
-	:def csb255 = :ctf [M3#Msg \in nw(P#Protocol) .]
-
-	:apply(csb255)
-
-	:def csb256 = :ctf [ch?(M#Msg) .]
-
-	:apply(csb256)
-
-	:def csb257 = :ctf [sh?(M0#Msg) .]
-
-	:apply(csb257)
-
-	:def csb258 = :ctf [ct?(M1#Msg) .]
-
-	:apply(csb258)
-
-	:def csb259 = :ctf [kx?(M2#Msg) .]
-
-	:apply(csb259)
-
-	:def csb260 = :ctf [cf?(M3#Msg) .]
-
-	:apply(csb260)
-
-	:def csb261 = :ctf {eq crt(M0#Msg) = P#Prin .}
-
-	:apply(csb261)
-
-	:def csb262 = :ctf {eq src(M0#Msg) = P#Prin .}
-
-	:apply(csb262)
-
-	:def csb263 = :ctf {eq crt(M1#Msg) = P#Prin .}
-
-	:apply(csb263)
-
-	:def csb264 = :ctf {eq src(M1#Msg) = P#Prin .}
-
-	:apply(csb264)
-
-	:def csb265 = :ctf {eq dst(M1#Msg) = dst(M0#Msg) .}
-
-	:apply(csb265)
-
-	:def csb266 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
-
-	:apply(csb266)
-
-	:def csb267 = :ctf {eq dst(M#Msg) = P#Prin .}
-
-	:apply(csb267)
-
-	:def csb268 = :ctf {eq src(M2#Msg) = dst(M0#Msg) .}
-
-	:apply(csb268)
-
-	:def csb269 = :ctf {eq dst(M2#Msg) = P#Prin .}
-
-	:apply(csb269)
-
-	:def csb270 = :ctf {eq src(M3#Msg) = dst(M0#Msg) .}
-
-	:apply(csb270)
-
-	:def csb271 = :ctf {eq dst(M3#Msg) = P#Prin .}
-
-	:apply(csb271)
-
-	:def csb272 = :ctf [choice(M0#Msg) \in list(M#Msg) .]
-
-	:apply(csb272)
-
-	:def csb273 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))) .}
-
-	:apply(csb273)
-
-	:def csb274 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin) .}
-
-	:apply(csb274)
-
-	:def csb275 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(
-    M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
-
-	:apply(csb275)
-
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
 
@@ -1832,299 +2528,340 @@ open INV .
 	:apply (rd)
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:apply(tc) -- 25 sfin2
-
-	:def csb276 = :ctf [M#Msg \in nw(P#Protocol) .]
-
-	:apply(csb276)
-
-	:def csb277 = :ctf [M0#Msg \in nw(P#Protocol) .]
-
-	:apply(csb277)
-
-	:def csb278 = :ctf [M1#Msg \in nw(P#Protocol) .]
-
-	:apply(csb278)
-
-	:def csb279 = :ctf [ch2?(M#Msg) .]
-
-	:apply(csb279)
-
-	:def csb280 = :ctf [sh2?(M0#Msg) .]
-
-	:apply(csb280)
-
-	:def csb281 = :ctf [cf2?(M1#Msg) .]
-
-	:apply(csb281)
-
-	:def csb282 = :ctf {eq crt(M0#Msg) = P#Prin .}
-
-	:apply(csb282)
-
-	:def csb283 = :ctf {eq src(M0#Msg) = P#Prin .}
-
-	:apply(csb283)
-
-	:def csb284 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
-
-	:apply(csb284)
-
-	:def csb285 = :ctf {eq dst(M#Msg) = P#Prin .}
-
-	:apply(csb285)
-
-	:def csb286 = :ctf {eq src(M1#Msg) = dst(M0#Msg) .}
-
-	:apply(csb286)
-
-	:def csb287 = :ctf {eq dst(M1#Msg) = P#Prin .}
-
-	:apply(csb287)
-
-	:def csb288 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
-
-	:apply(csb288)
-
-	:def csb289 = :ctf {eq ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg)) = none .}
-
-	:apply(csb289)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:def csb290 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg) .}
-
-	:apply(csb290)
-
-	:def csb291 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(dst(M0#Msg),pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))),rand(M#Msg),rand(M0#Msg)),cfin2(dst(
-    M0#Msg),P#Prin,sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))))) .}
-
-	:apply(csb291)
-
-	:def csb292 = :ctf {eq R@Rand  = rand(M#Msg) .}
-
-	:apply(csb292)
-
-	:def csb293 = :ctf {eq P@Prin  = dst(M0#Msg) .}
-
-	:apply(csb293)
-
-	:def csb294 = :ctf {eq S@Sid  = sid(M0#Msg) .}
-
-	:apply(csb294)
-
-	:def csb295 = :ctf {eq C@Choice  = choice(M0#Msg) .}
-
-	:apply(csb295)
-
-	:def csb296 = :ctf {eq P0@Prin  = P#Prin .}
-
-	:apply(csb296)
-
-	:def csb297 = :ctf {eq R0@Rand  = rand(M0#Msg) .}
-
-	:apply(csb297)
-
-	:def csb298 = :ctf {eq pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = pms(P@Prin,P0@Prin,S@Secret) .}
-
-	:apply(csb298)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:def csb299 = :ctf {eq pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = pms(dst(M0#Msg),P#Prin,S@Secret) .}
-
-	:apply(csb299)
-
-	*** The corresponding proof score was not present.
-	-- :apply (rd)
-
-	:def csb300 = :ctf {eq dst(M0#Msg) = intruder .}
-
-	:apply(csb300)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
-    S@Sid ;}
-
-	:apply (rd)
-
-    :imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
 
 	:apply (rd)
 
 	:apply(tc)
 
-	:def csb301 = :ctf [R#Rand \in ur(P#Protocol) .]
+	:def csb254 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb254)
+
+	:def csb255 = :ctf [M0#Msg \in nw(P#Protocol) .]
+
+	:apply(csb255)
+
+	:def csb256 = :ctf [M1#Msg \in nw(P#Protocol) .]
+
+	:apply(csb256)
+
+	:def csb257 = :ctf [M2#Msg \in nw(P#Protocol) .]
+
+	:apply(csb257)
+
+	:def csb258 = :ctf [M3#Msg \in nw(P#Protocol) .]
+
+	:apply(csb258)
+
+	:def csb259 = :ctf [ch?(M#Msg) .]
+
+	:apply(csb259)
+
+	:def csb260 = :ctf [sh?(M0#Msg) .]
+
+	:apply(csb260)
+
+	:def csb261 = :ctf [ct?(M1#Msg) .]
+
+	:apply(csb261)
+
+	:def csb262 = :ctf [kx?(M2#Msg) .]
+
+	:apply(csb262)
+
+	:def csb263 = :ctf [cf?(M3#Msg) .]
+
+	:apply(csb263)
+
+	:def csb264 = :ctf {eq crt(M0#Msg) = P#Prin .}
+
+	:apply(csb264)
+
+	:def csb265 = :ctf {eq src(M0#Msg) = P#Prin .}
+
+	:apply(csb265)
+
+	:def csb266 = :ctf {eq crt(M1#Msg) = P#Prin .}
+
+	:apply(csb266)
+
+	:def csb267 = :ctf {eq src(M1#Msg) = P#Prin .}
+
+	:apply(csb267)
+
+	:def csb268 = :ctf {eq dst(M1#Msg) = dst(M0#Msg) .}
+
+	:apply(csb268)
+
+	:def csb269 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
+
+	:apply(csb269)
+
+	:def csb270 = :ctf {eq dst(M#Msg) = P#Prin .}
+
+	:apply(csb270)
+
+	:def csb271 = :ctf {eq src(M2#Msg) = dst(M0#Msg) .}
+
+	:apply(csb271)
+
+	:def csb272 = :ctf {eq dst(M2#Msg) = P#Prin .}
+
+	:apply(csb272)
+
+	:def csb273 = :ctf {eq src(M3#Msg) = dst(M0#Msg) .}
+
+	:apply(csb273)
+
+	:def csb274 = :ctf {eq dst(M3#Msg) = P#Prin .}
+
+	:apply(csb274)
+
+	:def csb275 = :ctf [choice(M0#Msg)\in list(M#Msg) .]
+
+	:apply(csb275)
+
+	:def csb276 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))) .}
+
+	:apply(csb276)
+
+	:def csb277 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin) .}
+
+	:apply(csb277)
+
+	:def csb278 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(
+    M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
+
+	:apply(csb278)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb279 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb279)
+
+	:def csb280 = :ctf [M0#Msg \in nw(P#Protocol) .]
+
+	:apply(csb280)
+
+	:def csb281 = :ctf [M1#Msg \in nw(P#Protocol) .]
+
+	:apply(csb281)
+
+	:def csb282 = :ctf [ch2?(M#Msg) .]
+
+	:apply(csb282)
+
+	:def csb283 = :ctf [sh2?(M0#Msg) .]
+
+	:apply(csb283)
+
+	:def csb284 = :ctf [cf2?(M1#Msg) .]
+
+	:apply(csb284)
+
+	:def csb285 = :ctf {eq crt(M0#Msg) = P#Prin .}
+
+	:apply(csb285)
+
+	:def csb286 = :ctf {eq src(M0#Msg) = P#Prin .}
+
+	:apply(csb286)
+
+	:def csb287 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
+
+	:apply(csb287)
+
+	:def csb288 = :ctf {eq dst(M#Msg) = P#Prin .}
+
+	:apply(csb288)
+
+	:def csb289 = :ctf {eq src(M1#Msg) = dst(M0#Msg) .}
+
+	:apply(csb289)
+
+	:def csb290 = :ctf {eq dst(M1#Msg) = P#Prin .}
+
+	:apply(csb290)
+
+	:def csb291 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
+
+	:apply(csb291)
+
+	:def csb292 = :ctf {eq ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg)) = none .}
+
+	:apply(csb292)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb293 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg) .}
+
+	:apply(csb293)
+
+	:def csb294 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(dst(M0#Msg),pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))),rand(M#Msg),rand(M0#Msg)),cfin2(dst(
+    M0#Msg),P#Prin,sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))))) .}
+
+	:apply(csb294)
+
+	:def csb295 = :ctf {eq R@Rand  = rand(M#Msg) .}
+
+	:apply(csb295)
+
+	:def csb296 = :ctf {eq P@Prin  = dst(M0#Msg) .}
+
+	:apply(csb296)
+
+	:def csb297 = :ctf {eq S@Sid  = sid(M0#Msg) .}
+
+	:apply(csb297)
+
+	:def csb298 = :ctf {eq C@Choice  = choice(M0#Msg) .}
+
+	:apply(csb298)
+
+	:def csb299 = :ctf {eq P0@Prin  = P#Prin .}
+
+	:apply(csb299)
+
+	:def csb300 = :ctf {eq R0@Rand  = rand(M0#Msg) .}
+
+	:apply(csb300)
+
+	:def csb301 = :ctf {eq pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = pms(P@Prin,P0@Prin,S@Secret) .}
 
 	:apply(csb301)
 
@@ -2133,30 +2870,108 @@ open INV .
 
 	:apply (rd)
 
-	:def csb302 = :ctf [S#Sid \in ui(P#Protocol) .]
+	:def csb302 = :ctf {eq pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = pms(dst(M0#Msg),P#Prin,S@Secret) .}
 
 	:apply(csb302)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:def csb303 = :ctf {eq dst(M0#Msg) = intruder .}
+
+	:apply(csb303)
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
 
 	:apply (rd)
 
-	:def csb303 = :ctf [M#Msg \in nw(P#Protocol) .]
+	*** The corresponding proof score was not present.
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
 
-	:apply(csb303)
+	*** The corresponding proof score was not present.
+	:apply (rd)
 
-	:def csb304 = :ctf [ch?(M#Msg) .]
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
 
-	:apply(csb304)
+	:apply (rd)
 
-	:def csb305 = :ctf {eq dst(M#Msg) = P#Prin .}
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
 
-	:apply(csb305)
+	:apply (rd)
 
-	:def csb306 = :ctf [C#Choice \in list(M#Msg) .]
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
 
-	:apply(csb306)
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
@@ -2185,30 +3000,91 @@ open INV .
 
 	:apply(tc)
 
-	:def csb307 = :ctf [R#Rand \in ur(P#Protocol) .]
+	:def csb304 = :ctf [R#Rand \in ur(P#Protocol) .]
 
-	:apply(csb307)
+	:apply(csb304)
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
 
 	:apply (rd)
 
-	:def csb308 = :ctf [M#Msg \in nw(P#Protocol) .]
+	:def csb305 = :ctf [S#Sid \in ui(P#Protocol) .]
+
+	:apply(csb305)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb306 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb306)
+
+	:def csb307 = :ctf [ch?(M#Msg) .]
+
+	:apply(csb307)
+
+	:def csb308 = :ctf {eq dst(M#Msg) = P#Prin .}
 
 	:apply(csb308)
 
-	:def csb309 = :ctf [ch2?(M#Msg) .]
+	:def csb309 = :ctf [C#Choice \in list(M#Msg) .]
 
 	:apply(csb309)
 
-	:def csb310 = :ctf {eq dst(M#Msg) = P#Prin .}
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb310 = :ctf [R#Rand \in ur(P#Protocol) .]
 
 	:apply(csb310)
 
-	:def csb311 = :ctf {eq ss(P#Protocol,src(M#Msg),P#Prin,sid(M#Msg)) = none .}
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
+    S@Sid ;}
+
+	:apply (rd)
+
+	:def csb311 = :ctf [M#Msg \in nw(P#Protocol) .]
 
 	:apply(csb311)
+
+	:def csb312 = :ctf [ch2?(M#Msg) .]
+
+	:apply(csb312)
+
+	:def csb313 = :ctf {eq dst(M#Msg) = P#Prin .}
+
+	:apply(csb313)
+
+	:def csb314 = :ctf {eq ss(P#Protocol,src(M#Msg),P#Prin,sid(M#Msg)) = none .}
+
+	:apply(csb314)
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <-
     S@Sid ;}
@@ -2238,3 +3114,6 @@ open INV .
 
 close
 
+-- real	1460m53.822s
+-- user	841m24.467s
+-- sys	4m34.018s
