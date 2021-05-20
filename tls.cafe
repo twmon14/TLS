@@ -1377,11 +1377,3 @@ mod INV {
 
 }
 
-eof
-In line 3949, you use: eq pms(a,b,s) = pms(epms(m4)) .
-Then, in line 3951, you use: eq a = dst(m2) .
-Then, the equation in line 3949 becomes non-sense, no meaning at all (if you try to disable that equation, then the returned term does not change anything).
-Instead, the equation in line 3949 should be: eq pms(dst(m2),b,s) = pms(epms(m4)) .
-I think this problem I have shown you, so I hope that you can understand.
-Otherwise, please let me know.
-The same problem with b in the equation in line 3952.
