@@ -1,4 +1,4 @@
-> 19) fakeSfin21(p,p2,p1,esfin21)
+--  19) fakeSfin21(p,p2,p1,esfin21)
 open INV .
   op p : -> Protocol .
   ops a b b1 b2 : -> Prin .
@@ -20,7 +20,7 @@ open INV .
   eq a = intruder .
   red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin21(p,p2,p1,esfin21),a,b,b1,b2,r1,r2,c,i,s) .
 close
-eof
+
 open INV .
   op p : -> Protocol .
   ops a b b1 b2 : -> Prin .
@@ -63,12 +63,7 @@ open INV .
   eq esfin21 = esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s))) .
    
   eq (a = intruder) = false .
-  eq (b = intruder) = false .
-   eq p1 = intruder .
-   eq esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s))) \in cesfin2(nw(p)) = true .
-   eq b2 = intruder .
-   eq sf2(intruder,b,a,esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s))))\in nw(p) = true .
-  red inv6(p,a,b,r1,r2,c,i,s) implies inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin21(p,p2,p1,esfin21),a,b,b1,b2,r1,r2,c,i,s) .
+  red lm1(esfin21,esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s))),cesfin2(nw(p))) implies inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin21(p,p2,p1,esfin21),a,b,b1,b2,r1,r2,c,i,s) .
 close
 eof
 open INV .
