@@ -1,0 +1,71 @@
+-- original proof score
+open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq b = intruder .
+  eq b1 = intruder .
+  red inv12(p,a,b,b1,r1,r2,l,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq b = intruder .
+  eq (b1 = intruder) = false .
+  red inv10(p,a,b1,r2,c,i) implies inv12(p,a,b,b1,r1,r2,l,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq (b = intruder) = false .
+  eq a = intruder .
+  red inv12(p,a,b,b1,r1,r2,l,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  op p2 : -> Prin .
+  ops m1 m2 : -> Msg .
+-- assumptions
+  eq (b = intruder) = false .
+  eq (a = intruder) = false .
+  red inv7(p,a,b,r1,r2,l,c,i,s) implies inv12(p,a,b,b1,r1,r2,l,c,i,s) .
+close
+
+
+-- Q.E.D.

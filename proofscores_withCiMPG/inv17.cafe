@@ -9,30 +9,50 @@ open INV .
   op i : -> Sid .
   op s : -> Secret .
   op k : -> PubKey .
-  eq a = intruder .
 -- check 
-  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
-close
-
-open INV .
-  :id(tls)
--- arbitrary objects
-  op p : -> Protocol .
-  ops a b b1 b2 b3 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
-  op k : -> PubKey .
-  eq (a = intruder) = false .
--- check 
-  red inv3(p,a,b,b3,r1,r2,l,c,i,s) implies inv12(p,a,b,b1,r1,r2,l,c,i,s) implies inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s) and inv12(p,a,b,b1,r1,r2,l,c,i,s) and inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
     implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
-  -- red inv3(p,a,b,b3,r1,r2,l,c,i,s) and inv12(p,a,b,b1,r1,r2,l,c,i,s) and inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
-  --   implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 close
 
 open INV .
   :proof(tls)
 close
+
+-- open INV .
+--   :id(tls)
+-- -- arbitrary objects
+--   op p : -> Protocol .
+--   ops a b b1 b2 b3 : -> Prin .
+--   ops r1 r2 : -> Rand .
+--   op l : -> ListOfChoices .
+--   op c : -> Choice .
+--   op i : -> Sid .
+--   op s : -> Secret .
+--   op k : -> PubKey .
+--   eq a = intruder .
+-- -- check 
+--   red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+-- close
+
+-- open INV .
+--   :id(tls)
+-- -- arbitrary objects
+--   op p : -> Protocol .
+--   ops a b b1 b2 b3 : -> Prin .
+--   ops r1 r2 : -> Rand .
+--   op l : -> ListOfChoices .
+--   op c : -> Choice .
+--   op i : -> Sid .
+--   op s : -> Secret .
+--   op k : -> PubKey .
+--   eq (a = intruder) = false .
+-- -- check 
+--   red inv3(p,a,b,b3,r1,r2,l,c,i,s) implies inv12(p,a,b,b1,r1,r2,l,c,i,s) implies inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
+--     implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+--   -- red inv3(p,a,b,b3,r1,r2,l,c,i,s) and inv12(p,a,b,b1,r1,r2,l,c,i,s) and inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
+--   --   implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+-- close
+
+-- open INV .
+--   :proof(tls)
+-- close

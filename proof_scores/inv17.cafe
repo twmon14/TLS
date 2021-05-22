@@ -4469,20 +4469,4 @@ open INV .
   red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello2(p,p2,r3,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 close
 
--- original proof score only 1 fragment
--- open INV .
--- -- arbitrary objects
---   op p : -> Protocol .
---   ops a b b1 b2 b3 : -> Prin .
---   ops r1 r2 : -> Rand .
---   op l : -> ListOfChoices .
---   op c : -> Choice .
---   op i : -> Sid .
---   op s : -> Secret .
---   op k : -> PubKey .
--- -- check 
---   red inv3(p,a,b,b3,r1,r2,l,c,i,s) and inv12(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) and inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
---     implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
--- close
 
--- Q.E.D.

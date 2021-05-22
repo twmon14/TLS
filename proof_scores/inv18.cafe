@@ -4940,19 +4940,3 @@ open INV .
   red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(shello2(p,p2,r3,m1),a,b,b1,b2,r1,r2,c,i,s) .
 close
 
--- -- original proof score
--- open INV .
---   op p : -> Protocol .
---   ops a b b1 b2 : -> Prin .
---   ops r1 r2 : -> Rand .
---   op c : -> Choice .
---   op i : -> Sid .
---   op s : -> Secret .
--- -- assumptions
--- -- check 
---   red inv5(p,a,b,b2,r1,r2,c,i,s) and inv16(p,a,b,b1,r1,r2,c,i,s) 
---     implies inv18(p,a,b,b1,b2,r1,r2,c,i,s) .
--- close
--- 
-
--- Q.E.D.

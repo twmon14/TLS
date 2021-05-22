@@ -1,0 +1,109 @@
+-- original proof score
+open INV .
+-- arbitrary objects
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- assumptions
+  eq b = intruder .
+  eq b1 = intruder .
+-- check 
+  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+-- arbitrary objects
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- assumptions
+  eq b = intruder .
+  eq (b1 = intruder) = false .
+-- check 
+  red inv11(p,a,b1,k) implies inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+-- arbitrary objects
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- assumptions
+  eq (b = intruder) = false .
+  eq a = intruder .
+-- check 
+  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+-- arbitrary objects
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- assumptions
+  eq (b = intruder) = false .
+  eq (a = intruder) = false .
+  eq k = k(b) .
+-- check 
+  red inv8(p,a,b,r1,r2,l,c,i,s) implies inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+-- arbitrary objects
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- assumptions
+  eq (b = intruder) = false .
+  eq (a = intruder) = false .
+  eq (k = k(b)) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
+-- check 
+  red inv9(p,b,k) implies inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+-- arbitrary objects
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- assumptions
+  eq (b = intruder) = false .
+  eq (a = intruder) = false .
+  eq (k = k(b)) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = false .
+-- check 
+  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+-- Q.E.D.
