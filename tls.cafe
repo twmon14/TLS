@@ -779,7 +779,7 @@ mod! NETWORK {
   
   ceq ct(P1:Prin, P2:Prin, P3:Prin, cert(P4:Prin, K:PubKey, G)) \in NW = false
     if G \in csig(NW) = false .
-    
+   
   --
   -- cepms
   eq EPMS \in cepms(void) = false .
@@ -1373,7 +1373,4 @@ mod INV {
         implies
         sh2(B,B,A,R2,I,C) \in nw(P)) .
 
-  
-
 }
-
