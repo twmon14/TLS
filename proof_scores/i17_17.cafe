@@ -1,0 +1,176 @@
+--> 17) fakeSfin1(p,p2,p1,esfin1)
+-- t
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin1 : -> EncSFin .
+-- assumptions
+  eq esfin1 \in cesfin(nw(p)) = true .
+--   eq a = intruder .
+  eq a = p1 .
+  eq b = p2 .
+  eq b3 = intruder .
+  eq esfin1 = esfin(k(p2,pms(p1,p2,s),r1,r2),sfin(p1,p2,i,l,c,r1,r2,pms(p1,p2,s))) .
+  eq intruder = p1 .
+    red c-fakeSfin1(p,p2,p1,esfin1) .
+    red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+    red inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin1 : -> EncSFin .
+-- assumptions
+  eq esfin1 \in cesfin(nw(p)) = true .
+--   eq a = intruder .
+  eq a = p1 .
+  eq b = p2 .
+  eq b3 = intruder .
+  eq esfin1 = esfin(k(p2,pms(p1,p2,s),r1,r2),sfin(p1,p2,i,l,c,r1,r2,pms(p1,p2,s))) .
+  eq (intruder = p1) = false .
+  eq esfin(k(p2,pms(p1,p2,s),r1,r2),sfin(p1,p2,i,l,c,r1,r2,pms(p1,p2,s))) \in cesfin(nw(p)) = true .
+--   eq intruder = p1 .
+    -- eq (intruder = p1) = false .
+    eq intruder = p2 .
+    eq p1 = p2 .
+    red c-fakeSfin1(p,p2,p1,esfin1) .
+    red inv3(p,a,b,b1,r1,r2,l,c,i,s) .
+    red inv4(p,a,b,r1,r2,l,c,i,s) .
+    red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+    red inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin1 : -> EncSFin .
+-- assumptions
+  eq esfin1 \in cesfin(nw(p)) = true .
+--   eq a = intruder .
+  eq a = p1 .
+  eq b = p2 .
+  eq b3 = intruder .
+  eq esfin1 = esfin(k(p2,pms(p1,p2,s),r1,r2),sfin(p1,p2,i,l,c,r1,r2,pms(p1,p2,s))) .
+  eq (intruder = p1) = false .
+  eq esfin(k(p2,pms(p1,p2,s),r1,r2),sfin(p1,p2,i,l,c,r1,r2,pms(p1,p2,s))) \in cesfin(nw(p)) = true .
+--   eq intruder = p1 .
+    eq intruder = p2 .
+    eq (p1 = p2) = false .
+    eq b2 = intruder .
+    eq b2 = p1 .
+    red c-fakeSfin1(p,p2,p1,esfin1) .
+    red inv3(p,a,b,b1,r1,r2,l,c,i,s) .
+    red inv4(p,a,b,r1,r2,l,c,i,s) .
+    red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+    red inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+
+eof
+-- t
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin1 : -> EncSFin .
+-- assumptions
+  eq esfin1 \in cesfin(nw(p)) = true .
+--   eq a = intruder .
+  eq a = p1 .
+  eq b = p2 .
+  eq b3 = intruder .
+  eq (esfin1 = esfin(k(p2,pms(p1,p2,s),r1,r2),sfin(p1,p2,i,l,c,r1,r2,pms(p1,p2,s)))) = false .
+--   eq intruder = p1 .
+    red c-fakeSfin1(p,p2,p1,esfin1) .
+    red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+    red inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+-- t
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin1 : -> EncSFin .
+-- assumptions
+  eq esfin1 \in cesfin(nw(p)) = true .
+--   eq a = intruder .
+  eq a = p1 .
+  eq b = p2 .
+  eq (b3 = intruder) = false .
+--   eq esfin1 = esfin(k(p2,pms(p1,p2,s),r1,r2),sfin(p1,p2,i,l,c,r1,r2,pms(p1,p2,s))) .
+--   eq intruder = p1 .
+    red c-fakeSfin1(p,p2,p1,esfin1) .
+    red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+    red inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+eof
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin1 : -> EncSFin .
+-- assumptions
+  eq esfin1 \in cesfin(nw(p)) = true .
+--   eq a = intruder .
+  eq a = p1 .
+  eq b = p2 .
+  eq b3 = intruder .
+  eq esfin1 = esfin(k(p2,pms(p1,p2,s),r1,r2),sfin(p1,p2,i,l,c,r1,r2,pms(p1,p2,s))) .
+  eq intruder = p1 .
+    red c-fakeSfin1(p,p2,p1,esfin1) .
+    red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+    red inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
