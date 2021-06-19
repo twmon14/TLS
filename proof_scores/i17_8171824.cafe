@@ -2933,7 +2933,6 @@ open INV .
   red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 close
 
--- ntnf
 open INV .
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
@@ -2957,6 +2956,59 @@ open INV .
   eq dst(m1) = p2 .
   eq c1 \in list(m1) = true .
   red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = true .
+  eq a = intruder .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = true .
+  eq (a = intruder) = false .
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s) implies inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
+    implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 close
 
 open INV .
@@ -3159,3 +3211,31 @@ close
 --   red inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 --   red inv13(p,a,b,b2,r1,r2,l,c,i,s,k) implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 -- close
+
+eof
+red inv1(p,pms(a,b,s)) .
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s) .
+  red inv12(p,a,b,b1,r1,r2,l,c,i,s) .
+  red inv13(p,a,b,b2,r1,r2,l,c,i,s,k) .
+red inv1(p,pms(a,b,s))
+    implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s)
+    implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+  red inv12(p,a,b,b1,r1,r2,l,c,i,s)
+    implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+  red inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
+    implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+red inv3(p,a,b,b3,r1,r2,l,c,i,s) and inv12(p,a,b,b1,r1,r2,l,c,i,s) .
+  red inv12(p,a,b,b1,r1,r2,l,c,i,s) and inv13(p,a,b,b2,r1,r2,l,c,i,s,k) .
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s) and inv13(p,a,b,b2,r1,r2,l,c,i,s,k) .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+  red inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+    red inv3(p,a,b,b3,r1,r2,l,c,i,s) implies inv12(p,a,b,b1,r1,r2,l,c,i,s) implies inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
+    implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+red inv3(p,a,b,b3,r1,r2,l,c,i,s) implies inv12(p,a,b,b1,r1,r2,l,c,i,s)
+    implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+red inv12(p,a,b,b1,r1,r2,l,c,i,s) implies inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
+    implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+red inv3(p,a,b,b3,r1,r2,l,c,i,s) implies inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
+    implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
