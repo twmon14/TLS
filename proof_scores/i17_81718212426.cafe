@@ -11,7 +11,6 @@ open INV .
   op k : -> PubKey .
 -- arbitrary objects
   ops p1 p2 : -> Prin .
-  op pk : -> PubKey .
   op g : -> Sig .
 -- assumptions
   eq g \in csig(nw(p)) = true .
