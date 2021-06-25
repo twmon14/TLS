@@ -24,7 +24,7 @@ open INV .
   eq b = intruder .
   red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
 close
-
+eof
 open INV .
   op p : -> Protocol .
   ops a b b1 b2 : -> Prin .
@@ -656,7 +656,7 @@ open INV .
 -- red inv1(p,pms(a,b,s))
 --     implies inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
 close
-eof
+
 open INV .
   op p : -> Protocol .
   ops a b b1 b2 : -> Prin .
@@ -699,8 +699,6 @@ open INV .
 -- red inv1(p,pms(a,b,s))
 --     implies inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
 close
-eof
-
 
 -- below cases are ok
 -- ok
@@ -726,7 +724,7 @@ open INV .
     red inv1(p,pms(a,b,s))
     implies inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
   close
-
+eof
 -- ok
 open INV .
   op p : -> Protocol .
