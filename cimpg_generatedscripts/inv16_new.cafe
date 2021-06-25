@@ -4210,13 +4210,13 @@ open INV .
 
 	:apply(csb492)
 
-    :imp [lm1] by {M:Msg <- M0#Msg ; M2:Msg <- sh(P#Prin,P#Prin,dst(M0#Msg),rand(M0#Msg),sid(M0#Msg),choice(M0#Msg)) ; NW:Network <- nw(P#Protocol) ;}
+    :imp [lm1] by {M:Msg <- M0#Msg ; M2:Msg <- sh2(P#Prin,P#Prin,dst(M0#Msg),rand(M0#Msg),sid(M0#Msg),choice(M0#Msg)) ; NW:Network <- nw(P#Protocol) ;}
 
 	:imp [tls1] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
 	:apply (rd) -- postpone .
 
-    :imp [lm1] by {M:Msg <- M0#Msg ; M2:Msg <- sh(P#Prin,P#Prin,dst(M0#Msg),rand(M0#Msg),sid(M0#Msg),choice(M0#Msg)) ; NW:Network <- nw(P#Protocol) ;}
+    :imp [lm1] by {M:Msg <- M0#Msg ; M2:Msg <- sh2(P#Prin,P#Prin,dst(M0#Msg),rand(M0#Msg),sid(M0#Msg),choice(M0#Msg)) ; NW:Network <- nw(P#Protocol) ;}
 
 	:imp [tls1] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -4534,13 +4534,13 @@ open INV .
 
 	:apply(csb531)
 
-    :imp [lm1] by {M:Msg <- M0#Msg ; M2:Msg <- sh(P#Prin,P#Prin,dst(M0#Msg),rand(M0#Msg),sid(M0#Msg),choice(M0#Msg)) ; NW:Network <- nw(P#Protocol) ;}
+    :imp [lm1] by {M:Msg <- M0#Msg ; M2:Msg <- sh2(P#Prin,P#Prin,dst(M0#Msg),rand(M0#Msg),sid(M0#Msg),choice(M0#Msg)) ; NW:Network <- nw(P#Protocol) ;}
 
 	:imp [tls2] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
 	:apply (rd) -- postpone .
 
-    :imp [lm1] by {M:Msg <- M0#Msg ; M2:Msg <- sh(P#Prin,P#Prin,dst(M0#Msg),rand(M0#Msg),sid(M0#Msg),choice(M0#Msg)) ; NW:Network <- nw(P#Protocol) ;}
+    :imp [lm1] by {M:Msg <- M0#Msg ; M2:Msg <- sh2(P#Prin,P#Prin,dst(M0#Msg),rand(M0#Msg),sid(M0#Msg),choice(M0#Msg)) ; NW:Network <- nw(P#Protocol) ;}
 
 	:imp [tls2] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
