@@ -5571,27 +5571,27 @@ open INV .
 
     :apply(csb633)
 
-	:def csb632 = :ctf {eq pms(epms(M2#Msg)) = pms(P@Prin,P0@Prin,S@Secret) .}
+	-- :def csb632 = :ctf {eq pms(epms(M2#Msg)) = pms(P@Prin,P0@Prin,S@Secret) .}
 
-	:apply(csb632)
+	-- :apply(csb632)
 
-	:imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <-
-    R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+	-- :imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <-
+    -- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply (rd) -- fg
+	-- :apply (rd) -- fg
 
     :def csb634 = :ctf {eq pms(epms(M2#Msg)) = pms(dst(M0#Msg),P#Prin,S@Secret) .}
 
 	:apply(csb634)
 
-    :def csb635 = :ctf {eq dst(M0#Msg) = intruder .}
+    -- :def csb635 = :ctf {eq dst(M0#Msg) = intruder .}
 
-	:apply(csb635)
+	-- :apply(csb635)
 
 	:imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <-
     R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply (rd) -- 2
+	:apply (rd) 
 
 	
 	*** Goal`25-3-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-2-1  -  inv4(sfin(P#Protocol,P#Prin,M#Msg,M0#Msg,M1#Msg,M2#Msg,M3#Msg),
@@ -5628,11 +5628,11 @@ open INV .
 
 	:apply (rd) -- 3
 
-    :imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <-
-    R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+    -- :imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <-
+    -- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	*** The corresponding proof score was not present.
-	:apply (rd) -- 4
+	-- *** The corresponding proof score was not present.
+	-- :apply (rd) -- 4
 
 	-- :def csb639 = :ctf {eq R0@Rand  = rand(M0#Msg) .}
 
