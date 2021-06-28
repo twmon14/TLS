@@ -1,0 +1,1019 @@
+fmod SOUP{E :: TRIV} is
+    sort Soup{E} .
+    subsort E$Elt < Soup{E} .
+    op emp : -> Soup{E} [ctor] .
+    op _ _ : Soup{E} Soup{E} -> Soup{E} [ctor assoc comm id: emp].
+    op _\in_ : E$Elt Soup{E} -> Bool .
+    var X : E$Elt .
+    var S : Soup{E} .
+    eq X X = X . *** idempotency
+    eq X \in X S = true .
+    eq X \in S = false [owise] .
+endfm
+
+fmod PRIN is
+    sort Prin .
+    ops a b intr ca : -> Prin [ctor] .
+endfm
+
+view Prin from TRIV to PRIN is
+    sort Elt to Prin .
+endv
+
+fmod PRIN-SOUP is
+    pr SOUP{Prin} .
+endfm
+
+fmod RAND is
+    sort Rand .
+    --- ops r1 r2 dR empR : -> Rand [ctor] .
+endfm
+
+view Rand from TRIV to RAND is
+    sort Elt to Rand .
+endv
+
+fmod RAND-SOUP is
+    pr SOUP{Rand} .
+endfm
+
+fmod CHOICE is
+    sort Choice .
+endfm
+
+view Choice from TRIV to CHOICE is
+    sort Elt to Choice .
+endv
+
+fmod CHOICE-SOUP is
+    pr SOUP{Choice} .
+endfm
+
+fmod LISTOFCHOICES is
+    sort ListOfChoices .
+    op _\in_ : Choice ListOfChoices -> Bool .
+endfm
+
+view ListOfChoices from TRIV to LISTOFCHOICES is
+    sort Elt to ListOfChoices .
+endv
+
+fmod LISTOFCHOICES-SOUP is
+    pr SOUP{ListOfChoices} .
+endfm
+
+fmod SID is
+    sort Sid .
+endfm
+
+view Sid from TRIV to SID is
+    sort Elt to Sid .
+endv
+
+fmod SID-SOUP is
+    pr SOUP{Sid} .
+endfm
+
+fmod SECRET is
+    sort Secret .
+endfm
+
+view Secret from TRIV to SECRET is
+    sort Elt to Secret .
+endv
+
+fmod SECRET-SOUP is
+    pr SOUP{Secret} .
+endfm
+
+fmod PMS is
+    pr PRIN .
+    pr SECRET .
+    sort Pms .
+    op pms : Prin Prin Secret -> Pms [ctor] .
+    op client : Pms -> Prin .
+    op server : Pms -> Prin .
+    op secret : Pms -> Secret .
+
+    var PMS : Pms .
+    vars A B A1 A2 B1 B2 : Prin .
+    vars S S1 S2 : Secret .
+    eq client(pms(A,B,S)) = A .
+    eq server(pms(A,B,S)) = B .
+    eq secret(pms(A,B,S)) = S .
+    eq (pms(A1,B1,S1) = pms(A2,B2,S2)) 
+     = (A1 = A2 and B1 = B2 and S1 = S2) .
+endfm
+
+view Pms from TRIV to PMS is
+    sort Elt to Pms .
+endv
+
+fmod PMS-SOUP is
+    pr SOUP{Pms} .
+endfm
+
+fmod PUBLICKEY is
+  pr PRIN .
+  sort PubKey .
+  op k : Prin -> PubKey .
+  op owner : PubKey -> Prin .
+  var PK : PubKey .
+  vars A A1 A2 : Prin .
+  eq owner(k(A)) = A .
+  eq (k(A1) = k(A2)) = (A1 = A2) .
+   
+endfm
+
+view PubKey from TRIV to PUBLICKEY is
+    sort Elt to PubKey .
+endv
+
+fmod PUBLICKEY-SOUP is
+  pr SOUP{PubKey} .
+endfm
+
+fmod SIGNATURE is
+  pr PRIN .
+  pr PUBLICKEY .
+  sort Sig .
+  op sig : Prin Prin PubKey -> Sig .
+  op signer : Sig -> Prin .
+  op server : Sig -> Prin .
+  op pubkey : Sig -> PubKey .
+
+  var G : Sig .
+  vars A B A1 A2 B1 B2 : Prin .
+  vars PK PK1 PK2 : PubKey .
+  eq signer(sig(A,B,PK)) = A .
+  eq server(sig(A,B,PK)) = B .
+  eq pubkey(sig(A,B,PK)) = PK .
+  eq (sig(A1,B1,PK1) = sig(A2,B2,PK2)) 
+     = (A1 = A2 and B1 = B2 and PK1 = PK2) .
+endfm
+
+view Sig from TRIV to SIGNATURE is
+    sort Elt to Sig .
+endv
+
+fmod SIGNATURE-SOUP is
+  pr SOUP{Sig} .
+endfm
+
+fmod CERTIFICATE is
+    pr PRIN .
+    pr PUBLICKEY .
+    pr SIGNATURE .
+    sort Cert .
+  op cert : Prin PubKey Sig -> Cert .
+  op server : Cert -> Prin .
+  op pubkey : Cert -> PubKey .
+  op sig    : Cert -> Sig .
+
+  var C : Cert .
+  vars A A1 A2 : Prin .
+  vars PK PK1 PK2 : PubKey .
+  vars G G1 G2 : Sig .
+  eq server(cert(A,PK,G)) = A .
+  eq pubkey(cert(A,PK,G)) = PK .
+  eq sig(cert(A,PK,G)) = G .
+  eq (cert(A1,PK1,G1) = cert(A2,PK2,G2)) 
+     = (A1 = A2 and PK1 = PK2 and G1 = G2) .
+endfm
+
+view Cert from TRIV to CERTIFICATE is
+  sort Elt to Cert .
+endv
+
+fmod CERTIFICATE-SOUP is
+  pr SOUP{Cert} .
+endfm
+
+fmod KEY is
+  pr PRIN .
+  pr PMS .
+  pr RAND .
+  sort Key .
+
+  op k : Prin Pms Rand Rand -> Key .
+  op prin  : Key -> Prin .
+  op pms   : Key -> Pms .
+  op crand : Key -> Rand .
+  op srand : Key -> Rand .
+
+  var K : Key .
+  vars A A1 A2 : Prin .
+  vars PMS PMS1 PMS2 : Pms .
+  vars CR SR CR1 CR2 SR1 SR2 : Rand .
+  eq prin(k(A,PMS,CR,SR)) = A .
+  eq pms(k(A,PMS,CR,SR)) = PMS .
+  eq crand(k(A,PMS,CR,SR)) = CR .
+  eq srand(k(A,PMS,CR,SR)) = SR .
+  eq (k(A1,PMS1,CR1,SR1) = k(A2,PMS2,CR2,SR2)) 
+     = (A1 = A2 and PMS1 = PMS2 and CR1 = CR2 and SR1 = SR2) .
+endfm
+
+view Key from TRIV to KEY is
+    sort Elt to Key .
+endv
+
+fmod KEY-SOUP is
+  pr SOUP{Key} .
+endfm
+
+fmod CFINISH is
+  pr PRIN .
+  pr SID .
+  pr CHOICE .
+  pr LISTOFCHOICES .
+  pr RAND .
+  pr PMS .
+  sort CFinish .
+
+  op cfin : Prin Prin Sid ListOfChoices Choice Rand Rand Pms -> CFinish .
+  op client : CFinish -> Prin .
+  op server : CFinish -> Prin .
+  op sid    : CFinish -> Sid .
+  op list   : CFinish -> ListOfChoices .
+  op choice : CFinish -> Choice .
+  op crand  : CFinish -> Rand .
+  op srand  : CFinish -> Rand .
+  op pms    : CFinish -> Pms .
+
+  var F : CFinish .
+  vars A B A1 A2 B1 B2 : Prin .
+  vars I I1 I2 : Sid .
+  vars L L1 L2 : ListOfChoices .
+  vars C C1 C2 : Choice .
+  vars CR SR CR1 CR2 SR1 SR2 : Rand .
+  vars PMS PMS1 PMS2 : Pms .
+  eq client(cfin(A,B,I,L,C,CR,SR,PMS)) = A .
+  eq server(cfin(A,B,I,L,C,CR,SR,PMS)) = B .
+  eq sid(cfin(A,B,I,L,C,CR,SR,PMS)) = I .
+  eq list(cfin(A,B,I,L,C,CR,SR,PMS)) = L .
+  eq choice(cfin(A,B,I,L,C,CR,SR,PMS)) = C .
+  eq crand(cfin(A,B,I,L,C,CR,SR,PMS)) = CR .
+  eq srand(cfin(A,B,I,L,C,CR,SR,PMS)) = SR .
+  eq pms(cfin(A,B,I,L,C,CR,SR,PMS)) = PMS .
+
+  eq (cfin(A1,B1,I1,L1,C1,CR1,SR1,PMS1) = cfin(A2,B2,I2,L2,C2,CR2,SR2,PMS2)) 
+     = (A1 = A2 and B1 = B2 and I1 = I2 and L1 = L2 and C1 = C2 and SR1 = SR2 and PMS1 = PMS2) .
+endfm
+
+view CFinish from TRIV to CFINISH is
+    sort Elt to CFinish .
+endv
+
+fmod CFINISH-SOUP is
+  pr SOUP{CFinish} .
+endfm
+
+fmod SFINISH is
+  pr PRIN .
+  pr SID .
+  pr CHOICE .
+  pr LISTOFCHOICES .
+  pr RAND .
+  pr PMS .
+  sort SFinish .
+
+  op sfin : Prin Prin Sid ListOfChoices Choice Rand Rand Pms -> SFinish .
+  op client : SFinish -> Prin .
+  op server : SFinish -> Prin .
+  op sid    : SFinish -> Sid .
+  op list   : SFinish -> ListOfChoices .
+  op choice : SFinish -> Choice .
+  op crand  : SFinish -> Rand .
+  op srand  : SFinish -> Rand .
+  op pms    : SFinish -> Pms .
+
+  var F : SFinish .
+  vars A B A1 A2 B1 B2 : Prin .
+  vars I I1 I2 : Sid .
+  vars L L1 L2 : ListOfChoices .
+  vars C C1 C2 : Choice .
+  vars CR SR CR1 CR2 SR1 SR2 : Rand .
+  vars PMS PMS1 PMS2 : Pms .
+  eq client(sfin(A,B,I,L,C,CR,SR,PMS)) = A .
+  eq server(sfin(A,B,I,L,C,CR,SR,PMS)) = B .
+  eq sid(sfin(A,B,I,L,C,CR,SR,PMS)) = I .
+  eq list(sfin(A,B,I,L,C,CR,SR,PMS)) = L .
+  eq choice(sfin(A,B,I,L,C,CR,SR,PMS)) = C .
+  eq crand(sfin(A,B,I,L,C,CR,SR,PMS)) = CR .
+  eq srand(sfin(A,B,I,L,C,CR,SR,PMS)) = SR .
+  eq pms(sfin(A,B,I,L,C,CR,SR,PMS)) = PMS .
+  eq (sfin(A1,B1,I1,L1,C1,CR1,SR1,PMS1) = sfin(A2,B2,I2,L2,C2,CR2,SR2,PMS2)) 
+     = (A1 = A2 and B1 = B2 and I1 = I2 and L1 = L2 and C1 = C2 and SR1 = SR2 and PMS1 = PMS2) .
+endfm
+
+view SFinish from TRIV to SFINISH is
+    sort Elt to SFinish .
+endv
+
+fmod SFINISH-SOUP is
+  pr SOUP{SFinish} .
+endfm
+
+fmod CFINISH2 is
+  pr PRIN .
+  pr SID .
+  pr CHOICE .
+  pr RAND .
+  pr PMS .
+  sort CFinish2 .
+
+  op cfin2 : Prin Prin Sid Choice Rand Rand Pms -> CFinish2 .
+  op client : CFinish2 -> Prin .
+  op server : CFinish2 -> Prin .
+  op sid    : CFinish2 -> Sid .
+  op choice : CFinish2 -> Choice .
+  op crand  : CFinish2 -> Rand .
+  op srand  : CFinish2 -> Rand .
+  op pms    : CFinish2 -> Pms .
+
+  var F : CFinish2 .
+  vars A B A1 A2 B1 B2 : Prin .
+  vars I I1 I2 : Sid .
+  vars C C1 C2 : Choice .
+  vars CR SR CR1 CR2 SR1 SR2 : Rand .
+  vars PMS PMS1 PMS2 : Pms .
+  eq client(cfin2(A,B,I,C,CR,SR,PMS)) = A .
+  eq server(cfin2(A,B,I,C,CR,SR,PMS)) = B .
+  eq sid(cfin2(A,B,I,C,CR,SR,PMS)) = I .
+  eq choice(cfin2(A,B,I,C,CR,SR,PMS)) = C .
+  eq crand(cfin2(A,B,I,C,CR,SR,PMS)) = CR .
+  eq srand(cfin2(A,B,I,C,CR,SR,PMS)) = SR .
+  eq pms(cfin2(A,B,I,C,CR,SR,PMS)) = PMS .
+  eq (cfin2(A1,B1,I1,C1,CR1,SR1,PMS1) = cfin2(A2,B2,I2,C2,CR2,SR2,PMS2)) 
+     = (A1 = A2 and B1 = B2 and I1 = I2 and C1 = C2 and SR1 = SR2 and PMS1 = PMS2) .
+endfm
+
+view CFinish2 from TRIV to CFINISH2 is
+    sort Elt to CFinish2 .
+endv
+
+fmod CFINISH2-SOUP is
+  pr SOUP{CFinish2} .
+endfm
+
+fmod SFINISH2 is
+  pr PRIN .
+  pr SID .
+  pr CHOICE .
+  pr RAND .
+  pr PMS .
+  sort SFinish2 .
+
+  op sfin2 : Prin Prin Sid Choice Rand Rand Pms -> SFinish2 .
+  op client : SFinish2 -> Prin .
+  op server : SFinish2 -> Prin .
+  op sid    : SFinish2 -> Sid .
+  op choice : SFinish2 -> Choice .
+  op crand  : SFinish2 -> Rand .
+  op srand  : SFinish2 -> Rand .
+  op pms    : SFinish2 -> Pms .
+
+  var F : SFinish2 .
+  vars A B A1 A2 B1 B2 : Prin .
+  vars I I1 I2 : Sid .
+  vars C C1 C2 : Choice .
+  vars CR SR CR1 CR2 SR1 SR2 : Rand .
+  vars PMS PMS1 PMS2 : Pms .
+  eq client(sfin2(A,B,I,C,CR,SR,PMS)) = A .
+  eq server(sfin2(A,B,I,C,CR,SR,PMS)) = B .
+  eq sid(sfin2(A,B,I,C,CR,SR,PMS)) = I .
+  eq choice(sfin2(A,B,I,C,CR,SR,PMS)) = C .
+  eq crand(sfin2(A,B,I,C,CR,SR,PMS)) = CR .
+  eq srand(sfin2(A,B,I,C,CR,SR,PMS)) = SR .
+  eq pms(sfin2(A,B,I,C,CR,SR,PMS)) = PMS .
+  eq (sfin2(A1,B1,I1,C1,CR1,SR1,PMS1) = sfin2(A2,B2,I2,C2,CR2,SR2,PMS2)) 
+     = (A1 = A2 and B1 = B2 and I1 = I2 and C1 = C2 and SR1 = SR2 and PMS1 = PMS2) .
+endfm
+
+view SFinish2 from TRIV to SFINISH2 is
+    sort Elt to SFinish2 .
+endv
+
+fmod SFINISH2-SOUP is
+  pr SOUP{SFinish2} .
+endfm
+
+fmod ENCPMS is
+  pr PMS .
+  pr PUBLICKEY .
+  sort EncPms .
+
+  op epms : PubKey Pms -> EncPms .
+  op k : EncPms -> PubKey .
+  op pms : EncPms -> Pms .
+
+  var EP : EncPms .
+  vars PK PK1 PK2 : PubKey .
+  vars PMS PMS1 PMS2 : Pms .
+  eq k(epms(PK,PMS)) = PK .
+  eq pms(epms(PK,PMS)) = PMS .
+  eq (epms(PK1,PMS1) = epms(PK2,PMS2))
+     = (PK1 = PK2 and PMS1 = PMS2) .
+endfm
+
+view EncPms from TRIV to ENCPMS is
+    sort Elt to EncPms .
+endv
+
+fmod ENCPMS-SOUP is
+  pr SOUP{EncPms} .
+endfm
+
+fmod ENCCFIN is
+  pr KEY .
+  pr CFINISH .
+  sort EncCFin .
+
+  op ecfin : Key CFinish -> EncCFin .
+  op k : EncCFin -> Key .
+  op cfin : EncCFin -> CFinish .
+
+  var EF : EncCFin .
+  vars K K1 K2 : Key .
+  vars F F1 F2 : CFinish .
+  eq k(ecfin(K,F)) = K .
+  eq cfin(ecfin(K,F)) = F .
+  eq (ecfin(K1,F1) = ecfin(K2,F2)) 
+     = (K1 = K2 and F1 = F2) .
+endfm
+
+view EncCFin from TRIV to ENCCFIN is
+    sort Elt to EncCFin .
+endv
+
+fmod ENCCFIN-SOUP is
+  pr SOUP{EncCFin} .
+endfm
+
+fmod ENCSFIN is
+  pr KEY .
+  pr CFINISH .
+  sort EncSFin .
+
+  op esfin : Key SFinish -> EncSFin .
+  op k : EncSFin -> Key .
+  op sfin : EncSFin -> SFinish .
+
+  var EF : EncSFin .
+  vars K K1 K2 : Key .
+  vars F F1 F2 : SFinish .
+  eq k(esfin(K,F)) = K .
+  eq sfin(esfin(K,F)) = F .
+  eq (esfin(K1,F1) = esfin(K2,F2)) 
+     = (K1 = K2 and F1 = F2) .
+endfm
+
+view EncSFin from TRIV to ENCSFIN is
+    sort Elt to EncSFin .
+endv
+
+fmod ENCSFIN-SOUP is
+  pr SOUP{EncSFin} .
+endfm
+
+fmod ENCCFIN2 is
+  pr KEY .
+  pr CFINISH2 .
+  sort EncCFin2 .
+
+  op ecfin2 : Key CFinish2 -> EncCFin2 .
+  op k : EncCFin2 -> Key .
+  op cfin2 : EncCFin2 -> CFinish2 .
+
+  var EF : EncCFin2 .
+  vars K K1 K2 : Key .
+  vars F F1 F2 : CFinish2 .
+  eq k(ecfin2(K,F)) = K .
+  eq cfin2(ecfin2(K,F)) = F .
+  eq (ecfin2(K1,F1) = ecfin2(K2,F2)) 
+     = (K1 = K2 and F1 = F2) .
+endfm
+
+view EncCFin2 from TRIV to ENCCFIN2 is
+    sort Elt to EncCFin2 .
+endv
+
+fmod ENCCFIN2-SOUP is
+  pr SOUP{EncCFin2} .
+endfm
+
+fmod ENCSFIN2 is
+  pr KEY .
+  pr SFINISH2 .
+  sort EncSFin2 .
+
+  op esfin2 : Key SFinish2 -> EncSFin2 .
+  op k : EncSFin2 -> Key .
+  op sfin2 : EncSFin2 -> SFinish2 .
+
+  var EF : EncSFin2 .
+  vars K K1 K2 : Key .
+  vars F F1 F2 : SFinish2 .
+  eq k(esfin2(K,F)) = K .
+  eq sfin2(esfin2(K,F)) = F .
+  eq (esfin2(K1,F1) = esfin2(K2,F2)) 
+     = (K1 = K2 and F1 = F2) .
+endfm
+
+view EncSFin2 from TRIV to ENCSFIN2 is
+    sort Elt to EncSFin2 .
+endv
+
+fmod ENCSFIN2-SOUP is
+  pr SOUP{EncSFin2} .
+endfm
+
+fmod MSG is
+    pr PRIN .
+    pr RAND .
+    pr CHOICE .
+    pr LISTOFCHOICES .
+    pr SID .
+    pr PMS .
+    pr CERTIFICATE .
+    pr ENCPMS .
+    pr ENCCFIN .
+    pr ENCSFIN .
+    pr ENCCFIN2 .
+    pr ENCSFIN2 .
+
+    sort Msg .
+
+***        creator source dest  message body
+***     ---------------------------------------------
+  op ch  : Prin    Prin   Prin  Rand ListOfChoices -> Msg .
+  op sh  : Prin    Prin   Prin  Rand Sid Choice    -> Msg .
+  op ct  : Prin    Prin   Prin  Cert               -> Msg .
+  op kx  : Prin    Prin   Prin  EncPms             -> Msg .
+  op cf  : Prin    Prin   Prin  EncCFin             -> Msg .
+  op sf  : Prin    Prin   Prin  EncSFin             -> Msg .
+  op ch2 : Prin    Prin   Prin  Rand Sid           -> Msg .
+  op sh2 : Prin    Prin   Prin  Rand Sid Choice    -> Msg .
+  op cf2 : Prin    Prin   Prin  EncCFin2            -> Msg .
+  op sf2 : Prin    Prin   Prin  EncSFin2            -> Msg .
+  
+  op crt : Msg -> Prin .
+  op src : Msg -> Prin .
+  op dst : Msg -> Prin .
+  
+  op rand : Msg -> Rand .
+  op list : Msg -> ListOfChoices .
+  op choice : Msg -> Choice .
+  op sid  : Msg -> Sid .
+  op cert : Msg -> Cert .
+  op epms : Msg -> EncPms .
+  op ecfin : Msg -> EncCFin .
+  op esfin : Msg -> EncSFin .
+  op ecfin2 : Msg -> EncCFin2 .
+  op esfin2 : Msg -> EncSFin2 .
+    
+  vars M M1 M2 : Msg .
+  vars A A' B  : Prin .
+  var R : Rand .
+  var L : ListOfChoices .
+  var C : Choice .
+  var I : Sid .
+  var CERT : Cert .
+  var EPMS : EncPms .
+  var ECFIN : EncCFin .
+  var ESFIN : EncSFin .
+  var ECFIN2 : EncCFin2 .
+  var ESFIN2 : EncSFin2 .
+  
+  eq crt(ch(A',A,B,R,L))    = A' .
+  eq crt(sh(A',A,B,R,I,C))  = A' .
+  eq crt(ct(A',A,B,CERT))   = A' .
+  eq crt(kx(A',A,B,EPMS))   = A' .
+  eq crt(cf(A',A,B,ECFIN))   = A' .
+  eq crt(sf(A',A,B,ESFIN))   = A' .
+  eq crt(ch2(A',A,B,R,I))   = A' .
+  eq crt(sh2(A',A,B,R,I,C)) = A' .
+  eq crt(cf2(A',A,B,ECFIN2))  = A' .
+  eq crt(sf2(A',A,B,ESFIN2))  = A' .
+
+  eq src(ch(A',A,B,R,L))    = A .
+  eq src(sh(A',A,B,R,I,C))  = A .
+  eq src(ct(A',A,B,CERT))   = A .
+  eq src(kx(A',A,B,EPMS))   = A .
+  eq src(cf(A',A,B,ECFIN))   = A .
+  eq src(sf(A',A,B,ESFIN))   = A .
+  eq src(ch2(A',A,B,R,I))   = A .
+  eq src(sh2(A',A,B,R,I,C)) = A .
+  eq src(cf2(A',A,B,ECFIN2))  = A .
+  eq src(sf2(A',A,B,ESFIN2))  = A .
+
+  eq dst(ch(A',A,B,R,L))    = B .
+  eq dst(sh(A',A,B,R,I,C))  = B .
+  eq dst(ct(A',A,B,CERT))   = B .
+  eq dst(kx(A',A,B,EPMS))   = B .
+  eq dst(cf(A',A,B,ECFIN))   = B .
+  eq dst(sf(A',A,B,ESFIN))   = B .
+  eq dst(ch2(A',A,B,R,I))    = B .
+  eq dst(sh2(A',A,B,R,I,C))  = B .
+  eq dst(cf2(A',A,B,ECFIN2))  = B .
+  eq dst(sf2(A',A,B,ESFIN2))  = B .
+  
+  eq rand(ch(A',A,B,R,L))    = R .
+  eq rand(sh(A',A,B,R,I,C))  = R .
+  eq rand(ch2(A',A,B,R,I))   = R .
+  eq rand(sh2(A',A,B,R,I,C)) = R .
+  
+  eq list(ch(A',A,B,R,L))    = L .
+
+  eq choice(sh(A',A,B,R,I,C))  = C .
+  eq choice(sh2(A',A,B,R,I,C)) = C .
+
+  eq sid(sh(A',A,B,R,I,C))  = I .
+  eq sid(ch2(A',A,B,R,I))   = I .
+  eq sid(sh2(A',A,B,R,I,C)) = I .
+
+  eq cert(ct(A',A,B,CERT))   = CERT .
+
+  eq epms(kx(A',A,B,EPMS))   = EPMS .
+
+  eq ecfin(cf(A',A,B,ECFIN))   = ECFIN .
+
+  eq esfin(sf(A',A,B,ESFIN))   = ESFIN .
+
+  eq ecfin2(cf2(A',A,B,ECFIN2))  = ECFIN2 .
+
+  eq esfin2(sf2(A',A,B,ESFIN2))  = ESFIN2 .
+
+endfm
+
+view Msg from TRIV to MSG is
+    sort Elt to Msg .
+endv
+
+fmod NETWORK is
+  pr SOUP{Msg} .
+---   op _\in_ : Cipher1 Soup{Msg} -> Bool .
+---   op _\in_ : Cipher2 Soup{Msg} -> Bool .
+---   op _\in_ : Cipher3 Soup{Msg} -> Bool .
+
+  vars A A' B  : Prin .
+  vars NW NW10 : Network .
+  var M M2 : Msg .
+  var PMS : Pms .
+  var G : Sig .
+  var EPMS : EncPms .
+  var ECFIN : EncCFin .
+  var ESFIN : EncSFin .
+  var ECFIN2 : EncCFin2 .
+  var ESFIN2 : EncSFin2 .
+  
+  eq PMS \in kx(A',A,B,PMS) NW = true .
+  eq PMS \in NW = false [owise] .
+  
+  eq G \in ct(A',A,B,G) NW = true .
+  eq G \in NW = false [owise] .
+  
+  eq EPMS \in kx(A',A,B,EPMS) NW = true .
+  eq EPMS \in NW = false [owise] .
+  
+  eq ECFIN \in cf(A',A,B,ECFIN) NW = true .
+  eq ECFIN \in NW = false [owise] .
+
+  eq ESFIN \in sf(A',A,B,ESFIN) NW = true .
+  eq ESFIN \in NW = false [owise] .
+
+  eq ECFIN2 \in cf2(A',A,B,ECFIN2) NW = true .
+  eq ECFIN2 \in NW = false [owise] .
+
+  eq ESFIN2 \in sf2(A',A,B,ESFIN2) NW = true .
+  eq ESFIN2 \in NW = false [owise] .
+
+endfm
+
+fmod SESSIONSTATE is
+    pr CHOICE .
+    pr RANDOM .
+    pr PMS .
+    sort Session .
+
+    op none : -> Session .
+    op st : Choice Rand Rand Pms -> Session .
+    op choice : Session -> Choice .
+    op crand  : Session -> Rand .
+    op srand  : Session -> Rand .
+    op pms    : Session -> Pms .
+
+    var S : Session .
+    vars C C1 C2 : Choice .
+    vars CR SR CR1 CR2 SR1 SR2 : Rand .
+    vars PMS PMS1 PMS2 :  Pms .
+    eq choice(st(C,CR,SR,PMS)) = C .
+    eq crand(st(C,CR,SR,PMS)) = CR .
+    eq srand(st(C,CR,SR,PMS)) = SR .
+    eq pms(st(C,CR,SR,PMS)) = PMS .
+
+    eq (st(C1,CR1,SR1,PMS1) = st(C2,CR2,SR2,PMS2))
+     = (C1 = C2 and CR1 = CR2 and SR1 = SR2 and PMS1 = PMS2) .
+endfm
+
+
+
+
+
+
+fmod OCOM is
+  pr NETWORK .
+  pr RAND-SOUP .
+  pr NONCE-SOUP .
+  pr CIPHER1-SOUP .
+  pr CIPHER2-SOUP .
+  pr CIPHER3-SOUP .
+  pr PRIN-SOUP .
+  sort OCom .
+  op newmsg:_ : Msg -> OCom [ctor] .
+  op newCen1:_ : Cipher1 -> OCom [ctor] .
+  op newCen2:_ : Cipher2 -> OCom [ctor] .
+  op newCen3:_ : Cipher3 -> OCom [ctor] .
+---   op newurand:_ : Rand -> OCom [ctor] .
+---   op newNonces:_ : Soup{Nonce} -> OCom [ctor] .
+  op cenc1:_ : Soup{Cipher1} -> OCom [ctor] .
+  op cenc2:_ : Soup{Cipher2} -> OCom [ctor] .
+  op cenc3:_ : Soup{Cipher3} -> OCom [ctor] .
+  op nw:_ : Soup{Msg} -> OCom [ctor] .
+  op m1:_ : Msg1 -> OCom [ctor] .
+  op m2:_ : Msg2 -> OCom [ctor] .
+  op m3:_ : Msg3 -> OCom [ctor] .
+  op nwM1:_ : Soup{Msg} -> OCom [ctor] .
+  op nwM2:_ : Soup{Msg} -> OCom [ctor] .
+  op nwM3:_ : Soup{Msg} -> OCom [ctor] . 
+  op rands:_ : Soup{Rand} -> OCom [ctor] .
+  op urand:_ : Soup{Rand} -> OCom [ctor] .
+  op nonces:_ : Soup{Nonce} -> OCom [ctor] .
+  op prins:_ : Soup{Prin} -> OCom [ctor] .
+endfm
+
+view OCom from TRIV to OCOM is
+    sort Elt to OCom .
+endv
+
+fmod OCOM-SOUP is
+    pr SOUP{OCom} .
+endfm
+
+fmod CONFIG is
+    pr OCOM-SOUP .
+    sort Config .
+    op {_} : Soup{OCom} -> Config [ctor] .
+    op init : -> Config .
+    eq init = {(newmsg: empt) (m1: empM1) (m2: empM2) (m3: empM3) 
+                (nonces: emp) (nw: emp)
+                (newCen1: empC1) (newCen2: empC2) (newCen3: empC3)
+                (cenc1: emp) (cenc2: emp) (cenc3: emp)
+                (nwM1: emp) (nwM2: emp) (nwM3: emp) (urand: emp)
+                (rands: (r1 r2)) (prins: (p q intr))} .
+    *** newmsg: latest message
+    *** m1-3: the latest message 1-3
+    *** newCen1-3: cipher in latest message gained by intruder
+    *** cenc1-3: set of cipher gained by intruder
+    *** nwM1-3: network contains m1-3
+    *** nw: network contains all messages
+    *** nonces: set of nonce gained by intruder
+    *** rands: set of random number
+    *** urand: set of used random number
+    *** prins: set of principles
+endfm
+
+mod NSLPK is
+  inc CONFIG .
+
+  var MSG : Msg .
+
+  var NW : Soup{Msg} .
+
+  vars R R' : Rand .
+  var Rs : Soup{Rand} .
+
+  vars N N' NON : Nonce .
+  vars Ns Ns' : Soup{Nonce} .
+
+  vars P Q P' Q' P'' Q'' C S Re : Prin .
+  var Ps : Soup{Prin} .
+
+  var C1 : Cipher1 .
+  var C2 : Cipher2 .
+  var C3 : Cipher3 .
+  
+  var Ce1 : Cipher1 .
+  var Ce2 : Cipher2 .
+  var Ce3 : Cipher3 .
+
+  var CE1 : Soup{Cipher1} .
+  var CE2 : Soup{Cipher2} .
+  var CE3 : Soup{Cipher3} .
+
+  var M1 : Msg1 .
+  var M2 : Msg2 .
+  var M3 : Msg3 .
+
+  var MSG1 : Msg1 .
+  var MSG2 : Msg2 .
+  var MSG3 : Msg3 .
+
+  var NWM1 : Soup{Msg} .
+  var NWM2 : Soup{Msg} .
+  var NWM3 : Soup{Msg} .
+
+  var OCs : Soup{OCom} .
+
+  ***
+  *** not(key(cipher_i(M)) = intr) ---> cipher_i will be stored in cenc_i
+  *** gen(N)== intr or key(cipher_i) == intr --> nonce will be stored in cnonce
+  
+  *** eq N \in cnonce(void) = (creator(N) = intruder) .
+  *** inv160 (creator(n) = intruder implies n \in cnonce(nw(s)))
+
+  rl [challenge] :
+    {(newmsg: MSG) 
+    (m1: M1) (m2: M2) (m3: M3)
+    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
+    (cenc1: CE1)
+    (nwM1: NWM1) (nw: NW)
+    (nonces: Ns) 
+    (rands: (r1 Rs)) (urand: Rs) 
+    (prins: (P Q Ps)) OCs}
+    =>
+    {(newmsg: m1(P,P,Q,enc1(Q,n(P,Q,r1),n(dP,dP,dR),P)))
+    (m1: m1(P,P,Q,enc1(Q,n(P,Q,r1),n(dP,dP,dR),P)))
+    (m2: empM2) (m3: empM3)
+    (newCen1: (if Q == intr then empC1 else enc1(Q,n(P,Q,r1),n(dP,dP,dR),P) fi))
+    (newCen2: empC2)
+    (newCen3: empC3)
+    (cenc1: (if Q == intr then CE1 else (enc1(Q,n(P,Q,r1),n(dP,dP,dR),P) CE1) fi))
+    (nwM1: (m1(P,P,Q,enc1(Q,n(P,Q,r1),n(dP,dP,dR),P)) NWM1))
+    (nw: (m1(P,P,Q,enc1(Q,n(P,Q,r1),n(dP,dP,dR),P)) NW))
+    (nonces: (if (Q == intr or gen(n(P,Q,r1)) == intr) then (n(P,Q,r1) Ns) else Ns fi))
+    (rands: Rs) (urand: (r1 Rs))
+    (prins: (P Q Ps)) OCs} .
+
+  rl [Response] :
+    {(newmsg: MSG) 
+    (m1: M1) (m2: M2) (m3: M3)
+    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
+    (cenc2: CE2)
+    (nwM2: NWM2) (nw: (m1(P',P,Q,enc1(Q,N,NON,P)) NW))
+    (nonces: Ns) 
+    (rands: r2) (urand: Rs) OCs}  
+    =>
+    {(newmsg: m2(Q,Q,P,enc2(P,N,n(Q,P,r2),Q)))
+    (m1: empM1)
+    (m2: m2(Q,Q,P,enc2(P,N,n(Q,P,r2),Q))) 
+    (m3: empM3)
+    (newCen1: empC1)
+    (newCen2: (if P == intr then empC2 else enc2(P,N,n(Q,P,r2),Q) fi))
+    (newCen3: empC3)
+    (cenc2: (if P == intr then CE2 else (enc2(P,N,n(Q,P,r2),Q) CE2) fi))
+    (nwM2: (m2(Q,Q,P,enc2(P,N,n(Q,P,r2),Q)) NWM2)) 
+    (nw: (m2(Q,Q,P,enc2(P,N,n(Q,P,r2),Q))
+          m1(P',P,Q,enc1(Q,N,NON,P)) NW))
+    (nonces: (if ((P == intr) or (gen(n(Q,P,r2)) == intr)) then (n(Q,P,r2) N Ns) else Ns fi))
+    (rands: Rs) (urand: (r2 Rs)) OCs} .
+
+  rl [Confirmation] :
+    {(newmsg: MSG) 
+    (m1: M1) (m2: M2) (m3: M3)
+    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
+    (cenc3: CE3)
+    (nwM3: NWM3)
+    (nw: (m2(Q',Q,P,enc2(P,N,N',Q)) m1(P,P,Q,enc1(Q,N,NON,P)) NW))
+    (nonces: Ns) OCs}
+    =>
+    {(newmsg: m3(P,P,Q,enc3(Q,N',NON,dP)))
+    (m1: empM1) (m2: empM2)
+    (m3: m3(P,P,Q,enc3(Q,N',NON,dP)))
+    (newCen1: empC1)
+    (newCen2: empC2)
+    (newCen3: (if Q == intr then empC3 else enc3(Q,N',NON,dP) fi)) 
+    (cenc3: (if Q == intr then CE3 else (enc3(Q,N',NON,dP) CE3) fi))
+    (nwM3: (m3(P,P,Q,enc3(Q,N',NON,dP)) NWM3))
+    (nw: (m3(P,P,Q,enc3(Q,N',NON,dP))
+          m2(Q',Q,P,enc2(P,N,N',Q))
+          m1(P,P,Q,enc1(Q,N,NON,P)) NW))
+    (nonces: (if Q == intr then (N' Ns) else Ns fi)) OCs} .
+
+*** intruder fakes the messages based on 
+*** 1)nonce gleaned by intruder
+*** 2)existing message in nw
+
+*** not(key(cipher_i(M)) = intr) ---> cipher_i will be stored in cenc_i
+*** gen(N)== intr or key(cipher_i) == intr --> nonce will be stored in cnonce
+
+  rl [fake11] :
+    {(newmsg: MSG) 
+    (m1: M1) (m2: M2) (m3: M3)
+    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
+    (cenc1: CE1)
+    (nwM1: NWM1)
+    (nw: NW) 
+    (nonces: (N Ns)) (prins: (P Q Ps)) OCs}
+    =>
+    {(newmsg: m1(intr,P,Q,enc1(Q,N,n(dP,dP,dR),P)))
+    (m1: m1(intr,P,Q,enc1(Q,N,n(dP,dP,dR),P)))
+    (m2: empM2) (m3: empM3)
+    (nw: (m1(intr,P,Q,enc1(Q,N,n(dP,dP,dR),P)) NW))
+    (newCen1: (if Q == intr then empC1 else enc1(Q,N,n(dP,dP,dR),P) fi))
+    (newCen2: empC2)
+    (newCen3: empC3)
+    (cenc1: (if Q == intr then CE1 else (enc1(Q,N,n(dP,dP,dR),P) CE1) fi))
+    (nwM1: (m1(intr,P,Q,enc1(Q,N,n(dP,dP,dR),P)) NWM1))
+    (nonces: (N Ns)) (prins: (P Q Ps)) OCs} .
+
+  rl [fake12] :
+    {(newmsg: MSG) (m1: M1) (m2: M2) (m3: M3)
+    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
+    (cenc1: (C1 CE1))
+    (nwM1: NWM1)
+    (nw: NW) 
+    (prins: (P Q Ps)) OCs}
+    =>
+    {(newmsg: m1(intr,P,Q,C1))
+    (newCen1: C1) (newCen2: empC2) (newCen3: empC3)
+    (cenc1: (C1 CE1))
+    (m1: m1(intr,P,Q,C1)) (m2: empM2) (m3: empM3)
+    (nwM1: (m1(intr,P,Q,C1) NWM1)) 
+    (nw: (m1(intr,P,Q,C1) NW))
+    (prins: (P Q Ps)) OCs} .
+
+  rl [fake21] :
+    {(newmsg: MSG)
+    (m1: M1) (m2: M2) (m3: M3)
+    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
+    (cenc2: CE2)
+    (nw: NW) 
+    (nwM2: NWM2)
+    (nonces: (N N' Ns)) (prins: (P Q Ps)) OCs}
+    =>
+    {(newmsg: m2(intr,Q,P,enc2(P,N,N',Q)))
+    (m1: empM1) 
+    (m2: m2(intr,Q,P,enc2(P,N,N',Q))) 
+    (m3: empM3)
+    (newCen1: empC1)
+    (newCen2: (if P == intr then empC2 else enc2(P,N,N',Q) fi))
+    (newCen3: empC3)
+    (cenc2: (if P == intr then CE2 else (enc2(P,N,N',Q) CE2) fi))
+    (nw: (m2(intr,Q,P,enc2(P,N,N',Q)) NW))
+    (nwM2: (m2(intr,Q,P,enc2(P,N,N',Q)) NWM2)) 
+    (nonces: (N N' Ns)) (prins: (P Q Ps)) OCs} .
+
+  rl [fake22] :
+    {(newmsg: MSG) 
+    (m1: M1) (m2: M2) (m3: M3)
+    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
+    (cenc2: (C2 CE2))
+    (nwM2: NWM2)
+    (nw: NW) 
+    (prins: (P Q Ps)) OCs}
+    =>
+    {(newmsg: m2(intr,Q,P,C2))
+    (m1: empM1) (m2: m2(intr,Q,P,C2)) (m3: empM3)
+    (newCen1: empC1) (newCen2: C2) (newCen3: empC3)
+    (cenc2: (C2 CE2))
+    (nwM2: (m2(intr,Q,P,C2) NWM2))
+    (nw: (m2(intr,Q,P,C2) NW))
+    (prins: (P Q Ps)) OCs} .
+
+  rl [fake31] :
+    {(newmsg: MSG) 
+    (m1: M1) (m2: M2) (m3: M3)   
+    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
+    (cenc3: CE3)
+    (nwM3: NWM3)
+    (nw: NW) (nonces: (N Ns)) (prins: (P Q Ps)) OCs}
+    =>
+    {(newmsg: m3(intr,P,Q,enc3(Q,N,n(dP,dP,dR),dP)))
+    (m1: empM1) (m2: empM2) 
+    (m3: m3(intr,P,Q,enc3(Q,N,n(dP,dP,dR),dP)))
+    (newCen1: empC1)
+    (newCen2: empC2)
+    (newCen3: (if Q == intr then empC3 else enc3(Q,N,n(dP,dP,dR),dP) fi))
+    (cenc3: (if Q == intr then CE3 else (enc3(Q,N,n(dP,dP,dR),dP) CE3) fi))
+    (nwM3: (m3(intr,P,Q,enc3(Q,N,n(dP,dP,dR),dP)) NWM3))
+    (nw: (m3(intr,P,Q,enc3(Q,N,n(dP,dP,dR),dP)) NW))
+    (nonces: (N Ns)) (prins: (P Q Ps)) OCs} .
+
+  rl [fake32] :
+    {(newmsg: MSG) 
+    (m1: M1) (m2: M2) (m3: M3)
+    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
+    (cenc3: (C3 CE3))
+    (nwM3: NWM3)
+    (nw: NW) 
+    (prins: (P Q Ps)) OCs}
+    =>
+    {(newmsg: m3(intr,P,Q,C3))
+    (m1: empM1) (m2: empM2) (m3: m3(intr,P,Q,C3))
+    (newCen1: empC1) (newCen2: empC2) (newCen3: C3)
+    (cenc3: (C3 CE3))
+    (nwM3: (m3(intr,P,Q,C3) NWM3))
+    (nw: (m3(intr,P,Q,C3) NW)) 
+    (prins: (P Q Ps)) OCs} .
+endm
