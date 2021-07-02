@@ -5588,7 +5588,7 @@ open INV .
 
 	:imp [tls] by {P:Pms <- P@Pms ;}
 
-	:postpone .
+	:postpone . -- inv2
 
 	:imp [tls] by {P:Pms <- P@Pms ;}
 
@@ -5862,7 +5862,7 @@ open INV .
 
 	:imp [tls5] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- c17, b1 = intr = false with other equations
 
 	:imp [tls5] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -7817,7 +7817,7 @@ open INV .
 
 	:imp [tls5] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- c24 i13
 
 	:def csb914 = :ctf {eq P#Prin  = intruder .}
 
@@ -8410,7 +8410,7 @@ open INV .
 
 	:imp [tls4] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- lm1 c24
 
 	:imp [tls4] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
