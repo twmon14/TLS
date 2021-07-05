@@ -7006,7 +7006,7 @@ open INV .
 	:imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
 	*** The corresponding proof score was not present.
-	:apply (rd)
+	:apply (rd) -- r2 f
 
 	:imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -7015,6 +7015,14 @@ open INV .
 	:imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
 	:apply (rd)
+
+	:imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd) 
 
 	:imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -7023,14 +7031,6 @@ open INV .
 	:imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
 	:apply (rd) -- r1 f
-
-	:imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
 
 	:imp [tls3] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
