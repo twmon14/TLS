@@ -26,7 +26,7 @@ endfm
 
 fmod RAND is
     sort Rand .
-    --- ops r1 r2 dR empR : -> Rand [ctor] .
+    ops cr sr empR : -> Rand [ctor] .
 endfm
 
 view Rand from TRIV to RAND is
@@ -572,6 +572,8 @@ fmod MSG is
   op ecfin2 : Msg -> EncCFin2 .
   op esfin2 : Msg -> EncSFin2 .
     
+  op empty : Msg -> [ctor] .
+
   vars M M1 M2 : Msg .
   vars A A' B  : Prin .
   var R : Rand .
@@ -650,11 +652,49 @@ view Msg from TRIV to MSG is
     sort Elt to Msg .
 endv
 
+fmod SESSIONSTATE is
+    pr CHOICE .
+    pr RANDOM .
+    pr PMS .
+    sort Session .
+
+    op none : -> Session .
+    op st : Choice Rand Rand Pms -> Session .
+    op choice : Session -> Choice .
+    op crand  : Session -> Rand .
+    op srand  : Session -> Rand .
+    op pms    : Session -> Pms .
+
+    var S : Session .
+    vars C C1 C2 : Choice .
+    vars CR SR CR1 CR2 SR1 SR2 : Rand .
+    vars PMS PMS1 PMS2 :  Pms .
+    eq choice(st(C,CR,SR,PMS)) = C .
+    eq crand(st(C,CR,SR,PMS)) = CR .
+    eq srand(st(C,CR,SR,PMS)) = SR .
+    eq pms(st(C,CR,SR,PMS)) = PMS .
+
+    eq (st(C1,CR1,SR1,PMS1) = st(C2,CR2,SR2,PMS2))
+     = (C1 = C2 and CR1 = CR2 and SR1 = SR2 and PMS1 = PMS2) .
+endfm
+
+view Session from TRIV to SESSIONSTATE is
+    sort Elt to Session .
+endv
+
+fmod SESSIONSTATE-SOUP is
+  pr SOUP{Session} .
+endfm
+
 fmod NETWORK is
   pr SOUP{Msg} .
----   op _\in_ : Cipher1 Soup{Msg} -> Bool .
----   op _\in_ : Cipher2 Soup{Msg} -> Bool .
----   op _\in_ : Cipher3 Soup{Msg} -> Bool .
+  op _\in_ : Pms Soup{Msg} -> Bool .
+  op _\in_ : Sig Soup{Msg} -> Bool .
+  op _\in_ : EncPms Soup{Msg} -> Bool .
+  op _\in_ : EncCFin Soup{Msg} -> Bool .
+  op _\in_ : EncSFin Soup{Msg} -> Bool .
+  op _\in_ : EncCFin2 Soup{Msg} -> Bool .
+  op _\in_ : EncSFin2 Soup{Msg} -> Bool .
 
   vars A A' B  : Prin .
   vars NW NW10 : Network .
@@ -687,68 +727,59 @@ fmod NETWORK is
 
   eq ESFIN2 \in sf2(A',A,B,ESFIN2) NW = true .
   eq ESFIN2 \in NW = false [owise] .
-
 endfm
-
-fmod SESSIONSTATE is
-    pr CHOICE .
-    pr RANDOM .
-    pr PMS .
-    sort Session .
-
-    op none : -> Session .
-    op st : Choice Rand Rand Pms -> Session .
-    op choice : Session -> Choice .
-    op crand  : Session -> Rand .
-    op srand  : Session -> Rand .
-    op pms    : Session -> Pms .
-
-    var S : Session .
-    vars C C1 C2 : Choice .
-    vars CR SR CR1 CR2 SR1 SR2 : Rand .
-    vars PMS PMS1 PMS2 :  Pms .
-    eq choice(st(C,CR,SR,PMS)) = C .
-    eq crand(st(C,CR,SR,PMS)) = CR .
-    eq srand(st(C,CR,SR,PMS)) = SR .
-    eq pms(st(C,CR,SR,PMS)) = PMS .
-
-    eq (st(C1,CR1,SR1,PMS1) = st(C2,CR2,SR2,PMS2))
-     = (C1 = C2 and CR1 = CR2 and SR1 = SR2 and PMS1 = PMS2) .
-endfm
-
-
-
-
-
 
 fmod OCOM is
   pr NETWORK .
   pr RAND-SOUP .
-  pr NONCE-SOUP .
-  pr CIPHER1-SOUP .
-  pr CIPHER2-SOUP .
-  pr CIPHER3-SOUP .
+  pr SESSIONSTATE-SOUP .
+  pr SECRET-SOUP .
+  pr PMS-SOUP .
+  pr SIGNATURE-SOUP .
+  pr ENCCFIN-SOUP .
+  pr ENCSFIN-SOUP .
+  pr ENCPMS-SOUP .
+  pr ENCCFIN2-SOUP .
+  pr ENCSFIN2-SOUP .
   pr PRIN-SOUP .
   sort OCom .
+
+  op cpms:_ : Soup{Pms} -> OCom [ctor] .
+  op csig:_ : Soup{Sig} -> OCom [ctor] .
+  op cencpms:_ : Soup{EncPms} -> OCom [ctor] .
+  op cEncCFin:_ : Soup{EncCFin} -> OCom [ctor] .
+  op cEncSFin:_ : Soup{EncSFin} -> OCom [ctor] .
+  op cEncCFin2:_ : Soup{EncCFin2} -> OCom [ctor] .
+  op cEncSFin2:_ : Soup{EncSFin2} -> OCom [ctor] .
+
   op newmsg:_ : Msg -> OCom [ctor] .
-  op newCen1:_ : Cipher1 -> OCom [ctor] .
-  op newCen2:_ : Cipher2 -> OCom [ctor] .
-  op newCen3:_ : Cipher3 -> OCom [ctor] .
----   op newurand:_ : Rand -> OCom [ctor] .
----   op newNonces:_ : Soup{Nonce} -> OCom [ctor] .
-  op cenc1:_ : Soup{Cipher1} -> OCom [ctor] .
-  op cenc2:_ : Soup{Cipher2} -> OCom [ctor] .
-  op cenc3:_ : Soup{Cipher3} -> OCom [ctor] .
+  op ch:_ : Msg -> OCom [ctor] .
+  op sh:_ : Msg -> OCom [ctor] .
+  op ct:_ : Msg -> OCom [ctor] .
+  op kx:_ : Msg -> OCom [ctor] .
+  op cf:_ : Msg -> OCom [ctor] .
+  op sf:_ : Msg -> OCom [ctor] .
+  op ch2:_ : Msg -> OCom [ctor] .
+  op sh2:_ : Msg -> OCom [ctor] .
+  op cf2:_ : Msg -> OCom [ctor] .
+  op sf2:_ : Msg -> OCom [ctor] .
+
   op nw:_ : Soup{Msg} -> OCom [ctor] .
-  op m1:_ : Msg1 -> OCom [ctor] .
-  op m2:_ : Msg2 -> OCom [ctor] .
-  op m3:_ : Msg3 -> OCom [ctor] .
-  op nwM1:_ : Soup{Msg} -> OCom [ctor] .
-  op nwM2:_ : Soup{Msg} -> OCom [ctor] .
-  op nwM3:_ : Soup{Msg} -> OCom [ctor] . 
+  op nwch:_ : Soup{Msg} -> OCom [ctor] .
+  op nwsh:_ : Soup{Msg} -> OCom [ctor] .
+  op nwct:_ : Soup{Msg} -> OCom [ctor] . 
+  op nwkx:_ : Soup{Msg} -> OCom [ctor] . 
+  op nwcf:_ : Soup{Msg} -> OCom [ctor] . 
+  op nwsf:_ : Soup{Msg} -> OCom [ctor] . 
+  op nwch2:_ : Soup{Msg} -> OCom [ctor] . 
+  op nwsh2:_ : Soup{Msg} -> OCom [ctor] . 
+  op nwcf2:_ : Soup{Msg} -> OCom [ctor] . 
+  op nwsf2:_ : Soup{Msg} -> OCom [ctor] . 
+
   op rands:_ : Soup{Rand} -> OCom [ctor] .
   op urand:_ : Soup{Rand} -> OCom [ctor] .
-  op nonces:_ : Soup{Nonce} -> OCom [ctor] .
+  op usid:_ : Soup{Session} -> OCom [ctor] .
+  op usecret:_ : Soup{Secret} -> OCom [ctor] .
   op prins:_ : Soup{Prin} -> OCom [ctor] .
 endfm
 
@@ -765,72 +796,45 @@ fmod CONFIG is
     sort Config .
     op {_} : Soup{OCom} -> Config [ctor] .
     op init : -> Config .
-    eq init = {(newmsg: empt) (m1: empM1) (m2: empM2) (m3: empM3) 
-                (nonces: emp) (nw: emp)
-                (newCen1: empC1) (newCen2: empC2) (newCen3: empC3)
-                (cenc1: emp) (cenc2: emp) (cenc3: emp)
-                (nwM1: emp) (nwM2: emp) (nwM3: emp) (urand: emp)
-                (rands: (r1 r2)) (prins: (p q intr))} .
-    *** newmsg: latest message
-    *** m1-3: the latest message 1-3
-    *** newCen1-3: cipher in latest message gained by intruder
-    *** cenc1-3: set of cipher gained by intruder
-    *** nwM1-3: network contains m1-3
-    *** nw: network contains all messages
-    *** nonces: set of nonce gained by intruder
-    *** rands: set of random number
-    *** urand: set of used random number
-    *** prins: set of principles
+    eq init = {(newmsg: empty) (ch: empty) (sh: empty) (ct: empty)
+                (kx: empty) (cf: empty) (sf: empty) (ch2: empty)
+                (sh2: empty) (cf2: empty) (sf2: empty) 
+                (cpms: emp) (csig: emp) (cencpms: emp) (cenccfin: emp) 
+                (cencsfin: emp) (cenccfin2: emp) (cencsfin2: emp)
+                (nw: emp) (nwch: emp) (nwsh: emp) (nwct: emp) 
+                (nwkx: emp) (nwcf: emp) (nwsf: emp) (nwch2: emp) 
+                (nwsh2: emp) (nwcf2: emp) (nwsf2: emp) (urand: emp)
+                (usid: emp) (usecret: emp) (rands: (cr sr)) 
+                (prins: (a b intr ca))} 
 endfm
 
-mod NSLPK is
+mod TLS is
   inc CONFIG .
 
-  var MSG : Msg .
+  vars MSG CH SH CT KX CF SF CH2 SH2 CF2 SF2 : Msg .
 
-  var NW : Soup{Msg} .
+  vars NW NWCH NWSH NWCT NWKX NWCF NWSF NWCH2 NWSH2 NWCF2 NWSF2  : Soup{Msg} .
+
+  var SID : Session .
+  var SEC : Secret .
 
   vars R R' : Rand .
   var Rs : Soup{Rand} .
 
-  vars N N' NON : Nonce .
-  vars Ns Ns' : Soup{Nonce} .
-
-  vars P Q P' Q' P'' Q'' C S Re : Prin .
+  vars A B A' B' A'' B'' C S Re : Prin .
   var Ps : Soup{Prin} .
-
-  var C1 : Cipher1 .
-  var C2 : Cipher2 .
-  var C3 : Cipher3 .
   
-  var Ce1 : Cipher1 .
-  var Ce2 : Cipher2 .
-  var Ce3 : Cipher3 .
-
-  var CE1 : Soup{Cipher1} .
-  var CE2 : Soup{Cipher2} .
-  var CE3 : Soup{Cipher3} .
-
-  var M1 : Msg1 .
-  var M2 : Msg2 .
-  var M3 : Msg3 .
-
-  var MSG1 : Msg1 .
-  var MSG2 : Msg2 .
-  var MSG3 : Msg3 .
-
-  var NWM1 : Soup{Msg} .
-  var NWM2 : Soup{Msg} .
-  var NWM3 : Soup{Msg} .
-
+  var CPMS : Soup{Pms} .
+  var CEPMS : Soup{EncPms} .
+  var CSIG : Soup{Sig} .
+  var CECFIN : Soup{EncCFin} .
+  var CESFIN : Soup{EncSFin} .
+  var CECFIN2 : Soup{EncCFin2} .
+  var CESFIN2 : Soup{EncSFin2} .
+  var USID : soup{Session} .
+  var USEC : soup{Secret} .
   var OCs : Soup{OCom} .
 
-  ***
-  *** not(key(cipher_i(M)) = intr) ---> cipher_i will be stored in cenc_i
-  *** gen(N)== intr or key(cipher_i) == intr --> nonce will be stored in cnonce
-  
-  *** eq N \in cnonce(void) = (creator(N) = intruder) .
-  *** inv160 (creator(n) = intruder implies n \in cnonce(nw(s)))
 
   rl [challenge] :
     {(newmsg: MSG) 
@@ -855,165 +859,7 @@ mod NSLPK is
     (rands: Rs) (urand: (r1 Rs))
     (prins: (P Q Ps)) OCs} .
 
-  rl [Response] :
-    {(newmsg: MSG) 
-    (m1: M1) (m2: M2) (m3: M3)
-    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
-    (cenc2: CE2)
-    (nwM2: NWM2) (nw: (m1(P',P,Q,enc1(Q,N,NON,P)) NW))
-    (nonces: Ns) 
-    (rands: r2) (urand: Rs) OCs}  
-    =>
-    {(newmsg: m2(Q,Q,P,enc2(P,N,n(Q,P,r2),Q)))
-    (m1: empM1)
-    (m2: m2(Q,Q,P,enc2(P,N,n(Q,P,r2),Q))) 
-    (m3: empM3)
-    (newCen1: empC1)
-    (newCen2: (if P == intr then empC2 else enc2(P,N,n(Q,P,r2),Q) fi))
-    (newCen3: empC3)
-    (cenc2: (if P == intr then CE2 else (enc2(P,N,n(Q,P,r2),Q) CE2) fi))
-    (nwM2: (m2(Q,Q,P,enc2(P,N,n(Q,P,r2),Q)) NWM2)) 
-    (nw: (m2(Q,Q,P,enc2(P,N,n(Q,P,r2),Q))
-          m1(P',P,Q,enc1(Q,N,NON,P)) NW))
-    (nonces: (if ((P == intr) or (gen(n(Q,P,r2)) == intr)) then (n(Q,P,r2) N Ns) else Ns fi))
-    (rands: Rs) (urand: (r2 Rs)) OCs} .
+  
 
-  rl [Confirmation] :
-    {(newmsg: MSG) 
-    (m1: M1) (m2: M2) (m3: M3)
-    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
-    (cenc3: CE3)
-    (nwM3: NWM3)
-    (nw: (m2(Q',Q,P,enc2(P,N,N',Q)) m1(P,P,Q,enc1(Q,N,NON,P)) NW))
-    (nonces: Ns) OCs}
-    =>
-    {(newmsg: m3(P,P,Q,enc3(Q,N',NON,dP)))
-    (m1: empM1) (m2: empM2)
-    (m3: m3(P,P,Q,enc3(Q,N',NON,dP)))
-    (newCen1: empC1)
-    (newCen2: empC2)
-    (newCen3: (if Q == intr then empC3 else enc3(Q,N',NON,dP) fi)) 
-    (cenc3: (if Q == intr then CE3 else (enc3(Q,N',NON,dP) CE3) fi))
-    (nwM3: (m3(P,P,Q,enc3(Q,N',NON,dP)) NWM3))
-    (nw: (m3(P,P,Q,enc3(Q,N',NON,dP))
-          m2(Q',Q,P,enc2(P,N,N',Q))
-          m1(P,P,Q,enc1(Q,N,NON,P)) NW))
-    (nonces: (if Q == intr then (N' Ns) else Ns fi)) OCs} .
-
-*** intruder fakes the messages based on 
-*** 1)nonce gleaned by intruder
-*** 2)existing message in nw
-
-*** not(key(cipher_i(M)) = intr) ---> cipher_i will be stored in cenc_i
-*** gen(N)== intr or key(cipher_i) == intr --> nonce will be stored in cnonce
-
-  rl [fake11] :
-    {(newmsg: MSG) 
-    (m1: M1) (m2: M2) (m3: M3)
-    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
-    (cenc1: CE1)
-    (nwM1: NWM1)
-    (nw: NW) 
-    (nonces: (N Ns)) (prins: (P Q Ps)) OCs}
-    =>
-    {(newmsg: m1(intr,P,Q,enc1(Q,N,n(dP,dP,dR),P)))
-    (m1: m1(intr,P,Q,enc1(Q,N,n(dP,dP,dR),P)))
-    (m2: empM2) (m3: empM3)
-    (nw: (m1(intr,P,Q,enc1(Q,N,n(dP,dP,dR),P)) NW))
-    (newCen1: (if Q == intr then empC1 else enc1(Q,N,n(dP,dP,dR),P) fi))
-    (newCen2: empC2)
-    (newCen3: empC3)
-    (cenc1: (if Q == intr then CE1 else (enc1(Q,N,n(dP,dP,dR),P) CE1) fi))
-    (nwM1: (m1(intr,P,Q,enc1(Q,N,n(dP,dP,dR),P)) NWM1))
-    (nonces: (N Ns)) (prins: (P Q Ps)) OCs} .
-
-  rl [fake12] :
-    {(newmsg: MSG) (m1: M1) (m2: M2) (m3: M3)
-    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
-    (cenc1: (C1 CE1))
-    (nwM1: NWM1)
-    (nw: NW) 
-    (prins: (P Q Ps)) OCs}
-    =>
-    {(newmsg: m1(intr,P,Q,C1))
-    (newCen1: C1) (newCen2: empC2) (newCen3: empC3)
-    (cenc1: (C1 CE1))
-    (m1: m1(intr,P,Q,C1)) (m2: empM2) (m3: empM3)
-    (nwM1: (m1(intr,P,Q,C1) NWM1)) 
-    (nw: (m1(intr,P,Q,C1) NW))
-    (prins: (P Q Ps)) OCs} .
-
-  rl [fake21] :
-    {(newmsg: MSG)
-    (m1: M1) (m2: M2) (m3: M3)
-    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
-    (cenc2: CE2)
-    (nw: NW) 
-    (nwM2: NWM2)
-    (nonces: (N N' Ns)) (prins: (P Q Ps)) OCs}
-    =>
-    {(newmsg: m2(intr,Q,P,enc2(P,N,N',Q)))
-    (m1: empM1) 
-    (m2: m2(intr,Q,P,enc2(P,N,N',Q))) 
-    (m3: empM3)
-    (newCen1: empC1)
-    (newCen2: (if P == intr then empC2 else enc2(P,N,N',Q) fi))
-    (newCen3: empC3)
-    (cenc2: (if P == intr then CE2 else (enc2(P,N,N',Q) CE2) fi))
-    (nw: (m2(intr,Q,P,enc2(P,N,N',Q)) NW))
-    (nwM2: (m2(intr,Q,P,enc2(P,N,N',Q)) NWM2)) 
-    (nonces: (N N' Ns)) (prins: (P Q Ps)) OCs} .
-
-  rl [fake22] :
-    {(newmsg: MSG) 
-    (m1: M1) (m2: M2) (m3: M3)
-    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
-    (cenc2: (C2 CE2))
-    (nwM2: NWM2)
-    (nw: NW) 
-    (prins: (P Q Ps)) OCs}
-    =>
-    {(newmsg: m2(intr,Q,P,C2))
-    (m1: empM1) (m2: m2(intr,Q,P,C2)) (m3: empM3)
-    (newCen1: empC1) (newCen2: C2) (newCen3: empC3)
-    (cenc2: (C2 CE2))
-    (nwM2: (m2(intr,Q,P,C2) NWM2))
-    (nw: (m2(intr,Q,P,C2) NW))
-    (prins: (P Q Ps)) OCs} .
-
-  rl [fake31] :
-    {(newmsg: MSG) 
-    (m1: M1) (m2: M2) (m3: M3)   
-    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
-    (cenc3: CE3)
-    (nwM3: NWM3)
-    (nw: NW) (nonces: (N Ns)) (prins: (P Q Ps)) OCs}
-    =>
-    {(newmsg: m3(intr,P,Q,enc3(Q,N,n(dP,dP,dR),dP)))
-    (m1: empM1) (m2: empM2) 
-    (m3: m3(intr,P,Q,enc3(Q,N,n(dP,dP,dR),dP)))
-    (newCen1: empC1)
-    (newCen2: empC2)
-    (newCen3: (if Q == intr then empC3 else enc3(Q,N,n(dP,dP,dR),dP) fi))
-    (cenc3: (if Q == intr then CE3 else (enc3(Q,N,n(dP,dP,dR),dP) CE3) fi))
-    (nwM3: (m3(intr,P,Q,enc3(Q,N,n(dP,dP,dR),dP)) NWM3))
-    (nw: (m3(intr,P,Q,enc3(Q,N,n(dP,dP,dR),dP)) NW))
-    (nonces: (N Ns)) (prins: (P Q Ps)) OCs} .
-
-  rl [fake32] :
-    {(newmsg: MSG) 
-    (m1: M1) (m2: M2) (m3: M3)
-    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
-    (cenc3: (C3 CE3))
-    (nwM3: NWM3)
-    (nw: NW) 
-    (prins: (P Q Ps)) OCs}
-    =>
-    {(newmsg: m3(intr,P,Q,C3))
-    (m1: empM1) (m2: empM2) (m3: m3(intr,P,Q,C3))
-    (newCen1: empC1) (newCen2: empC2) (newCen3: C3)
-    (cenc3: (C3 CE3))
-    (nwM3: (m3(intr,P,Q,C3) NWM3))
-    (nw: (m3(intr,P,Q,C3) NW)) 
-    (prins: (P Q Ps)) OCs} .
+  
 endm
