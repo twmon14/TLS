@@ -1,0 +1,79 @@
+		     \||||||||||||||||||/
+		   --- Welcome to Maude ---
+		     /||||||||||||||||||\
+	     Maude 3.0 built: Dec 17 2019 12:08:10
+	     Copyright 1997-2019 SRI International
+		   Sat Jul 10 01:45:15 2021
+==========================================
+reduce in DEMO : downTermSearch(genSeq('TLS, upTerm(init), 10)) .
+rewrites: 1314 in 137ms cpu (139ms real) (9522 rewrites/second)
+result ListConfig: {cpms: emp csig: emp cepms: emp cecfin: emp cesfin: emp
+    cecfin2: emp cesfin2: emp sst: ss(b, ca, i) loc: l choice: c sec: s sid: i
+    nw: ch(b, b, ca, cr, l) rands: (sr cr1 sr1) uss: ss(b, ca, i) ur: cr ui:
+    emp us: emp prins: (a b intr ca)} || ({cpms: emp csig: emp cepms: emp
+    cecfin: emp cesfin: emp cecfin2: emp cesfin2: emp sst: ss(b, ca, i) loc: l
+    choice: c sec: s sid: i nw: (ch(b, b, ca, cr, l) sh(ca, ca, b, sr, i, c))
+    rands: (cr1 sr1) uss: ss(b, ca, i) ur: (cr sr) ui: i us: emp prins: (a b
+    intr ca)} || ({cpms: emp csig: emp cepms: emp cecfin: emp cesfin: emp
+    cecfin2: emp cesfin2: emp sst: ss(ca, a, i) loc: l choice: c sec: s sid: i
+    nw: (ch(b, b, ca, cr, l) ch2(ca, ca, a, cr1, i) sh(ca, ca, b, sr, i, c))
+    rands: sr1 uss: (ss(b, ca, i) ss(ca, a, i)) ur: (cr sr cr1) ui: emp us: emp
+    prins: (a b intr ca)} || ({cpms: emp csig: emp cepms: emp cecfin: emp
+    cesfin: emp cecfin2: emp cesfin2: emp sst: ss(ca, a, i) loc: l choice: c
+    sec: s sid: i nw: (ch(b, b, ca, cr, l) ch2(ca, ca, a, cr1, i) sh(ca, ca, b,
+    sr, i, c) sh2(a, a, ca, sr1, i, c)) rands: emp uss: (ss(b, ca, i) ss(ca, a,
+    i)) ur: (cr sr cr1 sr1) ui: emp us: emp prins: (a b intr ca)} || ({cpms:
+    emp csig: emp cepms: emp cecfin: emp cesfin: emp cecfin2: ecfin2(k(ca, pms(
+    ca, a, s), cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca, a, s))) cesfin2:
+    emp sst: ss(ca, a, i) loc: l choice: c sec: s sid: i nw: (cf2(ca, ca, a,
+    ecfin2(k(ca, pms(ca, a, s), cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca,
+    a, s)))) ch(b, b, ca, cr, l) ch2(ca, ca, a, cr1, i) sh(ca, ca, b, sr, i, c)
+    sh2(a, a, ca, sr1, i, c)) rands: emp uss: (ss(b, ca, i) ss(ca, a, i)) ur: (
+    cr sr cr1 sr1) ui: emp us: emp prins: (a b intr ca)} || ({cpms: emp csig:
+    emp cepms: emp cecfin: emp cesfin: emp cecfin2: ecfin2(k(ca, pms(ca, a, s),
+    cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca, a, s))) cesfin2: emp sst:
+    ss(ca, a, i) loc: l choice: c sec: s sid: i nw: (cf2(ca, ca, a, ecfin2(k(
+    ca, pms(ca, a, s), cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca, a, s))))
+    ch(b, b, ca, cr, l) ch2(ca, ca, a, cr1, i) sh(ca, ca, b, sr, i, c) sh2(a,
+    a, ca, sr1, i, c)) rands: emp uss: (ss(b, ca, i) ss(ca, a, i)) ur: (cr sr
+    cr1 sr1) ui: emp us: emp prins: (a b intr ca)} || ({cpms: emp csig: emp
+    cepms: emp cecfin: emp cesfin: emp cecfin2: ecfin2(k(ca, pms(ca, a, s),
+    cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca, a, s))) cesfin2: emp sst:
+    ss(ca, a, i) loc: l choice: c sec: s sid: i nw: (cf2(intr, b, intr, ecfin2(
+    k(ca, pms(ca, a, s), cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca, a,
+    s)))) cf2(ca, ca, a, ecfin2(k(ca, pms(ca, a, s), cr1, sr1), cfin2(ca, a, i,
+    c, cr1, sr1, pms(ca, a, s)))) ch(b, b, ca, cr, l) ch2(ca, ca, a, cr1, i)
+    sh(ca, ca, b, sr, i, c) sh2(a, a, ca, sr1, i, c)) rands: emp uss: (ss(b,
+    ca, i) ss(ca, a, i)) ur: (cr sr cr1 sr1) ui: emp us: emp prins: (a b intr
+    ca)} || ({cpms: emp csig: emp cepms: emp cecfin: emp cesfin: emp cecfin2:
+    ecfin2(k(ca, pms(ca, a, s), cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca,
+    a, s))) cesfin2: emp sst: ss(ca, b, i) loc: l choice: c sec: s sid: i nw: (
+    cf2(intr, b, intr, ecfin2(k(ca, pms(ca, a, s), cr1, sr1), cfin2(ca, a, i,
+    c, cr1, sr1, pms(ca, a, s)))) cf2(ca, ca, a, ecfin2(k(ca, pms(ca, a, s),
+    cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca, a, s)))) ch(b, b, ca, cr,
+    l) ch2(ca, ca, a, cr1, i) sh(intr, ca, b, sr, i, c) sh(ca, ca, b, sr, i, c)
+    sh2(a, a, ca, sr1, i, c)) rands: emp uss: (ss(b, ca, i) ss(ca, a, i) ss(ca,
+    b, i)) ur: (cr sr cr1 sr1) ui: emp us: emp prins: (a b intr ca)} || ({cpms:
+    emp csig: emp cepms: emp cecfin: emp cesfin: emp cecfin2: ecfin2(k(ca, pms(
+    ca, a, s), cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca, a, s))) cesfin2:
+    emp sst: ss(ca, b, i) loc: l choice: c sec: s sid: i nw: (cf2(intr, a, ca,
+    ecfin2(k(ca, pms(ca, a, s), cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca,
+    a, s)))) cf2(intr, b, intr, ecfin2(k(ca, pms(ca, a, s), cr1, sr1), cfin2(
+    ca, a, i, c, cr1, sr1, pms(ca, a, s)))) cf2(ca, ca, a, ecfin2(k(ca, pms(ca,
+    a, s), cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca, a, s)))) ch(b, b,
+    ca, cr, l) ch2(ca, ca, a, cr1, i) sh(intr, ca, b, sr, i, c) sh(ca, ca, b,
+    sr, i, c) sh2(a, a, ca, sr1, i, c)) rands: emp uss: (ss(b, ca, i) ss(ca, a,
+    i) ss(ca, b, i)) ur: (cr sr cr1 sr1) ui: emp us: emp prins: (a b intr ca)}
+    || ({cpms: emp csig: emp cepms: emp cecfin: emp cesfin: emp cecfin2:
+    ecfin2(k(ca, pms(ca, a, s), cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca,
+    a, s))) cesfin2: emp sst: ss(ca, b, i) loc: l choice: c sec: s sid: i nw: (
+    cf2(intr, a, ca, ecfin2(k(ca, pms(ca, a, s), cr1, sr1), cfin2(ca, a, i, c,
+    cr1, sr1, pms(ca, a, s)))) cf2(intr, b, intr, ecfin2(k(ca, pms(ca, a, s),
+    cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca, a, s)))) cf2(intr, intr, b,
+    ecfin2(k(ca, pms(ca, a, s), cr1, sr1), cfin2(ca, a, i, c, cr1, sr1, pms(ca,
+    a, s)))) cf2(ca, ca, a, ecfin2(k(ca, pms(ca, a, s), cr1, sr1), cfin2(ca, a,
+    i, c, cr1, sr1, pms(ca, a, s)))) ch(b, b, ca, cr, l) ch2(ca, ca, a, cr1, i)
+    sh(intr, ca, b, sr, i, c) sh(ca, ca, b, sr, i, c) sh2(a, a, ca, sr1, i, c))
+    rands: emp uss: (ss(b, ca, i) ss(ca, a, i) ss(ca, b, i)) ur: (cr sr cr1
+    sr1) ui: emp us: emp prins: (a b intr ca)} || nil)))))))))
+Bye.

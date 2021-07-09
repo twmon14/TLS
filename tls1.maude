@@ -741,7 +741,7 @@ fmod OCOM is
 ---   op sh2:_ : Msg -> OCom [ctor] .
 ---   op cf2:_ : Msg -> OCom [ctor] .
 ---   op sf2:_ : Msg -> OCom [ctor] .
----   op sst:_ : Session -> OCom [ctor] .
+  op sst:_ : Session -> OCom [ctor] .
   op loc:_ : ListOfChoices -> OCom [ctor] .
   op choice:_ : Choice -> OCom [ctor] .
   op sec:_ : Secret -> OCom [ctor] .
@@ -759,7 +759,7 @@ fmod OCOM is
 ---   op nwsf2:_ : Soup{Msg} -> OCom [ctor] . 
 
   op rands:_ : Soup{Rand} -> OCom [ctor] .
----   op uss:_ : Soup{Session} -> OCom [ctor] .
+  op uss:_ : Soup{Session} -> OCom [ctor] .
   op ur:_ : Soup{Rand} -> OCom [ctor] .
   op ui:_ : Soup{Sid} -> OCom [ctor] .
   op us:_ : Soup{Secret} -> OCom [ctor] .
@@ -781,9 +781,10 @@ fmod CONFIG is
     op init : -> Config .
     eq init = {(cpms: emp) (csig: emp) (cepms: emp) (cecfin: emp) 
                 (cesfin: emp) (cecfin2: emp) (cesfin2: emp)
-                (nw: emp) (ur: emp) (sid: i)
-                (ui: emp) (us: emp) (loc: l) (choice: c)
-                (sec: s) (rands: (cr sr cr1 sr1)) 
+                (nw: emp) (sst: empty)
+                (loc: l) (choice: c) (sid: i) (sec: s)
+                (ur: emp) (ui: emp) (us: emp) (uss: emp)
+                (rands: (cr sr cr1 sr1)) 
                 (prins: (a b intr ca))} .
 endfm
 
@@ -811,7 +812,7 @@ mod TLS is
   var ESFIN : EncSFin .
   var ECFIN2 : EncCFin2 .
   var ESFIN2 : EncSFin2 .
-  var SS : Session .
+  var SST : Session .
 
   var CPMS : Soup{Pms} .
   var CEPMS : Soup{EncPms} .
@@ -828,34 +829,34 @@ mod TLS is
 rl [chello] :
     {(cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
     (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
-    (nw: NW) 
+    (nw: NW) (sst: SST)
     (sid: i) (loc: l) (choice: c) (sec: s)
-    (ui: UI) (us: US) (ur: Rs)
+    (ui: UI) (us: US) (ur: Rs) (uss: USS)
     (rands: (cr sr cr1 sr1))  
     (prins: (A B Ps))}
     =>
     {(cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
     (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
-    (nw: (ch(A,A,B,cr,l) NW))    
+    (nw: (ch(A,A,B,cr,l) NW)) (sst: ss(A,B,i))  
     (sid: i) (loc: l) (choice: c) (sec: s)
-    (ui: UI) (us: US) (ur: (cr Rs))
+    (ui: UI) (us: US) (ur: (cr Rs)) (uss: (ss(A,B,i) USS))
     (rands: (sr cr1 sr1))
     (prins: (A B Ps))} .
 
 rl [shello] :
     {(cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
     (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
-    (nw: (ch(A',A,B,R,L) NW)) 
+    (nw: (ch(A',A,B,R,L) NW)) (sst: SST)
     (sid: i) (loc: l) (choice: c)
-    (ui: UI) (us: US) (ur: Rs)
+    (ui: UI) (us: US) (ur: Rs) (uss: USS)
     (rands: (sr cr1 sr1))
     (prins: (A B Ps)) OCs}                
     =>
     {(cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
     (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
-    (nw: (sh(B,B,A,sr,i,c) ch(A',A,B,R,L) NW))
+    (nw: (sh(B,B,A,sr,i,c) ch(A',A,B,R,L) NW)) (sst: SST)
     (sid: i) (loc: l) (choice: c)
-    (ui: (i UI)) (us: US) (ur: (sr Rs))
+    (ui: (i UI)) (us: US) (ur: (sr Rs)) (uss: USS)
     (rands: (cr1 sr1))
     (prins: (A B Ps)) OCs} .
 
@@ -928,7 +929,8 @@ rl [sfin] :
         ct(B,B,A,cert(B,PK,G)) 
         sh(B,B,A,R',I,C) 
         ch(A,A,B,R,L) NW)) 
-   (ui: UI) (us: US) OCs}                
+    (sst: SST)
+    (ui: UI) (us: US) (uss: USS) OCs}                
     =>
     {(cpms: CPMS) (csig: CSIG) (cepms: CEPMS) 
     (cesfin: (esfin(k(B,PMS,R,R'),sfin(A,B,I,L,C,R,R',PMS)) CESFIN))  
@@ -941,7 +943,8 @@ rl [sfin] :
         ct(B,B,A,cert(B,PK,G)) 
         sh(B,B,A,R',I,C) 
         ch(A,A,B,R,L) NW))
-    (ui: UI) (us: US) OCs} .                   
+    (sst: st(C,R,R',PMS))
+    (ui: UI) (us: US) (uss: (st(C,R,R',PMS) USS)) OCs} .                   
 
 rl [compl] :
     {(nw: (sf(B,B,A,esfin(k(B,PMS,R,R'),
@@ -952,6 +955,7 @@ rl [compl] :
         ct(B,B,A,cert(B,PK,G)) 
         sh(B,B,A,R',I,C) 
         ch(A,A,B,R,L) NW)) 
+    (sst: SST) (uss: USS)
     (ui: UI) (us: US) OCs}                
     =>
     {(nw: (sf(B,B,A,esfin(k(B,PMS,R,R'),
@@ -961,7 +965,9 @@ rl [compl] :
         kx(A,A,B,epms(PK,PMS)) 
         ct(B,B,A,cert(B,PK,G)) 
         sh(B,B,A,R',I,C) 
-        ch(A,A,B,R,L) NW)) 
+        ch(A,A,B,R,L) NW))
+    (sst: st(C,R,R',PMS)) 
+    (uss: (st(C,R,R',PMS) USS))
     (ui: UI) (us: US) OCs} .  
 
 *** recheck
@@ -969,21 +975,23 @@ rl [chello2] :
     {(nw: NW) 
     (ui: (i UI)) (us: US) (ur: Rs) 
     (rands: (cr1 sr1)) 
+    (sst: SST) (uss: USS)
     (prins: (A B Ps)) OCs}                
     =>
     {(nw: (ch2(A,A,B,cr1,i) NW)) 
     (ui: UI) (us: US) (ur: (cr1 Rs))
     (rands: sr1) 
+    (sst: ss(A,B,i)) (uss: (ss(A,B,i) USS))
     (prins: (A B Ps)) OCs} .     
 
 rl [shello2] :
-    {(nw: (ch2(A,A,B,R1,I) NW)) 
+    {(nw: (ch2(A,A,B,R1,I) NW)) (sst: SST)
     (ui: UI) (us: US) (choice: c)
-    (ur: Rs) (rands: sr1) OCs}                
+    (ur: Rs) (rands: sr1) (uss: USS) OCs}                
     =>
-    {(nw: (sh2(B,B,A,sr1,I,c) ch2(A,A,B,R1,I) NW)) 
+    {(nw: (sh2(B,B,A,sr1,I,c) ch2(A,A,B,R1,I) NW)) (sst: SST) 
     (rands: emp) (ur: (sr1 Rs)) (choice: c)
-    (ui: UI) (us: US) OCs} .      
+    (ui: UI) (us: US) (uss: USS) OCs} .      
 
 --- recheck
 rl [cfin2] :
@@ -1007,7 +1015,9 @@ rl [sfin2] :
     (nw: (cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
             cfin2(A,B,I,C,R1,R1',pms(A,B,S))))
         sh2(B,B,A,R1',I,C) 
-        ch2(A,A,B,R1,I) NW)) 
+        ch2(A,A,B,R1,I) NW))
+    (sst: SST)
+    (uss: USS) 
     OCs}                
     =>
     {(cesfin2: (esfin2(k(B,pms(A,B,S),R1,R1'),
@@ -1017,8 +1027,10 @@ rl [sfin2] :
         cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
             cfin2(A,B,I,C,R1,R1',pms(A,B,S))))
         sh2(B,B,A,R1',I,C) 
-        ch2(A,A,B,R1,I) NW)) 
-     OCs} . 
+        ch2(A,A,B,R1,I) NW))
+    (sst: st(C,R1,R1',pms(A,B,S))) 
+    (uss: (st(C,R1,R1',pms(A,B,S)) USS))
+    OCs} . 
 
 rl [compl2] :
     {(nw: (sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
@@ -1026,93 +1038,110 @@ rl [compl2] :
         cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
             cfin2(A,B,I,C,R1,R1',pms(A,B,S))))
         sh2(B,B,A,R1',I,C) 
-        ch2(A,A,B,R1,I) NW)) OCs}                
+        ch2(A,A,B,R1,I) NW)) 
+    (sst: SST) (uss: USS)    
+    OCs}                
     =>
     {(nw: (sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
             sfin2(A,B,I,C,R1,R1',pms(A,B,S))))
         cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
             cfin2(A,B,I,C,R1,R1',pms(A,B,S))))
         sh2(B,B,A,R1',I,C) 
-        ch2(A,A,B,R1,I) NW)) OCs} . 
+        ch2(A,A,B,R1,I) NW)) 
+    (sst: SST) (uss: USS)
+    OCs} . 
 
 rl [fakeChello] :
-    {(nw: (ch(A,A,B,R,L) NW)) 
-    (ui: UI) (us: US)
+    {(nw: (ch(A,A,B,R,L) NW))
+    (sst: SST) 
+    (ui: UI) (us: US) (uss: USS)
     (ur: Rs) (prins: (A B Ps)) OCs}                
     =>
     {(nw: (ch(intr,A,B,R,L) 
-            ch(A,A,B,R,L) NW)) 
-    (ui: UI) (us: US)
+            ch(A,A,B,R,L) NW))
+    (sst: SST)  
+    (ui: UI) (us: US) (uss: USS)
     (ur: Rs) (prins: (A B Ps)) OCs} .
 
 rl [fakeShello] :
     {(nw: (sh(B,B,A,R',I,C) NW))  
+    (sst: SST)
     (ui: UI) (us: US)
+    (uss: USS)
     (ur: Rs) (prins: (A B Ps)) OCs}                
     =>
     {(nw: (sh(intr,B,A,R',I,C) 
             sh(B,B,A,R',I,C) NW)) 
+    (sst: ss(B,A,I))
     (ui: UI) (us: US)
+    (uss: (ss(B,A,I) USS))
     (ur: Rs) (prins: (A B Ps)) OCs} .
 
 rl [fakeCert] :
     {(cpms: CPMS) (csig: (G CSIG)) 
     (cepms: CEPMS) (cecfin: CECFIN)
+    (sst: SST) (uss: USS) (ui: (i UI))
     (nw: NW) (prins: (A B Ps)) OCs}                
     =>
     {(cpms: CPMS) (csig: (G CSIG)) 
     (cepms: CEPMS) (cecfin: CECFIN)
+    (sst: ss(B,A,i)) (uss: (ss(B,A,i) USS))
     (nw: (ct(intr,B,A,cert(B,k(B),G)) NW)) 
     (prins: (A B Ps)) OCs} .
 
 rl [fakeKexch1] :
     {(cpms: CPMS) (csig: CSIG) (cepms: (EPMS CEPMS))  
-    (nw: NW)
+    (nw: NW) (sst: SST) (uss: USS)
     (prins: (A B Ps)) OCs}                
     =>
     {(cpms: CPMS) (csig: CSIG) (cepms: (EPMS CEPMS)) 
     (nw: (kx(intr,A,B,EPMS) NW)) 
+    (sst: SST) (uss: USS)
     (prins: (A B Ps)) OCs} .
 
 rl [fakeKexch2] :
     {(cpms: (PMS CPMS)) (csig: CSIG) (cepms: CEPMS)  
-    (nw: NW)
+    (nw: NW) (sst: SST) (uss: USS)
     (prins: (A B Ps)) OCs}                
     =>
     {(cpms: (PMS CPMS)) (csig: CSIG) (cepms: CEPMS)  
     (nw: (kx(intr,A,B,epms(k(B),PMS)) NW)) 
+    (sst: SST) (uss: USS)
     (prins: (A B Ps)) OCs} .
 
 rl [fakeCfin1] :
     {(cecfin: (ECFIN CECFIN))
-    (nw: NW) 
+    (nw: NW) (sst: SST) (uss: USS)
     (prins: (A B Ps)) OCs}                
     =>
     {(cecfin: (ECFIN CECFIN)) 
-    (nw: (cf(intr,A,B,ECFIN) NW)) 
+    (nw: (cf(intr,A,B,ECFIN) NW))
+    (sst: SST) (uss: USS)
     (prins: (A B Ps)) OCs} .
 
 rl [fakeCfin2] :
     {(cpms: (PMS CPMS))
-    (nw: NW)
+    (nw: NW) (sst: SST) (uss: USS)
     (sid: i) (loc: l) (choice: c)
     (ur: (cr sr Rs))
     (prins: (A B Ps)) OCs}                
     =>
     {(cpms: (PMS CPMS))
     (nw: (cf(intr,A,B,ecfin(k(A,PMS,cr,sr),
-            cfin(A,B,i,l,c,cr,sr,PMS))) NW)) 
+            cfin(A,B,i,l,c,cr,sr,PMS))) NW))
+    (sst: ss(A,B,i)) (uss: (ss(A,B,i) USS))  
     (sid: i) (loc: l) (choice: c)
     (ur: (cr sr Rs))
     (prins: (A B Ps)) OCs} .
 
 rl [fakeSfin1] :
     {(cesfin: (ESFIN CESFIN)) (cecfin2: CECFIN2) 
-    (cesfin2: CESFIN2) 
+    (cesfin2: CESFIN2) (sst: SST) (uss: USS) (ui: (i UI))
     (nw: NW) (prins: (A B Ps)) OCs}                
     =>
     {(cesfin: (ESFIN CESFIN)) (cecfin2: CECFIN2) 
     (cesfin2: CESFIN2) 
+    (sst: ss(B,A,i)) (uss: (ss(B,A,i) USS))
     (nw: (sf(intr,B,A,ESFIN) NW)) 
     (prins: (A B Ps)) OCs} .
 
@@ -1120,7 +1149,7 @@ rl [fakeSfin2] :
     {(cpms: (PMS CPMS))
     (sid: i) (loc: l) (choice: c) (sec: s)
     (ur: (cr sr Rs)) 
-    (nw: NW)
+    (nw: NW) (sst: SST) (uss: USS)
     (prins: (A B Ps)) OCs}     
     =>
     {(cpms: (PMS CPMS)) 
@@ -1128,31 +1157,38 @@ rl [fakeSfin2] :
     (ur: (cr sr Rs))
     (nw: (sf(intr,B,A,esfin(k(B,PMS,cr,sr),
             sfin(A,B,i,l,c,cr,sr,PMS))) NW)) 
+    (sst: ss(B,A,i)) (uss: (ss(B,A,i) USS))
     (prins: (A B Ps)) OCs} .
 
 rl [fakeChello2] :
-    {(nw: (ch2(A,A,B,R1,I) NW)) 
+    {(nw: (ch2(A,A,B,R1,I) NW))
+    (sst: SST) (uss: USS) 
     OCs}                
     =>
     {(nw: (ch2(intr,A,B,R1,I) 
-            ch2(A,A,B,R1,I) NW)) 
+            ch2(A,A,B,R1,I) NW))
+    (sst: ss(A,B,I)) (uss: (ss(A,B,I) USS))  
     OCs} .      
 
 rl [fakeShello2] :
-    {(nw: (sh2(B,B,A,R1',I,C) NW)) 
+    {(nw: (sh2(B,B,A,R1',I,C) NW))
+    (sst: SST) (uss: USS)  
     OCs}                
     =>
     {(nw: (sh2(intr,B,A,R1',I,C) 
-            sh2(B,B,A,R1',I,C) NW)) 
-     OCs} .
+            sh2(B,B,A,R1',I,C) NW))
+    (sst: ss(B,A,I)) (uss: (ss(B,A,I) USS))   
+    OCs} .
 
 rl [fakeCfin21] :
     {(cecfin2: (ECFIN2 CECFIN2)) 
     (nw: NW) 
+    (sst: SST) (uss: USS)  
     (prins: (A B Ps)) OCs}                
     =>
     {(cecfin2: (ECFIN2 CECFIN2)) 
-    (nw: (cf2(intr,A,B,ECFIN2) NW)) 
+    (nw: (cf2(intr,A,B,ECFIN2) NW))
+    (sst: SST) (uss: USS)  
     (prins: (A B Ps)) OCs} .
 
 rl [fakeCfin22] :
@@ -1160,33 +1196,39 @@ rl [fakeCfin22] :
     (sid: i) (choice: c) (sec: s)
     (ur: (cr1 sr1 Rs))   
     (nw: NW) 
+    (sst: SST) (uss: USS)  
     (prins: (A B Ps)) OCs}                
     =>
     {(cpms: (PMS CPMS)) 
     (sid: i) (choice: c) (sec: s)
     (ur: (cr1 sr1 Rs))    
     (nw: (cf2(intr,A,B,ecfin2(k(A,PMS,cr1,sr1),
-            cfin2(A,B,i,c,cr1,sr1,PMS))) NW)) 
+            cfin2(A,B,i,c,cr1,sr1,PMS))) NW))
+    (sst: SST) (uss: USS)  
     (prins: (A B Ps)) OCs} .
 
 rl [fakeSfin21] :
-    {(cesfin2: (ESFIN2 CESFIN2)) 
+    {(cesfin2: (ESFIN2 CESFIN2))
+    (sst: SST) (uss: USS) (ui: (i UI))  
     (nw: NW) (prins: (A B Ps)) OCs}        
     =>
     {(cesfin2: (ESFIN2 CESFIN2))     
-    (nw: (sf2(intr,B,A,ESFIN2) NW)) 
+    (nw: (sf2(intr,B,A,ESFIN2) NW))
+    (sst: ss(B,A,i)) (uss: (ss(B,A,i) USS))    
     (prins: (A B Ps)) OCs} .
 
 rl [fakeSfin22] :
     {(cpms: (PMS CPMS)) 
     (sid: i) (choice: c) (ur: (cr1 sr1 Rs))   
     (nw: NW) 
+    (sst: SST) (uss: USS)   
     (prins: (A B Ps)) OCs}                
     =>
     {(cpms: (PMS CPMS)) 
     (sid: i) (choice: c) (ur: (cr1 sr1 Rs))      
     (nw: (sf2(intr,B,A,esfin2(k(B,PMS,cr1,sr1),
-            sfin2(A,B,i,c,cr1,sr1,PMS))) NW)) 
+            sfin2(A,B,i,c,cr1,sr1,PMS))) NW))
+    (sst: ss(B,A,i)) (uss: (ss(B,A,i) USS))   
     (prins: (A B Ps)) OCs} .
 endm
 eof
