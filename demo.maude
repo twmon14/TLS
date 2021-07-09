@@ -1,0 +1,31 @@
+in utils .
+in meta-utils .
+in tls1 .   
+in metaSearch .
+
+mod DEMO is
+    pr SEARCH .
+    pr TLS .
+    sorts ListConfig .
+    subsorts Config < ListConfig .
+    
+    op init : -> Config .
+    eq init = {(cpms: emp) (csig: emp) (cepms: emp) (cecfin: emp) 
+                (cesfin: emp) (cecfin2: emp) (cesfin2: emp)
+                (nw: emp) (ur: emp) (sid: i)
+                (ui: emp) (us: emp) (loc: l) (choice: c)
+                (sec: s) (rands: (cr sr cr1 sr1)) 
+                (prins: (a b intr ca))} .
+    op nil : -> ListConfig .
+    op _||_ : Config ListConfig -> ListConfig .
+    op _||_ : ListConfig ListConfig -> ListConfig .
+
+    var T : Term .
+    var TL : TermList .
+
+    op downTermSearch : TermList -> ListConfig .
+    eq downTermSearch(empty) = nil .
+    eq downTermSearch((T,TL)) =  downTerm(T, nil) || downTermSearch(TL) .
+endm
+
+reduce in DEMO : downTermSearch(genSeq('TLS, upTerm(init), 20)) .

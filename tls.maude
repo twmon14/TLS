@@ -2,7 +2,7 @@ fmod SOUP{E :: TRIV} is
     sort Soup{E} .
     subsort E$Elt < Soup{E} .
     op emp : -> Soup{E} [ctor] .
-    op _ _ : Soup{E} Soup{E} -> Soup{E} [ctor assoc comm id: emp].
+    op _ _ : Soup{E} Soup{E} -> Soup{E} [ctor assoc comm id: emp] .
     op _\in_ : E$Elt Soup{E} -> Bool .
     var X : E$Elt .
     var S : Soup{E} .
@@ -26,7 +26,7 @@ endfm
 
 fmod RAND is
     sort Rand .
-    ops cr sr empR : -> Rand [ctor] .
+    ops cr sr cr1 sr1 empR : -> Rand [ctor] .
 endfm
 
 view Rand from TRIV to RAND is
@@ -39,6 +39,7 @@ endfm
 
 fmod CHOICE is
     sort Choice .
+    op empty : -> Choice [ctor] .
 endfm
 
 view Choice from TRIV to CHOICE is
@@ -50,8 +51,10 @@ fmod CHOICE-SOUP is
 endfm
 
 fmod LISTOFCHOICES is
+    pr CHOICE .
     sort ListOfChoices .
     op _\in_ : Choice ListOfChoices -> Bool .
+    op empty : -> ListOfChoices [ctor] .
 endfm
 
 view ListOfChoices from TRIV to LISTOFCHOICES is
@@ -76,6 +79,7 @@ endfm
 
 fmod SECRET is
     sort Secret .
+    op empty : -> Secret [ctor] .
 endfm
 
 view Secret from TRIV to SECRET is
@@ -96,13 +100,11 @@ fmod PMS is
     op secret : Pms -> Secret .
 
     var PMS : Pms .
-    vars A B A1 A2 B1 B2 : Prin .
-    vars S S1 S2 : Secret .
+    vars A B : Prin .
+    var S : Secret .
     eq client(pms(A,B,S)) = A .
     eq server(pms(A,B,S)) = B .
     eq secret(pms(A,B,S)) = S .
-    eq (pms(A1,B1,S1) = pms(A2,B2,S2)) 
-     = (A1 = A2 and B1 = B2 and S1 = S2) .
 endfm
 
 view Pms from TRIV to PMS is
@@ -118,11 +120,8 @@ fmod PUBLICKEY is
   sort PubKey .
   op k : Prin -> PubKey .
   op owner : PubKey -> Prin .
-  var PK : PubKey .
-  vars A A1 A2 : Prin .
-  eq owner(k(A)) = A .
-  eq (k(A1) = k(A2)) = (A1 = A2) .
-   
+  var A : Prin .
+  eq owner(k(A)) = A .   
 endfm
 
 view PubKey from TRIV to PUBLICKEY is
@@ -143,13 +142,11 @@ fmod SIGNATURE is
   op pubkey : Sig -> PubKey .
 
   var G : Sig .
-  vars A B A1 A2 B1 B2 : Prin .
-  vars PK PK1 PK2 : PubKey .
+  vars A B : Prin .
+  var PK : PubKey .
   eq signer(sig(A,B,PK)) = A .
   eq server(sig(A,B,PK)) = B .
   eq pubkey(sig(A,B,PK)) = PK .
-  eq (sig(A1,B1,PK1) = sig(A2,B2,PK2)) 
-     = (A1 = A2 and B1 = B2 and PK1 = PK2) .
 endfm
 
 view Sig from TRIV to SIGNATURE is
@@ -161,10 +158,10 @@ fmod SIGNATURE-SOUP is
 endfm
 
 fmod CERTIFICATE is
-    pr PRIN .
-    pr PUBLICKEY .
-    pr SIGNATURE .
-    sort Cert .
+  pr PRIN .
+  pr PUBLICKEY .
+  pr SIGNATURE .
+  sort Cert .
   op cert : Prin PubKey Sig -> Cert .
   op server : Cert -> Prin .
   op pubkey : Cert -> PubKey .
@@ -177,8 +174,6 @@ fmod CERTIFICATE is
   eq server(cert(A,PK,G)) = A .
   eq pubkey(cert(A,PK,G)) = PK .
   eq sig(cert(A,PK,G)) = G .
-  eq (cert(A1,PK1,G1) = cert(A2,PK2,G2)) 
-     = (A1 = A2 and PK1 = PK2 and G1 = G2) .
 endfm
 
 view Cert from TRIV to CERTIFICATE is
@@ -202,15 +197,13 @@ fmod KEY is
   op srand : Key -> Rand .
 
   var K : Key .
-  vars A A1 A2 : Prin .
-  vars PMS PMS1 PMS2 : Pms .
-  vars CR SR CR1 CR2 SR1 SR2 : Rand .
+  var A : Prin .
+  var PMS : Pms .
+  vars CR SR : Rand .
   eq prin(k(A,PMS,CR,SR)) = A .
   eq pms(k(A,PMS,CR,SR)) = PMS .
   eq crand(k(A,PMS,CR,SR)) = CR .
   eq srand(k(A,PMS,CR,SR)) = SR .
-  eq (k(A1,PMS1,CR1,SR1) = k(A2,PMS2,CR2,SR2)) 
-     = (A1 = A2 and PMS1 = PMS2 and CR1 = CR2 and SR1 = SR2) .
 endfm
 
 view Key from TRIV to KEY is
@@ -241,12 +234,12 @@ fmod CFINISH is
   op pms    : CFinish -> Pms .
 
   var F : CFinish .
-  vars A B A1 A2 B1 B2 : Prin .
-  vars I I1 I2 : Sid .
-  vars L L1 L2 : ListOfChoices .
-  vars C C1 C2 : Choice .
-  vars CR SR CR1 CR2 SR1 SR2 : Rand .
-  vars PMS PMS1 PMS2 : Pms .
+  var A B : Prin .
+  var I : Sid .
+  var L : ListOfChoices .
+  var C : Choice .
+  var CR SR : Rand .
+  var PMS : Pms .
   eq client(cfin(A,B,I,L,C,CR,SR,PMS)) = A .
   eq server(cfin(A,B,I,L,C,CR,SR,PMS)) = B .
   eq sid(cfin(A,B,I,L,C,CR,SR,PMS)) = I .
@@ -255,9 +248,6 @@ fmod CFINISH is
   eq crand(cfin(A,B,I,L,C,CR,SR,PMS)) = CR .
   eq srand(cfin(A,B,I,L,C,CR,SR,PMS)) = SR .
   eq pms(cfin(A,B,I,L,C,CR,SR,PMS)) = PMS .
-
-  eq (cfin(A1,B1,I1,L1,C1,CR1,SR1,PMS1) = cfin(A2,B2,I2,L2,C2,CR2,SR2,PMS2)) 
-     = (A1 = A2 and B1 = B2 and I1 = I2 and L1 = L2 and C1 = C2 and SR1 = SR2 and PMS1 = PMS2) .
 endfm
 
 view CFinish from TRIV to CFINISH is
@@ -288,12 +278,12 @@ fmod SFINISH is
   op pms    : SFinish -> Pms .
 
   var F : SFinish .
-  vars A B A1 A2 B1 B2 : Prin .
-  vars I I1 I2 : Sid .
-  vars L L1 L2 : ListOfChoices .
-  vars C C1 C2 : Choice .
-  vars CR SR CR1 CR2 SR1 SR2 : Rand .
-  vars PMS PMS1 PMS2 : Pms .
+  vars A B : Prin .
+  var I : Sid .
+  var L : ListOfChoices .
+  var C : Choice .
+  vars CR SR : Rand .
+  var PMS : Pms .
   eq client(sfin(A,B,I,L,C,CR,SR,PMS)) = A .
   eq server(sfin(A,B,I,L,C,CR,SR,PMS)) = B .
   eq sid(sfin(A,B,I,L,C,CR,SR,PMS)) = I .
@@ -302,8 +292,6 @@ fmod SFINISH is
   eq crand(sfin(A,B,I,L,C,CR,SR,PMS)) = CR .
   eq srand(sfin(A,B,I,L,C,CR,SR,PMS)) = SR .
   eq pms(sfin(A,B,I,L,C,CR,SR,PMS)) = PMS .
-  eq (sfin(A1,B1,I1,L1,C1,CR1,SR1,PMS1) = sfin(A2,B2,I2,L2,C2,CR2,SR2,PMS2)) 
-     = (A1 = A2 and B1 = B2 and I1 = I2 and L1 = L2 and C1 = C2 and SR1 = SR2 and PMS1 = PMS2) .
 endfm
 
 view SFinish from TRIV to SFINISH is
@@ -332,11 +320,11 @@ fmod CFINISH2 is
   op pms    : CFinish2 -> Pms .
 
   var F : CFinish2 .
-  vars A B A1 A2 B1 B2 : Prin .
-  vars I I1 I2 : Sid .
-  vars C C1 C2 : Choice .
-  vars CR SR CR1 CR2 SR1 SR2 : Rand .
-  vars PMS PMS1 PMS2 : Pms .
+  vars A B : Prin .
+  var I : Sid .
+  var C : Choice .
+  vars CR SR : Rand .
+  var PMS : Pms .
   eq client(cfin2(A,B,I,C,CR,SR,PMS)) = A .
   eq server(cfin2(A,B,I,C,CR,SR,PMS)) = B .
   eq sid(cfin2(A,B,I,C,CR,SR,PMS)) = I .
@@ -344,8 +332,6 @@ fmod CFINISH2 is
   eq crand(cfin2(A,B,I,C,CR,SR,PMS)) = CR .
   eq srand(cfin2(A,B,I,C,CR,SR,PMS)) = SR .
   eq pms(cfin2(A,B,I,C,CR,SR,PMS)) = PMS .
-  eq (cfin2(A1,B1,I1,C1,CR1,SR1,PMS1) = cfin2(A2,B2,I2,C2,CR2,SR2,PMS2)) 
-     = (A1 = A2 and B1 = B2 and I1 = I2 and C1 = C2 and SR1 = SR2 and PMS1 = PMS2) .
 endfm
 
 view CFinish2 from TRIV to CFINISH2 is
@@ -374,11 +360,11 @@ fmod SFINISH2 is
   op pms    : SFinish2 -> Pms .
 
   var F : SFinish2 .
-  vars A B A1 A2 B1 B2 : Prin .
-  vars I I1 I2 : Sid .
-  vars C C1 C2 : Choice .
-  vars CR SR CR1 CR2 SR1 SR2 : Rand .
-  vars PMS PMS1 PMS2 : Pms .
+  vars A B : Prin .
+  var I : Sid .
+  var C : Choice .
+  vars CR SR : Rand .
+  var PMS : Pms .
   eq client(sfin2(A,B,I,C,CR,SR,PMS)) = A .
   eq server(sfin2(A,B,I,C,CR,SR,PMS)) = B .
   eq sid(sfin2(A,B,I,C,CR,SR,PMS)) = I .
@@ -386,8 +372,6 @@ fmod SFINISH2 is
   eq crand(sfin2(A,B,I,C,CR,SR,PMS)) = CR .
   eq srand(sfin2(A,B,I,C,CR,SR,PMS)) = SR .
   eq pms(sfin2(A,B,I,C,CR,SR,PMS)) = PMS .
-  eq (sfin2(A1,B1,I1,C1,CR1,SR1,PMS1) = sfin2(A2,B2,I2,C2,CR2,SR2,PMS2)) 
-     = (A1 = A2 and B1 = B2 and I1 = I2 and C1 = C2 and SR1 = SR2 and PMS1 = PMS2) .
 endfm
 
 view SFinish2 from TRIV to SFINISH2 is
@@ -407,13 +391,10 @@ fmod ENCPMS is
   op k : EncPms -> PubKey .
   op pms : EncPms -> Pms .
 
-  var EP : EncPms .
-  vars PK PK1 PK2 : PubKey .
-  vars PMS PMS1 PMS2 : Pms .
+  var PK : PubKey .
+  var PMS : Pms .
   eq k(epms(PK,PMS)) = PK .
   eq pms(epms(PK,PMS)) = PMS .
-  eq (epms(PK1,PMS1) = epms(PK2,PMS2))
-     = (PK1 = PK2 and PMS1 = PMS2) .
 endfm
 
 view EncPms from TRIV to ENCPMS is
@@ -433,13 +414,10 @@ fmod ENCCFIN is
   op k : EncCFin -> Key .
   op cfin : EncCFin -> CFinish .
 
-  var EF : EncCFin .
-  vars K K1 K2 : Key .
-  vars F F1 F2 : CFinish .
+  var K : Key .
+  var F : CFinish .
   eq k(ecfin(K,F)) = K .
   eq cfin(ecfin(K,F)) = F .
-  eq (ecfin(K1,F1) = ecfin(K2,F2)) 
-     = (K1 = K2 and F1 = F2) .
 endfm
 
 view EncCFin from TRIV to ENCCFIN is
@@ -452,20 +430,17 @@ endfm
 
 fmod ENCSFIN is
   pr KEY .
-  pr CFINISH .
+  pr SFINISH .
   sort EncSFin .
 
   op esfin : Key SFinish -> EncSFin .
   op k : EncSFin -> Key .
   op sfin : EncSFin -> SFinish .
 
-  var EF : EncSFin .
-  vars K K1 K2 : Key .
-  vars F F1 F2 : SFinish .
+  var K : Key .
+  var F : SFinish .
   eq k(esfin(K,F)) = K .
   eq sfin(esfin(K,F)) = F .
-  eq (esfin(K1,F1) = esfin(K2,F2)) 
-     = (K1 = K2 and F1 = F2) .
 endfm
 
 view EncSFin from TRIV to ENCSFIN is
@@ -485,13 +460,10 @@ fmod ENCCFIN2 is
   op k : EncCFin2 -> Key .
   op cfin2 : EncCFin2 -> CFinish2 .
 
-  var EF : EncCFin2 .
-  vars K K1 K2 : Key .
-  vars F F1 F2 : CFinish2 .
+  var K : Key .
+  var F : CFinish2 .
   eq k(ecfin2(K,F)) = K .
   eq cfin2(ecfin2(K,F)) = F .
-  eq (ecfin2(K1,F1) = ecfin2(K2,F2)) 
-     = (K1 = K2 and F1 = F2) .
 endfm
 
 view EncCFin2 from TRIV to ENCCFIN2 is
@@ -511,13 +483,10 @@ fmod ENCSFIN2 is
   op k : EncSFin2 -> Key .
   op sfin2 : EncSFin2 -> SFinish2 .
 
-  var EF : EncSFin2 .
-  vars K K1 K2 : Key .
-  vars F F1 F2 : SFinish2 .
+  var K : Key .
+  var F : SFinish2 .
   eq k(esfin2(K,F)) = K .
   eq sfin2(esfin2(K,F)) = F .
-  eq (esfin2(K1,F1) = esfin2(K2,F2)) 
-     = (K1 = K2 and F1 = F2) .
 endfm
 
 view EncSFin2 from TRIV to ENCSFIN2 is
@@ -554,8 +523,8 @@ fmod MSG is
   op sf  : Prin    Prin   Prin  EncSFin             -> Msg .
   op ch2 : Prin    Prin   Prin  Rand Sid           -> Msg .
   op sh2 : Prin    Prin   Prin  Rand Sid Choice    -> Msg .
-  op cf2 : Prin    Prin   Prin  EncCFin2            -> Msg .
-  op sf2 : Prin    Prin   Prin  EncSFin2            -> Msg .
+  op cf2 : Prin    Prin   Prin  EncCFin2           -> Msg .
+  op sf2 : Prin    Prin   Prin  EncSFin2           -> Msg .
   
   op crt : Msg -> Prin .
   op src : Msg -> Prin .
@@ -572,7 +541,7 @@ fmod MSG is
   op ecfin2 : Msg -> EncCFin2 .
   op esfin2 : Msg -> EncSFin2 .
     
-  op empty : Msg -> [ctor] .
+  op empty : -> Msg [ctor] .
 
   vars M M1 M2 : Msg .
   vars A A' B  : Prin .
@@ -652,40 +621,6 @@ view Msg from TRIV to MSG is
     sort Elt to Msg .
 endv
 
-fmod SESSIONSTATE is
-    pr CHOICE .
-    pr RANDOM .
-    pr PMS .
-    sort Session .
-
-    op none : -> Session .
-    op st : Choice Rand Rand Pms -> Session .
-    op choice : Session -> Choice .
-    op crand  : Session -> Rand .
-    op srand  : Session -> Rand .
-    op pms    : Session -> Pms .
-
-    var S : Session .
-    vars C C1 C2 : Choice .
-    vars CR SR CR1 CR2 SR1 SR2 : Rand .
-    vars PMS PMS1 PMS2 :  Pms .
-    eq choice(st(C,CR,SR,PMS)) = C .
-    eq crand(st(C,CR,SR,PMS)) = CR .
-    eq srand(st(C,CR,SR,PMS)) = SR .
-    eq pms(st(C,CR,SR,PMS)) = PMS .
-
-    eq (st(C1,CR1,SR1,PMS1) = st(C2,CR2,SR2,PMS2))
-     = (C1 = C2 and CR1 = CR2 and SR1 = SR2 and PMS1 = PMS2) .
-endfm
-
-view Session from TRIV to SESSIONSTATE is
-    sort Elt to Session .
-endv
-
-fmod SESSIONSTATE-SOUP is
-  pr SOUP{Session} .
-endfm
-
 fmod NETWORK is
   pr SOUP{Msg} .
   op _\in_ : Pms Soup{Msg} -> Bool .
@@ -697,20 +632,21 @@ fmod NETWORK is
   op _\in_ : EncSFin2 Soup{Msg} -> Bool .
 
   vars A A' B  : Prin .
-  vars NW NW10 : Network .
+  vars NW NW10 : Soup{Msg} .
   var M M2 : Msg .
   var PMS : Pms .
   var G : Sig .
+  var PK : PubKey .
   var EPMS : EncPms .
   var ECFIN : EncCFin .
   var ESFIN : EncSFin .
   var ECFIN2 : EncCFin2 .
   var ESFIN2 : EncSFin2 .
   
-  eq PMS \in kx(A',A,B,PMS) NW = true .
+  eq PMS \in kx(A',A,B,epms(PK,PMS)) NW = true .
   eq PMS \in NW = false [owise] .
   
-  eq G \in ct(A',A,B,G) NW = true .
+  eq G \in ct(A',A,B,cert(A,k(A),G)) NW = true .
   eq G \in NW = false [owise] .
   
   eq EPMS \in kx(A',A,B,EPMS) NW = true .
@@ -729,9 +665,47 @@ fmod NETWORK is
   eq ESFIN2 \in NW = false [owise] .
 endfm
 
+fmod SESSIONSTATE is
+    pr CHOICE .
+    pr RAND .
+    pr PMS .
+    pr PRIN .
+    pr SID .
+    sort Session .
+
+    op empty : -> Session [ctor] .
+
+    op st : Choice Rand Rand Pms -> Session .
+    op ss : Prin Prin Sid -> Session .
+    op choice : Session -> Choice .
+    op crand  : Session -> Rand .
+    op srand  : Session -> Rand .
+    op pms    : Session -> Pms .
+
+    var S : Session .
+    var C : Choice .
+    vars CR SR : Rand .
+    var PMS :  Pms .
+    eq choice(st(C,CR,SR,PMS)) = C .
+    eq crand(st(C,CR,SR,PMS)) = CR .
+    eq srand(st(C,CR,SR,PMS)) = SR .
+    eq pms(st(C,CR,SR,PMS)) = PMS .
+endfm
+
+view Session from TRIV to SESSIONSTATE is
+    sort Elt to Session .
+endv
+
+fmod SESSIONSTATE-SOUP is
+  pr SOUP{Session} .
+endfm
+
 fmod OCOM is
   pr NETWORK .
+  pr CHOICE-SOUP .
+  pr LISTOFCHOICES-SOUP .
   pr RAND-SOUP .
+  pr SID-SOUP .
   pr SESSIONSTATE-SOUP .
   pr SECRET-SOUP .
   pr PMS-SOUP .
@@ -742,15 +716,16 @@ fmod OCOM is
   pr ENCCFIN2-SOUP .
   pr ENCSFIN2-SOUP .
   pr PRIN-SOUP .
+---   pr SESSIONSTATE .
   sort OCom .
 
   op cpms:_ : Soup{Pms} -> OCom [ctor] .
   op csig:_ : Soup{Sig} -> OCom [ctor] .
-  op cencpms:_ : Soup{EncPms} -> OCom [ctor] .
-  op cEncCFin:_ : Soup{EncCFin} -> OCom [ctor] .
-  op cEncSFin:_ : Soup{EncSFin} -> OCom [ctor] .
-  op cEncCFin2:_ : Soup{EncCFin2} -> OCom [ctor] .
-  op cEncSFin2:_ : Soup{EncSFin2} -> OCom [ctor] .
+  op cepms:_ : Soup{EncPms} -> OCom [ctor] .
+  op cecfin:_ : Soup{EncCFin} -> OCom [ctor] .
+  op cesfin:_ : Soup{EncSFin} -> OCom [ctor] .
+  op cecfin2:_ : Soup{EncCFin2} -> OCom [ctor] .
+  op cesfin2:_ : Soup{EncSFin2} -> OCom [ctor] .
 
   op newmsg:_ : Msg -> OCom [ctor] .
   op ch:_ : Msg -> OCom [ctor] .
@@ -763,7 +738,11 @@ fmod OCOM is
   op sh2:_ : Msg -> OCom [ctor] .
   op cf2:_ : Msg -> OCom [ctor] .
   op sf2:_ : Msg -> OCom [ctor] .
-
+  op sst:_ : Session -> OCom [ctor] .
+  op loc:_ : ListOfChoices -> OCom [ctor] .
+  op choice:_ : Choice -> OCom [ctor] .
+  op sec:_ : Secret -> OCom [ctor] .
+  
   op nw:_ : Soup{Msg} -> OCom [ctor] .
   op nwch:_ : Soup{Msg} -> OCom [ctor] .
   op nwsh:_ : Soup{Msg} -> OCom [ctor] .
@@ -777,9 +756,10 @@ fmod OCOM is
   op nwsf2:_ : Soup{Msg} -> OCom [ctor] . 
 
   op rands:_ : Soup{Rand} -> OCom [ctor] .
-  op urand:_ : Soup{Rand} -> OCom [ctor] .
-  op usid:_ : Soup{Session} -> OCom [ctor] .
-  op usecret:_ : Soup{Secret} -> OCom [ctor] .
+  op uss:_ : Soup{Session} -> OCom [ctor] .
+  op ur:_ : Soup{Rand} -> OCom [ctor] .
+  op ui:_ : Soup{Sid} -> OCom [ctor] .
+  op us:_ : Soup{Secret} -> OCom [ctor] .
   op prins:_ : Soup{Prin} -> OCom [ctor] .
 endfm
 
@@ -798,32 +778,42 @@ fmod CONFIG is
     op init : -> Config .
     eq init = {(newmsg: empty) (ch: empty) (sh: empty) (ct: empty)
                 (kx: empty) (cf: empty) (sf: empty) (ch2: empty)
-                (sh2: empty) (cf2: empty) (sf2: empty) 
-                (cpms: emp) (csig: emp) (cencpms: emp) (cenccfin: emp) 
-                (cencsfin: emp) (cenccfin2: emp) (cencsfin2: emp)
+                (sh2: empty) (cf2: empty) (sf2: empty) (sst: empty)
+                (cpms: emp) (csig: emp) (cepms: emp) (cecfin: emp) 
+                (cesfin: emp) (cecfin2: emp) (cesfin2: emp)
                 (nw: emp) (nwch: emp) (nwsh: emp) (nwct: emp) 
                 (nwkx: emp) (nwcf: emp) (nwsf: emp) (nwch2: emp) 
-                (nwsh2: emp) (nwcf2: emp) (nwsf2: emp) (urand: emp)
-                (usid: emp) (usecret: emp) (rands: (cr sr)) 
-                (prins: (a b intr ca))} 
+                (nwsh2: emp) (nwcf2: emp) (nwsf2: emp) (ur: emp)
+                (ui: emp) (us: emp) (uss: emp) (loc: empty) (choice: empty)
+                (sec: empty) (rands: (cr sr cr1 sr1)) (prins: (a b intr ca))} .
 endfm
 
 mod TLS is
   inc CONFIG .
-
   vars MSG CH SH CT KX CF SF CH2 SH2 CF2 SF2 : Msg .
 
-  vars NW NWCH NWSH NWCT NWKX NWCF NWSF NWCH2 NWSH2 NWCF2 NWSF2  : Soup{Msg} .
+  vars NW NWCH NWSH NWCT NWKX NWCF NWSF NWCH2 NWSH2 NWCF2 NWSF2 : Soup{Msg} .
 
-  var SID : Session .
-  var SEC : Secret .
-
-  vars R R' : Rand .
+  vars R R' R1 R1' : Rand .
   var Rs : Soup{Rand} .
 
-  vars A B A' B' A'' B'' C S Re : Prin .
+  vars A B A' B' A2 B2 Re : Prin .
   var Ps : Soup{Prin} .
   
+  vars I I2 : Sid .
+  var L : ListOfChoices .
+  var C : Choice .
+  var S : Secret .
+  var PMS : Pms .
+  var PK : PubKey .
+  var G : Sig .
+  var EPMS : EncPms .
+  var ECFIN : EncCFin .
+  var ESFIN : EncSFin .
+  var ECFIN2 : EncCFin2 .
+  var ESFIN2 : EncSFin2 .
+  var SS : Session .
+
   var CPMS : Soup{Pms} .
   var CEPMS : Soup{EncPms} .
   var CSIG : Soup{Sig} .
@@ -831,35 +821,599 @@ mod TLS is
   var CESFIN : Soup{EncSFin} .
   var CECFIN2 : Soup{EncCFin2} .
   var CESFIN2 : Soup{EncSFin2} .
-  var USID : soup{Session} .
-  var USEC : soup{Secret} .
+  var UI : Soup{Sid} .
+  var US : Soup{Secret} .
+  var USS : Soup{Session} .
   var OCs : Soup{OCom} .
 
-
-  rl [challenge] :
+rl [chello] :
     {(newmsg: MSG) 
-    (m1: M1) (m2: M2) (m3: M3)
-    (newCen1: Ce1) (newCen2: Ce2) (newCen3: Ce3)
-    (cenc1: CE1)
-    (nwM1: NWM1) (nw: NW)
-    (nonces: Ns) 
-    (rands: (r1 Rs)) (urand: Rs) 
-    (prins: (P Q Ps)) OCs}
+    (ch: CH) (sh: SH) (ct: CT)
+    (kx: KX) (cf: CF) (sf: SF) (ch2: CH2)
+    (sh2: SH2) (cf2: CF2) (sf2: SF2) 
+    (sst: ss(A,B,I))
+    (cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
+    (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwch: NWCH) (nw: NW) (nwsh: NWSH) 
+    (nwct: NWCT) (nwkx: NWKX) (nwcf: NWCF) (nwsf: NWSF) 
+    (nwch2: NWCH2) (nwsh2: NWSH2) (nwcf2: NWCF2) (nwsf2: NWSF2) 
+    (uss: USS) (ui: UI) (us: US) (loc: L) (choice: C)
+    (rands: (cr sr cr1 sr1)) (ur: Rs) (sec: S)
+    (prins: (A B Ps))}                
     =>
-    {(newmsg: m1(P,P,Q,enc1(Q,n(P,Q,r1),n(dP,dP,dR),P)))
-    (m1: m1(P,P,Q,enc1(Q,n(P,Q,r1),n(dP,dP,dR),P)))
-    (m2: empM2) (m3: empM3)
-    (newCen1: (if Q == intr then empC1 else enc1(Q,n(P,Q,r1),n(dP,dP,dR),P) fi))
-    (newCen2: empC2)
-    (newCen3: empC3)
-    (cenc1: (if Q == intr then CE1 else (enc1(Q,n(P,Q,r1),n(dP,dP,dR),P) CE1) fi))
-    (nwM1: (m1(P,P,Q,enc1(Q,n(P,Q,r1),n(dP,dP,dR),P)) NWM1))
-    (nw: (m1(P,P,Q,enc1(Q,n(P,Q,r1),n(dP,dP,dR),P)) NW))
-    (nonces: (if (Q == intr or gen(n(P,Q,r1)) == intr) then (n(P,Q,r1) Ns) else Ns fi))
-    (rands: Rs) (urand: (r1 Rs))
-    (prins: (P Q Ps)) OCs} .
+    {(newmsg: ch(A,A,B,cr,L))
+    (ch: ch(A,A,B,cr,L)) (sh: SH) (ct: CT)
+    (kx: KX) (cf: CF) (sf: SF) (ch2: CH2)
+    (sh2: SH2) (cf2: CF2) (sf2: SF2) (sst: ss(A,B,I))
+    (cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
+    (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwch: (ch(A,A,B,cr,L) NWCH)) (nw: (ch(A,A,B,cr,L) NW)) 
+    (nwsh: NWSH) (nwct: NWCT) (nwkx: NWKX) (nwcf: NWCF) (nwsf: NWSF) 
+    (nwch2: NWCH2) (nwsh2: NWSH2) (nwcf2: NWCF2) (nwsf2: NWSF2)
+    (uss: (ss(A,B,I) USS)) (sec: S)
+    (ui: UI) (us: US) (loc: L) (choice: C)
+    (rands: (sr cr1 sr1)) (ur: (cr Rs)) 
+    (prins: (A B Ps))} .
 
-  
-
-  
+rl [shello] :
+    {(newmsg: MSG) 
+    (ch: CH) (sh: SH) (ct: CT)
+    (kx: KX) (cf: CF) (sf: SF) (ch2: CH2)
+    (sh2: SH2) (cf2: CF2) (sf2: SF2) 
+    (sst: ss(A,B,I))
+    (cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
+    (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwsh: NWSH) (nw: (ch(A',A,B,R,L) NW)) (nwch: NWCH)
+    (nwct: NWCT) (nwkx: NWKX) (nwcf: NWCF) (nwsf: NWSF) 
+    (nwch2: NWCH2) (nwsh2: NWSH2) (nwcf2: NWCF2) (nwsf2: NWSF2)
+    (uss: USS)
+    (ui: UI) (us: US) (loc: L) (choice: C)
+    (rands: (sr cr1 sr1)) (ur: Rs) (sec: S)
+    (prins: (A B Ps)) OCs}             
+    =>
+    {(newmsg: sh(B,B,A,sr,I,C))
+    (ch: CH) (sh: sh(B,B,A,sr,I,C)) (ct: CT)
+    (kx: KX) (cf: CF) (sf: SF) (ch2: CH2)
+    (sh2: SH2) (cf2: CF2) (sf2: SF2)
+    (sst: ss(A,B,I))
+    (cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
+    (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwsh: (sh(B,B,A,sr,I,C) NWSH)) (nwch: NWCH)
+    (nw: (sh(B,B,A,sr,I,C) ch(A',A,B,R,L) NW))
+    (nwct: NWCT) (nwkx: NWKX) (nwcf: NWCF) (nwsf: NWSF) 
+    (nwch2: NWCH2) (nwsh2: NWSH2) (nwcf2: NWCF2) (nwsf2: NWSF2) 
+    (uss: (ss(A,B,I) USS)) (loc: L) (sec: S)
+    (ui: (I UI)) (us: US) (choice: C)
+    (rands: (cr1 sr1)) (ur: (cr Rs)) 
+    (prins: (A B Ps)) OCs} .
 endm
+eof
+rl [cert] :
+    {(newmsg: MSG) 
+    (ch: CH) (sh: SH) (ct: CT)
+    (sst: SS)
+    (cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
+    (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwct: NWCT) (nw: (sh(B,B,A,R',I,C) ch(A,A,B,R,L) NW)) 
+    (ui: UI) (us: US) (uss: USS)
+    (rands: Rs) (ur: Rs) 
+    (prins: (A B Ps)) OCs}               
+    =>
+    {(newmsg: ct(B,B,A,cert(B,k(B),sig(ca,B,k(B)))))
+    (ch: CH) (sh: SH)
+    (ct: ct(B,B,A,cert(B,k(B),sig(ca,B,k(B))))) 
+    (sst: SS)
+    (cpms: CPMS) (csig: (sig(ca,B,k(B)) CSIG)) (cepms: CEPMS) (cecfin: CECFIN)
+    (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwct: (ct(B,B,A,cert(B,k(B),sig(ca,B,k(B)))) NWCT)) 
+    (nw: (ct(B,B,A,cert(B,k(B),sig(ca,B,k(B)))) sh(B,B,A,R',I,C) ch(A,A,B,R,L) NW)) 
+    (uss: USS)
+    (ui: UI) (us: US) (rands: Rs)
+    (ur: Rs) (prins: (A B Ps)) OCs} .
+
+rl [kexch] :
+    {(newmsg: MSG) 
+    (ch: CH) (sh: SH) (ct: CT)
+    (kx: KX) (sst: SS)
+    (cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
+    (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwkx: NWKX) (nw: (ct(B',B,A,cert(B,PK,G)) sh(B,B,A,R',I,C) ch(A,A,B,R,L) NW)) 
+    (uss: USS) (ui: UI) (us: US) (sec: S)
+    (rands: Rs) (ur: Rs)
+    (prins: (A B Ps)) OCs}                
+    =>
+    {(newmsg: kx(A,A,B,epms(PK,pms(A,B,S))))
+    (ch: CH) (sh: SH) (ct: CT)
+    (kx: kx(A,A,B,epms(PK,pms(A,B,S)))) 
+    (sst: SS)
+    (cpms: (if (A == intr or B == intr) then (pms(A,B,S) CPMS) else CPMS fi)) 
+    (csig: CSIG) 
+    (cepms: (epms(PK,pms(A,B,S)) CEPMS)) 
+    (cecfin: CECFIN) (cesfin: CESFIN) 
+    (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwkx: (kx(A,A,B,epms(PK,pms(A,B,S))) NWKX)) 
+    (nw: (kx(A,A,B,epms(PK,pms(A,B,S))) ct(B',B,A,cert(B,PK,G)) 
+            sh(B,B,A,R',I,C) ch(A,A,B,R,L) NW)) 
+    (uss: USS) (ui: UI) (us: US)
+    (rands: Rs) (ur: Rs) (sec: S)
+    (prins: (A B Ps)) OCs} .  
+
+rl [cfin] :
+    {(newmsg: MSG) 
+    (cf: CF) (sst: SS)
+    (cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
+    (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwcf: NWCF) 
+    (nw: (kx(A,A,B,epms(PK,pms(A,B,S))) 
+            ct(B,B,A,cert(B,PK,G)) 
+        sh(B,B,A,R',I,C) ch(A,A,B,R,L) NW)) 
+    (uss: USS) (ui: UI) (us: US) OCs}                
+    =>
+    {(newmsg: cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
+                cfin(A,B,I,L,C,R,R',pms(A,B,S)))))
+    (cf: cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
+            cfin(A,B,I,L,C,R,R',pms(A,B,S))))) 
+    (sst: SS)
+    (cpms: CPMS) (csig: CSIG) (cepms: CEPMS) 
+    (cecfin: (ecfin(k(A,pms(A,B,S),R,R'),cfin(A,B,I,L,C,R,R',pms(A,B,S))) CECFIN)) 
+    (cesfin: CESFIN) 
+    (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwcf: (cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
+            cfin(A,B,I,L,C,R,R',pms(A,B,S)))) NWCF)) 
+    (nw: (cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
+            cfin(A,B,I,L,C,R,R',pms(A,B,S))))
+        kx(A,A,B,epms(PK,pms(A,B,S))) 
+        ct(B,B,A,cert(B,PK,G)) 
+        sh(B,B,A,R',I,C) ch(A,A,B,R,L) NW)) 
+    (uss: USS) (ui: UI) (us: US) OCs} .  
+*** here
+rl [sfin] :
+    {(newmsg: MSG) 
+    (sf: SF) (sst: SS)
+    (cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
+    (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwsf: NWSF) 
+    (nw: (cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
+            cfin(A,B,I,L,C,R,R',pms(A,B,S))))
+        kx(A,A,B,epms(PK,pms(A,B,S))) 
+        ct(B,B,A,cert(B,PK,G)) 
+        sh(B,B,A,R',I,C) ch(A,A,B,R,L) NW)) 
+    (uss: USS) (ui: UI) (us: US) OCs}                
+    =>
+    {(newmsg: sf(B,B,A,esfin(k(B,pms(A,B,S),R,R'),
+                sfin(A,B,I,L,C,R,R',pms(A,B,S)))))
+    (sf: sf(B,B,A,esfin(k(B,pms(A,B,S),R,R'),
+            sfin(A,B,I,L,C,R,R',pms(A,B,S))))) 
+    (sst: st(C,R,R',pms(A,B,S)))
+    (cpms: CPMS) (csig: CSIG) 
+    (cepms: CEPMS) (cecfin: CECFIN) 
+    (cesfin: (esfin(k(B,pms(A,B,S),R,R'),
+                sfin(A,B,I,L,C,R,R',pms(A,B,S))) CESFIN)) 
+    (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwsf: (sf(B,B,A,esfin(k(B,pms(A,B,S),R,R'),
+            sfin(A,B,I,L,C,R,R',pms(A,B,S)))) NWSF)) 
+    (nw: (sf(B,B,A,esfin(k(B,pms(A,B,S),R,R'),
+            sfin(A,B,I,L,C,R,R',pms(A,B,S))))
+        cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
+            cfin(A,B,I,L,C,R,R',pms(A,B,S))))
+        kx(A,A,B,epms(PK,pms(A,B,S))) 
+        ct(B,B,A,cert(B,PK,G)) 
+        sh(B,B,A,R',I,C) ch(A,A,B,R,L) NW)) 
+    (uss: (st(C,R,R',pms(A,B,S)) USS))
+    (ui: UI) (us: US) OCs} .                   
+
+rl [compl] :
+    {(newmsg: MSG) 
+    (sst: SS) 
+    (nw: (sf(B,B,A,esfin(k(B,pms(A,B,S),R,R'),
+            sfin(A,B,I,L,C,R,R',pms(A,B,S))))
+        cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
+            cfin(A,B,I,L,C,R,R',pms(A,B,S))))
+        kx(A,A,B,epms(PK,pms(A,B,S))) 
+        ct(B,B,A,cert(B,PK,G)) 
+        sh(B,B,A,R',I,C) ch(A,A,B,R,L) NW)) 
+    (uss: USS) (ui: UI) (us: US) OCs}                
+    =>
+    {(newmsg: MSG)
+    (sst: st(C,R,R',pms(A,B,S)))
+    (nw: (sf(B,B,A,esfin(k(B,pms(A,B,S),R,R'),
+            sfin(A,B,I,L,C,R,R',pms(A,B,S))))
+        cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
+            cfin(A,B,I,L,C,R,R',pms(A,B,S))))
+        kx(A,A,B,epms(PK,pms(A,B,S))) 
+        ct(B,B,A,cert(B,PK,G)) 
+        sh(B,B,A,R',I,C) ch(A,A,B,R,L) NW))
+    (uss: (st(C,R,R',pms(A,B,S)) USS))
+    (ui: UI) (us: US) OCs} .   
+
+rl [chello2] :
+    {(newmsg: MSG) 
+    (ch2: CH2) (sst: (ss(A,B,I)))
+    (nwch2: NWCH2) 
+    (nw: (cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
+            cfin(A,B,I,L,C,R,R',pms(A,B,S)))) NW)) 
+    (uss: USS) (ui: UI) (us: US) 
+    (ur: Rs) (rands: (cr1 sr1)) OCs}                
+    =>
+    {(newmsg: ch2(A,A,B,cr1,I))
+    (ch2: ch2(A,A,B,cr1,I)) 
+    (sst: (ss(A,B,I)))
+    (nwch2: (ch2(A,A,B,cr1,I) NWCH2)) 
+    (nw: (ch2(A,A,B,cr1,I) cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
+            cfin(A,B,I,L,C,R,R',pms(A,B,S)))) NW)) 
+    (uss: USS) (rands: sr1) (ur: (cr1 Rs))
+    (ui: UI) (us: US) OCs} .     
+
+rl [shello2] :
+    {(newmsg: MSG) 
+    (sh2: SH2) (sst: SS)
+    (nwsh2: NWSH2) 
+    (nw: (ch2(A,A,B,R1,I) NW)) 
+    (uss: USS) (ui: UI) (us: US) (choice: C)
+    (ur: Rs) (rands: sr1) OCs}                
+    =>
+    {(newmsg: sh2(B,B,A,sr1,I,C))
+    (sh2: sh2(B,B,A,sr1,I,C)) 
+    (sst: SS) (choice: C)
+    (nwsh2: (sh2(B,B,A,sr1,I,C) NWSH2)) 
+    (nw: (sh2(B,B,A,sr1,I,C) ch2(A,A,B,R1,I) NW)) 
+    (uss: USS) (rands: emp) (ur: (sr1 Rs))
+    (ui: UI) (us: US) OCs} .      
+
+rl [cfin2] :
+    {(newmsg: MSG) 
+    (cf2: CF2) (sst: SS)
+    (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwcf2: NWCF2) (sec: S)
+    (nw: (sh2(B,B,A,R1',I,C) ch2(A,A,B,R1,I) NW)) 
+    (uss: USS) (ui: UI) (us: US) (ur: Rs) OCs}                
+    =>
+    {(newmsg: cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
+                cfin2(A,B,I,C,R1,R1',pms(A,B,S)))))
+    (cf2: cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
+                cfin2(A,B,I,C,R1,R1',pms(A,B,S))))) 
+    (sst: SS)
+    (cecfin2: (ecfin2(k(A,pms(A,B,S),R1,R1'),
+                cfin2(A,B,I,C,R1,R1',pms(A,B,S))) CECFIN2)) 
+    (cesfin2: CESFIN2) (sec: S)
+    (nwcf2: (cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
+                cfin2(A,B,I,C,R1,R1',pms(A,B,S)))) NWCF2)) 
+    (nw: (cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
+            cfin2(A,B,I,C,R1,R1',pms(A,B,S))))
+        sh2(B,B,A,R1',I,C) ch2(A,A,B,R1,I) NW)) 
+    (uss: USS) (ur: Rs)
+    (ui: UI) (us: US) OCs} .
+
+rl [sfin2] :
+    {(newmsg: MSG) 
+    (sf2: SF2) (sst: SS)
+    (cesfin2: CESFIN2) 
+    (nwsf2: NWSF2) 
+    (nw: (cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
+            cfin2(A,B,I,C,R1,R1',pms(A,B,S))))
+        sh2(B,B,A,R1',I,C) ch2(A,A,B,R1,I) NW)) 
+    (uss: USS) OCs}                
+    =>
+    {(newmsg: sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
+                sfin2(A,B,I,C,R1,R1',pms(A,B,S)))))
+    (sf2: sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
+            sfin2(A,B,I,C,R1,R1',pms(A,B,S))))) 
+    (sst: st(C,R1,R1',pms(A,B,S)))
+    (cesfin2: (esfin2(k(B,pms(A,B,S),R1,R1'),
+                sfin2(A,B,I,C,R1,R1',pms(A,B,S))) CESFIN2)) 
+    (nwsf2: (sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
+                sfin2(A,B,I,C,R1,R1',pms(A,B,S)))) NWSF2)) 
+    (nw: (sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
+            sfin2(A,B,I,C,R1,R1',pms(A,B,S))))
+        cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
+            cfin2(A,B,I,C,R1,R1',pms(A,B,S))))
+        sh2(B,B,A,R1',I,C) ch2(A,A,B,R1,I) NW)) 
+    (uss: (st(C,R1,R1',pms(A,B,S)) USS)) OCs} . 
+
+rl [compl2] :
+    {(newmsg: MSG) 
+    (sst: SS)
+    (nw: (sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
+            sfin2(A,B,I,C,R1,R1',pms(A,B,S))))
+        cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
+            cfin2(A,B,I,C,R1,R1',pms(A,B,S))))
+        sh2(B,B,A,R1',I,C) ch2(A,A,B,R1,I) NW))  
+    (uss: USS) OCs}                
+    =>
+    {(newmsg: MSG)
+    (sst: st(C,R1,R1',pms(A,B,S)))
+    (nw: (sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
+            sfin2(A,B,I,C,R1,R1',pms(A,B,S))))
+        cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
+            cfin2(A,B,I,C,R1,R1',pms(A,B,S))))
+        sh2(B,B,A,R1',I,C) ch2(A,A,B,R1,I) NW)) 
+    (uss: (st(C,R1,R1',pms(A,B,S)) USS)) OCs} . 
+
+rl [fakeChello] :
+    {(newmsg: MSG) 
+    (ch: CH) (sst: SS)
+    (nwch: (ch(A,A,B,R,L) NWCH)) (nw: NW) (uss: USS)
+    (ui: UI) (us: US)
+    (rands: Rs) (ur: Rs) 
+    (prins: (A B Ps)) OCs}                
+    =>
+    {(newmsg: ch(intr,A,B,R,L))
+    (ch: ch(intr,A,B,R,L)) (sst: SS)
+    (nwch: (ch(intr,A,B,R,L) ch(A,A,B,R,L) NWCH)) 
+    (nw: (ch(intr,A,B,R,L) NW)) 
+    (uss: USS)
+    (ui: UI) (us: US)
+    (rands: Rs) (ur: Rs) 
+    (prins: (A B Ps)) OCs} .
+
+rl [fakeShello] :
+    {(newmsg: MSG) 
+    (sh: SH) (sst: SS)
+    (nwsh: (sh(B,B,A,R',I,C) NWSH)) 
+    (nw: NW)  (uss: USS)
+    (ui: UI) (us: US)
+    (rands: Rs) (ur: Rs) 
+    (prins: (A B Ps)) OCs}                
+    =>
+    {(newmsg: sh(intr,B,A,R',I,C))
+    (sh: sh(intr,B,A,R',I,C)) 
+    (sst: ss(B,A,I))
+    (nwsh: (sh(intr,B,A,R',I,C) sh(B,B,A,R',I,C) NWSH)) 
+    (nw: (sh(intr,B,A,R',I,C) NW)) 
+    (uss: (ss(B,A,I) USS))
+    (ui: UI) (us: US)
+    (rands: Rs) (ur: Rs)
+    (prins: (A B Ps)) OCs} .
+
+rl [fakeCert] :
+    {(newmsg: MSG) 
+    (ct: CT)
+    (sst: SS)
+    (cpms: CPMS) (csig: (G CSIG)) (cepms: CEPMS) (cecfin: CECFIN)
+    (nwct: NWCT) (nw: NW) (uss: USS) (prins: (A B Ps)) OCs}                
+    =>
+    {(newmsg: ct(intr,B,A,cert(B,k(B),G)))
+    (ct: ct(intr,B,A,cert(B,k(B),G))) 
+    (sst: SS)
+    (cpms: CPMS) (csig: (G CSIG)) (cepms: CEPMS) (cecfin: CECFIN)
+    (nwct: (ct(intr,B,A,cert(B,k(B),G)) NWCT)) 
+    (nw: (ct(intr,B,A,cert(B,k(B),G)) NW)) 
+    (uss: USS) (prins: (A B Ps)) OCs} .
+
+rl [fakeKexch1] :
+    {(newmsg: MSG) 
+    (kx: KX) (sst: SS)
+    (cpms: CPMS) (csig: CSIG) (cepms: (EPMS CEPMS))  
+    (nwkx: NWKX) (nw: NW)
+    (uss: USS) (prins: (A B Ps)) OCs}                
+    =>
+    {(newmsg: kx(intr,A,B,EPMS))
+    (kx: kx(intr,A,B,EPMS)) 
+    (sst: SS)
+    (cpms: CPMS) (csig: CSIG) (cepms: (EPMS CEPMS)) 
+    (nwkx: (kx(intr,A,B,EPMS) NWKX)) 
+    (nw: (kx(intr,A,B,EPMS) NW)) 
+    (uss: USS) (prins: (A B Ps)) OCs} .
+
+rl [fakeKexch2] :
+    {(newmsg: MSG) 
+    (kx: KX) (sst: SS)
+    (cpms: (PMS CPMS)) (csig: CSIG) (cepms: CEPMS)  
+    (nwkx: NWKX) (nw: NW)
+    (uss: USS) (prins: (A B Ps)) OCs}                
+    =>
+    {(newmsg: kx(intr,A,B,epms(k(B),PMS)))
+    (kx: kx(intr,A,B,epms(k(B),PMS))) 
+    (sst: SS)
+    (cpms: (PMS CPMS)) (csig: CSIG) (cepms: CEPMS)  
+    (nwkx: (kx(intr,A,B,epms(k(B),PMS)) NWKX)) 
+    (nw: (kx(intr,A,B,epms(k(B),PMS)) NW)) 
+    (uss: USS) (prins: (A B Ps)) OCs} .
+
+rl [fakeCfin1] :
+    {(newmsg: MSG) 
+    (cf: CF) (sst: SS)
+    (cecfin: (ECFIN CECFIN))
+    (nwcf: NWCF) 
+    (nw: NW) (uss: USS) (prins: (A B Ps)) OCs}                
+    =>
+    {(newmsg: cf(intr,A,B,ECFIN))
+    (cf: cf(intr,A,B,ECFIN)) 
+    (sst: SS)
+    (cecfin: (ECFIN CECFIN)) 
+    (nwcf: (cf(intr,A,B,ECFIN) NWCF)) 
+    (nw: (cf(intr,A,B,ECFIN) NW)) 
+    (uss: USS) (prins: (A B Ps)) OCs} .
+
+rl [fakeCfin2] :
+    {(newmsg: MSG) 
+    (cf: CF) (sst: SS)
+    (cpms: (PMS CPMS))
+    (nwcf: (cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
+            cfin(A,B,I,L,C,R,R',pms(A,B,S)))) NWCF))
+    (nw: NW)
+    (uss: USS) (prins: (A B Ps)) OCs}                
+    =>
+    {(newmsg: cf(intr,A,B,ecfin(k(A,PMS,R,R'),
+                cfin(A,B,I,L,C,R,R',PMS))))
+    (cf: cf(intr,A,B,ecfin(k(A,PMS,R,R'),
+            cfin(A,B,I,L,C,R,R',PMS)))) 
+    (sst: SS)
+    (cpms: (PMS CPMS))
+    (nwcf: (cf(intr,A,B,ecfin(k(A,PMS,R,R'),
+            cfin(A,B,I,L,C,R,R',PMS))) 
+        cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
+            cfin(A,B,I,L,C,R,R',pms(A,B,S)))) NWCF)) 
+    (nw: (cf(intr,A,B,ecfin(k(A,PMS,R,R'),
+            cfin(A,B,I,L,C,R,R',PMS))) NW)) 
+    (uss: USS) (prins: (A B Ps)) OCs} .
+
+rl [fakeSfin1] :
+    {(newmsg: MSG) 
+    (sf: SF) (sst: SS)
+    (cesfin: (ESFIN CESFIN)) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwsf: NWSF) 
+    (nw: NW) (uss: USS) (prins: (A B Ps)) OCs}                
+    =>
+    {(newmsg: sf(intr,B,A,ESFIN))
+    (sf: sf(intr,B,A,ESFIN)) 
+    (sst: SS)
+    (cesfin: (ESFIN CESFIN)) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+    (nwsf: (sf(intr,B,A,ESFIN) NWSF)) 
+    (nw: (sf(intr,B,A,ESFIN) NW)) 
+    (uss: USS) (prins: (A B Ps)) OCs} .
+
+rl [fakeSfin2] :
+    {(newmsg: MSG) 
+    (sf: SF) (sst: SS)
+    (cpms: (PMS CPMS))    
+    (nwsf: (sf(B,B,A,esfin(k(B,pms(A,B,S),R,R'),
+            sfin(A,B,I,L,C,R,R',pms(A,B,S)))) NWSF)) 
+    (nw: NW) (uss: USS) OCs}                
+    =>
+    {(newmsg: sf(intr,B,A,esfin(k(B,PMS,R,R'),
+                sfin(A,B,I,L,C,R,R',PMS))))
+    (sf: sf(intr,B,A,esfin(k(B,PMS,R,R'),
+            sfin(A,B,I,L,C,R,R',PMS)))) 
+    (sst: ss(B,A,I))
+    (cpms: (PMS CPMS))    
+    (nwsf: (sf(intr,B,A,esfin(k(B,PMS,R,R'),
+            sfin(A,B,I,L,C,R,R',PMS))) 
+            sf(B,B,A,esfin(k(B,pms(A,B,S),R,R'),
+            sfin(A,B,I,L,C,R,R',pms(A,B,S)))) NWSF)) 
+    (nw: (sf(intr,B,A,esfin(k(B,PMS,R,R'),
+            sfin(A,B,I,L,C,R,R',PMS))) NW)) 
+    (uss: (ss(B,A,I) USS)) OCs} .
+
+rl [fakeChello2] :
+    {(newmsg: MSG) 
+    (ch2: CH2) (sst: SS)
+    (nwch2: NWCH2) 
+    (nw: (ch2(A,A,B,R1,I) NW)) 
+    (uss: USS) OCs}                
+    =>
+    {(newmsg: ch2(intr,A,B,R1,I))
+    (ch2: ch2(intr,A,B,R1,I)) 
+    (sst: ss(A,B,I)) 
+    (nwch2: (ch2(intr,A,B,R1,I) NWCH2)) 
+    (nw: (ch2(intr,A,B,R1,I) ch2(A,A,B,R1,I) NW)) 
+    (uss: (ss(A,B,I) USS)) OCs} .      
+
+rl [fakeShello2] :
+    {(newmsg: MSG) 
+    (sh2: SH2) (sst: SS)
+    (nwsh2: NWSH2) 
+    (nw: (sh2(B,B,A,R1',I,C) NW)) 
+    (uss: USS) OCs}                
+    =>
+    {(newmsg: sh2(intr,B,A,R1',I,C))
+    (sh2: sh2(intr,B,A,R1',I,C)) 
+    (sst: ss(B,A,I))
+    (nwsh2: (sh2(intr,B,A,R1',I,C) NWSH2)) 
+    (nw: (sh2(intr,B,A,R1',I,C) sh2(B,B,A,R1',I,C) NW)) 
+    (uss: (ss(B,A,I) USS)) OCs} .
+
+rl [fakeCfin21] :
+    {(newmsg: MSG) 
+    (cf2: CF2) (sst: SS)
+    (cecfin2: (ECFIN2 CECFIN2)) 
+    (nwcf2: NWCF2) 
+    (nw: NW) (uss: USS) (prins: (A B Ps)) OCs}                
+    =>
+    {(newmsg: cf2(intr,A,B,ECFIN2))
+    (cf2: cf2(intr,A,B,ECFIN2)) 
+    (sst: SS)
+    (cecfin2: (ECFIN2 CECFIN2)) 
+    (nwcf2: (cf2(intr,A,B,ECFIN2) NWCF2)) 
+    (nw: (cf2(intr,A,B,ECFIN2) NW)) 
+    (uss: USS) (prins: (A B Ps)) OCs} .
+
+rl [fakeCfin22] :
+    {(newmsg: MSG) 
+    (cf2: CF2) (sst: SS)
+    (cpms: (PMS CPMS))    
+    (nwcf2: (cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
+                cfin2(A,B,I,C,R1,R1',pms(A,B,S)))) NWCF2)) 
+    (nw: NW) (uss: USS) OCs}                
+    =>
+    {(newmsg: cf2(intr,A,B,ecfin2(k(A,PMS,R1,R1'),
+                cfin2(A,B,I,C,R1,R1',PMS))))
+    (cf2: cf2(intr,A,B,ecfin2(k(A,PMS,R1,R1'),
+            cfin2(A,B,I,C,R1,R1',PMS)))) 
+    (sst: ss(A,B,I))
+    (cpms: (PMS CPMS))    
+    (nwcf2: (cf2(intr,A,B,ecfin2(k(A,PMS,R1,R1'),
+                cfin2(A,B,I,C,R1,R1',PMS))) 
+            cf2(A,A,B,ecfin2(k(A,pms(A,B,S),R1,R1'),
+                cfin2(A,B,I,C,R1,R1',pms(A,B,S)))) NWCF2)) 
+    (nw: (cf2(intr,A,B,ecfin2(k(A,PMS,R1,R1'),
+            cfin2(A,B,I,C,R1,R1',PMS))) NW)) 
+    (uss: (ss(A,B,I) USS)) OCs} .
+
+rl [fakeSfin21] :
+    {(newmsg: MSG) 
+    (sf2: SF2) (sst: SS)
+    (cesfin2: (esfin2(k(B,pms(A,B,S),R1,R1'),
+                sfin2(A,B,I,C,R1,R1',pms(A,B,S))) CESFIN2)) 
+    (nwsf2: NWSF2) 
+    (nw: NW) 
+    (uss: USS) OCs}        
+    =>
+    {(newmsg: sf2(intr,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
+                sfin2(A,B,I,C,R1,R1',pms(A,B,S)))))
+    (sf2: sf2(intr,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
+                sfin2(A,B,I,C,R1,R1',pms(A,B,S))))) 
+    (sst: ss(B,A,I))
+    (cesfin2: (esfin2(k(B,pms(A,B,S),R1,R1'),
+                sfin2(A,B,I,C,R1,R1',pms(A,B,S))) CESFIN2))     
+    (nwsf2: (sf2(intr,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
+                sfin2(A,B,I,C,R1,R1',pms(A,B,S)))) NWSF2)) 
+    (nw: (sf2(intr,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
+                sfin2(A,B,I,C,R1,R1',pms(A,B,S)))) NW)) 
+    (uss: (ss(B,A,I) USS)) OCs} .
+
+rl [fakeSfin22] :
+    {(newmsg: MSG) 
+    (sf2: SF2) (sst: SS)
+    (cpms: (PMS CPMS))    
+    (nwsf2: (sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
+                sfin2(A,B,I,C,R1,R1',pms(A,B,S)))) NWSF2)) 
+    (nw: NW) 
+    (uss: USS) OCs}                
+    =>
+    {(newmsg: sf2(intr,B,A,esfin2(k(B,PMS,R1,R1'),
+                sfin2(A,B,I,C,R1,R1',PMS))))
+    (sf2: sf2(intr,B,A,esfin2(k(B,PMS,R1,R1'),
+            sfin2(A,B,I,C,R1,R1',PMS)))) 
+    (sst: ss(B,A,I))
+    (cpms: (PMS CPMS))    
+    (nwsf2: (sf2(intr,B,A,esfin2(k(B,PMS,R1,R1'),
+                sfin2(A,B,I,C,R1,R1',PMS))) 
+            sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),
+                sfin2(A,B,I,C,R1,R1',pms(A,B,S)))) NWSF2)) 
+    (nw: (sf2(intr,B,A,esfin2(k(B,PMS,R1,R1'),
+            sfin2(A,B,I,C,R1,R1',PMS))) NW)) 
+    (uss: (ss(B,A,I) USS)) OCs} .
+
+endm
+eof
+*** us - used secrets
+*** uss - used session states between two principals
+*** ss(a,b,i) denotes the principal a’s session state 
+    --- identified by session ID i with principal b in the state.
+search [1,5] in TLS : init =>* {(cepms: (epms(k(B),pms(A,B,S)) CEPMS)) OCs} such that (owner(k(B)) == intr) .
+search [1,5] in TLS : init =>* {(cpms: (pms(A,B,S) CPMS)) OCs} such that not(A == intr or B == intr) .
+search [1,5] in TLS : init =>* {(nwsh: (sh(B,B,A,sr,I,C) NWSH)) OCs} .
+
+--- {(newmsg: (if C \in list(ch(A',A,B,R,L)) then sh(B,B,A,sr,I,C) else MSG fi))
+---     (sh: (if C \in list(ch(A',A,B,R,L)) then sh(B,B,A,sr,I,C) else SH fi)) 
+---     (ss: (A2,B2,I2))
+---     (cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
+---     (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
+---     (nwsh: (if C \in list(ch(A',A,B,R,L)) then (sh(B,B,A,sr,I,C) NWSH) else NWSH fi)) 
+---     (nw: (if C \in list(ch(A',A,B,R,L)) then (sh(B,B,A,sr,I,C) ch(A',A,B,R,L) NW) 
+---                                         else (ch(A',A,B,R,L) NW) fi)) 
+---     (uss: USS)
+---     (ui: (I UI)) (us: US)
+---     (rands: Rs) (ur: (cr Rs)) 
+---     (prins: (A B Ps)) OCs}  
