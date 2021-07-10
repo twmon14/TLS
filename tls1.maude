@@ -797,7 +797,7 @@ mod TLS is
   vars R R' R1 R1' : Rand .
   var Rs : Soup{Rand} .
 
-  vars A B A' B' A2 B2 Re : Prin .
+  vars A B A' B' A1 B1 A2 B2 Re : Prin .
   var Ps : Soup{Prin} .
   
   vars I I2 : Sid .
@@ -1236,9 +1236,33 @@ eof
 *** uss - used session states between two principals
 *** ss(a,b,i) denotes the principal a’s session state 
     --- identified by session ID i with principal b in the state.
-search [1,5] in TLS : init =>* {(cepms: (epms(k(B),pms(A,B,S)) CEPMS)) OCs} such that (owner(k(B)) == intr) .
+
+*** search
 search [1,5] in TLS : init =>* {(cpms: (pms(A,B,S) CPMS)) OCs} such that not(A == intr or B == intr) .
-search [1,5] in TLS : init =>* {(nw: (sh(B,B,A,sr,I,C) NW)) OCs} .
+
+search [1,5] in TLS : init =>* {(cepms: (EPMS CEPMS)) OCs} such that (owner(k(EPMS)) == intr) .
+
+search [1,5] in TLS : init =>* {(nw: (sf(B',B,A,esfin(k(B,pms(A,B,S),R,R'),sfin(A,B,I,L,C,R,R',pms(A,B,S)))) NW)) OCs}
+such that not ((A =/= intr) implies sf(B',B,A,esfin(k(B,pms(A,B,S),R,R'),sfin(A,B,I,L,C,R,R',pms(A,B,S)))) \in (sf(B',B,A,esfin(k(B,pms(A,B,S),R,R'),sfin(A,B,I,L,C,R,R',pms(A,B,S)))) NW)) .
+
+search [1,5] in TLS : init =>* {(cesfin: (esfin(k(B,pms(A,B,S),R,R'),sfin(A,B,I,L,C,R,R',pms(A,B,S))) CESFIN)) (nw: NW) OCs}
+such that not ((A =/= intr) implies (sf(B,B,A,esfin(k(B,pms(A,B,S),R,R'),sfin(A,B,I,L,C,R,R',pms(A,B,S)))) \in NW)) .
+
+search [1,5] in TLS : init =>* {(nw: (sf2(B',B,A,esfin2(k(B,pms(A,B,S),R1,R1'),sfin2(A,B,I,C,R1,R1',pms(A,B,S)))) NW)) OCs}
+such that not ((A =/= intr) implies sf2(B',B,A,esfin2(k(B,pms(A,B,S),R1,R1'),sfin2(A,B,I,C,R1,R1',pms(A,B,S)))) \in NW) .
+
+search [1,5] in TLS : init =>* {(cesfin2: (esfin2(k(B,pms(A,B,S),R1,R1'),sfin2(A,B,I,C,R1,R1',pms(A,B,S))) CESFIN2)) (nw: NW) OCs}
+such that not ((A =/= intr) implies (sf2(B,B,A,esfin2(k(B,pms(A,B,S),R1,R1'),sfin2(A,B,I,C,R1,R1',pms(A,B,S)))) \in NW)) .
+
+search [1,5] in TLS : init =>* {(nw: (sf(B,B,A,esfin(k(B,pms(A,B,S),R,R'),sfin(A,B,I,L,C,R,R',pms(A,B,S)))) NW)) OCs}
+such that not ((A =/= intr and B =/= intr) implies sh(B,B,A,R',I,C) \in NW) .
+
+search [1,5] in TLS : init =>* {(nw: (sf(B,B,A,esfin(k(B,pms(A,B,S),R,R'),sfin(A,B,I,L,C,R,R',pms(A,B,S)))) NW)) OCs}
+such that not ((A =/= intr and B =/= intr) implies ct(B,B,A,cert(B,k(B),sig(ca,B,k(B)))) \in NW) .
+
+search [1,5] in TLS : init =>* {(csig: (sig(ca,A,PK) CSIG)) OCs} such that not(PK == k(A)) .
+--- this is inv9.
+
 
 --- {(newmsg: (if C \in list(ch(A',A,B,R,L)) then sh(B,B,A,sr,I,C) else MSG fi))
 ---     (sh: (if C \in list(ch(A',A,B,R,L)) then sh(B,B,A,sr,I,C) else SH fi)) 
