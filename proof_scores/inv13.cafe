@@ -3542,198 +3542,12 @@ open INV .
 -- assumptions
   eq esfin1 \in cesfin(nw(p)) = true .
 
-  eq b1 = intruder .
-  eq p2 = b .
-  eq p1 = a .
-  eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
-  eq b = intruder .
-  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
-close
-
-open INV .
-  op p : -> Protocol .
-  ops a b b1 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
-  op k : -> PubKey .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin1 : -> EncSFin .
--- assumptions
-  eq esfin1 \in cesfin(nw(p)) = true .
-
-  eq b1 = intruder .
-  eq p2 = b .
-  eq p1 = a .
-  eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
-  eq (b = intruder) = false .
-  eq a = intruder .
-  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
-close
-
-open INV .
-  op p : -> Protocol .
-  ops a b b1 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
-  op k : -> PubKey .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin1 : -> EncSFin .
--- assumptions
-  eq esfin1 \in cesfin(nw(p)) = true .
-
-  eq b1 = intruder .
-  eq p2 = b .
-  eq p1 = a .
-  eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
-  eq (b = intruder) = false .
-  eq (a = intruder) = false .
-  eq esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) \in cesfin(nw(p)) = true .
-  red inv4(p,a,b,r1,r2,l,c,i,s) implies inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
-close
-
-open INV .
-  op p : -> Protocol .
-  ops a b b1 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
-  op k : -> PubKey .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin1 : -> EncSFin .
--- assumptions
-  eq esfin1 \in cesfin(nw(p)) = true .
-
-  eq b1 = intruder .
-  eq p2 = b .
-  eq p1 = a .
-  eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
-  eq (b = intruder) = false .
-  eq (a = intruder) = false .
-  eq esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) \in cesfin(nw(p)) = false .
-  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
-close
-
-open INV .
-  op p : -> Protocol .
-  ops a b b1 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
-  op k : -> PubKey .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin1 : -> EncSFin .
--- assumptions
-  eq esfin1 \in cesfin(nw(p)) = true .
-
-  eq b1 = intruder .
-  eq p2 = b .
-  eq p1 = a .
-  eq (esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) = false .
-  
-  eq esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) \in cesfin(nw(p)) = true .
-  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
-close
-
-open INV .
-  op p : -> Protocol .
-  ops a b b1 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
-  op k : -> PubKey .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin1 : -> EncSFin .
--- assumptions
-  eq esfin1 \in cesfin(nw(p)) = true .
-
-  eq b1 = intruder .
-  eq p2 = b .
-  eq p1 = a .
-  eq (esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) = false .
-  
-  eq esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) \in cesfin(nw(p)) = false .
-  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
-close
-
-open INV .
-  op p : -> Protocol .
-  ops a b b1 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
-  op k : -> PubKey .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin1 : -> EncSFin .
--- assumptions
-  eq esfin1 \in cesfin(nw(p)) = true .
-
-  eq b1 = intruder .
-  eq p2 = b .
-  eq (p1 = a) = false .
-  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
-close
-
-open INV .
-  op p : -> Protocol .
-  ops a b b1 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
-  op k : -> PubKey .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin1 : -> EncSFin .
--- assumptions
-  eq esfin1 \in cesfin(nw(p)) = true .
-
-  eq b1 = intruder .
-  eq (p2 = b) = false .
-  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
-close
-
-open INV .
-  op p : -> Protocol .
-  ops a b b1 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
-  op k : -> PubKey .
--- arbitrary objects
-  ops p1 p2 : -> Prin .
-  op esfin1 : -> EncSFin .
--- assumptions
-  eq esfin1 \in cesfin(nw(p)) = true .
-
-  eq (b1 = intruder) = false .
   eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
   eq a = intruder .
   eq a = p1 .
   eq b = intruder .
   eq b = p2 .
+  eq b1 = intruder . 
   red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
 close
 
@@ -3752,7 +3566,30 @@ open INV .
 -- assumptions
   eq esfin1 \in cesfin(nw(p)) = true .
 
-  eq (b1 = intruder) = false .
+  eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
+  eq a = intruder .
+  eq a = p1 .
+  eq b = intruder .
+  eq b = p2 .
+  eq (b1 = intruder) = false . 
+  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin1 : -> EncSFin .
+-- assumptions
+  eq esfin1 \in cesfin(nw(p)) = true .
+
   eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
   eq a = intruder .
   eq a = p1 .
@@ -3776,7 +3613,6 @@ open INV .
 -- assumptions
   eq esfin1 \in cesfin(nw(p)) = true .
 
-  eq (b1 = intruder) = false .
   eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
   eq a = intruder .
   eq a = p1 .
@@ -3799,7 +3635,6 @@ open INV .
 -- assumptions
   eq esfin1 \in cesfin(nw(p)) = true .
 
-  eq (b1 = intruder) = false .
   eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
   eq a = intruder .
   eq (a = p1) = false .
@@ -3821,11 +3656,10 @@ open INV .
 -- assumptions
   eq esfin1 \in cesfin(nw(p)) = true .
 
-  eq (b1 = intruder) = false .
   eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
   eq (a = intruder) = false .
-  eq esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) \in cesfin(nw(p)) = true .
-  red inv4(p,a,b,r1,r2,l,c,i,s) implies inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
+  eq esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))\in cesfin(nw(p)) = true . 
+    red inv4(p,a,b,r1,r2,l,c,i,s) implies inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
 close
 
 open INV .
@@ -3843,10 +3677,9 @@ open INV .
 -- assumptions
   eq esfin1 \in cesfin(nw(p)) = true .
 
-  eq (b1 = intruder) = false .
   eq esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) .
   eq (a = intruder) = false .
-  eq esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))) \in cesfin(nw(p)) = false .
+  eq esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))\in cesfin(nw(p)) = false .
   red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
 close
 
@@ -3863,11 +3696,9 @@ open INV .
   ops p1 p2 : -> Prin .
   op esfin1 : -> EncSFin .
 -- assumptions
-  eq esfin1 \in cesfin(nw(p)) = true .
-
-  eq (b1 = intruder) = false .
-  eq (esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) = false .
-  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
+    eq esfin1 \in cesfin(nw(p)) = true .
+    eq (esfin1 = esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) = false .
+    red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
 close
 
 open INV .
@@ -3883,8 +3714,8 @@ open INV .
   ops p1 p2 : -> Prin .
   op esfin1 : -> EncSFin .
 -- assumptions
-  eq esfin1 \in cesfin(nw(p)) = false .
-  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
+    eq esfin1 \in cesfin(nw(p)) = false .
+    red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
 close
 
 --> 18) fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1)
@@ -4612,7 +4443,7 @@ open INV .
   eq dst(m2) = intruder .
   red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,r1,r2,l,c,i,s,k) .
 close
- 
+
 open INV .
   op p : -> Protocol .
   ops a b b1 : -> Prin .
@@ -4660,9 +4491,9 @@ open INV .
   eq r2 = rand(m2) .
   eq a = dst(m2) .
   eq b = p2 .
-  eq k = k(p2) .
   eq pms(epms(m4)) = pms(dst(m2),p2,s) .
   eq (dst(m2) = intruder) = false .
+  eq k = k(p2) .
   red lm1(m3, ct(p2,p2,dst(m2),cert(p2,k,sig(ca,p2,k))), nw(p))
     implies inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,r1,r2,l,c,i,s,k) .
 close
@@ -4714,116 +4545,9 @@ open INV .
   eq r2 = rand(m2) .
   eq a = dst(m2) .
   eq b = p2 .
-  eq k = k(p2) .
-  eq (pms(epms(m4)) = pms(dst(m2),p2,s)) = false .
-  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,r1,r2,l,c,i,s,k) .
-close
-
-open INV .
-  op p : -> Protocol .
-  ops a b b1 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
-  op k : -> PubKey .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 m4 m5 : -> Msg .
-  op nw10 : -> Network .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m5 \in nw(p) = true .
-  eq m4 \in nw(p) = true .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq kx?(m4) = true .
-  eq cf?(m5) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq crt(m3) = p2 .
-  eq src(m3) = p2 .
-  eq dst(m3) = dst(m2) .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m4) = dst(m2) .
-  eq dst(m4) = p2 .
-  eq src(m5) = dst(m2) .
-  eq dst(m5) = p2 .
-  eq choice(m2) \in list(m1) = true .
-  eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
-  eq k(epms(m4)) = k(p2) .
-  eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
-                      cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-
-  eq r1 = rand(m1) .
-  eq i = sid(m2) .
-  eq l = list(m1) .
-  eq c = choice(m2) .
-  eq r2 = rand(m2) .
-  eq a = dst(m2) .
-  eq b = p2 .
-  eq (k = k(p2)) = false .
-  eq pms(epms(m4)) = pms(dst(m2),p2,s) .
-  eq dst(m2) = intruder .
-  red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,r1,r2,l,c,i,s,k) .
-close
-
-open INV .
-  op p : -> Protocol .
-  ops a b b1 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op l : -> ListOfChoices .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
-  op k : -> PubKey .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 m4 m5 : -> Msg .
-  op nw10 : -> Network .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m5 \in nw(p) = true .
-  eq m4 \in nw(p) = true .
-  eq ch?(m1) = true .
-  eq sh?(m2) = true .
-  eq ct?(m3) = true .
-  eq kx?(m4) = true .
-  eq cf?(m5) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq crt(m3) = p2 .
-  eq src(m3) = p2 .
-  eq dst(m3) = dst(m2) .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m4) = dst(m2) .
-  eq dst(m4) = p2 .
-  eq src(m5) = dst(m2) .
-  eq dst(m5) = p2 .
-  eq choice(m2) \in list(m1) = true .
-  eq cert(m3) = cert(p2,k(p2),sig(ca,p2,k(p2))) .
-  eq k(epms(m4)) = k(p2) .
-  eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
-                      cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
-
-  eq r1 = rand(m1) .
-  eq i = sid(m2) .
-  eq l = list(m1) .
-  eq c = choice(m2) .
-  eq r2 = rand(m2) .
-  eq a = dst(m2) .
-  eq b = p2 .
-  eq (k = k(p2)) = false .
   eq pms(epms(m4)) = pms(dst(m2),p2,s) .
   eq (dst(m2) = intruder) = false .
+  eq (k = k(p2)) = false .
   eq p2 = intruder .
   eq b1 = intruder .
   red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,r1,r2,l,c,i,s,k) .
@@ -4841,7 +4565,6 @@ open INV .
 -- arbitrary objects
   op p2 : -> Prin .
   ops m1 m2 m3 m4 m5 : -> Msg .
-  op nw10 : -> Network .
 -- assumptions
   eq m1 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -4877,9 +4600,9 @@ open INV .
   eq r2 = rand(m2) .
   eq a = dst(m2) .
   eq b = p2 .
-  eq (k = k(p2)) = false .
   eq pms(epms(m4)) = pms(dst(m2),p2,s) .
   eq (dst(m2) = intruder) = false .
+  eq (k = k(p2)) = false .
   eq p2 = intruder .
   eq (b1 = intruder) = false .
   red inv11(p,a,b1,k)
@@ -4933,9 +4656,9 @@ open INV .
   eq r2 = rand(m2) .
   eq a = dst(m2) .
   eq b = p2 .
-  eq (k = k(p2)) = false .
   eq pms(epms(m4)) = pms(dst(m2),p2,s) .
   eq (dst(m2) = intruder) = false .
+  eq (k = k(p2)) = false .
   eq (p2 = intruder) = false .
   eq sig(ca,p2,k)\in csig(nw(p)) = true .
   red inv9(p,b,k)
@@ -4989,9 +4712,9 @@ open INV .
   eq r2 = rand(m2) .
   eq a = dst(m2) .
   eq b = p2 .
-  eq (k = k(p2)) = false .
   eq pms(epms(m4)) = pms(dst(m2),p2,s) .
   eq (dst(m2) = intruder) = false .
+  eq (k = k(p2)) = false .
   eq (p2 = intruder) = false .
   eq sig(ca,p2,k)\in csig(nw(p)) = false .
   red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,r1,r2,l,c,i,s,k) .
@@ -5044,7 +4767,6 @@ open INV .
   eq r2 = rand(m2) .
   eq a = dst(m2) .
   eq b = p2 .
-  eq (k = k(p2)) = false .
   eq (pms(epms(m4)) = pms(dst(m2),p2,s)) = false .
   red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,r1,r2,l,c,i,s,k) .
 close
