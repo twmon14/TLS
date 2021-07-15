@@ -810,6 +810,9 @@ mod! NETWORK {
   ceq ESFIN2 \in cesfin2(M,NW) = true if (sf2?(M) and ESFIN2 = esfin2(M)) .
   ceq ESFIN2 \in cesfin2(M,NW) = ESFIN2 \in cesfin2(NW)
       if not(sf2?(M) and ESFIN2 = esfin2(M)) .
+  
+  -- ceq sf2(P1:Prin, P2:Prin, P3:Prin, ESFIN2) \in NW = false
+  -- if ESFIN2 \in cesfin2(NW) = false . 
 
   -- ceq ct(B1,B,A,cert(B,K,sig(ca,B,K))) \in nw(p) = true if nw(p) = ct(b1,b,a,cert(b,k,sig(ca,b,k))) , NW10 .
 
