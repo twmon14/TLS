@@ -42,7 +42,7 @@ open INV .
 
 	:apply(csb7)
 
-	:def csb8 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb8 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb8)
 
@@ -118,7 +118,7 @@ open INV .
 
 	:apply(csb16)
 
-	:def csb17 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb17 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb17)
 
@@ -226,7 +226,7 @@ open INV .
 
 	:apply(csb29)
 
-	:def csb30 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb30 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb30)
 
@@ -302,7 +302,7 @@ open INV .
 
 	:apply(csb38)
 
-	:def csb39 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb39 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb39)
 
@@ -378,7 +378,7 @@ open INV .
 
 	:apply(csb47)
 
-	:def csb48 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb48 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb48)
 
@@ -454,7 +454,7 @@ open INV .
 
 	:apply(csb56)
 
-	:def csb57 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb57 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb57)
 
@@ -466,7 +466,7 @@ open INV .
 
 	:apply(csb59)
 
-	:def csb60 = :ctf {eq P@PubKey  = k(P#Prin).}
+	:def csb60 = :ctf {eq P@PubKey  = k(P#Prin) .}
 
 	:apply(csb60)
 
@@ -568,11 +568,11 @@ open INV .
 
 	:apply(csb72)
 
-	:def csb73 = :ctf {eq dst(M2#Msg) = dst(M#Msg).}
+	:def csb73 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb73)
 
-	:def csb74 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb74 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb74)
 
@@ -580,7 +580,7 @@ open INV .
 
 	:apply(csb75)
 
-	:def csb76 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb76 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb76)
 
@@ -592,15 +592,15 @@ open INV .
 
 	:apply(csb78)
 
-	:def csb79 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb79 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb79)
 
-	:def csb80 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb80 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb80)
 
-	:def csb81 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)).}
+	:def csb81 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
 
 	:apply(csb81)
 
@@ -740,11 +740,11 @@ open INV .
 
 	:apply(csb93)
 
-	:def csb94 = :ctf {eq dst(M2#Msg) = dst(M#Msg).}
+	:def csb94 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb94)
 
-	:def csb95 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb95 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb95)
 
@@ -752,7 +752,7 @@ open INV .
 
 	:apply(csb96)
 
-	:def csb97 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb97 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb97)
 
@@ -764,15 +764,15 @@ open INV .
 
 	:apply(csb99)
 
-	:def csb100 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb100 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb100)
 
-:def csb101 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+:def csb101 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb101)
 
-	:def csb102 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)).}
+	:def csb102 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
 
 	:apply(csb102)
 
@@ -912,11 +912,11 @@ open INV .
 
 	:apply(csb114)
 
-	:def csb115 = :ctf {eq dst(M2#Msg) = dst(M#Msg).}
+	:def csb115 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb115)
 
-	:def csb116 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb116 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb116)
 
@@ -924,7 +924,7 @@ open INV .
 
 	:apply(csb117)
 
-	:def csb118 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb118 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb118)
 
@@ -936,15 +936,15 @@ open INV .
 
 	:apply(csb120)
 
-	:def csb121 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb121 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb121)
 
-	:def csb122 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb122 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb122)
 
-	:def csb123 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)).}
+	:def csb123 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
 
 	:apply(csb123)
 
@@ -1084,11 +1084,11 @@ open INV .
 
 	:apply(csb135)
 
-	:def csb136 = :ctf {eq dst(M2#Msg) = dst(M#Msg).}
+	:def csb136 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb136)
 
-	:def csb137 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb137 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb137)
 
@@ -1096,7 +1096,7 @@ open INV .
 
 	:apply(csb138)
 
-	:def csb139 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb139 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb139)
 
@@ -1108,15 +1108,15 @@ open INV .
 
 	:apply(csb141)
 
-	:def csb142 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb142 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb142)
 
-	:def csb143 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb143 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb143)
 
-	:def csb144 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)).}
+	:def csb144 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
 
 	:apply(csb144)
 
@@ -1256,11 +1256,11 @@ open INV .
 
 	:apply(csb156)
 
-	:def csb157 = :ctf {eq dst(M2#Msg) = dst(M#Msg).}
+	:def csb157 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb157)
 
-	:def csb158 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb158 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb158)
 
@@ -1268,7 +1268,7 @@ open INV .
 
 	:apply(csb159)
 
-	:def csb160 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb160 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb160)
 
@@ -1280,15 +1280,15 @@ open INV .
 
 	:apply(csb162)
 
-	:def csb163 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb163 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb163)
 
-	:def csb164 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb164 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb164)
 
-	:def csb165 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)).}
+	:def csb165 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
 
 	:apply(csb165)
 
@@ -1428,11 +1428,11 @@ open INV .
 
 	:apply(csb177)
 
-	:def csb178 = :ctf {eq dst(M2#Msg) = dst(M#Msg).}
+	:def csb178 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb178)
 
-	:def csb179 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb179 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb179)
 
@@ -1440,7 +1440,7 @@ open INV .
 
 	:apply(csb180)
 
-	:def csb181 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb181 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb181)
 
@@ -1452,15 +1452,15 @@ open INV .
 
 	:apply(csb183)
 
-	:def csb184 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb184 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb184)
 
-	:def csb185 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb185 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb185)
 
-	:def csb186 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)).}
+	:def csb186 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
 
 	:apply(csb186)
 
@@ -1578,7 +1578,7 @@ open INV .
 
 	:apply(csb192)
 
-	:def csb193 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb193 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb193)
 
@@ -1586,7 +1586,7 @@ open INV .
 
 	:apply(csb194)
 
-	:def csb195 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb195 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb195)
 
@@ -1598,11 +1598,11 @@ open INV .
 
 	:apply (rd)
 
-	:def csb197 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb197 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb197)
 
-	:def csb198 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret).}
+	:def csb198 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
 
 	:apply(csb198)
 
@@ -1678,7 +1678,7 @@ open INV .
 
 	:apply(csb204)
 
-	:def csb205 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb205 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb205)
 
@@ -1686,7 +1686,7 @@ open INV .
 
 	:apply(csb206)
 
-	:def csb207 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb207 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb207)
 
@@ -1698,11 +1698,11 @@ open INV .
 
 	:apply (rd)
 
-	:def csb209 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb209 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb209)
 
-	:def csb210 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret).}
+	:def csb210 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
 
 	:apply(csb210)
 
@@ -1778,7 +1778,7 @@ open INV .
 
 	:apply(csb216)
 
-	:def csb217 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb217 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb217)
 
@@ -1786,7 +1786,7 @@ open INV .
 
 	:apply(csb218)
 
-	:def csb219 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb219 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb219)
 
@@ -1798,11 +1798,11 @@ open INV .
 
 	:apply (rd)
 
-	:def csb221 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb221 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb221)
 
-	:def csb222 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret).}
+	:def csb222 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
 
 	:apply(csb222)
 
@@ -1878,7 +1878,7 @@ open INV .
 
 	:apply(csb228)
 
-	:def csb229 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb229 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb229)
 
@@ -1886,7 +1886,7 @@ open INV .
 
 	:apply(csb230)
 
-	:def csb231 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb231 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb231)
 
@@ -1898,11 +1898,11 @@ open INV .
 
 	:apply (rd)
 
-	:def csb233 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb233 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb233)
 
-	:def csb234 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret).}
+	:def csb234 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
 
 	:apply(csb234)
 
@@ -1978,7 +1978,7 @@ open INV .
 
 	:apply(csb240)
 
-	:def csb241 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb241 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb241)
 
@@ -1986,7 +1986,7 @@ open INV .
 
 	:apply(csb242)
 
-	:def csb243 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb243 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb243)
 
@@ -1998,11 +1998,11 @@ open INV .
 
 	:apply (rd)
 
-	:def csb245 = :ctf {eq choice(M0#Msg) = choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))).}
+	:def csb245 = :ctf {eq choice(M0#Msg) = choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) .}
 
 	:apply(csb245)
 
-	:def csb246 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret).}
+	:def csb246 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
 
 	:apply(csb246)
 
@@ -2086,7 +2086,7 @@ open INV .
 
 	:apply(csb253)
 
-	:def csb254 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb254 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb254)
 
@@ -2094,7 +2094,7 @@ open INV .
 
 	:apply(csb255)
 
-	:def csb256 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb256 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb256)
 
@@ -2106,11 +2106,11 @@ open INV .
 
 	:apply (rd)
 
-	:def csb258 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb258 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb258)
 
-	:def csb259 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret).}
+	:def csb259 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
 
 	:apply(csb259)
 
@@ -2254,7 +2254,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb268 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret).}
+	:def csb268 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret) .}
 
 	:apply(csb268)
 
@@ -2282,7 +2282,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb271 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret).}
+	:def csb271 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret) .}
 
 	:apply(csb271)
 
@@ -2310,7 +2310,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb274 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret).}
+	:def csb274 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret) .}
 
 	:apply(csb274)
 
@@ -2338,7 +2338,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb277 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret).}
+	:def csb277 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret) .}
 
 	:apply(csb277)
 
@@ -2366,7 +2366,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb280 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret).}
+	:def csb280 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret) .}
 
 	:apply(csb280)
 
@@ -2394,7 +2394,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb283 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret).}
+	:def csb283 = :ctf {eq pms(ss(P#Protocol,P#Prin,P0#Prin,S#Sid)) = pms(P#Prin,P0#Prin,S#Secret) .}
 
 	:apply(csb283)
 
@@ -2472,7 +2472,7 @@ open INV .
 
 	:apply(csb299)
 
-	:def csb300 = :ctf {eq dst(M2#Msg) = dst(M#Msg).}
+	:def csb300 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb300)
 
@@ -2484,11 +2484,11 @@ open INV .
 
 	:apply(csb302)
 
-	:def csb303 = :ctf {eq dst(M3#Msg) = dst(M#Msg).}
+	:def csb303 = :ctf {eq dst(M3#Msg) = dst(M#Msg) .}
 
 	:apply(csb303)
 
-	:def csb304 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb304 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb304)
 
@@ -2496,7 +2496,7 @@ open INV .
 
 	:apply(csb305)
 
-	:def csb306 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb306 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb306)
 
@@ -2504,7 +2504,7 @@ open INV .
 
 	:apply(csb307)
 
-	:def csb308 = :ctf {eq src(M4#Msg) = dst(M#Msg).}
+	:def csb308 = :ctf {eq src(M4#Msg) = dst(M#Msg) .}
 
 	:apply(csb308)
 
@@ -2516,23 +2516,23 @@ open INV .
 
 	:apply(csb310)
 
-	:def csb311 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb311 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb311)
 
-	:def csb312 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb312 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb312)
 
-	:def csb313 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)).}
+	:def csb313 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
 
 	:apply(csb313)
 
-	:def csb314 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb314 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb314)
 
-	:def csb315 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb315 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb315)
 
@@ -2732,7 +2732,7 @@ open INV .
 
 	:apply(csb331)
 
-	:def csb332 = :ctf {eq dst(M2#Msg) = dst(M#Msg).}
+	:def csb332 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb332)
 
@@ -2744,11 +2744,11 @@ open INV .
 
 	:apply(csb334)
 
-	:def csb335 = :ctf {eq dst(M3#Msg) = dst(M#Msg).}
+	:def csb335 = :ctf {eq dst(M3#Msg) = dst(M#Msg) .}
 
 	:apply(csb335)
 
-	:def csb336 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb336 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb336)
 
@@ -2756,7 +2756,7 @@ open INV .
 
 	:apply(csb337)
 
-	:def csb338 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb338 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb338)
 
@@ -2764,7 +2764,7 @@ open INV .
 
 	:apply(csb339)
 
-	:def csb340 = :ctf {eq src(M4#Msg) = dst(M#Msg).}
+	:def csb340 = :ctf {eq src(M4#Msg) = dst(M#Msg) .}
 
 	:apply(csb340)
 
@@ -2776,23 +2776,23 @@ open INV .
 
 	:apply(csb342)
 
-	:def csb343 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb343 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb343)
 
-	:def csb344 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb344 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb344)
 
-	:def csb345 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)).}
+	:def csb345 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
 
 	:apply(csb345)
 
-	:def csb346 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb346 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb346)
 
-	:def csb347 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb347 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb347)
 
@@ -2992,7 +2992,7 @@ open INV .
 
 	:apply(csb363)
 
-	:def csb364 = :ctf {eq dst(M2#Msg) = dst(M#Msg).}
+	:def csb364 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb364)
 
@@ -3004,11 +3004,11 @@ open INV .
 
 	:apply(csb366)
 
-	:def csb367 = :ctf {eq dst(M3#Msg) = dst(M#Msg).}
+	:def csb367 = :ctf {eq dst(M3#Msg) = dst(M#Msg) .}
 
 	:apply(csb367)
 
-	:def csb368 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb368 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb368)
 
@@ -3016,7 +3016,7 @@ open INV .
 
 	:apply(csb369)
 
-	:def csb370 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb370 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb370)
 
@@ -3024,7 +3024,7 @@ open INV .
 
 	:apply(csb371)
 
-	:def csb372 = :ctf {eq src(M4#Msg) = dst(M#Msg).}
+	:def csb372 = :ctf {eq src(M4#Msg) = dst(M#Msg) .}
 
 	:apply(csb372)
 
@@ -3036,23 +3036,23 @@ open INV .
 
 	:apply(csb374)
 
-	:def csb375 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb375 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb375)
 
-	:def csb376 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,server(cert(M1#Msg)),pubkey(cert(M1#Msg))).}
+	:def csb376 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,server(cert(M1#Msg)),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb376)
 
-	:def csb377 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)).}
+	:def csb377 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
 
 	:apply(csb377)
 
-	:def csb378 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb378 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb378)
 
-	:def csb379 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb379 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb379)
 
@@ -3252,7 +3252,7 @@ open INV .
 
 	:apply(csb395)
 
-	:def csb396 = :ctf {eq dst(M2#Msg) = dst(M#Msg).}
+	:def csb396 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb396)
 
@@ -3264,11 +3264,11 @@ open INV .
 
 	:apply(csb398)
 
-	:def csb399 = :ctf {eq dst(M3#Msg) = dst(M#Msg).}
+	:def csb399 = :ctf {eq dst(M3#Msg) = dst(M#Msg) .}
 
 	:apply(csb399)
 
-	:def csb400 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb400 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb400)
 
@@ -3276,7 +3276,7 @@ open INV .
 
 	:apply(csb401)
 
-	:def csb402 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb402 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb402)
 
@@ -3284,7 +3284,7 @@ open INV .
 
 	:apply(csb403)
 
-	:def csb404 = :ctf {eq src(M4#Msg) = dst(M#Msg).}
+	:def csb404 = :ctf {eq src(M4#Msg) = dst(M#Msg) .}
 
 	:apply(csb404)
 
@@ -3296,23 +3296,23 @@ open INV .
 
 	:apply(csb406)
 
-	:def csb407 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb407 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb407)
 
-	:def csb408 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,server(cert(M1#Msg)),pubkey(cert(M1#Msg))).}
+	:def csb408 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,server(cert(M1#Msg)),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb408)
 
-	:def csb409 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)).}
+	:def csb409 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
 
 	:apply(csb409)
 
-	:def csb410 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb410 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb410)
 
-	:def csb411 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb411 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb411)
 
@@ -3512,7 +3512,7 @@ open INV .
 
 	:apply(csb427)
 
-	:def csb428 = :ctf {eq dst(M2#Msg) = dst(M#Msg).}
+	:def csb428 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb428)
 
@@ -3524,11 +3524,11 @@ open INV .
 
 	:apply(csb430)
 
-	:def csb431 = :ctf {eq dst(M3#Msg) = dst(M#Msg).}
+	:def csb431 = :ctf {eq dst(M3#Msg) = dst(M#Msg) .}
 
 	:apply(csb431)
 
-	:def csb432 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb432 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb432)
 
@@ -3536,7 +3536,7 @@ open INV .
 
 	:apply(csb433)
 
-	:def csb434 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb434 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb434)
 
@@ -3544,7 +3544,7 @@ open INV .
 
 	:apply(csb435)
 
-	:def csb436 = :ctf {eq src(M4#Msg) = dst(M#Msg).}
+	:def csb436 = :ctf {eq src(M4#Msg) = dst(M#Msg) .}
 
 	:apply(csb436)
 
@@ -3556,23 +3556,23 @@ open INV .
 
 	:apply(csb438)
 
-	:def csb439 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb439 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb439)
 
-	:def csb440 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,server(cert(M1#Msg)),pubkey(cert(M1#Msg))).}
+	:def csb440 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,server(cert(M1#Msg)),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb440)
 
-	:def csb441 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)).}
+	:def csb441 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
 
 	:apply(csb441)
 
-	:def csb442 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb442 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb442)
 
-	:def csb443 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb443 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb443)
 
@@ -3772,7 +3772,7 @@ open INV .
 
 	:apply(csb459)
 
-	:def csb460 = :ctf {eq dst(M2#Msg) = dst(M#Msg).}
+	:def csb460 = :ctf {eq dst(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb460)
 
@@ -3784,11 +3784,11 @@ open INV .
 
 	:apply(csb462)
 
-	:def csb463 = :ctf {eq dst(M3#Msg) = dst(M#Msg).}
+	:def csb463 = :ctf {eq dst(M3#Msg) = dst(M#Msg) .}
 
 	:apply(csb463)
 
-	:def csb464 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb464 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb464)
 
@@ -3796,7 +3796,7 @@ open INV .
 
 	:apply(csb465)
 
-	:def csb466 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb466 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb466)
 
@@ -3804,7 +3804,7 @@ open INV .
 
 	:apply(csb467)
 
-	:def csb468 = :ctf {eq src(M4#Msg) = dst(M#Msg).}
+	:def csb468 = :ctf {eq src(M4#Msg) = dst(M#Msg) .}
 
 	:apply(csb468)
 
@@ -3816,23 +3816,23 @@ open INV .
 
 	:apply(csb470)
 
-	:def csb471 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb471 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb471)
 
-	:def csb472 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb472 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb472)
 
-	:def csb473 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)).}
+	:def csb473 = :ctf {eq epms(M2#Msg) = epms(pubkey(cert(M1#Msg)),pms(P#Prin,dst(M#Msg),S#Secret)) .}
 
 	:apply(csb473)
 
-	:def csb474 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb474 = :ctf {eq ecfin(M3#Msg) = ecfin(k(P#Prin,pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb474)
 
-	:def csb475 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb475 = :ctf {eq esfin(M4#Msg) = esfin(k(dst(M#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),sfin(P#Prin,dst(M#Msg),sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb475)
 
@@ -4018,11 +4018,11 @@ open INV .
 
 	:apply(csb487)
 
-	:def csb488 = :ctf {eq dst(M1#Msg) = dst(M#Msg).}
+	:def csb488 = :ctf {eq dst(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb488)
 
-	:def csb489 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb489 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb489)
 
@@ -4030,7 +4030,7 @@ open INV .
 
 	:apply(csb490)
 
-	:def csb491 = :ctf {eq src(M2#Msg) = dst(M#Msg).}
+	:def csb491 = :ctf {eq src(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb491)
 
@@ -4038,7 +4038,7 @@ open INV .
 
 	:apply(csb492)
 
-	:def csb493 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb493 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb493)
 
@@ -4050,19 +4050,19 @@ open INV .
 
 	:apply (rd)
 
-	:def csb495 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb495 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb495)
 
-	:def csb496 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret).}
+	:def csb496 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
 
 	:apply(csb496)
 
-	:def csb497 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))).}
+	:def csb497 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
 
 	:apply(csb497)
 
-	:def csb498 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))).}
+	:def csb498 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
 
 	:apply(csb498)
 
@@ -4206,11 +4206,11 @@ open INV .
 
 	:apply(csb510)
 
-	:def csb511 = :ctf {eq dst(M1#Msg) = dst(M#Msg).}
+	:def csb511 = :ctf {eq dst(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb511)
 
-	:def csb512 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb512 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb512)
 
@@ -4218,7 +4218,7 @@ open INV .
 
 	:apply(csb513)
 
-	:def csb514 = :ctf {eq src(M2#Msg) = dst(M#Msg).}
+	:def csb514 = :ctf {eq src(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb514)
 
@@ -4226,7 +4226,7 @@ open INV .
 
 	:apply(csb515)
 
-	:def csb516 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb516 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb516)
 
@@ -4238,19 +4238,19 @@ open INV .
 
 	:apply (rd)
 
-	:def csb518 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb518 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb518)
 
-	:def csb519 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret).}
+	:def csb519 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
 
 	:apply(csb519)
 
-	:def csb520 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))).}
+	:def csb520 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
 
 	:apply(csb520)
 
-	:def csb521 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))).}
+	:def csb521 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
 
 	:apply(csb521)
 
@@ -4394,11 +4394,11 @@ open INV .
 
 	:apply(csb533)
 
-	:def csb534 = :ctf {eq dst(M1#Msg) = dst(M#Msg).}
+	:def csb534 = :ctf {eq dst(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb534)
 
-	:def csb535 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb535 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb535)
 
@@ -4406,7 +4406,7 @@ open INV .
 
 	:apply(csb536)
 
-	:def csb537 = :ctf {eq src(M2#Msg) = dst(M#Msg).}
+	:def csb537 = :ctf {eq src(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb537)
 
@@ -4414,7 +4414,7 @@ open INV .
 
 	:apply(csb538)
 
-	:def csb539 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb539 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb539)
 
@@ -4426,19 +4426,19 @@ open INV .
 
 	:apply (rd)
 
-	:def csb541 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb541 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb541)
 
-	:def csb542 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret).}
+	:def csb542 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
 
 	:apply(csb542)
 
-	:def csb543 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))).}
+	:def csb543 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
 
 	:apply(csb543)
 
-	:def csb544 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))).}
+	:def csb544 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
 
 	:apply(csb544)
 
@@ -4582,11 +4582,11 @@ open INV .
 
 	:apply(csb556)
 
-	:def csb557 = :ctf {eq dst(M1#Msg) = dst(M#Msg).}
+	:def csb557 = :ctf {eq dst(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb557)
 
-	:def csb558 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb558 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb558)
 
@@ -4594,7 +4594,7 @@ open INV .
 
 	:apply(csb559)
 
-	:def csb560 = :ctf {eq src(M2#Msg) = dst(M#Msg).}
+	:def csb560 = :ctf {eq src(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb560)
 
@@ -4602,7 +4602,7 @@ open INV .
 
 	:apply(csb561)
 
-	:def csb562 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb562 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb562)
 
@@ -4614,19 +4614,19 @@ open INV .
 
 	:apply (rd)
 
-	:def csb564 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb564 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb564)
 
-	:def csb565 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret).}
+	:def csb565 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
 
 	:apply(csb565)
 
-	:def csb566 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))).}
+	:def csb566 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
 
 	:apply(csb566)
 
-	:def csb567 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))).}
+	:def csb567 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
 
 	:apply(csb567)
 
@@ -4770,11 +4770,11 @@ open INV .
 
 	:apply(csb579)
 
-	:def csb580 = :ctf {eq dst(M1#Msg) = dst(M#Msg).}
+	:def csb580 = :ctf {eq dst(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb580)
 
-	:def csb581 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb581 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb581)
 
@@ -4782,7 +4782,7 @@ open INV .
 
 	:apply(csb582)
 
-	:def csb583 = :ctf {eq src(M2#Msg) = dst(M#Msg).}
+	:def csb583 = :ctf {eq src(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb583)
 
@@ -4790,7 +4790,7 @@ open INV .
 
 	:apply(csb584)
 
-	:def csb585 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb585 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb585)
 
@@ -4802,19 +4802,19 @@ open INV .
 
 	:apply (rd)
 
-	:def csb587 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb587 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb587)
 
-	:def csb588 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret).}
+	:def csb588 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
 
 	:apply(csb588)
 
-	:def csb589 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))).}
+	:def csb589 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
 
 	:apply(csb589)
 
-	:def csb590 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))).}
+	:def csb590 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
 
 	:apply(csb590)
 
@@ -4958,11 +4958,11 @@ open INV .
 
 	:apply(csb602)
 
-	:def csb603 = :ctf {eq dst(M1#Msg) = dst(M#Msg).}
+	:def csb603 = :ctf {eq dst(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb603)
 
-	:def csb604 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb604 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb604)
 
@@ -4970,7 +4970,7 @@ open INV .
 
 	:apply(csb605)
 
-	:def csb606 = :ctf {eq src(M2#Msg) = dst(M#Msg).}
+	:def csb606 = :ctf {eq src(M2#Msg) = dst(M#Msg) .}
 
 	:apply(csb606)
 
@@ -4978,7 +4978,7 @@ open INV .
 
 	:apply(csb607)
 
-	:def csb608 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb608 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb608)
 
@@ -4990,19 +4990,19 @@ open INV .
 
 	:apply (rd)
 
-	:def csb610 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb610 = :ctf {eq choice(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb610)
 
-	:def csb611 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret).}
+	:def csb611 = :ctf {eq pms(ss(P#Protocol,P#Prin,dst(M#Msg),sid(M0#Msg))) = pms(P#Prin,dst(M#Msg),S#Secret) .}
 
 	:apply(csb611)
 
-	:def csb612 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))).}
+	:def csb612 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(P#Prin,pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),cfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
 
 	:apply(csb612)
 
-	:def csb613 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))).}
+	:def csb613 = :ctf {eq esfin2(M2#Msg) = esfin2(k(dst(M#Msg),pms(P#Prin,dst(M#Msg),S#Secret),rand(M#Msg),rand(M0#Msg)),sfin2(P#Prin,dst(M#Msg),sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(P#Prin,dst(M#Msg),S#Secret))) .}
 
 	:apply(csb613)
 
@@ -5156,7 +5156,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb621 = :ctf {eq P@PubKey  = k(P1@Prin).}
+	:def csb621 = :ctf {eq P@PubKey  = k(P1@Prin) .}
 
 	:apply(csb621)
 
@@ -5786,7 +5786,7 @@ open INV .
 
 	:apply(csb670)
 
-	:def csb671 = :ctf {eq E#EncSFin  = esfin(k(P1@Prin,pms(P@Prin,P1@Prin,S@Secret),R@Rand,R0@Rand),sfin(P@Prin,P1@Prin,S@Sid,L@ListOfChoices,C@Choice,R@Rand,R0@Rand,pms(P@Prin,P1@Prin,S@Secret))).}
+	:def csb671 = :ctf {eq E#EncSFin  = esfin(k(P1@Prin,pms(P@Prin,P1@Prin,S@Secret),R@Rand,R0@Rand),sfin(P@Prin,P1@Prin,S@Sid,L@ListOfChoices,C@Choice,R@Rand,R0@Rand,pms(P@Prin,P1@Prin,S@Secret))) .}
 
 	:apply(csb671)
 
@@ -5796,15 +5796,15 @@ open INV .
 
 	:imp [tls5] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply (rd)
+	:apply (rd) -- b = intr
 
 	:def csb673 = :ctf {eq P@Prin  = intruder .}
 
-	:apply(csb673)
+	:apply(csb673) -- a = intr
 
 	:imp [tls5] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply (rd)
+	:apply (rd) -- b = intr ) = false
 
 	:def csb674 = :ctf [esfin(k(P1@Prin,pms(P@Prin,P1@Prin,S@Secret),R@Rand,R0@Rand),sfin(P@Prin,P1@Prin,S@Sid,L@ListOfChoices,C@Choice,R@Rand,R0@Rand,pms(P@Prin,P1@Prin,S@Secret)))\in cesfin(nw(P#Protocol)) .]
 
@@ -5838,9 +5838,9 @@ open INV .
 
 	:imp [tls5] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply (rd)
+	:apply (rd) -- p2 = b
 
-	:def csb676 = :ctf {eq E#EncSFin  = esfin(k(P1@Prin,pms(P@Prin,P1@Prin,S@Secret),R@Rand,R0@Rand),sfin(P@Prin,P1@Prin,S@Sid,L@ListOfChoices,C@Choice,R@Rand,R0@Rand,pms(P@Prin,P1@Prin,S@Secret))).}
+	:def csb676 = :ctf {eq E#EncSFin  = esfin(k(P1@Prin,pms(P@Prin,P1@Prin,S@Secret),R@Rand,R0@Rand),sfin(P@Prin,P1@Prin,S@Sid,L@ListOfChoices,C@Choice,R@Rand,R0@Rand,pms(P@Prin,P1@Prin,S@Secret))) .}
 
 	:apply(csb676)
 
@@ -5916,7 +5916,7 @@ open INV .
 
 	:apply(csb684)
 
-	:def csb685 = :ctf {eq E#EncSFin  = esfin(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin(P@Prin,P0@Prin,S@Sid,L@ListOfChoices,C@Choice,R@Rand,R0@Rand,pms(P@Prin,P0@Prin,S@Secret))).}
+	:def csb685 = :ctf {eq E#EncSFin  = esfin(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin(P@Prin,P0@Prin,S@Sid,L@ListOfChoices,C@Choice,R@Rand,R0@Rand,pms(P@Prin,P0@Prin,S@Secret))) .}
 
 	:apply(csb685)
 
@@ -5925,7 +5925,7 @@ open INV .
 	:apply(csb686)
 
 	:def csb687 = :ctf {eq sf(intruder,P#Prin,P0#Prin,esfin(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin(P@Prin,P0@Prin,S@Sid,L@ListOfChoices,C@Choice,R@Rand,R0@Rand,pms(P@Prin,P0@Prin,S@Secret)))) = sf(P0@Prin,P0@Prin,P@Prin,
-    esfin(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin(P@Prin,P0@Prin,S@Sid,L@ListOfChoices,C@Choice,R@Rand,R0@Rand,pms(P@Prin,P0@Prin,S@Secret)))).}
+    esfin(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin(P@Prin,P0@Prin,S@Sid,L@ListOfChoices,C@Choice,R@Rand,R0@Rand,pms(P@Prin,P0@Prin,S@Secret)))) .}
 
 	:apply(csb687)
 
@@ -6065,7 +6065,7 @@ open INV .
 
 	:apply(csb702)
 
-	:def csb703 = :ctf {eq P#Pms  = pms(P0#Prin,P#Prin,S@Secret).}
+	:def csb703 = :ctf {eq P#Pms  = pms(P0#Prin,P#Prin,S@Secret) .}
 
 	:apply(csb703)
 
@@ -6459,7 +6459,7 @@ open INV .
 
 	:apply(csb735)
 
-	:def csb736 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb736 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb736)
 
@@ -6467,7 +6467,7 @@ open INV .
 
 	:apply(csb737)
 
-	:def csb738 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb738 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb738)
 
@@ -6479,7 +6479,7 @@ open INV .
 
 	:apply(csb740)
 
-	:def csb741 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb741 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb741)
 
@@ -6487,11 +6487,11 @@ open INV .
 
 	:apply(csb742)
 
-	:def csb743 = :ctf {eq sig(ca,intruder,pubkey(cert(M1#Msg))) = sig(cert(M1#Msg)).}
+	:def csb743 = :ctf {eq sig(ca,intruder,pubkey(cert(M1#Msg))) = sig(cert(M1#Msg)) .}
 
 	:apply(csb743)
 
-	:def csb744 = :ctf {eq P@Pms  = pms(P#Prin,intruder,S#Secret).}
+	:def csb744 = :ctf {eq P@Pms  = pms(P#Prin,intruder,S#Secret) .}
 
 	:apply(csb744)
 
@@ -6507,11 +6507,11 @@ open INV .
 
 	:apply (rd)
 
-	:def csb745 = :ctf {eq pubkey(cert(M1#Msg)) = k(dst(M#Msg)).}
+	:def csb745 = :ctf {eq pubkey(cert(M1#Msg)) = k(dst(M#Msg)) .}
 
 	:apply(csb745)
 
-	:def csb746 = :ctf {eq sig(ca,dst(M#Msg),k(dst(M#Msg))) = sig(cert(M1#Msg)).}
+	:def csb746 = :ctf {eq sig(ca,dst(M#Msg),k(dst(M#Msg))) = sig(cert(M1#Msg)) .}
 
 	:apply(csb746)
 
@@ -6523,7 +6523,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb747 = :ctf {eq sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) = sig(cert(M1#Msg)).}
+	:def csb747 = :ctf {eq sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) = sig(cert(M1#Msg)) .}
 
 	:apply(csb747)
 
@@ -6633,7 +6633,7 @@ open INV .
 
 	:apply(csb756)
 
-	:def csb757 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb757 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb757)
 
@@ -6641,7 +6641,7 @@ open INV .
 
 	:apply(csb758)
 
-	:def csb759 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb759 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb759)
 
@@ -6653,11 +6653,11 @@ open INV .
 
 	:apply(csb761)
 
-	:def csb762 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb762 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb762)
 
-	:def csb763 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb763 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb763)
 
@@ -6765,7 +6765,7 @@ open INV .
 
 	:apply(csb772)
 
-	:def csb773 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb773 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb773)
 
@@ -6773,7 +6773,7 @@ open INV .
 
 	:apply(csb774)
 
-	:def csb775 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb775 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb775)
 
@@ -6785,11 +6785,11 @@ open INV .
 
 	:apply(csb777)
 
-	:def csb778 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb778 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb778)
 
-	:def csb779 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb779 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb779)
 
@@ -6897,7 +6897,7 @@ open INV .
 
 	:apply(csb788)
 
-	:def csb789 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb789 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb789)
 
@@ -6905,7 +6905,7 @@ open INV .
 
 	:apply(csb790)
 
-	:def csb791 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb791 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb791)
 
@@ -6917,11 +6917,11 @@ open INV .
 
 	:apply(csb793)
 
-	:def csb794 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb794 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb794)
 
-	:def csb795 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb795 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb795)
 
@@ -7029,7 +7029,7 @@ open INV .
 
 	:apply(csb804)
 
-	:def csb805 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb805 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb805)
 
@@ -7037,7 +7037,7 @@ open INV .
 
 	:apply(csb806)
 
-	:def csb807 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb807 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb807)
 
@@ -7049,11 +7049,11 @@ open INV .
 
 	:apply(csb809)
 
-	:def csb810 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb810 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb810)
 
-	:def csb811 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb811 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb811)
 
@@ -7161,7 +7161,7 @@ open INV .
 
 	:apply(csb820)
 
-	:def csb821 = :ctf {eq src(M0#Msg) = dst(M#Msg).}
+	:def csb821 = :ctf {eq src(M0#Msg) = dst(M#Msg) .}
 
 	:apply(csb821)
 
@@ -7169,7 +7169,7 @@ open INV .
 
 	:apply(csb822)
 
-	:def csb823 = :ctf {eq src(M1#Msg) = dst(M#Msg).}
+	:def csb823 = :ctf {eq src(M1#Msg) = dst(M#Msg) .}
 
 	:apply(csb823)
 
@@ -7181,11 +7181,11 @@ open INV .
 
 	:apply(csb825)
 
-	:def csb826 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg).}
+	:def csb826 = :ctf {eq server(cert(M1#Msg)) = dst(M#Msg) .}
 
 	:apply(csb826)
 
-	:def csb827 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))).}
+	:def csb827 = :ctf {eq sig(cert(M1#Msg)) = sig(ca,dst(M#Msg),pubkey(cert(M1#Msg))) .}
 
 	:apply(csb827)
 
@@ -7311,11 +7311,11 @@ open INV .
 
 	:apply(csb841)
 
-	:def csb842 = :ctf {eq dst(M1#Msg) = dst(M0#Msg).}
+	:def csb842 = :ctf {eq dst(M1#Msg) = dst(M0#Msg) .}
 
 	:apply(csb842)
 
-	:def csb843 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb843 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb843)
 
@@ -7323,7 +7323,7 @@ open INV .
 
 	:apply(csb844)
 
-	:def csb845 = :ctf {eq src(M2#Msg) = dst(M0#Msg).}
+	:def csb845 = :ctf {eq src(M2#Msg) = dst(M0#Msg) .}
 
 	:apply(csb845)
 
@@ -7331,7 +7331,7 @@ open INV .
 
 	:apply(csb846)
 
-	:def csb847 = :ctf {eq src(M3#Msg) = dst(M0#Msg).}
+	:def csb847 = :ctf {eq src(M3#Msg) = dst(M0#Msg) .}
 
 	:apply(csb847)
 
@@ -7343,15 +7343,15 @@ open INV .
 
 	:apply(csb849)
 
-	:def csb850 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))).}
+	:def csb850 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))) .}
 
 	:apply(csb850)
 
-	:def csb851 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin).}
+	:def csb851 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin) .}
 
 	:apply(csb851)
 
-	:def csb852 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb852 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb852)
 
@@ -7515,11 +7515,11 @@ open INV .
 
 	:apply(csb866)
 
-	:def csb867 = :ctf {eq dst(M1#Msg) = dst(M0#Msg).}
+	:def csb867 = :ctf {eq dst(M1#Msg) = dst(M0#Msg) .}
 
 	:apply(csb867)
 
-	:def csb868 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb868 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb868)
 
@@ -7527,7 +7527,7 @@ open INV .
 
 	:apply(csb869)
 
-	:def csb870 = :ctf {eq src(M2#Msg) = dst(M0#Msg).}
+	:def csb870 = :ctf {eq src(M2#Msg) = dst(M0#Msg) .}
 
 	:apply(csb870)
 
@@ -7535,7 +7535,7 @@ open INV .
 
 	:apply(csb871)
 
-	:def csb872 = :ctf {eq src(M3#Msg) = dst(M0#Msg).}
+	:def csb872 = :ctf {eq src(M3#Msg) = dst(M0#Msg) .}
 
 	:apply(csb872)
 
@@ -7547,15 +7547,15 @@ open INV .
 
 	:apply(csb874)
 
-	:def csb875 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))).}
+	:def csb875 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))) .}
 
 	:apply(csb875)
 
-	:def csb876 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin).}
+	:def csb876 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin) .}
 
 	:apply(csb876)
 
-	:def csb877 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb877 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb877)
 
@@ -7719,11 +7719,11 @@ open INV .
 
 	:apply(csb891)
 
-	:def csb892 = :ctf {eq dst(M1#Msg) = dst(M0#Msg).}
+	:def csb892 = :ctf {eq dst(M1#Msg) = dst(M0#Msg) .}
 
 	:apply(csb892)
 
-	:def csb893 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb893 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb893)
 
@@ -7731,7 +7731,7 @@ open INV .
 
 	:apply(csb894)
 
-	:def csb895 = :ctf {eq src(M2#Msg) = dst(M0#Msg).}
+	:def csb895 = :ctf {eq src(M2#Msg) = dst(M0#Msg) .}
 
 	:apply(csb895)
 
@@ -7739,7 +7739,7 @@ open INV .
 
 	:apply(csb896)
 
-	:def csb897 = :ctf {eq src(M3#Msg) = dst(M0#Msg).}
+	:def csb897 = :ctf {eq src(M3#Msg) = dst(M0#Msg) .}
 
 	:apply(csb897)
 
@@ -7751,39 +7751,39 @@ open INV .
 
 	:apply(csb899)
 
-	:def csb900 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))).}
+	:def csb900 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))) .}
 
 	:apply(csb900)
 
-	:def csb901 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin).}
+	:def csb901 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin) .}
 
 	:apply(csb901)
 
-	:def csb902 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb902 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb902)
 
-	:def csb903 = :ctf {eq R@Rand  = rand(M#Msg).}
+	:def csb903 = :ctf {eq R@Rand  = rand(M#Msg) .}
 
 	:apply(csb903)
 
-	:def csb904 = :ctf {eq S@Sid  = sid(M0#Msg).}
+	:def csb904 = :ctf {eq S@Sid  = sid(M0#Msg) .}
 
 	:apply(csb904)
 
-	:def csb905 = :ctf {eq L@ListOfChoices  = list(M#Msg).}
+	:def csb905 = :ctf {eq L@ListOfChoices  = list(M#Msg) .}
 
 	:apply(csb905)
 
-	:def csb906 = :ctf {eq C@Choice  = choice(M0#Msg).}
+	:def csb906 = :ctf {eq C@Choice  = choice(M0#Msg) .}
 
 	:apply(csb906)
 
-	:def csb907 = :ctf {eq R0@Rand  = rand(M0#Msg).}
+	:def csb907 = :ctf {eq R0@Rand  = rand(M0#Msg) .}
 
 	:apply(csb907)
 
-	:def csb908 = :ctf {eq P@Prin  = dst(M0#Msg).}
+	:def csb908 = :ctf {eq P@Prin  = dst(M0#Msg) .}
 
 	:apply(csb908)
 
@@ -7791,7 +7791,7 @@ open INV .
 
 	:apply(csb909)
 
-	:def csb910 = :ctf {eq pms(epms(M2#Msg)) = pms(dst(M0#Msg),P#Prin,S@Secret).}
+	:def csb910 = :ctf {eq pms(epms(M2#Msg)) = pms(dst(M0#Msg),P#Prin,S@Secret) .}
 
 	:apply(csb910)
 
@@ -7799,7 +7799,7 @@ open INV .
 
 	:apply(csb911)
 
-	:def csb912 = :ctf {eq P@PubKey  = k(P#Prin).}
+	:def csb912 = :ctf {eq P@PubKey  = k(P#Prin) .}
 
 	:apply(csb912)
 
@@ -7811,7 +7811,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb913 = :ctf {eq P@PubKey  = k(P#Prin).}
+	:def csb913 = :ctf {eq P@PubKey  = k(P#Prin) .}
 
 	:apply(csb913)
 
@@ -7851,7 +7851,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb917 = :ctf {eq P@PubKey  = k(P#Prin).}
+	:def csb917 = :ctf {eq P@PubKey  = k(P#Prin) .}
 
 	:apply(csb917)
 
@@ -8047,11 +8047,11 @@ open INV .
 
 	:apply(csb931)
 
-	:def csb932 = :ctf {eq dst(M1#Msg) = dst(M0#Msg).}
+	:def csb932 = :ctf {eq dst(M1#Msg) = dst(M0#Msg) .}
 
 	:apply(csb932)
 
-	:def csb933 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb933 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb933)
 
@@ -8059,7 +8059,7 @@ open INV .
 
 	:apply(csb934)
 
-	:def csb935 = :ctf {eq src(M2#Msg) = dst(M0#Msg).}
+	:def csb935 = :ctf {eq src(M2#Msg) = dst(M0#Msg) .}
 
 	:apply(csb935)
 
@@ -8067,7 +8067,7 @@ open INV .
 
 	:apply(csb936)
 
-	:def csb937 = :ctf {eq src(M3#Msg) = dst(M0#Msg).}
+	:def csb937 = :ctf {eq src(M3#Msg) = dst(M0#Msg) .}
 
 	:apply(csb937)
 
@@ -8079,35 +8079,35 @@ open INV .
 
 	:apply(csb939)
 
-	:def csb940 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))).}
+	:def csb940 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))) .}
 
 	:apply(csb940)
 
-	:def csb941 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin).}
+	:def csb941 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin) .}
 
 	:apply(csb941)
 
-	:def csb942 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb942 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb942)
 
-	:def csb943 = :ctf {eq R@Rand  = rand(M#Msg).}
+	:def csb943 = :ctf {eq R@Rand  = rand(M#Msg) .}
 
 	:apply(csb943)
 
-	:def csb944 = :ctf {eq P@Prin  = dst(M0#Msg).}
+	:def csb944 = :ctf {eq P@Prin  = dst(M0#Msg) .}
 
 	:apply(csb944)
 
-	:def csb945 = :ctf {eq S@Sid  = sid(M0#Msg).}
+	:def csb945 = :ctf {eq S@Sid  = sid(M0#Msg) .}
 
 	:apply(csb945)
 
-	:def csb946 = :ctf {eq L@ListOfChoices  = list(M#Msg).}
+	:def csb946 = :ctf {eq L@ListOfChoices  = list(M#Msg) .}
 
 	:apply(csb946)
 
-	:def csb947 = :ctf {eq C@Choice  = choice(M0#Msg).}
+	:def csb947 = :ctf {eq C@Choice  = choice(M0#Msg) .}
 
 	:apply(csb947)
 
@@ -8115,11 +8115,11 @@ open INV .
 
 	:apply(csb948)
 
-	:def csb949 = :ctf {eq R0@Rand  = rand(M0#Msg).}
+	:def csb949 = :ctf {eq R0@Rand  = rand(M0#Msg) .}
 
 	:apply(csb949)
 
-	:def csb950 = :ctf {eq pms(epms(M2#Msg)) = pms(P@Prin,P0@Prin,S@Secret).}
+	:def csb950 = :ctf {eq pms(epms(M2#Msg)) = pms(P@Prin,P0@Prin,S@Secret) .}
 
 	:apply(csb950)
 
@@ -8127,7 +8127,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb951 = :ctf {eq pms(epms(M2#Msg)) = pms(dst(M0#Msg),P#Prin,S@Secret).}
+	:def csb951 = :ctf {eq pms(epms(M2#Msg)) = pms(dst(M0#Msg),P#Prin,S@Secret) .}
 
 	:apply(csb951)
 
@@ -8332,11 +8332,11 @@ open INV .
 
 	:apply(csb966)
 
-	:def csb967 = :ctf {eq dst(M1#Msg) = dst(M0#Msg).}
+	:def csb967 = :ctf {eq dst(M1#Msg) = dst(M0#Msg) .}
 
 	:apply(csb967)
 
-	:def csb968 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb968 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb968)
 
@@ -8344,7 +8344,7 @@ open INV .
 
 	:apply(csb969)
 
-	:def csb970 = :ctf {eq src(M2#Msg) = dst(M0#Msg).}
+	:def csb970 = :ctf {eq src(M2#Msg) = dst(M0#Msg) .}
 
 	:apply(csb970)
 
@@ -8352,7 +8352,7 @@ open INV .
 
 	:apply(csb971)
 
-	:def csb972 = :ctf {eq src(M3#Msg) = dst(M0#Msg).}
+	:def csb972 = :ctf {eq src(M3#Msg) = dst(M0#Msg) .}
 
 	:apply(csb972)
 
@@ -8364,39 +8364,39 @@ open INV .
 
 	:apply(csb974)
 
-	:def csb975 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))).}
+	:def csb975 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))) .}
 
 	:apply(csb975)
 
-	:def csb976 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin).}
+	:def csb976 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin) .}
 
 	:apply(csb976)
 
-	:def csb977 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb977 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb977)
 
-	:def csb978 = :ctf {eq R@Rand  = rand(M#Msg).}
+	:def csb978 = :ctf {eq R@Rand  = rand(M#Msg) .}
 
 	:apply(csb978)
 
-	:def csb979 = :ctf {eq S@Sid  = sid(M0#Msg).}
+	:def csb979 = :ctf {eq S@Sid  = sid(M0#Msg) .}
 
 	:apply(csb979)
 
-	:def csb980 = :ctf {eq L@ListOfChoices  = list(M#Msg).}
+	:def csb980 = :ctf {eq L@ListOfChoices  = list(M#Msg) .}
 
 	:apply(csb980)
 
-	:def csb981 = :ctf {eq C@Choice  = choice(M0#Msg).}
+	:def csb981 = :ctf {eq C@Choice  = choice(M0#Msg) .}
 
 	:apply(csb981)
 
-	:def csb982 = :ctf {eq R0@Rand  = rand(M0#Msg).}
+	:def csb982 = :ctf {eq R0@Rand  = rand(M0#Msg) .}
 
 	:apply(csb982)
 
-	:def csb983 = :ctf {eq P@Prin  = dst(M0#Msg).}
+	:def csb983 = :ctf {eq P@Prin  = dst(M0#Msg) .}
 
 	:apply(csb983)
 
@@ -8404,7 +8404,7 @@ open INV .
 
 	:apply(csb984)
 
-	:def csb985 = :ctf {eq pms(dst(M0#Msg),P#Prin,S@Secret) = pms(epms(M2#Msg)).}
+	:def csb985 = :ctf {eq pms(dst(M0#Msg),P#Prin,S@Secret) = pms(epms(M2#Msg)) .}
 
 	:apply(csb985)
 
@@ -8600,11 +8600,11 @@ open INV .
 
 	:apply(csb999)
 
-	:def csb1000 = :ctf {eq dst(M1#Msg) = dst(M0#Msg).}
+	:def csb1000 = :ctf {eq dst(M1#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1000)
 
-	:def csb1001 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb1001 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1001)
 
@@ -8612,7 +8612,7 @@ open INV .
 
 	:apply(csb1002)
 
-	:def csb1003 = :ctf {eq src(M2#Msg) = dst(M0#Msg).}
+	:def csb1003 = :ctf {eq src(M2#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1003)
 
@@ -8620,7 +8620,7 @@ open INV .
 
 	:apply(csb1004)
 
-	:def csb1005 = :ctf {eq src(M3#Msg) = dst(M0#Msg).}
+	:def csb1005 = :ctf {eq src(M3#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1005)
 
@@ -8632,15 +8632,15 @@ open INV .
 
 	:apply(csb1007)
 
-	:def csb1008 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))).}
+	:def csb1008 = :ctf {eq cert(M1#Msg) = cert(P#Prin,k(P#Prin),sig(ca,P#Prin,k(P#Prin))) .}
 
 	:apply(csb1008)
 
-	:def csb1009 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin).}
+	:def csb1009 = :ctf {eq k(epms(M2#Msg)) = k(P#Prin) .}
 
 	:apply(csb1009)
 
-	:def csb1010 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))).}
+	:def csb1010 = :ctf {eq ecfin(M3#Msg) = ecfin(k(dst(M0#Msg),pms(epms(M2#Msg)),rand(M#Msg),rand(M0#Msg)),cfin(dst(M0#Msg),P#Prin,sid(M0#Msg),list(M#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(epms(M2#Msg)))) .}
 
 	:apply(csb1010)
 
@@ -8782,7 +8782,7 @@ open INV .
 
 	:apply(csb1018)
 
-	:def csb1019 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb1019 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1019)
 
@@ -8790,7 +8790,7 @@ open INV .
 
 	:apply(csb1020)
 
-	:def csb1021 = :ctf {eq src(M1#Msg) = dst(M0#Msg).}
+	:def csb1021 = :ctf {eq src(M1#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1021)
 
@@ -8798,7 +8798,7 @@ open INV .
 
 	:apply(csb1022)
 
-	:def csb1023 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb1023 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb1023)
 
@@ -8810,12 +8810,12 @@ open INV .
 
 	:apply (rd)
 
-	:def csb1025 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb1025 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb1025)
 
 	:def csb1026 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(dst(M0#Msg),pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))),rand(M#Msg),rand(M0#Msg)),cfin2(dst(M0#Msg),P#Prin,sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(ss(P#Protocol,dst(
-    M0#Msg),P#Prin,sid(M0#Msg))))).}
+    M0#Msg),P#Prin,sid(M0#Msg))))) .}
 
 	:apply(csb1026)
 
@@ -8915,7 +8915,7 @@ open INV .
 
 	:apply(csb1034)
 
-	:def csb1035 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb1035 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1035)
 
@@ -8923,7 +8923,7 @@ open INV .
 
 	:apply(csb1036)
 
-	:def csb1037 = :ctf {eq src(M1#Msg) = dst(M0#Msg).}
+	:def csb1037 = :ctf {eq src(M1#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1037)
 
@@ -8931,7 +8931,7 @@ open INV .
 
 	:apply(csb1038)
 
-	:def csb1039 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb1039 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb1039)
 
@@ -8943,12 +8943,12 @@ open INV .
 
 	:apply (rd)
 
-	:def csb1041 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb1041 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb1041)
 
 	:def csb1042 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(dst(M0#Msg),pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))),rand(M#Msg),rand(M0#Msg)),cfin2(dst(M0#Msg),P#Prin,sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(ss(P#Protocol,dst(
-    M0#Msg),P#Prin,sid(M0#Msg))))).}
+    M0#Msg),P#Prin,sid(M0#Msg))))) .}
 
 	:apply(csb1042)
 
@@ -9048,7 +9048,7 @@ open INV .
 
 	:apply(csb1050)
 
-	:def csb1051 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb1051 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1051)
 
@@ -9056,7 +9056,7 @@ open INV .
 
 	:apply(csb1052)
 
-	:def csb1053 = :ctf {eq src(M1#Msg) = dst(M0#Msg).}
+	:def csb1053 = :ctf {eq src(M1#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1053)
 
@@ -9064,7 +9064,7 @@ open INV .
 
 	:apply(csb1054)
 
-	:def csb1055 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb1055 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb1055)
 
@@ -9076,12 +9076,12 @@ open INV .
 
 	:apply (rd)
 
-	:def csb1057 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb1057 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb1057)
 
 	:def csb1058 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(dst(M0#Msg),pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))),rand(M#Msg),rand(M0#Msg)),cfin2(dst(M0#Msg),P#Prin,sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(ss(P#Protocol,dst(
-    M0#Msg),P#Prin,sid(M0#Msg))))).}
+    M0#Msg),P#Prin,sid(M0#Msg))))) .}
 
 	:apply(csb1058)
 
@@ -9181,7 +9181,7 @@ open INV .
 
 	:apply(csb1066)
 
-	:def csb1067 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb1067 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1067)
 
@@ -9189,7 +9189,7 @@ open INV .
 
 	:apply(csb1068)
 
-	:def csb1069 = :ctf {eq src(M1#Msg) = dst(M0#Msg).}
+	:def csb1069 = :ctf {eq src(M1#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1069)
 
@@ -9197,7 +9197,7 @@ open INV .
 
 	:apply(csb1070)
 
-	:def csb1071 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb1071 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb1071)
 
@@ -9209,12 +9209,12 @@ open INV .
 
 	:apply (rd)
 
-	:def csb1073 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb1073 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb1073)
 
 	:def csb1074 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(dst(M0#Msg),pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))),rand(M#Msg),rand(M0#Msg)),cfin2(dst(M0#Msg),P#Prin,sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(ss(P#Protocol,dst(
-    M0#Msg),P#Prin,sid(M0#Msg))))).}
+    M0#Msg),P#Prin,sid(M0#Msg))))) .}
 
 	:apply(csb1074)
 
@@ -9314,7 +9314,7 @@ open INV .
 
 	:apply(csb1082)
 
-	:def csb1083 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb1083 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1083)
 
@@ -9322,7 +9322,7 @@ open INV .
 
 	:apply(csb1084)
 
-	:def csb1085 = :ctf {eq src(M1#Msg) = dst(M0#Msg).}
+	:def csb1085 = :ctf {eq src(M1#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1085)
 
@@ -9330,7 +9330,7 @@ open INV .
 
 	:apply(csb1086)
 
-	:def csb1087 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb1087 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb1087)
 
@@ -9342,12 +9342,12 @@ open INV .
 
 	:apply (rd)
 
-	:def csb1089 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb1089 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb1089)
 
 	:def csb1090 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(dst(M0#Msg),pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))),rand(M#Msg),rand(M0#Msg)),cfin2(dst(M0#Msg),P#Prin,sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(ss(P#Protocol,dst(
-    M0#Msg),P#Prin,sid(M0#Msg))))).}
+    M0#Msg),P#Prin,sid(M0#Msg))))) .}
 
 	:apply(csb1090)
 
@@ -9447,7 +9447,7 @@ open INV .
 
 	:apply(csb1098)
 
-	:def csb1099 = :ctf {eq src(M#Msg) = dst(M0#Msg).}
+	:def csb1099 = :ctf {eq src(M#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1099)
 
@@ -9455,7 +9455,7 @@ open INV .
 
 	:apply(csb1100)
 
-	:def csb1101 = :ctf {eq src(M1#Msg) = dst(M0#Msg).}
+	:def csb1101 = :ctf {eq src(M1#Msg) = dst(M0#Msg) .}
 
 	:apply(csb1101)
 
@@ -9463,7 +9463,7 @@ open INV .
 
 	:apply(csb1102)
 
-	:def csb1103 = :ctf {eq sid(M#Msg) = sid(M0#Msg).}
+	:def csb1103 = :ctf {eq sid(M#Msg) = sid(M0#Msg) .}
 
 	:apply(csb1103)
 
@@ -9475,12 +9475,12 @@ open INV .
 
 	:apply (rd)
 
-	:def csb1105 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg).}
+	:def csb1105 = :ctf {eq choice(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))) = choice(M0#Msg) .}
 
 	:apply(csb1105)
 
 	:def csb1106 = :ctf {eq ecfin2(M1#Msg) = ecfin2(k(dst(M0#Msg),pms(ss(P#Protocol,dst(M0#Msg),P#Prin,sid(M0#Msg))),rand(M#Msg),rand(M0#Msg)),cfin2(dst(M0#Msg),P#Prin,sid(M0#Msg),choice(M0#Msg),rand(M#Msg),rand(M0#Msg),pms(ss(P#Protocol,dst(
-    M0#Msg),P#Prin,sid(M0#Msg))))).}
+    M0#Msg),P#Prin,sid(M0#Msg))))) .}
 
 	:apply(csb1106)
 
