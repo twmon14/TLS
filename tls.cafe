@@ -779,8 +779,12 @@ mod! NETWORK {
   
   ceq ct(P1:Prin, P2:Prin, P3:Prin, cert(P4:Prin, K:PubKey, G)) \in NW = false
     if G \in csig(NW) = false .
-   
-  --
+  
+  -- ceq sig(cert(M)) \in csig(NW) = false if (ct?(M) and M \in NW = false) .
+  -- ceq sig(P6:Prin, P5:Prin, K2:PubKey) \in csig(NW) = false
+  -- if ct(P1:Prin, P2:Prin, P3:Prin, cert(P4:Prin, K:PubKey, sig(P6:Prin, P5:Prin, K2:PubKey))) \in NW = false . 
+  
+  
   -- cepms
   eq EPMS \in cepms(void) = false .
   ceq EPMS \in cepms(M,NW) = true if (kx?(M) and not(owner(k(epms(M))) = intruder) and EPMS = epms(M)) .
