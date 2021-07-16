@@ -1,0 +1,683 @@
+-- since inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) reduce to true, I omit it
+
+--> HERE, FALSE
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,intruder,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = false .
+
+-- replace all b with intruder in the equations above
+-- TODO: change the order of equation properly
+  eq b = intruder . 
+  eq b2 = intruder . -- replace all b2 with intruder
+  eq g = sig(ca,intruder,k) . -- replace all g with sig(ca,intruder,k)
+  eq p2 = intruder .
+  eq p1 = a .
+  eq pk = k .
+
+  eq sf(b3,intruder,a,esfin(k(intruder,pms(a,intruder,s),r1,r2),sfin(a,intruder,i,l,c,r1,r2,pms(a,intruder,s)))) \in nw(p) = true .
+  eq sh(intruder,intruder,a,r2,i,c) \in nw(p) = true .
+  
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,intruder,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = false .
+
+  eq b = intruder .
+  eq b2 = intruder .
+  eq g = sig(ca,intruder,k) .
+  eq p2 = intruder .
+  eq p1 = a .
+  eq pk = k .
+
+  eq sf(b3,intruder,a,esfin(k(intruder,pms(a,intruder,s),r1,r2),sfin(a,intruder,i,l,c,r1,r2,pms(a,intruder,s)))) \in nw(p) = true .
+  eq sh(intruder,intruder,a,r2,i,c) \in nw(p) = false .
+
+  -- TODO: use 2 lemmas
+  red inv12(p,a,b,b1,r1,r2,l,c,i,s) and inv3(p,a,b,b3,r1,r2,l,c,i,s) . --> false
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,intruder,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = false .
+
+  eq b = intruder .
+  eq b2 = intruder .
+  eq g = sig(ca,intruder,k) .
+  eq p2 = intruder .
+  eq p1 = a .
+  eq pk = k .
+
+  eq sf(b3,intruder,a,esfin(k(intruder,pms(a,intruder,s),r1,r2),sfin(a,intruder,i,l,c,r1,r2,pms(a,intruder,s)))) \in nw(p) = false .
+  
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,intruder,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = false .
+
+  eq b = intruder .
+  eq b2 = intruder .
+  eq g = sig(ca,intruder,k) .
+  eq p2 = intruder .
+  eq p1 = a .
+  eq (pk = k) = false .
+
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,intruder,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = false .
+
+  eq b = intruder .
+  eq b2 = intruder .
+  eq g = sig(ca,intruder,k) .
+  eq p2 = intruder .
+  eq (p1 = a) = false .
+
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,intruder,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = false .
+
+  eq b = intruder .
+  eq b2 = intruder .
+  eq g = sig(ca,intruder,k) .
+  eq (p2 = intruder) = false .
+
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+--> 
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq g \in csig(nw(p)) = true .
+
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = false .
+
+  eq b = intruder .
+  eq b2 = intruder .
+  eq (g = sig(ca,intruder,k)) = false . -- need to change all sig(ca,intruder,k) back to g (line 208). TODO: change the order of equations properly 
+
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq g \in csig(nw(p)) = true .
+
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = false .
+
+  eq b = intruder .
+  eq (b2 = intruder) = false . -- again, change intruder back to b2 (line 238)
+
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq (b = intruder) = false .
+  eq g = sig(ca,b,k) . -- again, replace g with sig(ca,b,k). TODO, again, you need to change the order of equations properly
+  eq p2 = b .
+  eq p1 = a .
+  eq pk = k .
+
+  eq b2 = intruder . -- again, replace b2 with intruder. TODO, again, you need to change the order of equations properly
+
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq sh(b,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq (b = intruder) = false .
+  eq g = sig(ca,b,k) .
+  eq p2 = b .
+  eq p1 = a .
+  eq pk = k .
+
+  eq b2 = intruder .
+
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq sh(b,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq k(b) = k .
+  red inv8(p,a,b,r1,r2,l,c,i,s) . -- TODO: use a lemma
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq (b = intruder) = false .
+  eq g = sig(ca,b,k) .
+  eq p2 = b .
+  eq p1 = a .
+  eq pk = k .
+
+  eq b2 = intruder .
+
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq sh(b,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq (k(b) = k) = false .
+  
+  red inv9(p,b,k) . -- use inv9 as a lemma
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq (b = intruder) = false .
+  eq g = sig(ca,b,k) .
+  eq p2 = b .
+  eq p1 = a .
+  eq pk = k .
+
+  eq b2 = intruder .
+
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq sh(b,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = false .
+  
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s) . -- again, use inv3 as a lemma
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq (b = intruder) = false .
+  eq g = sig(ca,b,k) .
+  eq p2 = b .
+  eq p1 = a .
+  eq pk = k .
+
+  eq b2 = intruder .
+
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq sh(b,b,a,r2,i,c) \in nw(p) = false .
+  eq sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  
+  red inv12(p,a,b,b1,r1,r2,l,c,i,s) . -- again, use inv12 as a lemma
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq (b = intruder) = false .
+  eq g = sig(ca,b,k) .
+  eq p2 = b .
+  eq p1 = a .
+  eq pk = k .
+
+  eq b2 = intruder .
+
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq sh(b,b,a,r2,i,c) \in nw(p) = false .
+  eq sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = false .
+  
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s) . -- again, use inv3 as a lemma
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(intruder,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq (b = intruder) = false .
+  eq g = sig(ca,b,k) .
+  eq p2 = b .
+  eq p1 = a .
+  eq pk = k .
+
+  eq b2 = intruder .
+
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = false .
+  
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq (b = intruder) = false .
+  eq g = sig(ca,b,k) .
+  eq p2 = b .
+  eq p1 = a .
+  eq pk = k .
+
+  eq (b2 = intruder) = false .
+
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq (b = intruder) = false .
+  eq g = sig(ca,b,k) .
+  eq p2 = b .
+  eq p1 = a .
+  eq (pk = k) = false .
+
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq (b = intruder) = false .
+  eq g = sig(ca,b,k) .
+  eq p2 = b .
+  eq (p1 = a) = false .
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq sig(ca,b,k) \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq (b = intruder) = false .
+  eq g = sig(ca,b,k) .
+  eq (p2 = b) = false .
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq g \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq (b = intruder) = false .
+  eq (g = sig(ca,b,k)) = false .
+  red inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq g \in csig(nw(p)) = true .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = false .
+
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)
+    implies inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
+  eq (a = intruder) = false .
+  eq g \in csig(nw(p)) = false .
+
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)
+    implies inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+
+eof
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s) .
+  red inv13(p,a,b,b2,r1,r2,l,c,i,s,k) .
+  red inv12(p,a,b,b1,r1,r2,l,c,i,s) .
+  red inv8(p,a,b,r1,r2,l,c,i,s) .
