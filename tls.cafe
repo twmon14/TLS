@@ -755,7 +755,7 @@ mod! NETWORK {
   op cesfin2 : Network -> ColEncSFin2
   --
   vars NW NW10 : Network
-  var M M2 : Msg
+  vars M M2 : Msg
   var PMS : Pms
   var G : Sig
   var EPMS : EncPms
