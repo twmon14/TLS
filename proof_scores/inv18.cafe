@@ -3239,6 +3239,201 @@ open INV .
   red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
 close
 
+--> 20) fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1)
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 = pms(a,b,s) .
+  eq a = intruder .
+  red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 = pms(a,b,s) .
+  eq (a = intruder) = false .
+  eq b = intruder .
+  eq pms(a,intruder,s) \in cpms(nw(p)) = true .
+  eq b1 = intruder .
+  red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 = pms(a,b,s) .
+  eq (a = intruder) = false .
+  eq b = intruder .
+  eq pms(a,intruder,s) \in cpms(nw(p)) = true .
+  eq (b1 = intruder) = false .
+  eq sh2(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  red inv15(p,a,b1,r2,c,i) 
+    implies inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) . 
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 = pms(a,b,s) .
+  eq (a = intruder) = false .
+  eq b = intruder .
+  eq pms(a,intruder,s) \in cpms(nw(p)) = true .
+  eq (b1 = intruder) = false .
+  eq sh2(b1,intruder,a,r2,i,c) \in nw(p) = false .
+  red inv18(p,a,b,b1,b2,r1,r2,c,i,s) 
+    implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 = pms(a,b,s) .
+  eq (a = intruder) = false .
+  eq b = intruder .
+  eq pms(a,intruder,s) \in cpms(nw(p)) = false .
+  red inv18(p,a,b,b1,b2,r1,r2,c,i,s) 
+    implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 = pms(a,b,s) .
+  eq (a = intruder) = false .
+  eq (b = intruder) = false .
+  eq pms(a,b,s) \in cpms(nw(p)) = true .
+  red inv1(p,pms(a,b,s))
+    implies inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq pms1 = pms(a,b,s) .
+  eq (a = intruder) = false .
+  eq (b = intruder) = false .
+  eq pms(a,b,s) \in cpms(nw(p)) = false .
+  red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq (pms1 = pms(a,b,s)) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  red inv18(p,a,b,b1,b2,r1,r2,c,i,s) 
+    implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+-- assumptions
+  eq (pms1 = pms(a,b,s)) = false .
+  eq pms1 \in cpms(nw(p)) = false .
+  red inv18(p,a,b,b1,b2,r1,r2,c,i,s) 
+    implies inv18(fakeSfin22(p,p2,p1,i1,c1,r3,r4,pms1),a,b,b1,b2,r1,r2,c,i,s) .
+close
+
 --> 21) fakeShello(p,p2,p1,r3,i1,c1)
 open INV .
   op p : -> Protocol .
