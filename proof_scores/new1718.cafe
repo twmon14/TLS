@@ -176,7 +176,7 @@ red inv8(p,a,b,r1,r2,l,c,i,s)
   red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 close
 
-eof
+
 -- ok
 open INV .
   op p : -> Protocol .
