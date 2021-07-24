@@ -8262,44 +8262,4 @@ open INV .
   red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello2(p,p2,r3,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 close
 
-
-eof
-
--- red lm1(m3, ct(p2,p2,dst(m2),cert(p2,k(p2),sig(ca,p2,k(p2)))), nw(p)) .
---   red lm1(m2, sh(p2,p2,dst(m2),rand(m2),sid(m2),choice(m2)), nw(p)) .
---   red inv1(p,pms(a,b,s)) .
---   red inv3(p,a,b,b1,r1,r2,l,c,i,s) .
---   red inv4(p,a,b,r1,r2,l,c,i,s) .
---   red inv12(p,a,b,b1,r1,r2,l,c,i,s) .
---   red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
---   red inv1(p,pms(a,b,s))
---     implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
---   red inv3(p,a,b,b1,r1,r2,l,c,i,s)
---     implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
---   red inv12(p,a,b,b1,r1,r2,l,c,i,s)
---     implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
---   red inv13(p,a,b,b1,r1,r2,l,c,i,s,k)
---     implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
---   red inv3(p,a,b,b1,r1,r2,l,c,i,s) and inv12(p,a,b,b1,r1,r2,l,c,i,s) .
---   red inv12(p,a,b,b1,r1,r2,l,c,i,s) and inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
---   red inv3(p,a,b,b1,r1,r2,l,c,i,s) and inv13(p,a,b,b1,r1,r2,l,c,i,s,k) .
---   red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
---   red inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
-  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
---   red inv3(p,a,b,b1,r1,r2,l,c,i,s) implies inv12(p,a,b,b1,r1,r2,l,c,i,s) implies inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
---     implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
--- red inv3(p,a,b,b1,r1,r2,l,c,i,s) implies inv12(p,a,b,b1,r1,r2,l,c,i,s)
---     implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
--- red inv12(p,a,b,b1,r1,r2,l,c,i,s) implies inv13(p,a,b,b2,r1,r2,l,c,i,s,k)
---     implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
--- red inv3(p,a,b,b1,r1,r2,l,c,i,s) implies inv13(p,a,b,b1,r1,r2,l,c,i,s,k)
---     implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
--- red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
--- red inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
--- red inv8(p,a,b,r1,r2,l,c,i,s)
---     implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
---   red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
---   red lm1(m2, sh(p2,p2,dst(m2),rand(m2),sid(m2),choice(m2)), nw(p))
---   implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
--- red lm1(m3, ct(p2,p2,dst(m2),cert(p2,k(p2),sig(ca,p2,k(p2)))), nw(p))
---   implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+-- Q.E.D
