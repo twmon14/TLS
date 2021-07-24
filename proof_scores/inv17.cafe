@@ -4782,6 +4782,318 @@ open INV .
   red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin1(p,p2,p1,esfin1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 close
 
+--> 18) fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1)
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq a = intruder .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq b = intruder .
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = true .
+  eq sf(b3,intruder,a,esfin(k(intruder,pms(a,intruder,s),r1,r2),sfin(a,intruder,i,l,c,r1,r2,pms(a,intruder,s)))) \in nw(p) = true .
+  eq ct(intruder,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = true .
+  eq sh(intruder,intruder,a,r2,i,c) \in nw(p) = true .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq b = intruder .
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = true .
+  eq sf(b3,intruder,a,esfin(k(intruder,pms(a,intruder,s),r1,r2),sfin(a,intruder,i,l,c,r1,r2,pms(a,intruder,s)))) \in nw(p) = true .
+  eq ct(intruder,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = true .
+  eq sh(intruder,intruder,a,r2,i,c) \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq b = intruder .
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = true .
+  eq sf(b3,intruder,a,esfin(k(intruder,pms(a,intruder,s),r1,r2),sfin(a,intruder,i,l,c,r1,r2,pms(a,intruder,s)))) \in nw(p) = true .
+  eq ct(intruder,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq b = intruder .
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = true .
+  eq sf(b3,intruder,a,esfin(k(intruder,pms(a,intruder,s),r1,r2),sfin(a,intruder,i,l,c,r1,r2,pms(a,intruder,s)))) \in nw(p) = false .
+  eq b1 = intruder . 
+  eq b2 = intruder .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq b = intruder .
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = true .
+  eq sf(b3,intruder,a,esfin(k(intruder,pms(a,intruder,s),r1,r2),sfin(a,intruder,i,l,c,r1,r2,pms(a,intruder,s)))) \in nw(p) = false .
+  eq b1 = intruder . 
+  eq (b2 = intruder) = false .
+  red inv11(p,a,b2,k) implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq b = intruder .
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = true .
+  eq sf(b3,intruder,a,esfin(k(intruder,pms(a,intruder,s),r1,r2),sfin(a,intruder,i,l,c,r1,r2,pms(a,intruder,s)))) \in nw(p) = false .
+  eq (b1 = intruder) = false . 
+  red inv10(p,a,b1,r2,c,i) implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq b = intruder .
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,intruder,a,cert(intruder,k,sig(ca,intruder,k))) \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq b = intruder .
+  eq sh(b1,intruder,a,r2,i,c) \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq (b = intruder) = false .
+
+  eq pms1 = pms(a,b,s) .
+  eq pms(a,b,s) \in cpms(nw(p)) = true .
+
+  red inv1(p,pms(a,b,s)) implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq (b = intruder) = false .
+
+  eq pms1 = pms(a,b,s) .
+  eq pms(a,b,s) \in cpms(nw(p)) = false .
+
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq (b = intruder) = false .
+
+  eq (pms1 = pms(a,b,s)) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
 --> 19) fakeSfin21(p,p2,p1,esfin21)
 open INV .
   op p : -> Protocol .
@@ -7399,6 +7711,432 @@ open INV .
 -- assumptions
   eq m1 \in nw(p) = false .
   red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin2(p,p2,m1,m2,m3),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+--> 26) shello(p,p2,r3,i1,c1,m1)
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = true .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = true .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = true .
+  eq a = intruder .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+  op pms1 : -> Pms .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = true .
+  eq (a = intruder) = false .
+
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sh(b,b,a,r2,i,c) \in nw(p) = true .
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+  op pms1 : -> Pms .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = true .
+  eq (a = intruder) = false .
+
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sh(b,b,a,r2,i,c) \in nw(p) = true .
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+  op pms1 : -> Pms .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = true .
+  eq (a = intruder) = false .
+
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sh(b,b,a,r2,i,c) \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+  op pms1 : -> Pms .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = true .
+  eq (a = intruder) = false .
+
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+
+  red inv13(p,a,b,b2,r1,r2,l,c,i,s,k) implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+  op pms1 : -> Pms .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = true .
+  eq (a = intruder) = false .
+
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = false .
+  
+  eq sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))))\in nw(p) = true .
+ 
+  red inv13(p,a,b,b2,r1,r2,l,c,i,s,k) implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+  op pms1 : -> Pms .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = true .
+  eq (a = intruder) = false .
+
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = false .
+
+  eq sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s))))\in nw(p) = false .
+
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s) implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+  op pms1 : -> Pms .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = true .
+  eq (a = intruder) = false .
+
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = false .
+
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+  op pms1 : -> Pms .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = true .
+  eq (a = intruder) = false .
+
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq dst(m1) = p2 .
+  eq c1 \in list(m1) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = true .
+  eq (dst(m1) = p2) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = true .
+  eq ch?(m1) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  op p2 : -> Prin .
+  op r3 : -> Rand .
+  op i1 : -> Sid .
+  op c1 : -> Choice .
+  op m1 : -> Msg .
+-- assumptions
+  eq r3 \in ur(p) = false .
+  eq i1 \in ui(p) = false .
+  eq m1 \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(shello(p,p2,r3,i1,c1,m1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 close
 
 --> 27) shello2(p,p2,r3,m1)
