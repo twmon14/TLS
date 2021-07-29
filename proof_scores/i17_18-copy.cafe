@@ -1,0 +1,237 @@
+--> see the file proof17-cs first
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq a = intruder .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sh(b,b,a,r2,i,c) \in nw(p) = true .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sh(b,b,a,r2,i,c) \in nw(p) = false .
+  eq sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  red inv12(p,a,b,b1,r1,r2,l,c,i,s) .
+  -- red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sh(b,b,a,r2,i,c) \in nw(p) = false .
+  eq sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = false .
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s) .
+  -- red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+  eq sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  red inv13(p,a,b,b2,r1,r2,l,c,i,s,k) .
+  -- red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = true .
+  eq ct(b,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+  eq sf(b,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = false .
+  red inv3(p,a,b,b3,r1,r2,l,c,i,s) .
+  -- red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+--> HERE, see copy2 file
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = true .
+  eq sf(b3,b,a,esfin(k(b,pms(a,b,s),r1,r2),sfin(a,b,i,l,c,r1,r2,pms(a,b,s)))) \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = true .
+  eq ct(b2,b,a,cert(b,k,sig(ca,b,k))) \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = true .
+  eq sh(b1,b,a,r2,i,c) \in nw(p) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+  ops p1 p2 : -> Prin .
+  op i1 : -> Sid .
+  op l1 : -> ListOfChoices .
+  op c1 : -> Choice .
+  ops r3 r4 : -> Rand .
+  op pms1 : -> Pms .
+  eq (a = intruder) = false .
+  eq pms1 \in cpms(nw(p)) = false .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
