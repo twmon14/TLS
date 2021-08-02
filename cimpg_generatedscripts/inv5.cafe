@@ -1,3 +1,4 @@
+--  proof finished
 open INV .
 	:goal{
 		eq [tls :nonexec] : inv2(P:Protocol,E:EncPms) = true .
