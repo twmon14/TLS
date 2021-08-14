@@ -1,11 +1,11 @@
--- I) Base case
+--  I) Base case
 open INV .
   :id(tls)
   op x : -> Pms .
   red inv1(init,x) .
 close
 
--- II) Inductive cases
+--  II) Inductive cases
 --> 1) cert(p,p2,m1,m2)
 open INV .
   :id(tls)
@@ -15,7 +15,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -182,7 +182,7 @@ open INV .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  -- eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
+  --  eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -3026,7 +3026,7 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq dst(m1) = intruder .
   eq sig(ca,intruder,pubkey(cert(m3))) = sig(cert(m3)) .
---
+-- 
   eq x = pms(p1,intruder,s1) .
   red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
@@ -3057,7 +3057,7 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq dst(m1) = intruder .
   eq sig(ca,intruder,pubkey(cert(m3))) = sig(cert(m3)) .
---
+-- 
   eq (x = pms(p1,intruder,s1)) = false .
   red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
@@ -3088,7 +3088,7 @@ open INV .
   eq server(cert(m3)) = dst(m1) .
   eq dst(m1) = intruder .
   eq (sig(ca,intruder,pubkey(cert(m3))) = sig(cert(m3))) = false .
---
+-- 
   red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
@@ -3119,7 +3119,7 @@ open INV .
   eq (dst(m1) = intruder) = false .
   eq pubkey(cert(m3)) = k(dst(m1)) .
   eq sig(ca,dst(m1),k(dst(m1))) = sig(cert(m3)) .
---
+-- 
   red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
@@ -3150,7 +3150,7 @@ open INV .
   eq (dst(m1) = intruder) = false .
   eq pubkey(cert(m3)) = k(dst(m1)) .
   eq (sig(ca,dst(m1),k(dst(m1))) = sig(cert(m3))) = false .
---
+-- 
   red inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
 
@@ -3181,7 +3181,7 @@ open INV .
   eq (dst(m1) = intruder) = false .
   eq (pubkey(cert(m3)) = k(dst(m1))) = false .
   eq sig(ca,dst(m1),pubkey(cert(m3))) = sig(cert(m3)) .
---
+-- 
   red inv9(p,dst(m1),pubkey(cert(m3))) 
     implies inv1(p,x) implies inv1(kexch(p,p1,s1,m1,m2,m3),x) .
 close
@@ -4700,15 +4700,15 @@ open INV .
   red inv1(p,x) implies inv1(shello2(p,p2,r3,m1),x) .
 close
 
--- Q.E.D.
--- I) Base case
+--  Q.E.D.
+--  I) Base case
 open INV .
   :id(tls)
   op x : -> EncPms .
   red inv2(init,x) .
 close
 
--- II) Inductive cases
+--  II) Inductive cases
 --> 1) cert(p,p2,m1,m2)
 open INV .
   :id(tls)
@@ -4718,7 +4718,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -4885,7 +4885,7 @@ open INV .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  -- eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
+  --  eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -7727,7 +7727,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
---
+-- 
   eq pubkey(cert(m3)) = k(dst(m1)) .
   eq x = epms(k(dst(m1)),pms(p1,dst(m1),s1)) .
   eq dst(m1) = intruder .
@@ -7759,7 +7759,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
---
+-- 
   eq pubkey(cert(m3)) = k(dst(m1)) .
   eq x = epms(k(dst(m1)),pms(p1,dst(m1),s1)) .
   eq (dst(m1) = intruder) = false .
@@ -7791,7 +7791,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
---
+-- 
   eq pubkey(cert(m3)) = k(dst(m1)) .
   eq (x = epms(k(dst(m1)),pms(p1,dst(m1),s1))) = false .
   red inv2(p,x) implies inv2(kexch(p,p1,s1,m1,m2,m3),x) .
@@ -7822,7 +7822,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
---
+-- 
   eq (pubkey(cert(m3)) = k(dst(m1))) = false .
   eq x = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
   eq intruder = owner(pubkey(cert(m3))) .
@@ -7854,7 +7854,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
---
+-- 
   eq (pubkey(cert(m3)) = k(dst(m1))) = false .
   eq x = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1)) .
   eq (intruder = owner(pubkey(cert(m3)))) = false .
@@ -7886,7 +7886,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
---
+-- 
   eq (pubkey(cert(m3)) = k(dst(m1))) = false .
   eq (x = epms(pubkey(cert(m3)),pms(p1,dst(m1),s1))) = false .
   red inv2(p,x) implies inv2(kexch(p,p1,s1,m1,m2,m3),x) .
@@ -9404,8 +9404,8 @@ open INV .
   red inv2(p,x) implies inv2(shello2(p,p2,r3,m1),x) .
 close
 
--- Q.E.D.
--- i) Base case
+--  Q.E.D.
+--  i) Base case
 open INV .
   :id(tls)
   ops a b : -> Prin .
@@ -9417,7 +9417,7 @@ open INV .
   red inv4(init,a,b,r1,r2,l,c,i,s) .
 close
 
--- II) Inductive cases
+--  II) Inductive cases
 --> 1) cert(p,p2,m1,m2)
 open INV .
   :id(tls)
@@ -9432,7 +9432,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -9649,7 +9649,7 @@ open INV .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  -- eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
+  --  eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -12955,7 +12955,7 @@ open INV .
   eq b = p2 .
   eq pms1 = pms(p1,p2,s) .
   eq r2 = r4 .
-  --
+  -- 
   eq p2 = intruder .
   eq p1 = intruder .
   red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
@@ -12988,7 +12988,7 @@ open INV .
   eq b = p2 .
   eq pms1 = pms(p1,p2,s) .
   eq r2 = r4 .
-  --
+  -- 
   eq p2 = intruder .
   eq (p1 = intruder) = false .
   eq p1 = p2 .
@@ -13022,7 +13022,7 @@ open INV .
   eq b = p2 .
   eq pms1 = pms(p1,p2,s) .
   eq r2 = r4 .
-  --
+  -- 
   eq p2 = intruder .
   eq (p1 = intruder) = false .
   eq (p1 = p2) = false .
@@ -13057,7 +13057,7 @@ open INV .
   eq b = p2 .
   eq pms1 = pms(p1,p2,s) .
   eq r2 = r4 .
-  --
+  -- 
   eq p2 = intruder .
   eq (p1 = intruder) = false .
   eq (p1 = p2) = false .
@@ -13092,7 +13092,7 @@ open INV .
   eq b = p2 .
   eq pms1 = pms(p1,p2,s) .
   eq r2 = r4 .
-  --
+  -- 
   eq (p2 = intruder) = false .
   eq p1 = intruder .
   red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
@@ -13125,7 +13125,7 @@ open INV .
   eq b = p2 .
   eq pms1 = pms(p1,p2,s) .
   eq r2 = r4 .
-  --
+  -- 
   eq (p2 = intruder) = false .
   eq (p1 = intruder) = false .
   eq pms(p1,p2,s) \in cpms(nw(p)) = true .
@@ -13159,7 +13159,7 @@ open INV .
   eq b = p2 .
   eq pms1 = pms(p1,p2,s) .
   eq r2 = r4 .
-  --
+  -- 
   eq (p2 = intruder) = false .
   eq (p1 = intruder) = false .
   eq pms(p1,p2,s) \in cpms(nw(p)) = false .
@@ -13193,7 +13193,7 @@ open INV .
   eq b = p2 .
   eq pms1 = pms(p1,p2,s) .
   eq (r2 = r4) = false .
-  --
+  -- 
   eq p1 = intruder .
   red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
 close
@@ -13225,7 +13225,7 @@ open INV .
   eq b = p2 .
   eq pms1 = pms(p1,p2,s) .
   eq (r2 = r4) = false .
-  --
+  -- 
   eq (p1 = intruder) = false .
   eq pms(p1,p2,s) \in cpms(nw(p)) = true .
   red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
@@ -13258,7 +13258,7 @@ open INV .
   eq b = p2 .
   eq pms1 = pms(p1,p2,s) .
   eq (r2 = r4) = false .
-  --
+  -- 
   eq (p1 = intruder) = false .
   eq pms(p1,p2,s) \in cpms(nw(p)) = false .
   red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(fakeSfin2(p,p2,p1,i1,l1,c1,r3,r4,pms1),a,b,r1,r2,l,c,i,s) .
@@ -13631,7 +13631,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
---
+-- 
   red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(kexch(p,p1,s1,m1,m2,m3),a,b,r1,r2,l,c,i,s) .
 close
 
@@ -13665,7 +13665,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
---
+-- 
   red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(kexch(p,p1,s1,m1,m2,m3),a,b,r1,r2,l,c,i,s) .
 close
 
@@ -14070,7 +14070,7 @@ open INV .
   eq c = choice(m2) .
   eq b = p2 .
   eq r2 = rand(m2) .
-  -- eq pms(epms(m4)) = pms(a,b,s) .
+  --  eq pms(epms(m4)) = pms(a,b,s) .
   eq pms(epms(m4)) = pms(dst(m2),p2,s) .
   red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
 close
@@ -15884,8 +15884,8 @@ open INV .
   red inv4(p,a,b,r1,r2,l,c,i,s) implies inv4(shello2(p,p2,r3,m1),a,b,r1,r2,l,c,i,s) .
 close
 
--- Q.E.D.
--- I) Base case
+--  Q.E.D.
+--  I) Base case
 open INV .
   :id(tls)
   ops a b : -> Prin .
@@ -15897,7 +15897,7 @@ open INV .
   red inv8(init,a,b,r1,r2,l,c,i,s) .
 close
 
--- II) Inductive cases
+--  II) Inductive cases
 --> 1) cert(p,p2,m1,m2)
 open INV .
   :id(tls)
@@ -15912,7 +15912,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -16129,7 +16129,7 @@ open INV .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  -- eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
+  --  eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -19583,7 +19583,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
---
+-- 
   red inv8(p,a,b,r1,r2,l,c,i,s) implies inv8(kexch(p,p1,s1,m1,m2,m3),a,b,r1,r2,l,c,i,s) .
 close
 
@@ -19617,7 +19617,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
---
+-- 
   red inv8(p,a,b,r1,r2,l,c,i,s) implies inv8(kexch(p,p1,s1,m1,m2,m3),a,b,r1,r2,l,c,i,s) .
 close
 
@@ -20017,7 +20017,7 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
---
+-- 
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq l = list(m1) .
@@ -20071,7 +20071,7 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
---
+-- 
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq l = list(m1) .
@@ -20124,7 +20124,7 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
---
+-- 
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq l = list(m1) .
@@ -20176,7 +20176,7 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
---
+-- 
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq l = list(m1) .
@@ -20227,7 +20227,7 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
---
+-- 
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq l = list(m1) .
@@ -20277,7 +20277,7 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
---
+-- 
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq l = list(m1) .
@@ -20326,7 +20326,7 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
---
+-- 
   eq r1 = rand(m1) .
   eq i = sid(m2) .
   eq (l = list(m1)) = false .
@@ -20374,7 +20374,7 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
---
+-- 
   eq r1 = rand(m1) .
   eq (i = sid(m2)) = false .
   red inv8(p,a,b,r1,r2,l,c,i,s) implies inv8(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
@@ -20421,7 +20421,7 @@ open INV .
   eq k(epms(m4)) = k(p2) .
   eq ecfin(m5) = ecfin(k(dst(m2),pms(epms(m4)),rand(m1),rand(m2)),
                       cfin(dst(m2),p2,sid(m2),list(m1),choice(m2),rand(m1),rand(m2),pms(epms(m4)))) .
---
+-- 
   eq (r1 = rand(m1)) = false .
   red inv8(p,a,b,r1,r2,l,c,i,s) implies inv8(sfin(p,p2,m1,m2,m3,m4,m5),a,b,r1,r2,l,c,i,s) .
 close
@@ -21863,8 +21863,8 @@ open INV .
   red inv8(p,a,b,r1,r2,l,c,i,s) implies inv8(shello2(p,p2,r3,m1),a,b,r1,r2,l,c,i,s) .
 close
 
--- Q.E.D.
--- I) Base case
+--  Q.E.D.
+--  I) Base case
 open INV .
   :id(tls)
   op a : -> Prin .
@@ -21872,7 +21872,7 @@ open INV .
   red inv9(init,a,k) .
 close
 
--- II) Inductive cases
+--  II) Inductive cases
 --> 1) cert(p,p2,m1,m2)
 open INV .
   :id(tls)
@@ -21883,7 +21883,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -21908,7 +21908,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -21933,7 +21933,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -22112,7 +22112,7 @@ open INV .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  -- eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
+  --  eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -25047,7 +25047,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
---
+-- 
   red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
 close
 
@@ -25077,7 +25077,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
---
+-- 
   red inv9(p,a,k) implies inv9(kexch(p,p1,s1,m1,m2,m3),a,k) .
 close
 
@@ -26635,8 +26635,8 @@ open INV .
   red inv9(p,a,k) implies inv9(shello2(p,p2,r3,m1),a,k) .
 close
 
--- Q.E.D.
--- I) Base case
+--  Q.E.D.
+--  I) Base case
 open INV .
   :id(tls)
   ops a b : -> Prin .
@@ -26644,7 +26644,7 @@ open INV .
   red inv11(init,a,b,k) .
 close
 
--- II) Inductive cases
+--  II) Inductive cases
 --> 1) cert(p,p2,m1,m2)
 open INV .
   :id(tls)
@@ -26655,7 +26655,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -26682,7 +26682,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -26709,7 +26709,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -26735,7 +26735,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -26760,7 +26760,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -26940,7 +26940,7 @@ open INV .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  -- eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
+  --  eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -29867,7 +29867,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
---
+-- 
   red inv11(p,a,b,k) implies inv11(kexch(p,p1,s1,m1,m2,m3),a,b,k) .
 close
 
@@ -29897,7 +29897,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq (sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3)))) = false .
---
+-- 
   red inv11(p,a,b,k) implies inv11(kexch(p,p1,s1,m1,m2,m3),a,b,k) .
 close
 
@@ -31458,7 +31458,7 @@ open INV .
   red inv11(p,a,b,k) implies inv11(shello2(p,p2,r3,m1),a,b,k) .
 close
 
--- Q.E.D.
+--  Q.E.D.
 
 open INV .
   :id(tls)
@@ -31472,7 +31472,7 @@ open INV .
   red inv13(init,a,b,b1,r1,r2,l,c,i,s,k) .
 close
 
--- II) Inductive cases
+--  II) Inductive cases
 --> 1) cert(p,p2,m1,m2)
 open INV .
   :id(tls)
@@ -31488,7 +31488,7 @@ open INV .
   op p2 : -> Prin .
   ops m1 m2 : -> Msg .
 -- assumptions
-  -- eq c-cert(p,p2,m1,m2) = true .  
+  --  eq c-cert(p,p2,m1,m2) = true .  
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq ch?(m1) = true .
@@ -31715,7 +31715,7 @@ open INV .
   op s1 : -> Secret .
   ops m1 m2 m3 m4 : -> Msg .
 -- assumptions
-  -- eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
+  --  eq c-cfin(p,p1,s1,m1,m2,m3,m4)  = true .
   eq m1 \in nw(p) = true .
   eq m2 \in nw(p) = true .
   eq m3 \in nw(p) = true .
@@ -35614,7 +35614,7 @@ open INV .
   eq choice(m2) \in list(m1) = true .
   eq server(cert(m3)) = dst(m1) .
   eq sig(cert(m3)) = sig(ca,dst(m1),pubkey(cert(m3))) .
---
+-- 
   red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(kexch(p,p1,s1,m1,m2,m3),a,b,b1,r1,r2,l,c,i,s,k) .
 close
 
