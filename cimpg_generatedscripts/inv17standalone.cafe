@@ -1,3 +1,4 @@
+-- please refer to proofscores_withCIMPG/inv17standalone.cafe
 open INV .
 	:goal{
 		eq [tls :nonexec] : inv17(P:Protocol,P:Prin,P3:Prin,P2:Prin,P1:Prin,P0:Prin,R:Rand,R0:Rand,L:ListOfChoices,C:Choice,S:Sid,S:Secret,P:PubKey)
@@ -49,7 +50,7 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l40 inv3 and inv12
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
@@ -1037,7 +1038,7 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l3329 inv12 and inv3
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
@@ -1160,7 +1161,7 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l3761 inv3 and inv12
 
 	:def csb127 = :ctf [sh(P2@Prin,P3@Prin,P@Prin,R0@Rand,S@Sid,C@Choice)\in nw(P#Protocol) .]
 
@@ -1196,22 +1197,22 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l3840 inv8
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l3881 inv9
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l3921 inv3
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l3960 inv3 and inv12
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
@@ -1444,12 +1445,12 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l4604 inv13
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l4635 inv4
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
@@ -1487,12 +1488,12 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l4747 inv12
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l4777 inv4
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
@@ -1605,12 +1606,12 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l5109 inv11
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l5135 inv10
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
@@ -1633,7 +1634,7 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l5208 inv1
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
@@ -1729,7 +1730,7 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l5430 inv3 and inv13
 
 	:def csb178 = :ctf [pms(P0#Prin,P#Prin,S@Secret)\in cpms(nw(P#Protocol)) .]
 
@@ -1738,7 +1739,7 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l5459 inv1
 
 	:def csb179 = :ctf [ct(P#Prin,P#Prin,P0#Prin,cert(P#Prin,P@PubKey,sig(ca,P#Prin,P@PubKey)))\in nw(P#Protocol) .]
 
@@ -1783,7 +1784,7 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l5557 inv7
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
@@ -1793,7 +1794,7 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l5623 inv3
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
@@ -1808,7 +1809,7 @@ open INV .
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- l5712 inv3 and inv13
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <-
     P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
