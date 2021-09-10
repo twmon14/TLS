@@ -1035,7 +1035,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- case19
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1200,7 +1200,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- inv15 c20
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1216,7 +1216,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- inv1 c20
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1272,11 +1272,11 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- inv14 c22
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- inv5 c22
 
 	:apply(tc)
 
@@ -1798,7 +1798,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- lm1 c25
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
