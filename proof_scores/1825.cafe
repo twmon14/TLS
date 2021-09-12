@@ -94,7 +94,8 @@ open INV .
 
   eq (a = intruder) = false .
   eq c = choice(m2) .
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
+  eq pms(a,b,s) = pms(ss(p,dst(m2),p2,sid(m2))) .
+  -- eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
   eq a = dst(m2) .
   eq b = p2 .
   eq b2 = p2 .
@@ -137,7 +138,8 @@ open INV .
 
   eq (a = intruder) = false .
   eq c = choice(m2) .
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
+  eq pms(a,b,s) = pms(ss(p,dst(m2),p2,sid(m2))) .
+  -- eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
   eq a = dst(m2) .
   eq b = p2 .
   eq b2 = p2 .
@@ -181,7 +183,8 @@ open INV .
 
   eq (a = intruder) = false .
   eq c = choice(m2) .
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
+  eq pms(a,b,s) = pms(ss(p,dst(m2),p2,sid(m2))) .
+  -- eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
   eq a = dst(m2) .
   eq b = p2 .
   eq b2 = p2 .
@@ -223,7 +226,8 @@ open INV .
 
   eq (a = intruder) = false .
   eq c = choice(m2) .
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
+  eq pms(a,b,s) = pms(ss(p,dst(m2),p2,sid(m2))) .
+  -- eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
   eq a = dst(m2) .
   eq b = p2 .
   eq b2 = p2 .
@@ -264,7 +268,8 @@ open INV .
 
   eq (a = intruder) = false .
   eq c = choice(m2) .
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
+  eq pms(a,b,s) = pms(ss(p,dst(m2),p2,sid(m2))) .
+  -- eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
   eq a = dst(m2) .
   eq b = p2 .
   eq b2 = p2 .
@@ -304,7 +309,8 @@ open INV .
 
   eq (a = intruder) = false .
   eq c = choice(m2) .
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
+  eq pms(a,b,s) = pms(ss(p,dst(m2),p2,sid(m2))) .
+  -- eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
   eq a = dst(m2) .
   eq b = p2 .
   eq (b2 = p2) = false .
@@ -343,7 +349,8 @@ open INV .
 
   eq (a = intruder) = false .
   eq c = choice(m2) .
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
+  eq pms(a,b,s) = pms(ss(p,dst(m2),p2,sid(m2))) .
+  -- eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
   eq a = dst(m2) .
   eq (b = p2) = false .
   red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(sfin2(p,p2,m1,m2,m3),a,b,b1,b2,r1,r2,c,i,s) .
@@ -381,7 +388,8 @@ open INV .
 
   eq (a = intruder) = false .
   eq c = choice(m2) .
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
+  eq pms(a,b,s) = pms(ss(p,dst(m2),p2,sid(m2))) .
+  -- eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s) .
   eq (a = dst(m2)) = false .
   red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(sfin2(p,p2,m1,m2,m3),a,b,b1,b2,r1,r2,c,i,s) .
 close
@@ -418,7 +426,8 @@ open INV .
 
   eq (a = intruder) = false .
   eq c = choice(m2) .
-  eq (pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s)) = false .
+  eq (pms(a,b,s) = pms(ss(p,dst(m2),p2,sid(m2)))) = false .
+  -- eq (pms(ss(p,dst(m2),p2,sid(m2))) = pms(a,b,s)) = false .
   red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(sfin2(p,p2,m1,m2,m3),a,b,b1,b2,r1,r2,c,i,s) .
 close
 
