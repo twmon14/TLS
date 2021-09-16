@@ -3772,6 +3772,7 @@ close
 --   red inv13(p,a,b,b1,r1,r2,l,c,i,s,k) implies inv13(fakeSfin1(p,p2,p1,esfin1),a,b,b1,r1,r2,l,c,i,s,k) .
 -- close
 
+--> 17) fakeSfin1(p,p2,p1,esfin1)
 open INV .
   :id(tls)
   op p : -> Protocol .
