@@ -1,3 +1,4 @@
+-- /proofscores_withCiMPG/inv18new.cafe
 open INV .
 	:goal{
 		eq [tls :nonexec] : inv18(P:Protocol,P:Prin,P2:Prin,P1:Prin,P0:Prin,R:Rand,R0:Rand,C:Choice,S:Sid,S:Secret) = true .
@@ -1069,6 +1070,7 @@ open INV .
 
 	:postpone . -- inv16 case19 
 
+
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
 	:postpone . -- inv6 case19
@@ -1617,43 +1619,137 @@ open INV .
 
 	:apply(csb190)
 
-	:def csb191 = :ctf {eq P@Prin  = intruder .}
+	:def csb191 = :ctf {eq C@Choice  = choice(M0#Msg).}
 
 	:apply(csb191)
+
+	:def csb192 = :ctf {eq R@Rand  = rand(M#Msg).}
+
+	:apply(csb192)
+
+	:def csb193 = :ctf {eq R0@Rand  = rand(M0#Msg).}
+
+	:apply(csb193)
+
+	:def csb194 = :ctf {eq S@Sid  = sid(M0#Msg).}
+
+	:apply(csb194)
+
+	:def csb195 = :ctf {eq P2@Prin  = P#Prin .}
+
+	:apply(csb195)
+
+	:def csb196 = :ctf {eq P0@Prin  = P#Prin .}
+
+	:apply(csb196)
+
+	:def csb197 = :ctf {eq P@Prin  = dst(M0#Msg).}
+
+	:apply(csb197)
+
+	:def csb198 = :ctf {eq dst(M0#Msg) = intruder .}
+
+	:apply(csb198)
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
 	:apply (rd)
 
-	:def csb192 = :ctf {eq C@Choice  = choice(M0#Msg).}
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply(csb192)
+	:postpone .  -- lm1 case25
 
-	:def csb193 = :ctf {eq R@Rand  = rand(M#Msg).}
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply(csb193)
+	:apply (rd)
 
-	:def csb194 = :ctf {eq R0@Rand  = rand(M0#Msg).}
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply(csb194)
+	:apply (rd)
 
-	:def csb195 = :ctf {eq S@Sid  = sid(M0#Msg).}
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply(csb195)
+	:apply (rd)
 
-	:def csb196 = :ctf {eq P2@Prin  = P#Prin .}
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply(csb196)
+	:apply (rd)
 
-	:def csb197 = :ctf {eq P0@Prin  = P#Prin .}
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply(csb197)
+	:apply (rd)
 
-	:def csb198 = :ctf {eq P@Prin  = dst(M0#Msg).}
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply(csb198)
+	:apply (rd)
 
-	:def csb199 = :ctf {eq dst(M0#Msg) = intruder .}
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:apply(tc)
+
+	:def csb199 = :ctf [R#Rand \in ur(P#Protocol) .]
 
 	:apply(csb199)
 
@@ -1661,139 +1757,29 @@ open INV .
 
 	:apply (rd)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+	:def csb200 = :ctf [S#Sid \in ui(P#Protocol) .]
 
-	:postpone . -- lm1 case25
-
-	-- :def csb200 = :ctf {eq dst(M0#Msg) = intruder .}
-
-	-- :apply(csb200)
-
-	-- :imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	-- :postpone .　　extra case splitting
+	:apply(csb200)
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
 	:apply (rd)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:apply(tc)
-
-	:def csb201 = :ctf [R#Rand \in ur(P#Protocol) .]
+	:def csb201 = :ctf [M#Msg \in nw(P#Protocol) .]
 
 	:apply(csb201)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:def csb202 = :ctf [S#Sid \in ui(P#Protocol) .]
+	:def csb202 = :ctf [ch?(M#Msg) .]
 
 	:apply(csb202)
 
-	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:def csb203 = :ctf [M#Msg \in nw(P#Protocol) .]
+	:def csb203 = :ctf {eq dst(M#Msg) = P#Prin .}
 
 	:apply(csb203)
 
-	:def csb204 = :ctf [ch?(M#Msg) .]
+	:def csb204 = :ctf [C#Choice \in list(M#Msg) .]
 
 	:apply(csb204)
-
-	:def csb205 = :ctf {eq dst(M#Msg) = P#Prin .}
-
-	:apply(csb205)
-
-	:def csb206 = :ctf [C#Choice \in list(M#Msg) .]
-
-	:apply(csb206)
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1817,29 +1803,29 @@ open INV .
 
 	:apply(tc)
 
-	:def csb207 = :ctf [R#Rand \in ur(P#Protocol) .]
+	:def csb205 = :ctf [R#Rand \in ur(P#Protocol) .]
 
-	:apply(csb207)
+	:apply(csb205)
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
 	:apply (rd)
 
-	:def csb208 = :ctf [M#Msg \in nw(P#Protocol) .]
+	:def csb206 = :ctf [M#Msg \in nw(P#Protocol) .]
+
+	:apply(csb206)
+
+	:def csb207 = :ctf [ch2?(M#Msg) .]
+
+	:apply(csb207)
+
+	:def csb208 = :ctf {eq dst(M#Msg) = P#Prin .}
 
 	:apply(csb208)
 
-	:def csb209 = :ctf [ch2?(M#Msg) .]
+	:def csb209 = :ctf {eq ss(P#Protocol,src(M#Msg),P#Prin,sid(M#Msg)) = none .}
 
 	:apply(csb209)
-
-	:def csb210 = :ctf {eq dst(M#Msg) = P#Prin .}
-
-	:apply(csb210)
-
-	:def csb211 = :ctf {eq ss(P#Protocol,src(M#Msg),P#Prin,sid(M#Msg)) = none .}
-
-	:apply(csb211)
 
 	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1864,7 +1850,6 @@ open INV .
 
 close
 
-
--- real	1274m11.487s
--- user	772m47.836s
--- sys	0m58.377s
+-- real	5263m9.502s
+-- user	762m22.958s
+-- sys	0m59.658s

@@ -5189,41 +5189,7 @@ open INV .
   eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
 
-  eq a = intruder .
-  red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(sfin2(p,p2,m1,m2,m3),a,b,b1,b2,r1,r2,c,i,s) .
-close
-
-open INV .
-  :id(tls)  
-  op p : -> Protocol .
-  ops a b b1 b2 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq ch2?(m1) = true .
-  eq sh2?(m2) = true .
-  eq cf2?(m3) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m3) = dst(m2) .
-  eq dst(m3) = p2 .
-  eq sid(m1) = sid(m2) .
-  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
-  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
-  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
-                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
-
-  eq (a = intruder) = false .
+  -- eq (a = intruder) = false .
   eq c = choice(m2) .
   eq r1 = rand(m1) .
   eq r2 = rand(m2) .
@@ -5231,7 +5197,7 @@ open INV .
   eq b = p2 .
   eq b2 = p2 .
   eq a = dst(m2) .
-  eq pms(dst(m2),p2,s) = pms(ss(p,dst(m2),p2,sid(m2))) .
+  -- eq pms(dst(m2),p2,s) = pms(ss(p,dst(m2),p2,sid(m2))) .
   eq dst(m2) = intruder .
   red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(sfin2(p,p2,m1,m2,m3),a,b,b1,b2,r1,r2,c,i,s) .
 close
@@ -5266,7 +5232,7 @@ open INV .
   eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
 
-  eq (a = intruder) = false .
+  -- eq (a = intruder) = false .
   eq c = choice(m2) .
   eq r1 = rand(m1) .
   eq r2 = rand(m2) .
@@ -5274,7 +5240,7 @@ open INV .
   eq b = p2 .
   eq b2 = p2 .
   eq a = dst(m2) .
-  eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(dst(m2),p2,s) .
+  -- eq pms(ss(p,dst(m2),p2,sid(m2))) = pms(dst(m2),p2,s) .
   eq (dst(m2) = intruder) = false .
   red lm1(m2, sh2(p2,p2,dst(m2),rand(m2),sid(m2),choice(m2)), nw(p))
     implies inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(sfin2(p,p2,m1,m2,m3),a,b,b1,b2,r1,r2,c,i,s) .
@@ -5311,49 +5277,7 @@ open INV .
   eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
 
-  eq (a = intruder) = false .
-  eq c = choice(m2) .
-  eq r1 = rand(m1) .
-  eq r2 = rand(m2) .
-  eq i = sid(m2) .
-  eq b = p2 .
-  eq b2 = p2 .
-  eq a = dst(m2) .
-  eq (pms(ss(p,dst(m2),p2,sid(m2))) = pms(dst(m2),p2,s)) = false .
-  red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(sfin2(p,p2,m1,m2,m3),a,b,b1,b2,r1,r2,c,i,s) .
-close
-
-open INV .
-  :id(tls)  
-  op p : -> Protocol .
-  ops a b b1 b2 : -> Prin .
-  ops r1 r2 : -> Rand .
-  op c : -> Choice .
-  op i : -> Sid .
-  op s : -> Secret .
--- arbitrary objects
-  op p2 : -> Prin .
-  ops m1 m2 m3 : -> Msg .
--- assumptions
-  eq m1 \in nw(p) = true .
-  eq m2 \in nw(p) = true .
-  eq m3 \in nw(p) = true .
-  eq ch2?(m1) = true .
-  eq sh2?(m2) = true .
-  eq cf2?(m3) = true .
-  eq crt(m2) = p2 .
-  eq src(m2) = p2 .
-  eq src(m1) = dst(m2) .
-  eq dst(m1) = p2 .
-  eq src(m3) = dst(m2) .
-  eq dst(m3) = p2 .
-  eq sid(m1) = sid(m2) .
-  eq (ss(p,dst(m2),p2,sid(m2)) = none) = false .
-  eq choice(ss(p,dst(m2),p2,sid(m2))) = choice(m2) .
-  eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
-                      cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
-
-  eq (a = intruder) = false .
+  -- eq (a = intruder) = false .
   eq c = choice(m2) .
   eq r1 = rand(m1) .
   eq r2 = rand(m2) .
@@ -5394,7 +5318,7 @@ open INV .
   eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
 
-   eq (a = intruder) = false .
+  --  eq (a = intruder) = false .
   eq c = choice(m2) .
   eq r1 = rand(m1) .
   eq r2 = rand(m2) .
@@ -5434,7 +5358,7 @@ open INV .
   eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
 
-  eq (a = intruder) = false .
+  -- eq (a = intruder) = false .
   eq c = choice(m2) .
   eq r1 = rand(m1) .
   eq r2 = rand(m2) .
@@ -5473,7 +5397,7 @@ open INV .
   eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
 
-  eq (a = intruder) = false .
+  -- eq (a = intruder) = false .
   eq c = choice(m2) .
   eq r1 = rand(m1) .
   eq r2 = rand(m2) .
@@ -5511,7 +5435,7 @@ open INV .
   eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
 
-  eq (a = intruder) = false .
+  -- eq (a = intruder) = false .
   eq c = choice(m2) .
   eq r1 = rand(m1) .
   eq (r2 = rand(m2)) = false .
@@ -5548,7 +5472,7 @@ open INV .
   eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
 
-  eq (a = intruder) = false .
+  -- eq (a = intruder) = false .
   eq c = choice(m2) .
   eq (r1 = rand(m1)) = false .
   red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(sfin2(p,p2,m1,m2,m3),a,b,b1,b2,r1,r2,c,i,s) .
@@ -5584,7 +5508,7 @@ open INV .
   eq ecfin2(m3) = ecfin2(k(dst(m2),pms(ss(p,dst(m2),p2,sid(m2))),rand(m1),rand(m2)),
                       cfin2(dst(m2),p2,sid(m2),choice(m2),rand(m1),rand(m2),pms(ss(p,dst(m2),p2,sid(m2))))) .
 
-  eq (a = intruder) = false .
+  -- eq (a = intruder) = false .
   eq (c = choice(m2)) = false .
   red inv18(p,a,b,b1,b2,r1,r2,c,i,s) implies inv18(sfin2(p,p2,m1,m2,m3),a,b,b1,b2,r1,r2,c,i,s) .
 close
