@@ -6131,7 +6131,7 @@ open INV .
   eq dst(m2) = intruder .
   red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k) implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 close
-
+ -- WHY MISSING 2 FRAGMENTS --
 open INV .
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
