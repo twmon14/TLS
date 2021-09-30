@@ -47,7 +47,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- inv3 and inv12
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -863,7 +863,8 @@ open INV .
 
 	:apply(csb102)
 
-	*** The corresponding proof score was not present.
+	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+	
 	:apply (rd)
 
 	:def csb103 = :ctf {eq P3@Prin  = intruder .}
@@ -920,7 +921,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- inv12 and inv3
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1028,7 +1029,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- inv3 and inv12
 
 	:def csb127 = :ctf [sh(P2@Prin,P3@Prin,P@Prin,R0@Rand,S@Sid,C@Choice)\in nw(P#Protocol) .]
 
@@ -1060,19 +1061,19 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv8
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv9
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv3
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv3 and inv12
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1274,11 +1275,11 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv13
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv4
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1310,11 +1311,11 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv12
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv4
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1412,11 +1413,11 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone . -- inv11
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv10
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1436,7 +1437,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv1
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1478,7 +1479,7 @@ open INV .
 
 	:apply (rd)
 
-	:apply(tc)
+	:apply(tc) -- c21
 
 	:def csb170 = :ctf {eq P@Prin  = intruder .}
 
@@ -1522,7 +1523,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv3 and inv13
 
 	:def csb178 = :ctf [pms(P0#Prin,P#Prin,S@Secret)\in cpms(nw(P#Protocol)) .]
 
@@ -1530,7 +1531,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv1
 
 	:def csb179 = :ctf [ct(P#Prin,P#Prin,P0#Prin,cert(P#Prin,P@PubKey,sig(ca,P#Prin,P@PubKey)))\in nw(P#Protocol) .]
 
@@ -1570,7 +1571,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv7
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1578,19 +1579,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
-
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:apply (rd)
-
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	:postpone .
+	:postpone .  -- inv3
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -1602,175 +1591,189 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply (rd)
-
-	:def csb186 = :ctf {eq P3@Prin  = P#Prin .}
-
-	:apply(csb186)
-
-	:def csb187 = :ctf {eq S@Sid  = S#Sid .}
-
-	:apply(csb187)
-
-	:def csb188 = :ctf {eq P#Prin  = intruder .}
-
-	:apply(csb188)
-
-	:def csb189 = :ctf {eq R0@Rand  = R#Rand .}
-
-	:apply(csb189)
-
-	:def csb190 = :ctf {eq P0#Prin  = intruder .}
-
-	:apply(csb190)
+	:postpone .  -- inv3 and inv13
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
 	:apply (rd)
 
-	*** The corresponding proof score was not present.
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	:def csb191 = :ctf {eq R0@Rand  = R#Rand .}
-
-	:apply(csb191)
-
-	:def csb192 = :ctf {eq P0#Prin  = intruder .}
-
-	:apply(csb192)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	:def csb193 = :ctf {eq pms(P0#Prin,P#Prin,S@Secret)\in cpms(nw(P#Protocol)) = true .}
-
-	:apply(csb193)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	:def csb194 = :ctf {eq ct(P#Prin,P#Prin,P0#Prin,cert(P#Prin,P@PubKey,sig(ca,P#Prin,P@PubKey)))\in nw(P#Protocol) = true .}
-
-	:apply(csb194)
-
-	:def csb195 = :ctf {eq P2@Prin  = intruder .}
-
-	:apply(csb195)
-
-	:def csb196 = :ctf {eq sf(P0@Prin,P#Prin,P0#Prin,esfin(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R#Rand),sfin(P0#Prin,P#Prin,S#Sid,L@ListOfChoices,C#Choice,R@Rand,R#Rand,pms(P0#Prin,P#Prin,S@Secret))))\in nw(P#Protocol) = true .}
-
-	:apply(csb196)
-
-	:def csb197 = :ctf {eq sf(P#Prin,P#Prin,P0#Prin,esfin(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R#Rand),sfin(P0#Prin,P#Prin,S#Sid,L@ListOfChoices,C#Choice,R@Rand,R#Rand,pms(P0#Prin,P#Prin,S@Secret))))\in nw(P#Protocol) = true .}
-
-	:apply(csb197)
-
-	:def csb198 = :ctf {eq ct(P1@Prin,P#Prin,P0#Prin,cert(P#Prin,P@PubKey,sig(ca,P#Prin,P@PubKey)))\in nw(P#Protocol) = true .}
-
-	:apply(csb198)
-
-	:def csb199 = :ctf {eq sh(intruder,P#Prin,P0#Prin,R#Rand,S#Sid,C#Choice)\in nw(P#Protocol) = true .}
-
-	:apply(csb199)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	:def csb200 = :ctf {eq sh(P#Prin,P#Prin,P0#Prin,R#Rand,S#Sid,C#Choice)\in nw(P#Protocol) = true .}
-
-	:apply(csb200)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	:def csb201 = :ctf {eq sh(P#Prin,P#Prin,P0#Prin,R#Rand,S#Sid,C#Choice)\in nw(P#Protocol) = true .}
-
-	:apply(csb201)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
-	:apply (rd)
-
-	*** The corresponding proof score was not present.
-	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
-
-	*** The corresponding proof score was not present.
 	:apply (rd)
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
 	:apply (rd)
+
+-- eq (a = p1) = false . l5822
+
+-- 	:def csb186 = :ctf {eq P3@Prin  = P#Prin .} 
+
+-- 	:apply(csb186)
+
+-- 	:def csb187 = :ctf {eq S@Sid  = S#Sid .}
+
+-- 	:apply(csb187)
+
+-- 	:def csb188 = :ctf {eq P#Prin  = intruder .}
+
+-- 	:apply(csb188)
+
+-- 	:def csb189 = :ctf {eq R0@Rand  = R#Rand .}
+
+-- 	:apply(csb189)
+
+-- 	:def csb190 = :ctf {eq P0#Prin  = intruder .}
+
+-- 	:apply(csb190)
+
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	:apply (rd)
+-- -- case21
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	:def csb191 = :ctf {eq R0@Rand  = R#Rand .}
+
+-- 	:apply(csb191)
+
+-- 	:def csb192 = :ctf {eq P0#Prin  = intruder .}
+
+-- 	:apply(csb192)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	:def csb193 = :ctf {eq pms(P0#Prin,P#Prin,S@Secret)\in cpms(nw(P#Protocol)) = true .}
+
+-- 	:apply(csb193)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	:def csb194 = :ctf {eq ct(P#Prin,P#Prin,P0#Prin,cert(P#Prin,P@PubKey,sig(ca,P#Prin,P@PubKey)))\in nw(P#Protocol) = true .}
+
+-- 	:apply(csb194)
+
+-- 	:def csb195 = :ctf {eq P2@Prin  = intruder .}
+
+-- 	:apply(csb195)
+
+-- 	:def csb196 = :ctf {eq sf(P0@Prin,P#Prin,P0#Prin,esfin(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R#Rand),sfin(P0#Prin,P#Prin,S#Sid,L@ListOfChoices,C#Choice,R@Rand,R#Rand,pms(P0#Prin,P#Prin,S@Secret))))\in nw(P#Protocol) = true .}
+
+-- 	:apply(csb196)
+
+-- 	:def csb197 = :ctf {eq sf(P#Prin,P#Prin,P0#Prin,esfin(k(P#Prin,pms(P0#Prin,P#Prin,S@Secret),R@Rand,R#Rand),sfin(P0#Prin,P#Prin,S#Sid,L@ListOfChoices,C#Choice,R@Rand,R#Rand,pms(P0#Prin,P#Prin,S@Secret))))\in nw(P#Protocol) = true .}
+
+-- 	:apply(csb197)
+
+-- 	:def csb198 = :ctf {eq ct(P1@Prin,P#Prin,P0#Prin,cert(P#Prin,P@PubKey,sig(ca,P#Prin,P@PubKey)))\in nw(P#Protocol) = true .}
+
+-- 	:apply(csb198)
+
+-- 	:def csb199 = :ctf {eq sh(intruder,P#Prin,P0#Prin,R#Rand,S#Sid,C#Choice)\in nw(P#Protocol) = true .}
+
+-- 	:apply(csb199)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	:def csb200 = :ctf {eq sh(P#Prin,P#Prin,P0#Prin,R#Rand,S#Sid,C#Choice)\in nw(P#Protocol) = true .}
+
+-- 	:apply(csb200)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	:def csb201 = :ctf {eq sh(P#Prin,P#Prin,P0#Prin,R#Rand,S#Sid,C#Choice)\in nw(P#Protocol) = true .}
+
+-- 	:apply(csb201)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	*** The corresponding proof score was not present.
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	*** The corresponding proof score was not present.
+-- 	:apply (rd)
+
+-- 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+-- 	:apply (rd)
 
 	:apply(tc)
 
@@ -1916,7 +1919,7 @@ open INV .
 
 	:apply (rd)
 
-	:apply(tc)
+	:apply(tc) -- c24
 
 	:def csb218 = :ctf [M#Msg \in nw(P#Protocol) .]
 
@@ -2108,7 +2111,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- lm1 l6725
 
 	:def csb261 = :ctf {eq P#Prin  = intruder .}
 
@@ -2124,7 +2127,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv11
 
 	:def csb263 = :ctf [sig(ca,P#Prin,P@PubKey)\in csig(nw(P#Protocol)) .]
 
@@ -2132,7 +2135,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv9
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
@@ -2638,11 +2641,11 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv13
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .
+	:postpone .  -- inv3
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
