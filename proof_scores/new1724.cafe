@@ -1,4 +1,5 @@
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -45,6 +46,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -95,6 +97,7 @@ close
 
 -- down
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -158,6 +161,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -222,6 +226,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -286,6 +291,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -350,6 +356,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -415,6 +422,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -482,6 +490,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -549,6 +558,7 @@ open INV .
 close
   
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -616,6 +626,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -683,6 +694,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -748,6 +760,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -814,6 +827,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -882,6 +896,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -950,6 +965,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1018,6 +1034,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1086,6 +1103,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1150,6 +1168,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1210,6 +1229,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1269,6 +1289,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1327,6 +1348,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1384,6 +1406,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1440,6 +1463,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1495,6 +1519,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1549,6 +1574,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1602,6 +1628,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1655,6 +1682,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1708,6 +1736,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1760,6 +1789,7 @@ close
 
 -- below does not require c \in l
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1808,6 +1838,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1855,6 +1886,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1899,6 +1931,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1942,6 +1975,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -1984,6 +2018,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2025,6 +2060,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2065,6 +2101,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2104,6 +2141,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2142,6 +2180,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2179,6 +2218,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2214,6 +2254,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2248,6 +2289,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2281,6 +2323,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2313,6 +2356,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2344,6 +2388,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2374,6 +2419,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2403,6 +2449,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2430,6 +2477,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2456,6 +2504,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2481,6 +2530,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2505,6 +2555,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2528,6 +2579,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2550,6 +2602,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2571,6 +2624,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2591,6 +2645,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
@@ -2610,6 +2665,7 @@ open INV .
 close
 
 open INV .
+  :id(tls)
   op p : -> Protocol .
   ops a b b1 b2 b3 : -> Prin .
   ops r1 r2 : -> Rand .
