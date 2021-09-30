@@ -3247,6 +3247,26 @@ open INV .
   op pk : -> PubKey .
   op g : -> Sig .
 -- assumptions
+  eq a = intruder .
+  red inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)
+    implies inv17(fakeCert(p,p2,p1,pk,g),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
+close
+
+open INV .
+  :id(tls)
+  op p : -> Protocol .
+  ops a b b1 b2 b3 : -> Prin .
+  ops r1 r2 : -> Rand .
+  op l : -> ListOfChoices .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+  op k : -> PubKey .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op pk : -> PubKey .
+  op g : -> Sig .
+-- assumptions
   eq (a = intruder) = false .
   eq b = intruder . 
   eq g = sig(ca,intruder,k) . 
