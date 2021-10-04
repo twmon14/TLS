@@ -2111,7 +2111,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:postpone .  -- lm1 l6725
+	:postpone .  -- lm1 l6744
 
 	:def csb261 = :ctf {eq P#Prin  = intruder .}
 
@@ -2139,7 +2139,7 @@ open INV .
 
 	:imp [tls] by {C:Choice <- C@Choice ; L:ListOfChoices <- L@ListOfChoices ; P0:Prin <- P0@Prin ; P1:Prin <- P1@Prin ; P2:Prin <- P2@Prin ; P3:Prin <- P3@Prin ; P:Prin <- P@Prin ; P:PubKey <- P@PubKey ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
 
-	:apply (rd)
+	:apply (rd) -- l7018
 
 	:def csb264 = :ctf {eq P1@Prin  = P#Prin .}
 
