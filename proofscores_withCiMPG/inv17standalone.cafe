@@ -6420,7 +6420,6 @@ open INV .
   implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 close
 
--- down
 open INV .
   :id(tls)
   op p : -> Protocol .
@@ -8112,7 +8111,6 @@ open INV .
   implies inv17(sfin(p,p2,m1,m2,m3,m4,m5),a,b,b1,b2,b3,r1,r2,l,c,i,s,k) .
 close
 
--- below does not require c \in l
 open INV .
   :id(tls)
   op p : -> Protocol .
