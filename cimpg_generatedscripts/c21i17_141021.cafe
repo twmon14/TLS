@@ -1,397 +1,397 @@
-		     \||||||||||||||||||/
-		   --- Welcome to Maude ---
-		     /||||||||||||||||||\
-	   Maude 2.7.1 built: Jun 27 2016 16:43:23
-	    Copyright 1997-2016 SRI International
-		   Thu Oct 14 02:07:10 2021
+-- 		     \||||||||||||||||||/
+-- 		   --- Welcome to Maude ---
+-- 		     /||||||||||||||||||\
+-- 	   Maude 2.7.1 built: Jun 27 2016 16:43:23
+-- 	    Copyright 1997-2016 SRI International
+-- 		   Thu Oct 14 02:07:10 2021
 
-	    Full Maude 2.7.1 June 30th 2016
+-- 	    Full Maude 2.7.1 June 30th 2016
 
 
-	CafeInMaude 2.1 (August 8,2019) started.
+-- 	CafeInMaude 2.1 (August 8,2019) started.
 
-Introduced module 3TUPLE
+-- Introduced module 3TUPLE
 
-Introduced Tight Cafe Module: PRINCIPAL
+-- Introduced Tight Cafe Module: PRINCIPAL
 
-Introduced Tight Cafe Module: RANDOM
+-- Introduced Tight Cafe Module: RANDOM
 
-Introduced Tight Cafe Module: CHOICE
+-- Introduced Tight Cafe Module: CHOICE
 
-Introduced Tight Cafe Module: LISTOFCHOICES
+-- Introduced Tight Cafe Module: LISTOFCHOICES
 
-Introduced Tight Cafe Module: SID
+-- Introduced Tight Cafe Module: SID
 
-Introduced Tight Cafe Module: SECRET
+-- Introduced Tight Cafe Module: SECRET
 
-Introduced Tight Cafe Module: PMS
+-- Introduced Tight Cafe Module: PMS
 
-Introduced Tight Cafe Module: PUBLICKEY
+-- Introduced Tight Cafe Module: PUBLICKEY
 
-Introduced Tight Cafe Module: SIGNATURE
+-- Introduced Tight Cafe Module: SIGNATURE
 
-Introduced Tight Cafe Module: CERTIFICATE
+-- Introduced Tight Cafe Module: CERTIFICATE
 
-Introduced Tight Cafe Module: KEY
+-- Introduced Tight Cafe Module: KEY
 
-Introduced Tight Cafe Module: CFINISH
+-- Introduced Tight Cafe Module: CFINISH
 
-Introduced Tight Cafe Module: SFINISH
+-- Introduced Tight Cafe Module: SFINISH
 
-Introduced Tight Cafe Module: CFINISH2
+-- Introduced Tight Cafe Module: CFINISH2
 
-Introduced Tight Cafe Module: SFINISH2
+-- Introduced Tight Cafe Module: SFINISH2
 
-Introduced Tight Cafe Module: ENCPMS
+-- Introduced Tight Cafe Module: ENCPMS
 
-Introduced Tight Cafe Module: ENCCFIN
+-- Introduced Tight Cafe Module: ENCCFIN
 
-Introduced Tight Cafe Module: ENCSFIN
+-- Introduced Tight Cafe Module: ENCSFIN
 
-Introduced Tight Cafe Module: ENCCFIN2
+-- Introduced Tight Cafe Module: ENCCFIN2
 
-Introduced Tight Cafe Module: ENCSFIN2
+-- Introduced Tight Cafe Module: ENCSFIN2
 
-Introduced Tight Cafe Module: MSG
+-- Introduced Tight Cafe Module: MSG
 
-Introduced Tight Cafe Module: BAG
+-- Introduced Tight Cafe Module: BAG
 
-Introduced Tight Cafe Module: SET
+-- Introduced Tight Cafe Module: SET
 
-Introduced Tight Cafe Module: COLLECTION
+-- Introduced Tight Cafe Module: COLLECTION
 
-Introduced Cafe View: TRIV2RANDOM
+-- Introduced Cafe View: TRIV2RANDOM
 
-Introduced Cafe View: TRIV2SID
+-- Introduced Cafe View: TRIV2SID
 
-Introduced Cafe View: TRIV2SECRET
+-- Introduced Cafe View: TRIV2SECRET
 
-Introduced Cafe View: TRIV2MSG
+-- Introduced Cafe View: TRIV2MSG
 
-Introduced Cafe View: TRIV2PMS
+-- Introduced Cafe View: TRIV2PMS
 
-Introduced Cafe View: TRIV2SIG
+-- Introduced Cafe View: TRIV2SIG
 
-Introduced Cafe View: TRIV2ENCPMS
+-- Introduced Cafe View: TRIV2ENCPMS
 
-Introduced Cafe View: TRIV2ENCCFIN
+-- Introduced Cafe View: TRIV2ENCCFIN
 
-Introduced Cafe View: TRIV2ENCSFIN
+-- Introduced Cafe View: TRIV2ENCSFIN
 
-Introduced Cafe View: TRIV2ENCCFIN2
+-- Introduced Cafe View: TRIV2ENCCFIN2
 
-Introduced Cafe View: TRIV2ENCSFIN2
+-- Introduced Cafe View: TRIV2ENCSFIN2
 
-Introduced Tight Cafe Module: NETWORK
+-- Introduced Tight Cafe Module: NETWORK
 
-Introduced Tight Cafe Module: SESSIONSTATE
+-- Introduced Tight Cafe Module: SESSIONSTATE
 
-Introduced Loose Cafe Module: TLS
+-- Introduced Loose Cafe Module: TLS
 
-Introduced Loose Cafe Module: INV
+-- Introduced Loose Cafe Module: INV
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
-    r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
+--     r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv3(p,a,b,b3,r1,r2,l,c,i,s)implies inv13(p,a,b,b2,r1,r2,l,c,i,s,
-    k)implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,
-    p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv3(p,a,b,b3,r1,r2,l,c,i,s)implies inv13(p,a,b,b2,r1,r2,l,c,i,s,
+--     k)implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,
+--     p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv1(p,pms(a,b,s))implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies
-    inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv1(p,pms(a,b,s))implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies
+--     inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
-    r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
+--     r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
-    r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
+--     r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv7(p,a,b,r1,r2,l,c,i,s)implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,
-    k)implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv7(p,a,b,r1,r2,l,c,i,s)implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,
+--     k)implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
-    r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
+--     r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv3(p,a,b,b3,r1,r2,l,c,i,s)implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,
-    k)implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv3(p,a,b,b3,r1,r2,l,c,i,s)implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,
+--     k)implies inv17(fakeShello(p,p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
-    r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
+--     r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
-    r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
+--     r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv3(p,a,b,b3,r1,r2,l,c,i,s)implies inv13(p,a,b,b2,r1,r2,l,c,i,s,
-    k)implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,
-    p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv3(p,a,b,b3,r1,r2,l,c,i,s)implies inv13(p,a,b,b2,r1,r2,l,c,i,s,
+--     k)implies inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,
+--     p2,p1,r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
-    r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
+--     r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
-    r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
+--     r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
-    r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
+--     r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
-    r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
+--     r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
 
-Opening module INV :
+-- Opening module INV :
 
 
-reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
-    r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
-Result: true : Bool
+-- reduce inv17(p,a,b,b1,b2,b3,r1,r2,l,c,i,s,k)implies inv17(fakeShello(p,p2,p1,
+--     r3,i1,c1),a,b,b1,b2,b3,r1,r2,l,c,i,s,k).
+-- Result: true : Bool
 
 
-Theorem of constants
-1 Case split by eq 'C0@Choice.Choice = 'C@Choice.Choice [none] .
-1 1 Case split by eq 'P4@Prin.Prin = 'P5@Prin.Prin [none] .
-1 1 1 Case split by eq 'P3@Prin.Prin = 'P@Prin.Prin [none] .
-1 1 1 1 Case split by eq 'R0@Rand.Rand = 'R@Rand.Rand [none] .
-1 1 1 1 1 Case split by eq 'S0@Sid.Sid = 'S@Sid.Sid [none] .
-1 1 1 1 1 1 Case split by eq 'P5@Prin.Prin = 'intruder.Prin [none] .
-Try reduction and implication for 1 1 1 1 1 1 1 ('inv17['fakeShello[
-    'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
-    'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
-    'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
-    'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
-Red forgotten
+-- Theorem of constants
+-- 1 Case split by eq 'C0@Choice.Choice = 'C@Choice.Choice [none] .
+-- 1 1 Case split by eq 'P4@Prin.Prin = 'P5@Prin.Prin [none] .
+-- 1 1 1 Case split by eq 'P3@Prin.Prin = 'P@Prin.Prin [none] .
+-- 1 1 1 1 Case split by eq 'R0@Rand.Rand = 'R@Rand.Rand [none] .
+-- 1 1 1 1 1 Case split by eq 'S0@Sid.Sid = 'S@Sid.Sid [none] .
+-- 1 1 1 1 1 1 Case split by eq 'P5@Prin.Prin = 'intruder.Prin [none] .
+-- Try reduction and implication for 1 1 1 1 1 1 1 ('inv17['fakeShello[
+--     'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
+--     'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
+--     'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
+--     'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
+-- Red forgotten
 
-1 1 1 1 1 1 2 Case split by eq 'P@Prin.Prin = 'intruder.Prin [none] .
-Try reduction and implication for 1 1 1 1 1 1 2 1 ('inv17['fakeShello[
-    'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
-    'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
-    'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
-    'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
-Infer proof for 1 1 1 1 1 1 2 1
-Final postpone 1 1 1 1 1 1 2 1
-1 1 1 1 1 1 2 2 Term case split '_\in_['pms['P5@Prin.Prin,'P@Prin.Prin,
-    'S@Secret.Secret],'cpms['nw['P@Protocol.Protocol]]]
-Try reduction and implication for 1 1 1 1 1 1 2 2 1 ('inv17['fakeShello[
-    'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
-    'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
-    'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
-    'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
-Infer proof for 1 1 1 1 1 1 2 2 1
-Final postpone 1 1 1 1 1 1 2 2 1
-1 1 1 1 1 1 2 2 2 Term case split '_\in_['ct['P@Prin.Prin,'P@Prin.Prin,
-    'P5@Prin.Prin,'cert['P@Prin.Prin,'P@PubKey.PubKey,'sig['ca.Prin,
-    'P@Prin.Prin,'P@PubKey.PubKey]]],'nw['P@Protocol.Protocol]]
-1 1 1 1 1 1 2 2 2 1 Term case split '_\in_['sf['P0@Prin.Prin,'P@Prin.Prin,
-    'P5@Prin.Prin,'esfin['k['P@Prin.Prin,'pms['P5@Prin.Prin,'P@Prin.Prin,
-    'S@Secret.Secret],'R1@Rand.Rand,'R@Rand.Rand],'sfin['P5@Prin.Prin,
-    'P@Prin.Prin,'S@Sid.Sid,'L@ListOfChoices.ListOfChoices,'C@Choice.Choice,
-    'R1@Rand.Rand,'R@Rand.Rand,'pms['P5@Prin.Prin,'P@Prin.Prin,
-    'S@Secret.Secret]]]],'nw['P@Protocol.Protocol]]
-1 1 1 1 1 1 2 2 2 1 1 Term case split '_\in_['sh['P@Prin.Prin,'P@Prin.Prin,
-    'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,'C@Choice.Choice],'nw[
-    'P@Protocol.Protocol]]
-Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 1 1 ('inv17['fakeShello[
-    'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
-    'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
-    'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
-    'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
-Red forgotten
+-- 1 1 1 1 1 1 2 Case split by eq 'P@Prin.Prin = 'intruder.Prin [none] .
+-- Try reduction and implication for 1 1 1 1 1 1 2 1 ('inv17['fakeShello[
+--     'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
+--     'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
+--     'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
+--     'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
+-- Infer proof for 1 1 1 1 1 1 2 1
+-- Final postpone 1 1 1 1 1 1 2 1
+-- 1 1 1 1 1 1 2 2 Term case split '_\in_['pms['P5@Prin.Prin,'P@Prin.Prin,
+--     'S@Secret.Secret],'cpms['nw['P@Protocol.Protocol]]]
+-- Try reduction and implication for 1 1 1 1 1 1 2 2 1 ('inv17['fakeShello[
+--     'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
+--     'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
+--     'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
+--     'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
+-- Infer proof for 1 1 1 1 1 1 2 2 1
+-- Final postpone 1 1 1 1 1 1 2 2 1
+-- 1 1 1 1 1 1 2 2 2 Term case split '_\in_['ct['P@Prin.Prin,'P@Prin.Prin,
+--     'P5@Prin.Prin,'cert['P@Prin.Prin,'P@PubKey.PubKey,'sig['ca.Prin,
+--     'P@Prin.Prin,'P@PubKey.PubKey]]],'nw['P@Protocol.Protocol]]
+-- 1 1 1 1 1 1 2 2 2 1 Term case split '_\in_['sf['P0@Prin.Prin,'P@Prin.Prin,
+--     'P5@Prin.Prin,'esfin['k['P@Prin.Prin,'pms['P5@Prin.Prin,'P@Prin.Prin,
+--     'S@Secret.Secret],'R1@Rand.Rand,'R@Rand.Rand],'sfin['P5@Prin.Prin,
+--     'P@Prin.Prin,'S@Sid.Sid,'L@ListOfChoices.ListOfChoices,'C@Choice.Choice,
+--     'R1@Rand.Rand,'R@Rand.Rand,'pms['P5@Prin.Prin,'P@Prin.Prin,
+--     'S@Secret.Secret]]]],'nw['P@Protocol.Protocol]]
+-- 1 1 1 1 1 1 2 2 2 1 1 Term case split '_\in_['sh['P@Prin.Prin,'P@Prin.Prin,
+--     'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,'C@Choice.Choice],'nw[
+--     'P@Protocol.Protocol]]
+-- Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 1 1 ('inv17['fakeShello[
+--     'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
+--     'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
+--     'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
+--     'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
+-- Red forgotten
 
-1 1 1 1 1 1 2 2 2 1 1 2 Case split by eq 'P2@Prin.Prin = 'intruder.Prin [none]
-    .
-1 1 1 1 1 1 2 2 2 1 1 2 1 Term case split '_\in_['sf['P@Prin.Prin,'P@Prin.Prin,
-    'P5@Prin.Prin,'esfin['k['P@Prin.Prin,'pms['P5@Prin.Prin,'P@Prin.Prin,
-    'S@Secret.Secret],'R1@Rand.Rand,'R@Rand.Rand],'sfin['P5@Prin.Prin,
-    'P@Prin.Prin,'S@Sid.Sid,'L@ListOfChoices.ListOfChoices,'C@Choice.Choice,
-    'R1@Rand.Rand,'R@Rand.Rand,'pms['P5@Prin.Prin,'P@Prin.Prin,
-    'S@Secret.Secret]]]],'nw['P@Protocol.Protocol]]
-1 1 1 1 1 1 2 2 2 1 1 2 1 1 Term case split '_\in_['ct['P1@Prin.Prin,
-    'P@Prin.Prin,'P5@Prin.Prin,'cert['P@Prin.Prin,'P@PubKey.PubKey,'sig[
-    'ca.Prin,'P@Prin.Prin,'P@PubKey.PubKey]]],'nw['P@Protocol.Protocol]]
-1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 Term case split '_\in_['sh['intruder.Prin,
-    'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,'C@Choice.Choice],'nw[
-    'P@Protocol.Protocol]]
-Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 1 ('inv17[
-    'fakeShello['P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,
-    'S@Sid.Sid,'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,
-    'P1@Prin.Prin,'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,
-    'L@ListOfChoices.ListOfChoices,'C0@Choice.Choice,'S0@Sid.Sid,
-    'S@Secret.Secret,'P@PubKey.PubKey])
-Infer proof for 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 1
-Final postpone 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 1
-Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 2 ('inv17[
-    'fakeShello['P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,
-    'S@Sid.Sid,'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,
-    'P1@Prin.Prin,'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,
-    'L@ListOfChoices.ListOfChoices,'C0@Choice.Choice,'S0@Sid.Sid,
-    'S@Secret.Secret,'P@PubKey.PubKey])
-Infer proof for 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 2
-Final postpone 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 2
-Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 1 2 1 1 2 ('inv17[
-    'fakeShello['P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,
-    'S@Sid.Sid,'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,
-    'P1@Prin.Prin,'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,
-    'L@ListOfChoices.ListOfChoices,'C0@Choice.Choice,'S0@Sid.Sid,
-    'S@Secret.Secret,'P@PubKey.PubKey])
-Red forgotten
+-- 1 1 1 1 1 1 2 2 2 1 1 2 Case split by eq 'P2@Prin.Prin = 'intruder.Prin [none]
+--     .
+-- 1 1 1 1 1 1 2 2 2 1 1 2 1 Term case split '_\in_['sf['P@Prin.Prin,'P@Prin.Prin,
+--     'P5@Prin.Prin,'esfin['k['P@Prin.Prin,'pms['P5@Prin.Prin,'P@Prin.Prin,
+--     'S@Secret.Secret],'R1@Rand.Rand,'R@Rand.Rand],'sfin['P5@Prin.Prin,
+--     'P@Prin.Prin,'S@Sid.Sid,'L@ListOfChoices.ListOfChoices,'C@Choice.Choice,
+--     'R1@Rand.Rand,'R@Rand.Rand,'pms['P5@Prin.Prin,'P@Prin.Prin,
+--     'S@Secret.Secret]]]],'nw['P@Protocol.Protocol]]
+-- 1 1 1 1 1 1 2 2 2 1 1 2 1 1 Term case split '_\in_['ct['P1@Prin.Prin,
+--     'P@Prin.Prin,'P5@Prin.Prin,'cert['P@Prin.Prin,'P@PubKey.PubKey,'sig[
+--     'ca.Prin,'P@Prin.Prin,'P@PubKey.PubKey]]],'nw['P@Protocol.Protocol]]
+-- 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 Term case split '_\in_['sh['intruder.Prin,
+--     'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,'C@Choice.Choice],'nw[
+--     'P@Protocol.Protocol]]
+-- Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 1 ('inv17[
+--     'fakeShello['P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,
+--     'S@Sid.Sid,'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,
+--     'P1@Prin.Prin,'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,
+--     'L@ListOfChoices.ListOfChoices,'C0@Choice.Choice,'S0@Sid.Sid,
+--     'S@Secret.Secret,'P@PubKey.PubKey])
+-- Infer proof for 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 1
+-- Final postpone 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 1
+-- Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 2 ('inv17[
+--     'fakeShello['P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,
+--     'S@Sid.Sid,'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,
+--     'P1@Prin.Prin,'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,
+--     'L@ListOfChoices.ListOfChoices,'C0@Choice.Choice,'S0@Sid.Sid,
+--     'S@Secret.Secret,'P@PubKey.PubKey])
+-- Infer proof for 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 2
+-- Final postpone 1 1 1 1 1 1 2 2 2 1 1 2 1 1 1 2
+-- Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 1 2 1 1 2 ('inv17[
+--     'fakeShello['P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,
+--     'S@Sid.Sid,'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,
+--     'P1@Prin.Prin,'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,
+--     'L@ListOfChoices.ListOfChoices,'C0@Choice.Choice,'S0@Sid.Sid,
+--     'S@Secret.Secret,'P@PubKey.PubKey])
+-- Red forgotten
 
-Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 1 2 1 2 ('inv17[
-    'fakeShello['P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,
-    'S@Sid.Sid,'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,
-    'P1@Prin.Prin,'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,
-    'L@ListOfChoices.ListOfChoices,'C0@Choice.Choice,'S0@Sid.Sid,
-    'S@Secret.Secret,'P@PubKey.PubKey])
-Infer proof for 1 1 1 1 1 1 2 2 2 1 1 2 1 2
-Final postpone 1 1 1 1 1 1 2 2 2 1 1 2 1 2
-Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 1 2 2 ('inv17[
-    'fakeShello['P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,
-    'S@Sid.Sid,'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,
-    'P1@Prin.Prin,'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,
-    'L@ListOfChoices.ListOfChoices,'C0@Choice.Choice,'S0@Sid.Sid,
-    'S@Secret.Secret,'P@PubKey.PubKey])
-Infer proof for 1 1 1 1 1 1 2 2 2 1 1 2 2
-Final postpone 1 1 1 1 1 1 2 2 2 1 1 2 2
-Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 2 ('inv17['fakeShello[
-    'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
-    'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
-    'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
-    'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
-Red forgotten
+-- Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 1 2 1 2 ('inv17[
+--     'fakeShello['P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,
+--     'S@Sid.Sid,'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,
+--     'P1@Prin.Prin,'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,
+--     'L@ListOfChoices.ListOfChoices,'C0@Choice.Choice,'S0@Sid.Sid,
+--     'S@Secret.Secret,'P@PubKey.PubKey])
+-- Infer proof for 1 1 1 1 1 1 2 2 2 1 1 2 1 2
+-- Final postpone 1 1 1 1 1 1 2 2 2 1 1 2 1 2
+-- Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 1 2 2 ('inv17[
+--     'fakeShello['P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,
+--     'S@Sid.Sid,'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,
+--     'P1@Prin.Prin,'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,
+--     'L@ListOfChoices.ListOfChoices,'C0@Choice.Choice,'S0@Sid.Sid,
+--     'S@Secret.Secret,'P@PubKey.PubKey])
+-- Infer proof for 1 1 1 1 1 1 2 2 2 1 1 2 2
+-- Final postpone 1 1 1 1 1 1 2 2 2 1 1 2 2
+-- Try reduction and implication for 1 1 1 1 1 1 2 2 2 1 2 ('inv17['fakeShello[
+--     'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
+--     'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
+--     'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
+--     'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
+-- Red forgotten
 
-Try reduction and implication for 1 1 1 1 1 1 2 2 2 2 ('inv17['fakeShello[
-    'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
-    'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
-    'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
-    'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
-Infer proof for 1 1 1 1 1 1 2 2 2 2
-Final postpone 1 1 1 1 1 1 2 2 2 2
-Try reduction and implication for 1 1 1 1 1 2 ('inv17['fakeShello[
-    'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
-    'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
-    'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
-    'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
-Infer proof for 1 1 1 1 1 2
-Final postpone 1 1 1 1 1 2
-Try reduction and implication for 1 1 1 1 2 ('inv17['fakeShello[
-    'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
-    'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
-    'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
-    'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
-Infer proof for 1 1 1 1 2
-Final postpone 1 1 1 1 2
-Try reduction and implication for 1 1 1 2 ('inv17['fakeShello[
-    'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
-    'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
-    'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
-    'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
-Infer proof for 1 1 1 2
-Final postpone 1 1 1 2
-Try reduction and implication for 1 1 2 ('inv17['fakeShello[
-    'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
-    'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
-    'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
-    'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
-Infer proof for 1 1 2
-Final postpone 1 1 2
-Try reduction and implication for 1 2 ('inv17['fakeShello['P@Protocol.Protocol,
-    'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,'C@Choice.Choice],
-    'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,'P0@Prin.Prin,
-    'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
-    'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
-Infer proof for 1 2
-Final postpone 1 2
-Generate proof without goal
+-- Try reduction and implication for 1 1 1 1 1 1 2 2 2 2 ('inv17['fakeShello[
+--     'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
+--     'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
+--     'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
+--     'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
+-- Infer proof for 1 1 1 1 1 1 2 2 2 2
+-- Final postpone 1 1 1 1 1 1 2 2 2 2
+-- Try reduction and implication for 1 1 1 1 1 2 ('inv17['fakeShello[
+--     'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
+--     'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
+--     'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
+--     'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
+-- Infer proof for 1 1 1 1 1 2
+-- Final postpone 1 1 1 1 1 2
+-- Try reduction and implication for 1 1 1 1 2 ('inv17['fakeShello[
+--     'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
+--     'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
+--     'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
+--     'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
+-- Infer proof for 1 1 1 1 2
+-- Final postpone 1 1 1 1 2
+-- Try reduction and implication for 1 1 1 2 ('inv17['fakeShello[
+--     'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
+--     'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
+--     'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
+--     'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
+-- Infer proof for 1 1 1 2
+-- Final postpone 1 1 1 2
+-- Try reduction and implication for 1 1 2 ('inv17['fakeShello[
+--     'P@Protocol.Protocol,'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,
+--     'C@Choice.Choice],'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,
+--     'P0@Prin.Prin,'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
+--     'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
+-- Infer proof for 1 1 2
+-- Final postpone 1 1 2
+-- Try reduction and implication for 1 2 ('inv17['fakeShello['P@Protocol.Protocol,
+--     'P@Prin.Prin,'P5@Prin.Prin,'R@Rand.Rand,'S@Sid.Sid,'C@Choice.Choice],
+--     'P4@Prin.Prin,'P3@Prin.Prin,'P2@Prin.Prin,'P1@Prin.Prin,'P0@Prin.Prin,
+--     'R1@Rand.Rand,'R0@Rand.Rand,'L@ListOfChoices.ListOfChoices,
+--     'C0@Choice.Choice,'S0@Sid.Sid,'S@Secret.Secret,'P@PubKey.PubKey])
+-- Infer proof for 1 2
+-- Final postpone 1 2
+-- Generate proof without goal
 
-Opening module INV :
+-- Opening module INV :
 
 open INV .
 	:goal{
@@ -511,4 +511,8 @@ open INV .
 
 
 close
-
+eof
+Bye.
+real	690m44.621s
+user	11m53.455s
+sys	0m5.744s
