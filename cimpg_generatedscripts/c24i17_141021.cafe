@@ -1,0 +1,392 @@
+open INV .
+	:goal{
+		eq [tls :nonexec] : inv17(sfin(P:Protocol,P:Prin,M:Msg,M3:Msg,M2:Msg,M1:Msg,M0:Msg),P4:Prin,P3:Prin,P2:Prin,P1:Prin,P0:Prin,R:Rand,R0:Rand,
+    L:ListOfChoices,C:Choice,S:Sid,S:Secret,P:PubKey) = true .
+	}
+
+	:apply(tc)
+
+	:def csb1 = :ctf [M@Msg \in nw(P@Protocol) .]
+
+	:apply(csb1)
+
+	:def csb2 = :ctf [M3@Msg \in nw(P@Protocol) .]
+
+	:apply(csb2)
+
+	:def csb3 = :ctf [M2@Msg \in nw(P@Protocol) .]
+
+	:apply(csb3)
+
+	:def csb4 = :ctf [M1@Msg \in nw(P@Protocol) .]
+
+	:apply(csb4)
+
+	:def csb5 = :ctf [M0@Msg \in nw(P@Protocol) .]
+
+	:apply(csb5)
+
+	:def csb6 = :ctf [ch?(M@Msg) .]
+
+	:apply(csb6)
+
+	:def csb7 = :ctf [sh?(M3@Msg) .]
+
+	:apply(csb7)
+
+	:def csb8 = :ctf [ct?(M2@Msg) .]
+
+	:apply(csb8)
+
+	:def csb9 = :ctf [kx?(M1@Msg) .]
+
+	:apply(csb9)
+
+	:def csb10 = :ctf [cf?(M0@Msg) .]
+
+	:apply(csb10)
+
+	:def csb11 = :ctf {eq src(M3@Msg) = P@Prin .}
+
+	:apply(csb11)
+
+	:def csb12 = :ctf {eq src(M2@Msg) = P@Prin .}
+
+	:apply(csb12)
+
+	:def csb13 = :ctf {eq src(M@Msg) = dst(M3@Msg).}
+
+	:apply(csb13)
+
+	:def csb14 = :ctf {eq src(M1@Msg) = dst(M3@Msg).}
+
+	:apply(csb14)
+
+	:def csb15 = :ctf {eq src(M0@Msg) = dst(M3@Msg).}
+
+	:apply(csb15)
+
+	:def csb16 = :ctf [choice(M3@Msg)\in list(M@Msg) .]
+
+	:apply(csb16)
+
+	:def csb17 = :ctf {eq k(epms(M1@Msg)) = k(P@Prin).}
+
+	:apply(csb17)
+
+	:def csb18 = :ctf {eq ecfin(M0@Msg) = ecfin(k(dst(M3@Msg),pms(epms(M1@Msg)),rand(M@Msg),rand(M3@Msg)),cfin(dst(M3@Msg),P@Prin,sid(M3@Msg),list(
+    M@Msg),choice(M3@Msg),rand(M@Msg),rand(M3@Msg),pms(epms(M1@Msg)))).}
+
+	:apply(csb18)
+
+	:def csb19 = :ctf {eq cert(M2@Msg) = cert(P@Prin,k(P@Prin),sig(ca,P@Prin,k(P@Prin))).}
+
+	:apply(csb19)
+
+	:def csb20 = :ctf {eq dst(M0@Msg) = P@Prin .}
+
+	:apply(csb20)
+
+	:def csb21 = :ctf {eq dst(M1@Msg) = P@Prin .}
+
+	:apply(csb21)
+
+	:def csb22 = :ctf {eq dst(M@Msg) = P@Prin .}
+
+	:apply(csb22)
+
+	:def csb23 = :ctf {eq dst(M2@Msg) = dst(M3@Msg).}
+
+	:apply(csb23)
+
+	:def csb24 = :ctf {eq crt(M2@Msg) = P@Prin .}
+
+	:apply(csb24)
+
+	:def csb25 = :ctf {eq crt(M3@Msg) = P@Prin .}
+
+	:apply(csb25)
+
+	:def csb26 = :ctf {eq P4@Prin  = intruder .}
+
+	:apply(csb26)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:def csb27 = :ctf [sh(P2@Prin,P3@Prin,P4@Prin,R0@Rand,S@Sid,C@Choice)\in nw(P@Protocol) .]
+
+	:apply(csb27)
+
+	:def csb28 = :ctf [ct(P1@Prin,P3@Prin,P4@Prin,cert(P3@Prin,P@PubKey,sig(ca,P3@Prin,P@PubKey)))\in nw(P@Protocol) .]
+
+	:apply(csb28)
+
+	:def csb29 = :ctf [sf(P0@Prin,P3@Prin,P4@Prin,esfin(k(P3@Prin,pms(P4@Prin,P3@Prin,S@Secret),R@Rand,R0@Rand),sfin(P4@Prin,P3@Prin,S@Sid,
+    L@ListOfChoices,C@Choice,R@Rand,R0@Rand,pms(P4@Prin,P3@Prin,S@Secret))))\in nw(P@Protocol) .]
+
+	:apply(csb29)
+
+	:postpone .
+
+	:def csb30 = :ctf {eq choice(M3@Msg) = C@Choice .}
+
+	:apply(csb30)
+
+	:def csb31 = :ctf {eq list(M@Msg) = L@ListOfChoices .}
+
+	:apply(csb31)
+
+	:def csb32 = :ctf [C@Choice \in L@ListOfChoices  .]
+
+	:apply(csb32)
+
+	:def csb33 = :ctf {eq dst(M3@Msg) = P4@Prin .}
+
+	:apply(csb33)
+
+	:def csb34 = :ctf {eq rand(M3@Msg) = R0@Rand .}
+
+	:apply(csb34)
+
+	:def csb35 = :ctf {eq sid(M3@Msg) = S@Sid .}
+
+	:apply(csb35)
+
+	:def csb36 = :ctf {eq P3@Prin  = P@Prin .}
+
+	:apply(csb36)
+
+	:def csb37 = :ctf {eq P0@Prin  = P@Prin .}
+
+	:apply(csb37)
+
+	:def csb38 = :ctf {eq rand(M@Msg) = R@Rand .}
+
+	:apply(csb38)
+
+	:def csb39 = :ctf {eq pms(epms(M1@Msg)) = pms(P4@Prin,P@Prin,S@Secret).}
+
+	:apply(csb39)
+
+	:def csb40 = :ctf {eq P2@Prin  = P@Prin .}
+
+	:apply(csb40)
+
+	:def csb41 = :ctf {eq P1@Prin  = P@Prin .}
+
+	:apply(csb41)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:def csb42 = :ctf {eq k(P@Prin) = P@PubKey .}
+
+	:apply(csb42)
+
+	:def csb43 = :ctf {eq ct(P@Prin,P@Prin,P4@Prin,cert(P@Prin,P@PubKey,sig(ca,P@Prin,P@PubKey)))\in nw(P@Protocol) = true .}
+
+	:apply(csb43)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:postpone .
+
+	:def csb44 = :ctf {eq P@Prin  = intruder .}
+
+	:apply(csb44)
+
+	:def csb45 = :ctf {eq P1@Prin  = intruder .}
+
+	:apply(csb45)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:def csb46 = :ctf {eq ct(P@Prin,P@Prin,P4@Prin,cert(P@Prin,P@PubKey,sig(ca,P@Prin,P@PubKey)))\in nw(P@Protocol) = true .}
+
+	:apply(csb46)
+
+	:postpone .
+
+	:postpone .
+
+	:def csb47 = :ctf {eq sig(ca,P@Prin,P@PubKey)\in csig(nw(P@Protocol)) = true .}
+
+	:apply(csb47)
+
+	:def csb48 = :ctf {eq ct(P@Prin,P@Prin,P4@Prin,cert(P@Prin,P@PubKey,sig(ca,P@Prin,P@PubKey)))\in nw(P@Protocol) = true .}
+
+	:apply(csb48)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:postpone .
+
+	:def csb49 = :ctf {eq ct(P@Prin,P@Prin,P4@Prin,cert(P@Prin,P@PubKey,sig(ca,P@Prin,P@PubKey)))\in nw(P@Protocol) = true .}
+
+	:apply(csb49)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:postpone .
+
+	:def csb50 = :ctf {eq k(P@Prin) = P@PubKey .}
+
+	:apply(csb50)
+
+	:def csb51 = :ctf {eq sh(P@Prin,P@Prin,P4@Prin,R0@Rand,S@Sid,C@Choice)\in nw(P@Protocol) = true .}
+
+	:apply(csb51)
+
+	:def csb52 = :ctf {eq ct(P@Prin,P@Prin,P4@Prin,cert(P@Prin,P@PubKey,sig(ca,P@Prin,P@PubKey)))\in nw(P@Protocol) = true .}
+
+	:apply(csb52)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:postpone .
+
+	:postpone .
+
+	:def csb53 = :ctf {eq P@Prin  = intruder .}
+
+	:apply(csb53)
+
+	:def csb54 = :ctf {eq P1@Prin  = intruder .}
+
+	:apply(csb54)
+
+	:postpone .
+
+	:postpone .
+
+	:def csb55 = :ctf {eq sh(P@Prin,P@Prin,P4@Prin,R0@Rand,S@Sid,C@Choice)\in nw(P@Protocol) = true .}
+
+	:apply(csb55)
+
+	:def csb56 = :ctf {eq sig(ca,P@Prin,P@PubKey)\in csig(nw(P@Protocol)) = true .}
+
+	:apply(csb56)
+
+	:def csb57 = :ctf {eq ct(P@Prin,P@Prin,P4@Prin,cert(P@Prin,P@PubKey,sig(ca,P@Prin,P@PubKey)))\in nw(P@Protocol) = true .}
+
+	:apply(csb57)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:postpone .
+
+	:def csb58 = :ctf {eq ct(P@Prin,P@Prin,P4@Prin,cert(P@Prin,P@PubKey,sig(ca,P@Prin,P@PubKey)))\in nw(P@Protocol) = true .}
+
+	:apply(csb58)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:def csb59 = :ctf [C@Choice \in list(M@Msg) .]
+
+	:apply(csb59)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	*** The corresponding proof score was not present.
+	:apply (rd)
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+	:postpone .
+
+
+close
+
+eof
+real	2436m57.827s
+user	904m3.368s
+sys	3m52.731s

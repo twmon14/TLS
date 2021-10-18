@@ -3510,6 +3510,23 @@ open INV .
     op i1 : -> Sid .
     op c1 : -> Choice .
     eq (b = intruder) = false .
+    eq a = intruder .
+    red inv16(p,a,b,b1,r1,r2,c,i,s) implies inv16(fakeShello2(p,p2,p1,r3,i1,c1),a,b,b1,r1,r2,c,i,s) .
+close
+
+open INV .
+    op p : -> Protocol .
+    ops a b b1 : -> Prin .
+    ops r1 r2 : -> Rand .
+    op c : -> Choice .
+    op i : -> Sid .
+    op s : -> Secret .
+-- arbitrary objects
+    ops p1 p2 : -> Prin .
+    op r3 : -> Rand .
+    op i1 : -> Sid .
+    op c1 : -> Choice .
+    eq (b = intruder) = false .
     eq (a = intruder) = false .
     red inv14(p,a,b,r1,r2,c,i,s) implies inv16(p,a,b,b1,r1,r2,c,i,s) implies inv16(fakeShello2(p,p2,p1,r3,i1,c1),a,b,b1,r1,r2,c,i,s) .
 close
