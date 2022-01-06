@@ -5628,7 +5628,7 @@ open INV .
 
 	:apply (rd)
 
-	:apply(tc)
+	:apply(tc) -- c25
 
 	:def csb647 = :ctf [M#Msg \in nw(P#Protocol) .]
 

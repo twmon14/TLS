@@ -1,0 +1,64 @@
+--> 19) fakeSfin21(p,p2,p1,esfin21)
+open INV .
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin21 : -> EncSFin2 .
+-- assumptions
+  eq esfin21 = esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s))) .
+  eq esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s)))\in cesfin2(nw(p)) = true .
+  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(fakeSfin21(p,p2,p1,esfin21),a,b,r1,r2,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin21 : -> EncSFin2 .
+-- assumptions
+  eq esfin21 = esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s))) .
+  eq esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s)))\in cesfin2(nw(p)) = false .
+  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(fakeSfin21(p,p2,p1,esfin21),a,b,r1,r2,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin21 : -> EncSFin2 .
+-- assumptions
+  eq (esfin21 = esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s)))) = false .
+  eq esfin21 \in cesfin2(nw(p)) = true .
+  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(fakeSfin21(p,p2,p1,esfin21),a,b,r1,r2,c,i,s) .
+close
+
+open INV .
+  op p : -> Protocol .
+  ops a b : -> Prin .
+  ops r1 r2 : -> Rand .
+  op c : -> Choice .
+  op i : -> Sid .
+  op s : -> Secret .
+-- arbitrary objects
+  ops p1 p2 : -> Prin .
+  op esfin21 : -> EncSFin2 .
+-- assumptions
+  eq (esfin21 = esfin2(k(b,pms(a,b,s),r1,r2),sfin2(a,b,i,c,r1,r2,pms(a,b,s)))) = false .
+  eq esfin21 \in cesfin2(nw(p)) = false .
+  red inv6(p,a,b,r1,r2,c,i,s) implies inv6(fakeSfin21(p,p2,p1,esfin21),a,b,r1,r2,c,i,s) .
+close

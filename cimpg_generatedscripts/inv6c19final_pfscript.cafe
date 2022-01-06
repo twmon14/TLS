@@ -1,0 +1,29 @@
+	:apply(tc)
+
+	:def csb111 = :ctf {eq E#EncSFin2  = esfin2(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P0@Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P@Prin,P0@Prin,S@Secret))).}
+
+	:apply(csb111)
+
+	:def csb112 = :ctf [esfin2(k(P0@Prin,pms(P@Prin,P0@Prin,S@Secret),R@Rand,R0@Rand),sfin2(P@Prin,P0@Prin,S@Sid,C@Choice,R@Rand,R0@Rand,pms(P@Prin,P0@Prin,S@Secret)))\in cesfin2(nw(P#Protocol)) .]
+
+	:apply(csb112)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:def csb113 = :ctf [E#EncSFin2 \in cesfin2(nw(P#Protocol)) .]
+
+	:apply(csb113)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
+
+	:imp [tls] by {C:Choice <- C@Choice ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R0:Rand <- R0@Rand ; R:Rand <- R@Rand ; S:Secret <- S@Secret ; S:Sid <- S@Sid ;}
+
+	:apply (rd)
