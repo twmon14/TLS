@@ -966,13 +966,12 @@ rl [cfin] :
         ct(B,B,A,cert(B,PK,G)) 
         sh(B,B,A,R',I,C) ch(A,A,B,R,L) NW)) 
     (uss: USS) (ui: UI) (us: US) OCs} .  
-*** here
+*** here to check
 rl [sfin] :
     {(newmsg: MSG) 
     (sf: SF) (sst: SS)
     (cpms: CPMS) (csig: CSIG) (cepms: CEPMS) (cecfin: CECFIN)
     (cesfin: CESFIN) (cecfin2: CECFIN2) (cesfin2: CESFIN2) 
-    (nwsf: NWSF) 
     (nw: (cf(A,A,B,ecfin(k(A,pms(A,B,S),R,R'),
             cfin(A,B,I,L,C,R,R',pms(A,B,S))))
         kx(A,A,B,epms(PK,pms(A,B,S))) 
